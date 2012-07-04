@@ -2,8 +2,8 @@
 //  AppDelegate.h
 //  demoapp
 //
-//  Created by Дмитрий Николаев on 04.07.12.
-//  Copyright (c) 2012 __MyCompanyName__. All rights reserved.
+//  Created by Dmitry Nikolaev on 04.07.12.
+//  Copyright (c) 2012 cocotype.com. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

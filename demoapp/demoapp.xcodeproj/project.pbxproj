@@ -170,6 +170,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = cocotype.com;
 			};
 			buildConfigurationList = 3280BD9415A46A02009148AD /* Build configuration list for PBXProject "demoapp" */;
 			compatibilityVersion = "Xcode 3.2";
