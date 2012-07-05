@@ -15,6 +15,8 @@
 		3280BDB515A46A03009148AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3280BDB315A46A03009148AD /* MainMenu.xib */; };
 		3287FB9715A47E1E00EDA240 /* ctconf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287FB9115A47E0100EDA240 /* ctconf.framework */; };
 		3287FB9915A47E2A00EDA240 /* ctconf.framework in Resources */ = {isa = PBXBuildFile; fileRef = 3287FB9815A47E2A00EDA240 /* ctconf.framework */; };
+		32A44D7515A5998500A87F87 /* TopPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D7315A5998500A87F87 /* TopPanelViewController.m */; };
+		32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A44D7415A5998500A87F87 /* TopPanelViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +58,10 @@
 		3280BDB115A46A02009148AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3280BDB415A46A03009148AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3287FB8B15A47E0100EDA240 /* ctconf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ctconf.xcodeproj; path = ../ctconf/ctconf.xcodeproj; sourceTree = "<group>"; };
-		3287FB9815A47E2A00EDA240 /* ctconf.framework */ = {isa = PBXFileReference; lastKnownFileType = file; name = ctconf.framework; path = "../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug/ctconf.framework"; sourceTree = "<group>"; };
+		3287FB9815A47E2A00EDA240 /* ctconf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ctconf.framework; path = "../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug/ctconf.framework"; sourceTree = "<group>"; };
+		32A44D7215A5998500A87F87 /* TopPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPanelViewController.h; sourceTree = "<group>"; };
+		32A44D7315A5998500A87F87 /* TopPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPanelViewController.m; sourceTree = "<group>"; };
+		32A44D7415A5998500A87F87 /* TopPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopPanelViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +122,9 @@
 				3280BDB115A46A02009148AD /* AppDelegate.m */,
 				3280BDB315A46A03009148AD /* MainMenu.xib */,
 				3280BDA515A46A02009148AD /* Supporting Files */,
+				32A44D7215A5998500A87F87 /* TopPanelViewController.h */,
+				32A44D7315A5998500A87F87 /* TopPanelViewController.m */,
+				32A44D7415A5998500A87F87 /* TopPanelViewController.xib */,
 			);
 			path = demoapp;
 			sourceTree = "<group>";
@@ -221,6 +229,7 @@
 				3280BDAF15A46A02009148AD /* Credits.rtf in Resources */,
 				3280BDB515A46A03009148AD /* MainMenu.xib in Resources */,
 				3287FB9915A47E2A00EDA240 /* ctconf.framework in Resources */,
+				32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -233,6 +242,7 @@
 			files = (
 				3280BDAB15A46A02009148AD /* main.m in Sources */,
 				3280BDB215A46A02009148AD /* AppDelegate.m in Sources */,
+				32A44D7515A5998500A87F87 /* TopPanelViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

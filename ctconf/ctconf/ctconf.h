@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface ctconf : NSObject
+#import "Test.h"
+#import "CTConfiguration.h"
 
-@end

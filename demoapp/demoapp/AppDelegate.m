@@ -7,17 +7,41 @@
 //
 
 #import "AppDelegate.h"
-#import <ctconf/Test.h>
+#import <ctconf/ctconf.h>
+#import "TopPanelViewController.h"
+
+@interface AppDelegate ()
+
+@property (strong, nonatomic) TopPanelViewController *topPanelViewController;
+@property (strong, nonatomic) CTConfiguration *conf;
+
+@end
 
 @implementation AppDelegate
 
 @synthesize window = _window;
+@synthesize topPanelViewController = _topPanelViewController;
+@synthesize conf = _conf;
+
+- (void) setTopPanelViewController:(TopPanelViewController *)topPanelViewController {
+    _topPanelViewController = topPanelViewController;
+    [self.topPanelViewController ctconfInit:self.conf];
+    [self.window.contentView addSubview:self.topPanelViewController.view];
+
+    // place top panel to top
+    
+    CGFloat topPanelHeight = self.topPanelViewController.view.frame.size.height;
+    NSView *contentView = self.window.contentView;
+    CGFloat containerHeight = contentView.frame.size.height;
+    [self.topPanelViewController.view setFrameOrigin:NSMakePoint(0, containerHeight - topPanelHeight)];
+}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    Test *test = [[Test alloc] init];
-    [test testMe];
-    // Insert code here to initialize your application
+    self.conf = [[CTConfiguration alloc] init];
+    
+    self.topPanelViewController = [[TopPanelViewController alloc] init];
+    
 }
 
 @end
