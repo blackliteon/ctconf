@@ -11,11 +11,12 @@
 
 @interface CTConfiguration : NSObject <CTPanelDelegate>
 
-- (CGFloat) declareCGFloatPropertyInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
+- (CGFloat) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
+- (CGFloat) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal;
 
 - (void) start;
-- (void) startWithConfigurer;
-- (void) startProduction;
+- (void) startDevelopmentVersion;
+- (void) startProductionVersion;
 
 + (CTConfiguration *) sharedInstance;
 @end

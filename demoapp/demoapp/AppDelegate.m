@@ -39,7 +39,7 @@
 {
     self.topPanelViewController = [[TopPanelViewController alloc] init];
     
-    [[CTConfiguration sharedInstance] startProduction];
+    [[CTConfiguration sharedInstance] startDevelopmentVersion];
     
 }
 

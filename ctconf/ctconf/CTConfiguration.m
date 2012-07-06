@@ -9,6 +9,8 @@
 #import "CTConfiguration.h"
 #import "CTProperty.h"
 #import "CTPanelController.h"
+#import "CTDoubleProperty.h"
+#import "CTBooleanProperty.h"
 
 #define CONF_FILE @"/Users/dima/ct.conf" // temprorary and for the start using concrete place
 
@@ -128,6 +130,11 @@ static id sharedInstance = nil;
     
 }
 
+- (void) addKeyForProperty: (CTProperty *) property {
+    NSArray *propertyNameComponents = [property.name componentsSeparatedByString:@"."];
+    property.objectKey = [propertyNameComponents lastObject];
+}
+
 #pragma mark - Public
 
 + (CTConfiguration *) sharedInstance {
@@ -145,23 +152,6 @@ static id sharedInstance = nil;
     return self;
 }
 
-- (CGFloat) declareCGFloatPropertyInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal {
-    CTProperty *property = [[CTProperty alloc] init];
-    property.name = name;
-    property.propertyType = CTPropertyTypeCGFloat;
-    property.defaultValue = [NSNumber numberWithFloat:defaultVal];
-    
-    property.objectOwnedProperty = object;
-    
-    NSArray *propertyNameComponents = [name componentsSeparatedByString:@"."];
-    property.objectKey = [propertyNameComponents lastObject];
-    
-    [self.properties addObject:property];
-    
-    return defaultVal;
-}
-
-
 - (void) start {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:CONF_FILE]) {
@@ -170,7 +160,7 @@ static id sharedInstance = nil;
     [self loadPropertiesValuesFromDevelopmentConf];
 }
 
-- (void) startWithConfigurer {
+- (void) startDevelopmentVersion {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if (![fileManager fileExistsAtPath:CONF_FILE]) {
         [self createDevelopmentConfFileWithDefaultValues];
@@ -195,7 +185,7 @@ static id sharedInstance = nil;
     [self.panelController loadWindow];
     CTPanel *panel = (CTPanel *)self.panelController.window;
     panel.ctDelegate = self;
-
+    
     // initial values
     
     [self.panelController setText:confText];
@@ -206,7 +196,7 @@ static id sharedInstance = nil;
     
 }
 
-- (void) startProduction {
+- (void) startProductionVersion {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSString *path = [[NSBundle mainBundle] pathForResource:@"ct" ofType:@"conf"];
     if ([fileManager fileExistsAtPath:path]) {
@@ -216,6 +206,36 @@ static id sharedInstance = nil;
         NSLog(@"Error: Can't find ct.conf in main bundle: %@. Use default values.", path);
     }
 }
+
+#pragma mark Properties
+
+- (CGFloat) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal {
+
+    CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
+    property.name = name;
+    property.defaultValue = [NSNumber numberWithFloat:defaultVal];
+    property.objectOwnedProperty = object;
+    [self addKeyForProperty:property];
+    
+    [self.properties addObject:property];
+    
+    return defaultVal;
+}
+
+- (CGFloat) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal {
+    CTBooleanProperty *property = [[CTBooleanProperty alloc] init];
+    property.name = name;
+    property.defaultValue = [NSNumber numberWithFloat:defaultVal];
+    property.objectOwnedProperty = object;
+    [self addKeyForProperty:property];
+    
+    [self.properties addObject:property];
+    
+    return defaultVal;
+}
+
+
+
 
 
 @end

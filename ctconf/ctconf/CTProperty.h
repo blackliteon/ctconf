@@ -14,7 +14,11 @@ enum {
 
 typedef NSInteger CTPropertyType;
 
-@interface CTProperty : NSObject
+@interface CTProperty : NSObject {
+    @protected
+    
+    id _value;
+}
 
 @property (copy, nonatomic) NSString *name;
 @property (assign) CTPropertyType propertyType;
@@ -26,5 +30,7 @@ typedef NSInteger CTPropertyType;
 
 - (NSString *) toString;
 - (void) fromString: (NSString *) stringValue;
+
+- (BOOL) isValueEqualTo: (id) newValue;
 
 @end

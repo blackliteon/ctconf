@@ -20,10 +20,7 @@
 
 - (void) setValue:(id)value {
     
-    NSNumber *currentValue = self.value;
-    NSNumber *newValue = value;
-    
-    if (![currentValue isEqualToNumber:newValue]) {
+    if (![self isValueEqualTo:value]) {
         _value = value;
         
         if (self.objectOwnedProperty) {
@@ -32,13 +29,22 @@
     }
 }
 
+- (BOOL) isValueEqualTo: (id) newValue {
+    NSLog(@"Error: subclasses should override isValueEqualTo:");
+    [self doesNotRecognizeSelector:_cmd];
+    return NO;
+}
+
+
 - (NSString *) toString {
-    return [self.value stringValue];
+    NSLog(@"Error: subclasses should override toString");
+    [self doesNotRecognizeSelector:_cmd];
+    return nil;
 }
 
 - (void) fromString: (NSString *) stringValue {
-    CGFloat floatVal = [stringValue floatValue];
-    self.value = [NSNumber numberWithFloat:floatVal];
+    NSLog(@"Error: subclasses should override fromString:");
+    [self doesNotRecognizeSelector:_cmd];
 }
 
 

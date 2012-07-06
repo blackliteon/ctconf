@@ -14,9 +14,11 @@
 @property (weak) IBOutlet NSButton *button1;
 @property (weak) IBOutlet NSButton *button2;
 @property (weak) IBOutlet NSButton *button3;
+@property (weak) IBOutlet NSTextField *label;
 
 @property (assign, nonatomic) CGFloat topMargin;
 @property (assign, nonatomic) CGFloat leftMargin;
+@property (assign, nonatomic) BOOL labelVisible;
 
 @end
 
@@ -25,9 +27,11 @@
 @synthesize button1;
 @synthesize button2;
 @synthesize button3;
+@synthesize label;
 
 @synthesize topMargin = _topMargin;
 @synthesize leftMargin = _leftMargin;
+@synthesize labelVisible = _labelVisible;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,8 +45,9 @@
 
 - (void) loadView {
     [super loadView];
-    self.topMargin = [[CTConfiguration sharedInstance] declareCGFloatPropertyInObject:self withName:@"topPanel.topMargin" defaultValue:3];
-    self.leftMargin = [[CTConfiguration sharedInstance] declareCGFloatPropertyInObject:self withName:@"topPanel.leftMargin" defaultValue:0];
+    self.topMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.topMargin" defaultValue:3];
+    self.leftMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.leftMargin" defaultValue:0];
+    self.labelVisible = [[CTConfiguration sharedInstance] declareBooleanInObject:self withName:@"topPanel.labelVisible" defaultValue:YES];
 }
 
 - (void) setTopMargin:(CGFloat)topMargin {
@@ -78,6 +83,10 @@
     btn3pt.x -= additionalOffsetToLeft;
     [self.button3 setFrameOrigin:btn3pt];
     
+}
+
+- (void) setLabelVisible:(BOOL)labelVisible {
+    [label setHidden:!labelVisible];
 }
 
 
