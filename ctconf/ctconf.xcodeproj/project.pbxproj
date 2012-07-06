@@ -14,8 +14,6 @@
 		3280BD7D15A469C8009148AD /* ctconf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD5F15A469C8009148AD /* ctconf.framework */; };
 		3280BD8315A469C8009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BD8115A469C8009148AD /* InfoPlist.strings */; };
 		3280BD8615A469C8009148AD /* ctconfTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3280BD8515A469C8009148AD /* ctconfTests.m */; };
-		3287FB8915A4799A00EDA240 /* Test.m in Sources */ = {isa = PBXBuildFile; fileRef = 3287FB8715A46EDC00EDA240 /* Test.m */; };
-		3287FB8A15A479A700EDA240 /* Test.h in Headers */ = {isa = PBXBuildFile; fileRef = 3287FB8615A46EDC00EDA240 /* Test.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3287FB9A15A595F400EDA240 /* ctconf.h in Headers */ = {isa = PBXBuildFile; fileRef = 3280BD6F15A469C8009148AD /* ctconf.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32A44D7915A5AD8900A87F87 /* CTConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A44D7715A5AD8900A87F87 /* CTConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32A44D7A15A5AD8900A87F87 /* CTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D7815A5AD8900A87F87 /* CTConfiguration.m */; };
@@ -32,6 +30,8 @@
 		32BE667315A6E85000042E9E /* CTNumberProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE667115A6E85000042E9E /* CTNumberProperty.m */; };
 		32BE667615A7006C00042E9E /* CTBooleanProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32BE667415A7006B00042E9E /* CTBooleanProperty.h */; };
 		32BE667715A7006C00042E9E /* CTBooleanProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE667515A7006B00042E9E /* CTBooleanProperty.m */; };
+		32BE667A15A705CF00042E9E /* CTEnumerateProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32BE667815A705CF00042E9E /* CTEnumerateProperty.h */; };
+		32BE667B15A705CF00042E9E /* CTEnumerateProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE667915A705CF00042E9E /* CTEnumerateProperty.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,8 +60,6 @@
 		3280BD8215A469C8009148AD /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		3280BD8415A469C8009148AD /* ctconfTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ctconfTests.h; sourceTree = "<group>"; };
 		3280BD8515A469C8009148AD /* ctconfTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ctconfTests.m; sourceTree = "<group>"; };
-		3287FB8615A46EDC00EDA240 /* Test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Test.h; sourceTree = "<group>"; };
-		3287FB8715A46EDC00EDA240 /* Test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Test.m; sourceTree = "<group>"; };
 		32A44D7715A5AD8900A87F87 /* CTConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTConfiguration.h; sourceTree = "<group>"; };
 		32A44D7815A5AD8900A87F87 /* CTConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTConfiguration.m; sourceTree = "<group>"; };
 		32A44D8915A5B6D800A87F87 /* CTProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTProperty.h; sourceTree = "<group>"; };
@@ -77,6 +75,8 @@
 		32BE667115A6E85000042E9E /* CTNumberProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTNumberProperty.m; sourceTree = "<group>"; };
 		32BE667415A7006B00042E9E /* CTBooleanProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTBooleanProperty.h; sourceTree = "<group>"; };
 		32BE667515A7006B00042E9E /* CTBooleanProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBooleanProperty.m; sourceTree = "<group>"; };
+		32BE667815A705CF00042E9E /* CTEnumerateProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTEnumerateProperty.h; sourceTree = "<group>"; };
+		32BE667915A705CF00042E9E /* CTEnumerateProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTEnumerateProperty.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,18 +143,12 @@
 		3280BD6815A469C8009148AD /* ctconf */ = {
 			isa = PBXGroup;
 			children = (
+				32BE667C15A7077B00042E9E /* panel */,
 				32BE666B15A6E7D000042E9E /* properties */,
 				3280BD6F15A469C8009148AD /* ctconf.h */,
 				3280BD6915A469C8009148AD /* Supporting Files */,
-				3287FB8615A46EDC00EDA240 /* Test.h */,
-				3287FB8715A46EDC00EDA240 /* Test.m */,
 				32A44D7715A5AD8900A87F87 /* CTConfiguration.h */,
 				32A44D7815A5AD8900A87F87 /* CTConfiguration.m */,
-				32A44D8D15A6BF0B00A87F87 /* CTPanelController.h */,
-				32A44D8E15A6BF0B00A87F87 /* CTPanelController.m */,
-				32A44D9115A6BF4200A87F87 /* CTPanel.xib */,
-				32BE666415A6CB3A00042E9E /* CTPanel.h */,
-				32BE666515A6CB3A00042E9E /* CTPanel.m */,
 			);
 			path = ctconf;
 			sourceTree = "<group>";
@@ -199,8 +193,22 @@
 				32BE666D15A6E7EF00042E9E /* CTDoubleProperty.m */,
 				32BE667415A7006B00042E9E /* CTBooleanProperty.h */,
 				32BE667515A7006B00042E9E /* CTBooleanProperty.m */,
+				32BE667815A705CF00042E9E /* CTEnumerateProperty.h */,
+				32BE667915A705CF00042E9E /* CTEnumerateProperty.m */,
 			);
 			name = properties;
+			sourceTree = "<group>";
+		};
+		32BE667C15A7077B00042E9E /* panel */ = {
+			isa = PBXGroup;
+			children = (
+				32A44D8D15A6BF0B00A87F87 /* CTPanelController.h */,
+				32A44D8E15A6BF0B00A87F87 /* CTPanelController.m */,
+				32A44D9115A6BF4200A87F87 /* CTPanel.xib */,
+				32BE666415A6CB3A00042E9E /* CTPanel.h */,
+				32BE666515A6CB3A00042E9E /* CTPanel.m */,
+			);
+			name = panel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,7 +218,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3287FB8A15A479A700EDA240 /* Test.h in Headers */,
 				3287FB9A15A595F400EDA240 /* ctconf.h in Headers */,
 				32A44D7915A5AD8900A87F87 /* CTConfiguration.h in Headers */,
 				32A44D8B15A5B6D800A87F87 /* CTProperty.h in Headers */,
@@ -219,6 +226,7 @@
 				32BE666E15A6E7EF00042E9E /* CTDoubleProperty.h in Headers */,
 				32BE667215A6E85000042E9E /* CTNumberProperty.h in Headers */,
 				32BE667615A7006C00042E9E /* CTBooleanProperty.h in Headers */,
+				32BE667A15A705CF00042E9E /* CTEnumerateProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,7 +338,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3287FB8915A4799A00EDA240 /* Test.m in Sources */,
 				32A44D7A15A5AD8900A87F87 /* CTConfiguration.m in Sources */,
 				32A44D8C15A5B6D800A87F87 /* CTProperty.m in Sources */,
 				32A44D9015A6BF0B00A87F87 /* CTPanelController.m in Sources */,
@@ -338,6 +345,7 @@
 				32BE666F15A6E7EF00042E9E /* CTDoubleProperty.m in Sources */,
 				32BE667315A6E85000042E9E /* CTNumberProperty.m in Sources */,
 				32BE667715A7006C00042E9E /* CTBooleanProperty.m in Sources */,
+				32BE667B15A705CF00042E9E /* CTEnumerateProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

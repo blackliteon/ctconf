@@ -12,7 +12,8 @@
 @interface CTConfiguration : NSObject <CTPanelDelegate>
 
 - (CGFloat) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
-- (CGFloat) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal;
+- (BOOL) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal;
+- (NSString *) declareEnumerateInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal possibleValues: (NSString *) possibleValue1, ...;
 
 - (void) start;
 - (void) startDevelopmentVersion;

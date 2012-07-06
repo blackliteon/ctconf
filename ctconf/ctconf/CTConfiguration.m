@@ -11,6 +11,7 @@
 #import "CTPanelController.h"
 #import "CTDoubleProperty.h"
 #import "CTBooleanProperty.h"
+#import "CTEnumerateProperty.h"
 
 #define CONF_FILE @"/Users/dima/ct.conf" // temprorary and for the start using concrete place
 
@@ -222,7 +223,7 @@ static id sharedInstance = nil;
     return defaultVal;
 }
 
-- (CGFloat) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal {
+- (BOOL) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal {
     CTBooleanProperty *property = [[CTBooleanProperty alloc] init];
     property.name = name;
     property.defaultValue = [NSNumber numberWithFloat:defaultVal];
@@ -234,6 +235,27 @@ static id sharedInstance = nil;
     return defaultVal;
 }
 
+- (NSString *) declareEnumerateInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal possibleValues: (NSString *) possibleValue1, ...{
+    CTEnumerateProperty *property = [[CTEnumerateProperty alloc] init];
+    property.name = name;
+    property.defaultValue = defaultVal;
+    property.objectOwnedProperty = object;
+    [self addKeyForProperty:property];
+    
+    NSMutableArray *possibleValues = [[NSMutableArray alloc] init];
+    va_list args;
+    va_start(args, possibleValue1);
+    for (NSString *arg = possibleValue1; arg != nil; arg = va_arg(args, NSString*))
+    {
+        [possibleValues addObject:arg];
+    }
+    va_end(args);
+    property.possibleValues = possibleValues;
+    
+    [self.properties addObject:property];
+    
+    return defaultVal;
+}
 
 
 
