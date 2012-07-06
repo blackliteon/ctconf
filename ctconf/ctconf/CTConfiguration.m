@@ -8,10 +8,12 @@
 
 #import "CTConfiguration.h"
 #import "CTProperty.h"
+#import "CTPanelController.h"
 
 @interface CTConfiguration ()
 
 @property (strong, nonatomic) NSMutableArray *properties;
+@property (strong, nonatomic) CTPanelController *panelController;
 
 @end
 
@@ -20,6 +22,7 @@
 static id sharedInstance = nil;
 
 @synthesize properties = _properties;
+@synthesize panelController = _panelController;
 
 + (CTConfiguration *) sharedInstance {
     if (!sharedInstance) {
@@ -54,6 +57,15 @@ static id sharedInstance = nil;
 
 #define CONF_FILE @"/Users/dima/ctconf.conf" // temprorary and for the start using concrete place
 
+- (void) saveTextToConfFile: (NSString *) text {
+    NSURL *confFileUrl = [NSURL fileURLWithPath:CONF_FILE];
+    NSError *error;
+    
+    if (![text writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {
+        NSLog(@"Error while trying to create conf file: %@", [error localizedDescription]);
+    }
+}
+
 - (void) startNewConfFile {
     NSMutableString *fileText = [NSMutableString string];
     for (CTProperty *property in self.properties) {
@@ -62,12 +74,7 @@ static id sharedInstance = nil;
         [fileText appendFormat:@"%@\n", textLine];
     }
     
-    NSURL *confFileUrl = [NSURL fileURLWithPath:CONF_FILE];
-    NSError *error;
-    
-    if (![fileText writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {
-        NSLog(@"Error while trying to create conf file: %@", [error localizedDescription]);
-    }
+    [self saveTextToConfFile:fileText];
 }
 
 - (BOOL) haveProperty: (NSString *) propertyName {
@@ -88,15 +95,15 @@ static id sharedInstance = nil;
     return nil;
 }
 
-- (void) loadConfFile {
-    NSString *confText = [NSString stringWithContentsOfFile:CONF_FILE encoding:NSUTF8StringEncoding error:nil];
-    [confText enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
+- (void) loadTextAsConf: (NSString *) text {
+
+    [text enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
         NSString *trimmedString = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
         if ([trimmedString hasPrefix:@"#"]) {
             return;
         }
-
+        
         NSArray *components = [trimmedString componentsSeparatedByString:@"="];
         
         if ([components count] == 2) {
@@ -110,12 +117,16 @@ static id sharedInstance = nil;
                 CTProperty *property = [self propertyByName:propertyName];
                 [property fromString:propertyStrValue];
             } else {
-                NSLog(@"Warning: config file %@ contains property that not found in app: %@", CONF_FILE, propertyName);
+                NSLog(@"Warning: config text contains property that not found in app: %@", propertyName);
             }
         }
-        
-        
     }];
+    
+}
+
+- (void) loadConfFile {
+    NSString *confText = [NSString stringWithContentsOfFile:CONF_FILE encoding:NSUTF8StringEncoding error:nil];
+    [self loadTextAsConf:confText];
 }
 
 - (void) start {
@@ -124,6 +135,28 @@ static id sharedInstance = nil;
         [self startNewConfFile];
     }
     [self loadConfFile];
+}
+
+- (void) startWithConfigurer {
+    [self start];
+    self.panelController = [[CTPanelController alloc] initWithWindowNibName:@"CTPanel"];
+    [self.panelController loadWindow];
+    CTPanel *panel = (CTPanel *)self.panelController.window;
+    panel.ctDelegate = self;
+
+    
+    NSString *confText = [NSString stringWithContentsOfFile:CONF_FILE encoding:NSUTF8StringEncoding error:nil];
+    [self.panelController setText:confText];
+    [self.panelController showWindow:self];
+    
+}
+
+- (void) save {
+    NSString *text = self.panelController.text;
+
+    [self loadTextAsConf:text];
+    [self saveTextToConfFile:text];
+    
 }
 
 

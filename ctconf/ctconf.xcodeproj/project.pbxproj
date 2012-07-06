@@ -21,6 +21,11 @@
 		32A44D7A15A5AD8900A87F87 /* CTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D7815A5AD8900A87F87 /* CTConfiguration.m */; };
 		32A44D8B15A5B6D800A87F87 /* CTProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A44D8915A5B6D800A87F87 /* CTProperty.h */; };
 		32A44D8C15A5B6D800A87F87 /* CTProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D8A15A5B6D800A87F87 /* CTProperty.m */; };
+		32A44D8F15A6BF0B00A87F87 /* CTPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A44D8D15A6BF0B00A87F87 /* CTPanelController.h */; };
+		32A44D9015A6BF0B00A87F87 /* CTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D8E15A6BF0B00A87F87 /* CTPanelController.m */; };
+		32A44D9215A6BF4200A87F87 /* CTPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A44D9115A6BF4200A87F87 /* CTPanel.xib */; };
+		32BE666615A6CB3A00042E9E /* CTPanel.h in Headers */ = {isa = PBXBuildFile; fileRef = 32BE666415A6CB3A00042E9E /* CTPanel.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32BE666715A6CB3A00042E9E /* CTPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE666515A6CB3A00042E9E /* CTPanel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,11 @@
 		32A44D7815A5AD8900A87F87 /* CTConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTConfiguration.m; sourceTree = "<group>"; };
 		32A44D8915A5B6D800A87F87 /* CTProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTProperty.h; sourceTree = "<group>"; };
 		32A44D8A15A5B6D800A87F87 /* CTProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTProperty.m; sourceTree = "<group>"; };
+		32A44D8D15A6BF0B00A87F87 /* CTPanelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPanelController.h; sourceTree = "<group>"; };
+		32A44D8E15A6BF0B00A87F87 /* CTPanelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPanelController.m; sourceTree = "<group>"; };
+		32A44D9115A6BF4200A87F87 /* CTPanel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CTPanel.xib; sourceTree = "<group>"; };
+		32BE666415A6CB3A00042E9E /* CTPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPanel.h; sourceTree = "<group>"; };
+		32BE666515A6CB3A00042E9E /* CTPanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPanel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +139,11 @@
 				32A44D7815A5AD8900A87F87 /* CTConfiguration.m */,
 				32A44D8915A5B6D800A87F87 /* CTProperty.h */,
 				32A44D8A15A5B6D800A87F87 /* CTProperty.m */,
+				32A44D8D15A6BF0B00A87F87 /* CTPanelController.h */,
+				32A44D8E15A6BF0B00A87F87 /* CTPanelController.m */,
+				32A44D9115A6BF4200A87F87 /* CTPanel.xib */,
+				32BE666415A6CB3A00042E9E /* CTPanel.h */,
+				32BE666515A6CB3A00042E9E /* CTPanel.m */,
 			);
 			path = ctconf;
 			sourceTree = "<group>";
@@ -173,6 +188,8 @@
 				3287FB9A15A595F400EDA240 /* ctconf.h in Headers */,
 				32A44D7915A5AD8900A87F87 /* CTConfiguration.h in Headers */,
 				32A44D8B15A5B6D800A87F87 /* CTProperty.h in Headers */,
+				32A44D8F15A6BF0B00A87F87 /* CTPanelController.h in Headers */,
+				32BE666615A6CB3A00042E9E /* CTPanel.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3280BD6D15A469C8009148AD /* InfoPlist.strings in Resources */,
+				32A44D9215A6BF4200A87F87 /* CTPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +304,8 @@
 				3287FB8915A4799A00EDA240 /* Test.m in Sources */,
 				32A44D7A15A5AD8900A87F87 /* CTConfiguration.m in Sources */,
 				32A44D8C15A5B6D800A87F87 /* CTProperty.m in Sources */,
+				32A44D9015A6BF0B00A87F87 /* CTPanelController.m in Sources */,
+				32BE666715A6CB3A00042E9E /* CTPanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

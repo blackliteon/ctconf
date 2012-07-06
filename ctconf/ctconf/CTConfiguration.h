@@ -7,12 +7,14 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTPanel.h"
 
-@interface CTConfiguration : NSObject 
+@interface CTConfiguration : NSObject <CTPanelDelegate>
 
 - (CGFloat) declareCGFloatPropertyInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
 
 - (void) start;
+- (void) startWithConfigurer;
 
 + (CTConfiguration *) sharedInstance;
 @end
