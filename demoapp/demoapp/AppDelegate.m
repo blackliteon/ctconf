@@ -37,9 +37,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
+    [[CTConfiguration sharedInstance] setConfFilePath:@"/Users/dima/ct.conf"];
     self.topPanelViewController = [[TopPanelViewController alloc] init];
     
-    [[CTConfiguration sharedInstance] startDevelopmentVersion];
+//    [[CTConfiguration sharedInstance] startDevelopmentVersion];
+    [[CTConfiguration sharedInstance] startProductionVersion];
     
 }
 

@@ -13,8 +13,6 @@
 #import "CTBooleanProperty.h"
 #import "CTEnumerateProperty.h"
 
-#define CONF_FILE @"/Users/dima/ct.conf" // temprorary and for the start using concrete place
-
 @interface CTConfiguration ()
 
 @property (strong, nonatomic) NSMutableArray *properties;
@@ -26,13 +24,15 @@
 
 static id sharedInstance = nil;
 
+@synthesize confFilePath = _confFilePath;
+
 @synthesize properties = _properties;
 @synthesize panelController = _panelController;
 
 #pragma mark - Private
 
 - (void) saveTextToDevelopmentConfFile: (NSString *) text {
-    NSURL *confFileUrl = [NSURL fileURLWithPath:CONF_FILE];
+    NSURL *confFileUrl = [NSURL fileURLWithPath:self.confFilePath];
     NSError *error;
     
     if (![text writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {
@@ -119,7 +119,7 @@ static id sharedInstance = nil;
 }
 
 - (void) loadPropertiesValuesFromDevelopmentConf {
-    NSString *confText = [NSString stringWithContentsOfFile:CONF_FILE encoding:NSUTF8StringEncoding error:nil];
+    NSString *confText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
     [self loadPropertiesValuesFromText:confText unusedProperties:nil];
 }
 
@@ -150,7 +150,7 @@ static id sharedInstance = nil;
 
 - (void) start {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:CONF_FILE]) {
+    if (![fileManager fileExistsAtPath:self.confFilePath]) {
         [self createDevelopmentConfFileWithDefaultValues];
     }
     [self loadPropertiesValuesFromDevelopmentConf];
@@ -158,10 +158,10 @@ static id sharedInstance = nil;
 
 - (void) startDevelopmentVersion {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:CONF_FILE]) {
+    if (![fileManager fileExistsAtPath:self.confFilePath]) {
         [self createDevelopmentConfFileWithDefaultValues];
     }
-    NSString *fileText = [NSString stringWithContentsOfFile:CONF_FILE encoding:NSUTF8StringEncoding error:nil];
+    NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
     NSArray *unsetProperties;
     [self loadPropertiesValuesFromText:fileText unusedProperties:&unsetProperties];
     
@@ -194,7 +194,12 @@ static id sharedInstance = nil;
 
 - (void) startProductionVersion {
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"ct" ofType:@"conf"];
+    
+    NSArray *pathComponents = [[self.confFilePath lastPathComponent] componentsSeparatedByString:@"."];
+    NSString *fileName = [pathComponents objectAtIndex:0];
+    NSString *fileExtension = [pathComponents objectAtIndex:1];
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:fileExtension];
     if ([fileManager fileExistsAtPath:path]) {
         NSString *confText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
         [self loadPropertiesValuesFromText:confText unusedProperties:nil];

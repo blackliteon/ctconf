@@ -20,4 +20,7 @@
 - (void) startProductionVersion;
 
 + (CTConfiguration *) sharedInstance;
+
+@property (copy, nonatomic) NSString *confFilePath;
+
 @end
