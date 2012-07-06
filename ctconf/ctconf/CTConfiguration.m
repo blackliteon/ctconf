@@ -62,7 +62,7 @@ static id sharedInstance = nil;
         [fileText appendFormat:@"%@\n", textLine];
     }
     
-    NSURL *confFileUrl = [NSURL URLWithString:CONF_FILE];
+    NSURL *confFileUrl = [NSURL fileURLWithPath:CONF_FILE];
     NSError *error;
     
     if (![fileText writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {

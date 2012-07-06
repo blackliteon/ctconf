@@ -21,11 +21,10 @@
 
 @synthesize window = _window;
 @synthesize topPanelViewController = _topPanelViewController;
-@synthesize conf = _conf;
+@synthesize conf = _conf; // todo: remove 
 
 - (void) setTopPanelViewController:(TopPanelViewController *)topPanelViewController {
     _topPanelViewController = topPanelViewController;
-    [self.topPanelViewController ctconfInit:self.conf];
     [self.window.contentView addSubview:self.topPanelViewController.view];
 
     // place top panel to top
@@ -38,9 +37,9 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.conf = [[CTConfiguration alloc] init];
-    
     self.topPanelViewController = [[TopPanelViewController alloc] init];
+    
+    [[CTConfiguration sharedInstance] start];
     
 }
 

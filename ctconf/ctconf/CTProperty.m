@@ -19,10 +19,16 @@
 @synthesize objectKey = _objectKey;
 
 - (void) setValue:(id)value {
-    _value = value;
     
-    if (self.objectOwnedProperty) {
-        [self.objectOwnedProperty setValue:value forKey:self.objectKey];
+    NSNumber *currentValue = self.value;
+    NSNumber *newValue = value;
+    
+    if (![currentValue isEqualToNumber:newValue]) {
+        _value = value;
+        
+        if (self.objectOwnedProperty) {
+            [self.objectOwnedProperty setValue:value forKey:self.objectKey];
+        }
     }
 }
 

@@ -32,7 +32,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
-        [[CTConfiguration sharedInstance] declareCGFloatPropertyInObject:self withName:@"topPanel.topMargin" defaultValue:10];
+        self.topMargin = [[CTConfiguration sharedInstance] declareCGFloatPropertyInObject:self withName:@"topPanel.topMargin" defaultValue:3];
     }
     
     return self;
