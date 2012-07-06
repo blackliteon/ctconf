@@ -8,6 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-#import "Test.h"
 #import "CTConfiguration.h"
 
