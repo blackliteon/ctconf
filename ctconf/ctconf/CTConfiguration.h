@@ -15,6 +15,7 @@
 
 - (void) start;
 - (void) startWithConfigurer;
+- (void) startProduction;
 
 + (CTConfiguration *) sharedInstance;
 @end

@@ -17,6 +17,7 @@
 		3287FB9915A47E2A00EDA240 /* ctconf.framework in Resources */ = {isa = PBXBuildFile; fileRef = 3287FB9815A47E2A00EDA240 /* ctconf.framework */; };
 		32A44D7515A5998500A87F87 /* TopPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D7315A5998500A87F87 /* TopPanelViewController.m */; };
 		32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A44D7415A5998500A87F87 /* TopPanelViewController.xib */; };
+		32BE666A15A6E06300042E9E /* ct.conf in Resources */ = {isa = PBXBuildFile; fileRef = 32BE666915A6E06300042E9E /* ct.conf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		32A44D7215A5998500A87F87 /* TopPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPanelViewController.h; sourceTree = "<group>"; };
 		32A44D7315A5998500A87F87 /* TopPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPanelViewController.m; sourceTree = "<group>"; };
 		32A44D7415A5998500A87F87 /* TopPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopPanelViewController.xib; sourceTree = "<group>"; };
+		32BE666915A6E06300042E9E /* ct.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ct.conf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +134,7 @@
 		3280BDA515A46A02009148AD /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				32BE666915A6E06300042E9E /* ct.conf */,
 				3280BDA615A46A02009148AD /* demoapp-Info.plist */,
 				3280BDA715A46A02009148AD /* InfoPlist.strings */,
 				3280BDAA15A46A02009148AD /* main.m */,
@@ -230,6 +233,7 @@
 				3280BDB515A46A03009148AD /* MainMenu.xib in Resources */,
 				3287FB9915A47E2A00EDA240 /* ctconf.framework in Resources */,
 				32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */,
+				32BE666A15A6E06300042E9E /* ct.conf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

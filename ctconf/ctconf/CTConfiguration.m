@@ -10,6 +10,8 @@
 #import "CTProperty.h"
 #import "CTPanelController.h"
 
+#define CONF_FILE @"/Users/dima/ct.conf" // temprorary and for the start using concrete place
+
 @interface CTConfiguration ()
 
 @property (strong, nonatomic) NSMutableArray *properties;
@@ -54,8 +56,6 @@ static id sharedInstance = nil;
     
     return defaultVal;
 }
-
-#define CONF_FILE @"/Users/dima/ctconf.conf" // temprorary and for the start using concrete place
 
 - (void) saveTextToConfFile: (NSString *) text {
     NSURL *confFileUrl = [NSURL fileURLWithPath:CONF_FILE];
@@ -192,6 +192,18 @@ static id sharedInstance = nil;
     [self.panelController showWindow:self];
     
 }
+
+- (void) startProduction {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"ct" ofType:@"conf"];
+    if ([fileManager fileExistsAtPath:path]) {
+        NSString *confText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        [self loadTextAsConf:confText unusedProperties:nil];
+    } else {
+        NSLog(@"Error: Can't find ct.conf in main bundle: %@. Use default values.", path);
+    }
+}
+
 
 - (void) save {
     NSString *text = self.panelController.text;

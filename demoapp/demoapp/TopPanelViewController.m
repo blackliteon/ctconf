@@ -34,11 +34,15 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Initialization code here.
-        self.topMargin = [[CTConfiguration sharedInstance] declareCGFloatPropertyInObject:self withName:@"topPanel.topMargin" defaultValue:3];
-        self.leftMargin = [[CTConfiguration sharedInstance] declareCGFloatPropertyInObject:self withName:@"topPanel.leftMargin" defaultValue:0];
     }
     
     return self;
+}
+
+- (void) loadView {
+    [super loadView];
+    self.topMargin = [[CTConfiguration sharedInstance] declareCGFloatPropertyInObject:self withName:@"topPanel.topMargin" defaultValue:3];
+    self.leftMargin = [[CTConfiguration sharedInstance] declareCGFloatPropertyInObject:self withName:@"topPanel.leftMargin" defaultValue:0];
 }
 
 - (void) setTopMargin:(CGFloat)topMargin {
