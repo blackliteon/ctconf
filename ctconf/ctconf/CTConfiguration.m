@@ -131,11 +131,6 @@ static id sharedInstance = nil;
     
 }
 
-- (void) addKeyForProperty: (CTProperty *) property {
-    NSArray *propertyNameComponents = [property.name componentsSeparatedByString:@"."];
-    property.objectKey = [propertyNameComponents lastObject];
-}
-
 #pragma mark - Public
 
 + (CTConfiguration *) sharedInstance {
@@ -216,7 +211,6 @@ static id sharedInstance = nil;
     property.name = name;
     property.defaultValue = [NSNumber numberWithFloat:defaultVal];
     property.objectOwnedProperty = object;
-    [self addKeyForProperty:property];
     
     [self.properties addObject:property];
     
@@ -228,7 +222,6 @@ static id sharedInstance = nil;
     property.name = name;
     property.defaultValue = [NSNumber numberWithFloat:defaultVal];
     property.objectOwnedProperty = object;
-    [self addKeyForProperty:property];
     
     [self.properties addObject:property];
     
@@ -240,7 +233,6 @@ static id sharedInstance = nil;
     property.name = name;
     property.defaultValue = defaultVal;
     property.objectOwnedProperty = object;
-    [self addKeyForProperty:property];
     
     NSMutableArray *possibleValues = [[NSMutableArray alloc] init];
     va_list args;

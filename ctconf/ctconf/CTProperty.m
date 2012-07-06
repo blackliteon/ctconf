@@ -18,6 +18,12 @@
 @synthesize objectOwnedProperty = _objectOwnedProperty;
 @synthesize objectKey = _objectKey;
 
+- (void) setName:(NSString *)name {
+    _name = [name copy];
+    NSArray *propertyNameComponents = [self.name componentsSeparatedByString:@"."];
+    self.objectKey = [propertyNameComponents lastObject];
+}
+
 - (void) setValue:(id)value {
     
     if (![self isValueEqualTo:value]) {
