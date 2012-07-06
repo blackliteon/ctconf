@@ -66,15 +66,18 @@ static id sharedInstance = nil;
     }
 }
 
-- (void) startNewConfFile {
+- (NSString *) propertiesArrayToStringWithDefaultValues: (NSArray *) propArray {
     NSMutableString *fileText = [NSMutableString string];
-    for (CTProperty *property in self.properties) {
+    for (CTProperty *property in propArray) {
         property.value = property.defaultValue;
         NSString *textLine = [NSString stringWithFormat:@"%@ = %@", property.name, [property toString]];
         [fileText appendFormat:@"%@\n", textLine];
     }
-    
-    [self saveTextToConfFile:fileText];
+    return fileText;
+}
+
+- (void) startNewConfFile {
+    [self saveTextToConfFile:[self propertiesArrayToStringWithDefaultValues:self.properties]];
 }
 
 - (BOOL) haveProperty: (NSString *) propertyName {
@@ -95,8 +98,17 @@ static id sharedInstance = nil;
     return nil;
 }
 
-- (void) loadTextAsConf: (NSString *) text {
+- (void) loadTextAsConf: (NSString *) text unusedProperties: (NSArray **) propertiesArray {
+    
+    // save all properties in dict
+    
+    NSMutableDictionary *checkDict = [[NSMutableDictionary alloc] init];
+    for (CTProperty *property in self.properties) {
+        [checkDict setObject:property forKey:property.name];
+    }
 
+    // enumerate lines
+    
     [text enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
         NSString *trimmedString = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
         
@@ -116,17 +128,25 @@ static id sharedInstance = nil;
             if ([self haveProperty:propertyName]) {
                 CTProperty *property = [self propertyByName:propertyName];
                 [property fromString:propertyStrValue];
+                [checkDict removeObjectForKey:propertyName];
             } else {
                 NSLog(@"Warning: config text contains property that not found in app: %@", propertyName);
             }
         }
     }];
     
+    // handle uset properties
+    
+    if (propertiesArray != NULL) {
+        *propertiesArray = [checkDict allValues];
+    }
+    
+    
 }
 
 - (void) loadConfFile {
     NSString *confText = [NSString stringWithContentsOfFile:CONF_FILE encoding:NSUTF8StringEncoding error:nil];
-    [self loadTextAsConf:confText];
+    [self loadTextAsConf:confText unusedProperties:nil];
 }
 
 - (void) start {
@@ -138,15 +158,37 @@ static id sharedInstance = nil;
 }
 
 - (void) startWithConfigurer {
-    [self start];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if (![fileManager fileExistsAtPath:CONF_FILE]) {
+        [self startNewConfFile];
+    }
+    NSString *fileText = [NSString stringWithContentsOfFile:CONF_FILE encoding:NSUTF8StringEncoding error:nil];
+    NSArray *unsetProperties;
+    [self loadTextAsConf:fileText unusedProperties:&unsetProperties];
+    
+    // append unset properties
+    
+    NSString *confText;
+    if ([unsetProperties count] > 0) {
+        NSString *appendText = [self propertiesArrayToStringWithDefaultValues:unsetProperties];
+        confText = [NSString stringWithFormat:@"%@\n%@", fileText, appendText];
+    } else {
+        confText = fileText;
+    }
+    
+    // panel
+    
     self.panelController = [[CTPanelController alloc] initWithWindowNibName:@"CTPanel"];
     [self.panelController loadWindow];
     CTPanel *panel = (CTPanel *)self.panelController.window;
     panel.ctDelegate = self;
 
+    // initial values
     
-    NSString *confText = [NSString stringWithContentsOfFile:CONF_FILE encoding:NSUTF8StringEncoding error:nil];
     [self.panelController setText:confText];
+    
+    // let's show it
+    
     [self.panelController showWindow:self];
     
 }
@@ -154,7 +196,7 @@ static id sharedInstance = nil;
 - (void) save {
     NSString *text = self.panelController.text;
 
-    [self loadTextAsConf:text];
+    [self loadTextAsConf:text unusedProperties:nil];
     [self saveTextToConfFile:text];
     
 }
