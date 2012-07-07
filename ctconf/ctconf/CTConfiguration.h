@@ -8,19 +8,20 @@
 
 #import <Foundation/Foundation.h>
 #import "CTPanel.h"
+#import "CTSceneManager.h"
 
-@interface CTConfiguration : NSObject <CTPanelDelegate>
+@interface CTConfiguration : NSObject 
 
-- (CGFloat) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
+- (double) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
 - (BOOL) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal;
 - (NSString *) declareEnumerateInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal possibleValues: (NSString *) possibleValue1, ...;
 
-- (void) start;
 - (void) startDevelopmentVersion;
 - (void) startProductionVersion;
 
 + (CTConfiguration *) sharedInstance;
 
 @property (copy, nonatomic) NSString *confFilePath;
+@property (strong, nonatomic) CTSceneManager *sceneManager;
 
 @end

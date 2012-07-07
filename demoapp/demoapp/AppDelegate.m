@@ -9,39 +9,32 @@
 #import "AppDelegate.h"
 #import <ctconf/ctconf.h>
 #import "TopPanelViewController.h"
+#import "MainWindowController.h"
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) TopPanelViewController *topPanelViewController;
+@property (strong, nonatomic) MainWindowController *mainWindowController;
 @property (strong, nonatomic) CTConfiguration *conf;
 
 @end
 
 @implementation AppDelegate
 
-@synthesize window = _window;
-@synthesize topPanelViewController = _topPanelViewController;
 @synthesize conf = _conf; // todo: remove 
+@synthesize mainWindowController = _mainWindowController;
 
-- (void) setTopPanelViewController:(TopPanelViewController *)topPanelViewController {
-    _topPanelViewController = topPanelViewController;
-    [self.window.contentView addSubview:self.topPanelViewController.view];
-
-    // place top panel to top
-    
-    CGFloat topPanelHeight = self.topPanelViewController.view.frame.size.height;
-    NSView *contentView = self.window.contentView;
-    CGFloat containerHeight = contentView.frame.size.height;
-    [self.topPanelViewController.view setFrameOrigin:NSMakePoint(0, containerHeight - topPanelHeight)];
-}
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[CTConfiguration sharedInstance] setConfFilePath:@"/Users/dima/ct.conf"];
-    self.topPanelViewController = [[TopPanelViewController alloc] init];
+    self.mainWindowController = [[MainWindowController alloc] init];
+//    [self.mainWindowController loadWindow];
     
-//    [[CTConfiguration sharedInstance] startDevelopmentVersion];
-    [[CTConfiguration sharedInstance] startProductionVersion];
+    ;
+    [[CTConfiguration sharedInstance] setConfFilePath:[NSString stringWithFormat:@"%@/demoapp.conf", NSHomeDirectory()]];
+    
+    [[CTConfiguration sharedInstance] startDevelopmentVersion];
+    
+    [self.mainWindowController showWindow:self];
     
 }
 

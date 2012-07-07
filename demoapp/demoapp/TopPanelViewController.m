@@ -46,7 +46,7 @@
 - (void) loadView {
     [super loadView];
     self.topMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.topMargin" defaultValue:3];
-    self.leftMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.leftMargin" defaultValue:0];
+    self.leftMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.leftMargin" defaultValue:20];
     self.labelVisible = [[CTConfiguration sharedInstance] declareBooleanInObject:self withName:@"topPanel.labelVisible" defaultValue:YES];
 }
 

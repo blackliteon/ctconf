@@ -8,9 +8,10 @@
 
 #import "CTPanelController.h"
 
-@interface CTPanelController ()
+@interface CTPanelController () <NSTextViewDelegate, CTPanelDelegate>
 
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
+@property (weak) IBOutlet NSPopUpButton *scenePopup;
 
 
 @end
@@ -18,20 +19,42 @@
 @implementation CTPanelController
 
 @synthesize textView = _textView;
+@synthesize scenePopup = _scenePopup;
+@synthesize scenesNames = _scenesNames;
+@synthesize delegate = _delegate;
+@synthesize textHasModifications = _textHasModifications;
 
-- (id)initWithWindow:(NSWindow *)window
-{
-    self = [super initWithWindow:window];
-    if (self) {
-        // Initialization code here.
+#pragma mark - Delegate
+
+- (BOOL)textView:(NSTextView *)aTextView shouldChangeTextInRange:(NSRange)affectedCharRange replacementString:(NSString *)replacementString {
+    if (affectedCharRange.length > 0 || replacementString.length > 0) {
+        self.textHasModifications = YES;
     }
-    
+    return YES;
+}
+
+- (void) save {
+    [self.delegate save];
+}
+
+
+#pragma mark - Public
+
+
+- (id)init {
+    self = [super initWithWindowNibName:@"CTPanel"];
+    if (self) {
+        self.textHasModifications = NO;
+    }
     return self;
 }
 
 - (void)loadWindow
 {
     [super loadWindow];
+
+    self.textView.delegate = self;
+    ((CTPanel *)self.window).ctDelegate = self;
 }
 
 - (void) setText: (NSString *) text {
@@ -39,9 +62,24 @@
     [self.textView insertText:text];
 }
 
+- (void) appendText: (NSString *) text {
+    [self.textView setSelectedRange:NSMakeRange(NSMaxRange(self.textView.selectedRange), 0)];
+    [self.textView insertText:text];
+}
+
 - (NSString *) text {
     NSString *text = self.textView.textStorage.string;
     return text;
+}
+
+- (void) setScenesNames:(NSArray *)scenesNames {
+    [self.scenePopup removeAllItems];
+    for (NSString *sceneName in scenesNames) {
+        [self.scenePopup addItemWithTitle:sceneName];
+    }
+}
+- (IBAction)newSceneChoosed:(NSPopUpButton *)sender {
+    [self.delegate newSceneChoosed:sender.titleOfSelectedItem];
 }
 
 @end

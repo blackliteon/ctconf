@@ -13,10 +13,13 @@
 #import "CTBooleanProperty.h"
 #import "CTEnumerateProperty.h"
 
-@interface CTConfiguration ()
+@interface CTConfiguration () <CTPanelControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *properties;
 @property (strong, nonatomic) CTPanelController *panelController;
+
+@property (strong, nonatomic) NSMutableDictionary *propertiesDict;
+@property (strong, nonatomic) NSMutableDictionary *stringsDict;
 
 @end
 
@@ -28,60 +31,15 @@ static id sharedInstance = nil;
 
 @synthesize properties = _properties;
 @synthesize panelController = _panelController;
+@synthesize sceneManager = _sceneManager;
+
+@synthesize propertiesDict = _propertiesDict;
+@synthesize stringsDict = _stringsDict;
 
 #pragma mark - Private
 
-- (void) saveTextToDevelopmentConfFile: (NSString *) text {
-    NSURL *confFileUrl = [NSURL fileURLWithPath:self.confFilePath];
-    NSError *error;
-    
-    if (![text writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {
-        NSLog(@"Error while trying to create conf file: %@", [error localizedDescription]);
-    }
-}
-
-- (NSString *) propertiesArrayToStringWithDefaultValues: (NSArray *) propArray {
-    NSMutableString *fileText = [NSMutableString string];
-    for (CTProperty *property in propArray) {
-        property.value = property.defaultValue;
-        NSString *textLine = [NSString stringWithFormat:@"%@ = %@", property.name, [property toString]];
-        [fileText appendFormat:@"%@\n", textLine];
-    }
-    return fileText;
-}
-
-- (void) createDevelopmentConfFileWithDefaultValues {
-    [self saveTextToDevelopmentConfFile:[self propertiesArrayToStringWithDefaultValues:self.properties]];
-}
-
-- (BOOL) hasProperty: (NSString *) propertyName {
-    for (CTProperty *property in self.properties) {
-        if ([property.name isEqualToString:propertyName]) {
-            return YES;
-        }
-    }
-    return NO;
-}
-
-- (CTProperty *) propertyByName: (NSString *) propertyName {
-    for (CTProperty *property in self.properties) {
-        if ([property.name isEqualToString:propertyName]) {
-            return property;
-        }
-    }
-    return nil;
-}
-
-- (void) loadPropertiesValuesFromText: (NSString *) text unusedProperties: (NSArray **) propertiesArray {
-    
-    // save all properties in dict
-    
-    NSMutableDictionary *checkDict = [[NSMutableDictionary alloc] init];
-    for (CTProperty *property in self.properties) {
-        [checkDict setObject:property forKey:property.name];
-    }
-    
-    // enumerate lines
+- (void) fillStringsValuesFromText: (NSString *) text {
+    [self.stringsDict removeAllObjects];
     
     [text enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
         NSString *trimmedString = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
@@ -99,35 +57,54 @@ static id sharedInstance = nil;
             NSString *propertyName = [leftStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             NSString *propertyStrValue = [rightStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             
-            if ([self hasProperty:propertyName]) {
-                CTProperty *property = [self propertyByName:propertyName];
-                [property fromString:propertyStrValue];
-                [checkDict removeObjectForKey:propertyName];
-            } else {
-                NSLog(@"Warning: config text contains property that not found in app: %@", propertyName);
-            }
+            [self.stringsDict setObject:propertyStrValue forKey:propertyName];
         }
     }];
-    
-    // handle uset properties
-    
-    if (propertiesArray != NULL) {
-        *propertiesArray = [checkDict allValues];
-    }
-    
-    
 }
 
-- (void) loadPropertiesValuesFromDevelopmentConf {
-    NSString *confText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
-    [self loadPropertiesValuesFromText:confText unusedProperties:nil];
+- (void) reReadConfigTextIfHasUntrackedModifications {
+    if (self.panelController.textHasModifications) {
+        [self fillStringsValuesFromText:self.panelController.text];
+        [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
+            NSString *strValue = [self.stringsDict objectForKey:name];
+            [property fromString:strValue];
+        }];
+        self.panelController.textHasModifications = NO;
+    }
+}
+
+- (void) registerPropery: (CTProperty *) property {
+    [self reReadConfigTextIfHasUntrackedModifications];
+    
+    [self.propertiesDict setObject:property forKey:property.name];
+    NSString *strValInConfig = [self.stringsDict objectForKey:property.name];
+    if (strValInConfig) {
+        [property fromString:strValInConfig];
+    } else { // register string value
+        property.value = property.defaultValue;
+        [self.stringsDict setObject:property.toString forKey:property.name];
+        
+        NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
+        [self.panelController appendText:textLine];
+        
+    }
+}
+
+#pragma mark - Delegate
+
+- (void) newSceneChoosed: (NSString *) sceneName {
+    NSLog(@"Scene %@ choosed", sceneName);
 }
 
 - (void) save {
-    NSString *text = self.panelController.text;
+    [self reReadConfigTextIfHasUntrackedModifications];
     
-    [self loadPropertiesValuesFromText:text unusedProperties:nil];
-    [self saveTextToDevelopmentConfFile:text];
+    NSURL *confFileUrl = [NSURL fileURLWithPath:self.confFilePath];
+    NSError *error;
+    
+    if (![self.panelController.text writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {
+        NSLog(@"Error while trying to create conf file %@: %@", self.confFilePath, [error localizedDescription]);
+    }
     
 }
 
@@ -136,6 +113,8 @@ static id sharedInstance = nil;
 + (CTConfiguration *) sharedInstance {
     if (!sharedInstance) {
         sharedInstance = [[CTConfiguration alloc] init];
+        CTConfiguration *conf = sharedInstance;
+        conf.sceneManager = [[CTSceneManager alloc] init];
     } 
     return sharedInstance;
 }
@@ -143,53 +122,28 @@ static id sharedInstance = nil;
 - (id)init {
     self = [super init];
     if (self) {
+        self.panelController = [[CTPanelController alloc] init];
+        self.panelController.delegate = self;
+        
         _properties = [NSMutableArray array];
+        _propertiesDict = [[NSMutableDictionary alloc] init];
+        _stringsDict = [[NSMutableDictionary alloc] init];
+        _sceneManager = [[CTSceneManager alloc] init];
+
     }
     return self;
 }
 
-- (void) start {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:self.confFilePath]) {
-        [self createDevelopmentConfFileWithDefaultValues];
-    }
-    [self loadPropertiesValuesFromDevelopmentConf];
-}
-
 - (void) startDevelopmentVersion {
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if (![fileManager fileExistsAtPath:self.confFilePath]) {
-        [self createDevelopmentConfFileWithDefaultValues];
-    }
-    NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
-    NSArray *unsetProperties;
-    [self loadPropertiesValuesFromText:fileText unusedProperties:&unsetProperties];
-    
-    // append unset properties
-    
-    NSString *confText;
-    if ([unsetProperties count] > 0) {
-        NSString *appendText = [self propertiesArrayToStringWithDefaultValues:unsetProperties];
-        confText = [NSString stringWithFormat:@"%@\n%@", fileText, appendText];
-    } else {
-        confText = fileText;
-    }
-    
-    // panel
-    
-    self.panelController = [[CTPanelController alloc] initWithWindowNibName:@"CTPanel"];
-    [self.panelController loadWindow];
-    CTPanel *panel = (CTPanel *)self.panelController.window;
-    panel.ctDelegate = self;
-    
-    // initial values
-    
-    [self.panelController setText:confText];
-    
-    // let's show it
-    
+    [self.panelController setScenesNames:self.sceneManager.scenesNames];
     [self.panelController showWindow:self];
-    
+
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:self.confFilePath]) {
+        NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
+        [self.panelController setText:fileText];
+        [self reReadConfigTextIfHasUntrackedModifications];
+    }
 }
 
 - (void) startProductionVersion {
@@ -201,8 +155,9 @@ static id sharedInstance = nil;
     
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:fileExtension];
     if ([fileManager fileExistsAtPath:path]) {
-        NSString *confText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-        [self loadPropertiesValuesFromText:confText unusedProperties:nil];
+//        NSString *confText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+//        [self loadPropertiesValuesFromText:confText unusedProperties:nil];
+        NSLog(@"startProductionVersion not yet fully implemented");
     } else {
         NSLog(@"Error: Can't find ct.conf in main bundle: %@. Use default values.", path);
     }
@@ -210,16 +165,16 @@ static id sharedInstance = nil;
 
 #pragma mark Properties
 
-- (CGFloat) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal {
+- (double) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal {
 
     CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
     property.name = name;
     property.defaultValue = [NSNumber numberWithFloat:defaultVal];
     property.objectOwnedProperty = object;
     
-    [self.properties addObject:property];
-    
-    return defaultVal;
+    [self registerPropery:property];
+    double currentValue = [property.value doubleValue]; 
+    return currentValue;
 }
 
 - (BOOL) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal {
@@ -228,9 +183,9 @@ static id sharedInstance = nil;
     property.defaultValue = [NSNumber numberWithFloat:defaultVal];
     property.objectOwnedProperty = object;
     
-    [self.properties addObject:property];
-    
-    return defaultVal;
+    [self registerPropery:property];
+    BOOL currentValue = [property.value boolValue]; 
+    return currentValue;
 }
 
 - (NSString *) declareEnumerateInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal possibleValues: (NSString *) possibleValue1, ...{
@@ -249,9 +204,8 @@ static id sharedInstance = nil;
     va_end(args);
     property.possibleValues = possibleValues;
     
-    [self.properties addObject:property];
-    
-    return defaultVal;
+    [self registerPropery:property];
+    return property.value;
 }
 
 

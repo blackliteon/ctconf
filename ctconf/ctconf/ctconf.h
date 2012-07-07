@@ -9,4 +9,5 @@
 #import <Foundation/Foundation.h>
 
 #import "CTConfiguration.h"
+#import "CTScene.h"
 

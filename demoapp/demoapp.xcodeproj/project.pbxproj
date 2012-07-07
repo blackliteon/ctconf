@@ -13,6 +13,9 @@
 		3280BDAF15A46A02009148AD /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3280BDAD15A46A02009148AD /* Credits.rtf */; };
 		3280BDB215A46A02009148AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3280BDB115A46A02009148AD /* AppDelegate.m */; };
 		3280BDB515A46A03009148AD /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3280BDB315A46A03009148AD /* MainMenu.xib */; };
+		3282DB4915A829EB004FBBFD /* MainScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 3282DB4815A829EA004FBBFD /* MainScene.m */; };
+		3282DB4C15A82B2C004FBBFD /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3282DB4B15A82B2C004FBBFD /* MainWindowController.m */; };
+		3282DB4E15A82B5C004FBBFD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3282DB4D15A82B5C004FBBFD /* MainWindow.xib */; };
 		3287FB9715A47E1E00EDA240 /* ctconf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287FB9115A47E0100EDA240 /* ctconf.framework */; };
 		3287FB9915A47E2A00EDA240 /* ctconf.framework in Resources */ = {isa = PBXBuildFile; fileRef = 3287FB9815A47E2A00EDA240 /* ctconf.framework */; };
 		32A44D7515A5998500A87F87 /* TopPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D7315A5998500A87F87 /* TopPanelViewController.m */; };
@@ -58,6 +61,11 @@
 		3280BDB015A46A02009148AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3280BDB115A46A02009148AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3280BDB415A46A03009148AD /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3282DB4715A829EA004FBBFD /* MainScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainScene.h; sourceTree = "<group>"; };
+		3282DB4815A829EA004FBBFD /* MainScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainScene.m; sourceTree = "<group>"; };
+		3282DB4A15A82B2C004FBBFD /* MainWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainWindowController.h; sourceTree = "<group>"; };
+		3282DB4B15A82B2C004FBBFD /* MainWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainWindowController.m; sourceTree = "<group>"; };
+		3282DB4D15A82B5C004FBBFD /* MainWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainWindow.xib; sourceTree = "<group>"; };
 		3287FB8B15A47E0100EDA240 /* ctconf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ctconf.xcodeproj; path = ../ctconf/ctconf.xcodeproj; sourceTree = "<group>"; };
 		3287FB9815A47E2A00EDA240 /* ctconf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ctconf.framework; path = "../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug/ctconf.framework"; sourceTree = "<group>"; };
 		32A44D7215A5998500A87F87 /* TopPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopPanelViewController.h; sourceTree = "<group>"; };
@@ -127,6 +135,11 @@
 				32A44D7215A5998500A87F87 /* TopPanelViewController.h */,
 				32A44D7315A5998500A87F87 /* TopPanelViewController.m */,
 				32A44D7415A5998500A87F87 /* TopPanelViewController.xib */,
+				3282DB4715A829EA004FBBFD /* MainScene.h */,
+				3282DB4815A829EA004FBBFD /* MainScene.m */,
+				3282DB4A15A82B2C004FBBFD /* MainWindowController.h */,
+				3282DB4B15A82B2C004FBBFD /* MainWindowController.m */,
+				3282DB4D15A82B5C004FBBFD /* MainWindow.xib */,
 			);
 			path = demoapp;
 			sourceTree = "<group>";
@@ -234,6 +247,7 @@
 				3287FB9915A47E2A00EDA240 /* ctconf.framework in Resources */,
 				32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */,
 				32BE666A15A6E06300042E9E /* ct.conf in Resources */,
+				3282DB4E15A82B5C004FBBFD /* MainWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +261,8 @@
 				3280BDAB15A46A02009148AD /* main.m in Sources */,
 				3280BDB215A46A02009148AD /* AppDelegate.m in Sources */,
 				32A44D7515A5998500A87F87 /* TopPanelViewController.m in Sources */,
+				3282DB4915A829EB004FBBFD /* MainScene.m in Sources */,
+				3282DB4C15A82B2C004FBBFD /* MainWindowController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
