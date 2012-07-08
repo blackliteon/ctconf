@@ -49,6 +49,10 @@
     return self;
 }
 
+- (void)dealloc {
+    [[CTConfiguration sharedInstance] unregisterObjectFromUpdates:self];
+}
+
 - (void) loadView {
     [super loadView];
     self.topMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.topMargin" defaultValue:3];

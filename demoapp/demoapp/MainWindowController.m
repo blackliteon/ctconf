@@ -59,6 +59,10 @@
     return self;
 }
 
+- (void)dealloc {
+    [[CTConfiguration sharedInstance] unregisterObjectFromUpdates:self];
+}
+
 - (void) loadWindow {
     [super loadWindow];
 }

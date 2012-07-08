@@ -18,7 +18,7 @@
 - (NSString *) declareStringInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal;
 
 - (void) startDevelopmentVersion;
-- (void) startProductionVersion;
+- (void) startProductionVersion: (BOOL) configOutside;
 
 - (void) unregisterObjectFromUpdates: (id) object;
 

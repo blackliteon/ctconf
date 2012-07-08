@@ -39,7 +39,7 @@
         [[CTConfiguration sharedInstance].sceneManager addScene:secondScene];
         [[CTConfiguration sharedInstance] startDevelopmentVersion];
     } else {
-        [[CTConfiguration sharedInstance] startProductionVersion];
+        [[CTConfiguration sharedInstance] startProductionVersion: YES];
         self.mainWindowController = [[MainWindowController alloc] init];
         [self.mainWindowController showWindow:self];
     }

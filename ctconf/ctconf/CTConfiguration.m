@@ -209,32 +209,40 @@ static id sharedInstance = nil;
     
 }
 
-- (void) startProductionVersion {
+- (void) startProductionVersion: (BOOL) configOutside {
     self.productionMode = YES;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSArray *pathComponents = [[self.confFilePath lastPathComponent] componentsSeparatedByString:@"."];
-    NSString *fileName = [pathComponents objectAtIndex:0];
-    NSString *fileExtension = [pathComponents objectAtIndex:1];
+    NSString *path = self.confFilePath;
+    NSString *fileName;
+    NSString *fileExtension;
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:fileExtension];
-
-    if ([fileManager fileExistsAtPath:path]) {
-        
-        NSString *fileText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-        
-        [self fillStringsValuesFromText:fileText];
-        
-        // if already have properties, udpates them
-        
-        [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
-            [self updatePropertyValueOrMakeItDefault:property];
-        }];
-
-    } else {
-        NSLog(@"Error: Can't find %@.%@ in main bundle. Use default values.", fileName, fileExtension);
+    if (!configOutside) {
+        NSArray *pathComponents = [[self.confFilePath lastPathComponent] componentsSeparatedByString:@"."];
+        fileName = [pathComponents objectAtIndex:0];
+        fileExtension = [pathComponents objectAtIndex:1];
+        path = [[NSBundle mainBundle] pathForResource:fileName ofType:fileExtension];
     }
+    
+    if (![fileManager fileExistsAtPath:path]) {
+        if (configOutside) {
+            NSLog(@"Error: Can't find %@. Use default values.", self.confFilePath);
+        } else {
+            NSLog(@"Error: Can't find %@.%@ in main bundle. Use default values.", fileName, fileExtension);
+        }
+        return;
+    }
+        
+    NSString *fileText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    [self fillStringsValuesFromText:fileText];
+    
+    // if already have properties, udpates them
+    
+    [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
+        [self updatePropertyValueOrMakeItDefault:property];
+    }];
+
 }
 
 - (void) unregisterObjectFromUpdates: (id) object {
