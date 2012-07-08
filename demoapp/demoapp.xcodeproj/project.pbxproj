@@ -22,6 +22,8 @@
 		32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A44D7415A5998500A87F87 /* TopPanelViewController.xib */; };
 		32CEE86515A9760800A3C644 /* SecondScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE86415A9760800A3C644 /* SecondScene.m */; };
 		32CEE86715A98CE000A3C644 /* demoapp.conf in Resources */ = {isa = PBXBuildFile; fileRef = 32CEE86615A98CE000A3C644 /* demoapp.conf */; };
+		32CEE87015A9923D00A3C644 /* NSColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE86F15A9923D00A3C644 /* NSColor+FromHex.m */; };
+		32CEE87415A9930F00A3C644 /* BGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE87315A9930F00A3C644 /* BGView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,10 @@
 		32CEE86315A9760800A3C644 /* SecondScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondScene.h; sourceTree = "<group>"; };
 		32CEE86415A9760800A3C644 /* SecondScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondScene.m; sourceTree = "<group>"; };
 		32CEE86615A98CE000A3C644 /* demoapp.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demoapp.conf; sourceTree = "<group>"; };
+		32CEE86E15A9923D00A3C644 /* NSColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+FromHex.h"; sourceTree = "<group>"; };
+		32CEE86F15A9923D00A3C644 /* NSColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+FromHex.m"; sourceTree = "<group>"; };
+		32CEE87215A9930F00A3C644 /* BGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGView.h; sourceTree = "<group>"; };
+		32CEE87315A9930F00A3C644 /* BGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +137,8 @@
 		3280BDA415A46A02009148AD /* demoapp */ = {
 			isa = PBXGroup;
 			children = (
+				32CEE87115A992F600A3C644 /* Views */,
+				32CEE86D15A9922800A3C644 /* Additions */,
 				3282DB5315A8727F004FBBFD /* Scenes */,
 				3280BDB015A46A02009148AD /* AppDelegate.h */,
 				3280BDB115A46A02009148AD /* AppDelegate.m */,
@@ -177,6 +185,24 @@
 				3287FB9315A47E0100EDA240 /* ctconfTests.octest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		32CEE86D15A9922800A3C644 /* Additions */ = {
+			isa = PBXGroup;
+			children = (
+				32CEE86E15A9923D00A3C644 /* NSColor+FromHex.h */,
+				32CEE86F15A9923D00A3C644 /* NSColor+FromHex.m */,
+			);
+			name = Additions;
+			sourceTree = "<group>";
+		};
+		32CEE87115A992F600A3C644 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				32CEE87215A9930F00A3C644 /* BGView.h */,
+				32CEE87315A9930F00A3C644 /* BGView.m */,
+			);
+			name = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +303,8 @@
 				3282DB4915A829EB004FBBFD /* MainScene.m in Sources */,
 				3282DB4C15A82B2C004FBBFD /* MainWindowController.m in Sources */,
 				32CEE86515A9760800A3C644 /* SecondScene.m in Sources */,
+				32CEE87015A9923D00A3C644 /* NSColor+FromHex.m in Sources */,
+				32CEE87415A9930F00A3C644 /* BGView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

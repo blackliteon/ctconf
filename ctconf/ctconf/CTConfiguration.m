@@ -12,6 +12,7 @@
 #import "CTDoubleProperty.h"
 #import "CTBooleanProperty.h"
 #import "CTEnumerateProperty.h"
+#import "CTStringProperty.h"
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
@@ -271,6 +272,18 @@ static id sharedInstance = nil;
     [self registerPropery:property];
     return property.value;
 }
+
+- (NSString *) declareStringInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal {
+    CTStringProperty *property = [[CTStringProperty alloc] init];
+    property.name = name;
+    property.defaultValue = defaultVal;
+    property.objectOwnedProperty = object;
+    
+    [self registerPropery:property];
+    NSString *currentValue = property.value; 
+    return currentValue;
+}
+
 
 
 
