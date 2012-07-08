@@ -30,16 +30,23 @@
 {
     [[CTConfiguration sharedInstance] setConfFilePath:[NSString stringWithFormat:@"%@/demoapp.conf", NSHomeDirectory()]];
     
-    MainScene *mainScene = [[MainScene alloc] init];
-    SecondScene *secondScene = [[SecondScene alloc] init];
-    [[CTConfiguration sharedInstance].sceneManager addScene:mainScene];
-    [[CTConfiguration sharedInstance].sceneManager addScene:secondScene];
+    BOOL development = YES;
     
-    [[CTConfiguration sharedInstance] startDevelopmentVersion];
+    if (development) {
+        MainScene *mainScene = [[MainScene alloc] init];
+        SecondScene *secondScene = [[SecondScene alloc] init];
+        [[CTConfiguration sharedInstance].sceneManager addScene:mainScene];
+        [[CTConfiguration sharedInstance].sceneManager addScene:secondScene];
+        [[CTConfiguration sharedInstance] startDevelopmentVersion];
+    } else {
+        [[CTConfiguration sharedInstance] startProductionVersion];
+        self.mainWindowController = [[MainWindowController alloc] init];
+        [self.mainWindowController showWindow:self];
+    }
+    
+    
 
     
-//    self.mainWindowController = [[MainWindowController alloc] init];
-//    [self.mainWindowController showWindow:self];
     
 }
 

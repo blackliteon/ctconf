@@ -24,6 +24,7 @@
 @property (strong, nonatomic) NSMutableDictionary *stringsDict;
 
 @property (strong, nonatomic) id<CTScene> currentScene;
+@property (assign, nonatomic) BOOL productionMode;
 
 @end
 
@@ -41,6 +42,7 @@ static id sharedInstance = nil;
 @synthesize stringsDict = _stringsDict;
 
 @synthesize currentScene = _currentScene;
+@synthesize productionMode = _productionMode;
 
 #pragma mark - Private
 
@@ -68,16 +70,25 @@ static id sharedInstance = nil;
     }];
 }
 
-- (void) updatePropertyValueOrMakeItDefault: (CTProperty *) property { // and appent to text
+- (void) updatePropertyValueOrMakeItDefault: (CTProperty *) property { // and appent to text for dev mode
+    
     NSString *strValInConfig = [self.stringsDict objectForKey:property.name];
     if (strValInConfig) {
         [property fromString:strValInConfig];
-    } else { // register string value
+    } else { 
+
         property.value = property.defaultValue;
         [self.stringsDict setObject:property.toString forKey:property.name];
         
-        NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
-        [self.panelController appendText:textLine];
+        if (!self.productionMode) {
+            
+            NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
+            [self.panelController appendText:textLine];
+            
+        } else { // production mode
+            NSLog(@"Warning: Property %@ has no value in config, use default value", property.name);
+        }
+        
     }
 }
 
@@ -94,7 +105,12 @@ static id sharedInstance = nil;
 - (void) registerPropery: (CTProperty *) property {
     
     [self.propertiesDict setObject:property forKey:property.name];
-    [self reReadConfigTextIfHasUntrackedModifications]; 
+    
+    if (self.productionMode) {
+        [self updatePropertyValueOrMakeItDefault:property];
+    } else {
+        [self reReadConfigTextIfHasUntrackedModifications]; 
+    }
 }
 
 - (void) startSceneWithName: (NSString *) sceneName {
@@ -154,6 +170,7 @@ static id sharedInstance = nil;
 }
 
 - (void) startDevelopmentVersion {
+    self.productionMode = NO;
     
     [self.panelController showWindow:self];
 
@@ -183,6 +200,8 @@ static id sharedInstance = nil;
 }
 
 - (void) startProductionVersion {
+    self.productionMode = YES;
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     NSArray *pathComponents = [[self.confFilePath lastPathComponent] componentsSeparatedByString:@"."];
@@ -190,12 +209,21 @@ static id sharedInstance = nil;
     NSString *fileExtension = [pathComponents objectAtIndex:1];
     
     NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:fileExtension];
+
     if ([fileManager fileExistsAtPath:path]) {
-//        NSString *confText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
-//        [self loadPropertiesValuesFromText:confText unusedProperties:nil];
-        NSLog(@"startProductionVersion not yet fully implemented");
+        
+        NSString *fileText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        
+        [self fillStringsValuesFromText:fileText];
+        
+        // if already have properties, udpates them
+        
+        [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
+            [self updatePropertyValueOrMakeItDefault:property];
+        }];
+
     } else {
-        NSLog(@"Error: Can't find ct.conf in main bundle: %@. Use default values.", path);
+        NSLog(@"Error: Can't find %@.%@ in main bundle. Use default values.", fileName, fileExtension);
     }
 }
 
