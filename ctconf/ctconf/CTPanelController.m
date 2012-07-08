@@ -31,6 +31,9 @@
 }
 
 - (void) windowDidLoad {
+    NSFont *defaultFont = [NSFont fontWithName:@"Monaco" size:14];
+    self.textView.font = defaultFont;
+    
     self.textView.delegate = self;
     ((CTPanel *)self.window).ctDelegate = self;
 }
