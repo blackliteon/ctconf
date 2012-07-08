@@ -16,13 +16,11 @@
 @interface AppDelegate ()
 
 @property (strong, nonatomic) MainWindowController *mainWindowController;
-@property (strong, nonatomic) CTConfiguration *conf;
 
 @end
 
 @implementation AppDelegate
 
-@synthesize conf = _conf; // todo: remove 
 @synthesize mainWindowController = _mainWindowController;
 
 
