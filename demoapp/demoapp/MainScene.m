@@ -9,6 +9,8 @@
 #import "MainScene.h"
 #import "MainWindowController.h"
 
+#define APP_MAIN_SCENE_WINDOW_COORD_KEY @"APP_MAIN_SCENE_WINDOW_COORD_KEY"
+
 @interface MainScene ()
 
 @property (strong, nonatomic) MainWindowController *mainWindowController;
@@ -32,6 +34,7 @@
 }
 
 - (void) startScene {
+    [self.mainWindowController setWindowFrameAutosaveName:APP_MAIN_SCENE_WINDOW_COORD_KEY];
     [self.mainWindowController showWindow:self];
 }
 

@@ -52,7 +52,6 @@
 
 - (void)windowDidLoad
 {
-    NSLog(@"window did load");
     self.topPanelViewController = [[TopPanelViewController alloc] initWithNibName:@"TopPanelViewController" bundle:[NSBundle mainBundle]];
 
 }
