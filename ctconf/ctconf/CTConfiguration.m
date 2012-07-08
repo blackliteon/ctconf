@@ -68,21 +68,7 @@ static id sharedInstance = nil;
     }];
 }
 
-- (void) reReadConfigTextIfHasUntrackedModifications {
-    if (self.panelController.textHasModifications) {
-        [self fillStringsValuesFromText:self.panelController.text];
-        [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
-            NSString *strValue = [self.stringsDict objectForKey:name];
-            [property fromString:strValue];
-        }];
-        self.panelController.textHasModifications = NO;
-    }
-}
-
-- (void) registerPropery: (CTProperty *) property {
-    [self reReadConfigTextIfHasUntrackedModifications];
-    
-    [self.propertiesDict setObject:property forKey:property.name];
+- (void) updatePropertyValueOrMakeItDefault: (CTProperty *) property { // and appent to text
     NSString *strValInConfig = [self.stringsDict objectForKey:property.name];
     if (strValInConfig) {
         [property fromString:strValInConfig];
@@ -92,8 +78,23 @@ static id sharedInstance = nil;
         
         NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
         [self.panelController appendText:textLine];
-        
     }
+}
+
+- (void) reReadConfigTextIfHasUntrackedModifications {
+    if (self.panelController.textHasModifications) {
+        [self fillStringsValuesFromText:self.panelController.text];
+        self.panelController.textHasModifications = NO;
+    }
+    [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
+        [self updatePropertyValueOrMakeItDefault:property];
+    }];
+}
+
+- (void) registerPropery: (CTProperty *) property {
+    
+    [self.propertiesDict setObject:property forKey:property.name];
+    [self reReadConfigTextIfHasUntrackedModifications]; 
 }
 
 - (void) startSceneWithName: (NSString *) sceneName {

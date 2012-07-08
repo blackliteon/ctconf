@@ -47,7 +47,6 @@
 
 - (void) loadWindow {
     [super loadWindow];
-//    [self windowDidLoad];
 }
 
 - (void)windowDidLoad

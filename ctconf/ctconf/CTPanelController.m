@@ -66,7 +66,7 @@
 }
 
 - (void) appendText: (NSString *) text {
-    [self.textView setSelectedRange:NSMakeRange(NSMaxRange(self.textView.selectedRange), 0)];
+    [self.textView setSelectedRange:NSMakeRange(self.textView.string.length, 0)];
     [self.textView insertText:text];
 }
 
