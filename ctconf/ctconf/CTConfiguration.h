@@ -20,6 +20,8 @@
 - (void) startDevelopmentVersion;
 - (void) startProductionVersion;
 
+- (void) unregisterObjectFromUpdates: (id) object;
+
 + (CTConfiguration *) sharedInstance;
 
 @property (copy, nonatomic) NSString *confFilePath;

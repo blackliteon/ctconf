@@ -25,12 +25,14 @@ typedef NSInteger CTPropertyType;
 @property (strong, nonatomic) id value;
 @property (strong, nonatomic) id defaultValue;
 
-@property (strong, nonatomic) id objectOwnedProperty;
 @property (copy, nonatomic) NSString *objectKey;
 
 - (NSString *) toString;
 - (void) fromString: (NSString *) stringValue;
 
 - (BOOL) isValueEqualTo: (id) newValue;
+
+- (void) addObjectThatTracksUpdates: (id) object;
+- (void) removeObjectFromUpdatesTracking: (id) object;
 
 @end

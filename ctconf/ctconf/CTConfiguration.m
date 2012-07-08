@@ -228,6 +228,12 @@ static id sharedInstance = nil;
     }
 }
 
+- (void) unregisterObjectFromUpdates: (id) object {
+    [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
+        [property removeObjectFromUpdatesTracking:object];
+    }];
+}
+
 #pragma mark Properties
 
 - (double) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal {
@@ -235,7 +241,7 @@ static id sharedInstance = nil;
     CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
     property.name = name;
     property.defaultValue = [NSNumber numberWithFloat:defaultVal];
-    property.objectOwnedProperty = object;
+    [property addObjectThatTracksUpdates:object];
     
     [self registerPropery:property];
     double currentValue = [property.value doubleValue]; 
@@ -246,7 +252,7 @@ static id sharedInstance = nil;
     CTBooleanProperty *property = [[CTBooleanProperty alloc] init];
     property.name = name;
     property.defaultValue = [NSNumber numberWithFloat:defaultVal];
-    property.objectOwnedProperty = object;
+    [property addObjectThatTracksUpdates:object];
     
     [self registerPropery:property];
     BOOL currentValue = [property.value boolValue]; 
@@ -257,7 +263,7 @@ static id sharedInstance = nil;
     CTEnumerateProperty *property = [[CTEnumerateProperty alloc] init];
     property.name = name;
     property.defaultValue = defaultVal;
-    property.objectOwnedProperty = object;
+    [property addObjectThatTracksUpdates:object];
     
     NSMutableArray *possibleValues = [[NSMutableArray alloc] init];
     va_list args;
@@ -277,7 +283,7 @@ static id sharedInstance = nil;
     CTStringProperty *property = [[CTStringProperty alloc] init];
     property.name = name;
     property.defaultValue = defaultVal;
-    property.objectOwnedProperty = object;
+    [property addObjectThatTracksUpdates:object];
     
     [self registerPropery:property];
     NSString *currentValue = property.value; 

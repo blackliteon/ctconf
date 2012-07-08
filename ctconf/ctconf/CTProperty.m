@@ -8,6 +8,12 @@
 
 #import "CTProperty.h"
 
+@interface CTProperty ()
+
+@property (strong, nonatomic) NSMutableArray *objectsThatTracksProperty;
+
+@end
+
 @implementation CTProperty
 
 @synthesize name = _name;
@@ -15,8 +21,17 @@
 @synthesize value = _value;
 @synthesize defaultValue = _defaultValue;
 
-@synthesize objectOwnedProperty = _objectOwnedProperty;
 @synthesize objectKey = _objectKey;
+
+@synthesize objectsThatTracksProperty = _objectsThatTracksProperty;
+
+- (id)init {
+    self = [super init];
+    if (self) {
+        _objectsThatTracksProperty = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
 
 - (void) setName:(NSString *)name {
     _name = [name copy];
@@ -29,8 +44,10 @@
     if (![self isValueEqualTo:value]) {
         _value = value;
         
-        if (self.objectOwnedProperty) {
-            [self.objectOwnedProperty setValue:value forKey:self.objectKey];
+        for (id object in self.objectsThatTracksProperty) {
+            if (object) {
+                [object setValue:value forKey:self.objectKey];
+            }
         }
     }
 }
@@ -51,6 +68,20 @@
 - (void) fromString: (NSString *) stringValue {
     NSLog(@"Error: subclasses should override fromString:");
     [self doesNotRecognizeSelector:_cmd];
+}
+
+- (void) addObjectThatTracksUpdates: (id) object {
+    [self.objectsThatTracksProperty addObject:object];
+}
+
+- (void) removeObjectFromUpdatesTracking: (id) object {
+    
+    for (int i = (int)self.objectsThatTracksProperty.count - 1; i >= 0; i--) {
+        id currentObj = [self.objectsThatTracksProperty objectAtIndex:i];
+        if (currentObj == object) {
+            [self.objectsThatTracksProperty removeObjectAtIndex:i];
+        }
+    }
 }
 
 
