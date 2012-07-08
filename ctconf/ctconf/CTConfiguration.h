@@ -10,6 +10,13 @@
 #import "CTPanel.h"
 #import "CTSceneManager.h"
 
+enum {
+    CTNormalMode,
+    CTConfigurationMode
+};
+
+typedef NSInteger CTMode;
+
 @interface CTConfiguration : NSObject 
 
 - (double) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
@@ -17,8 +24,8 @@
 - (NSString *) declareEnumerateInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal possibleValues: (NSString *) possibleValue1, ...;
 - (NSString *) declareStringInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal;
 
-- (void) startDevelopmentVersion;
-- (void) startProductionVersion: (BOOL) configOutside;
+- (void) startConfigurationModeWithConfigPath: (NSString *) path;
+- (void) startNormalModeWithConfigPath: (NSString *) path;
 
 - (void) unregisterObjectFromUpdates: (id) object;
 

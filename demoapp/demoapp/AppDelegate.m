@@ -28,25 +28,39 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    [[CTConfiguration sharedInstance] setConfFilePath:[NSString stringWithFormat:@"%@/demoapp.conf", NSHomeDirectory()]];
+
+    NSString *defaultConfPath = [[NSBundle mainBundle] pathForResource:@"demoapp" ofType:@"conf"];
+    NSString *confPath = defaultConfPath;
+    CTMode mode = CTNormalMode;
     
-    BOOL development = YES;
+    NSArray *arguments = [[NSProcessInfo processInfo] arguments];
+    for (int i = 0; i < arguments.count; i++) {
+        NSString *currentArg = [arguments objectAtIndex:i];
+        if ([currentArg isEqualToString:@"-ctconfpath"] && arguments.count > (i+1)) {
+            confPath = [arguments objectAtIndex:i+1];
+        }
+        
+        if ([currentArg isEqualToString:@"-ctconfmode"]) {
+            mode = CTConfigurationMode;
+        }
+    }
     
-    if (development) {
+    if (mode == CTConfigurationMode && confPath == defaultConfPath) {
+        NSLog(@"Warning: to start configuration mode specify -ctconfpath outside of the main bundle.");
+        mode  = CTNormalMode;
+    }
+    
+    if (mode == CTNormalMode) {
+        [[CTConfiguration sharedInstance] startNormalModeWithConfigPath:confPath];
+        self.mainWindowController = [[MainWindowController alloc] init];
+        [self.mainWindowController showWindow:self];
+    } else {
         MainScene *mainScene = [[MainScene alloc] init];
         SecondScene *secondScene = [[SecondScene alloc] init];
         [[CTConfiguration sharedInstance].sceneManager addScene:mainScene];
         [[CTConfiguration sharedInstance].sceneManager addScene:secondScene];
-        [[CTConfiguration sharedInstance] startDevelopmentVersion];
-    } else {
-        [[CTConfiguration sharedInstance] startProductionVersion: YES];
-        self.mainWindowController = [[MainWindowController alloc] init];
-        [self.mainWindowController showWindow:self];
+        [[CTConfiguration sharedInstance] startConfigurationModeWithConfigPath:confPath];
     }
-    
-    
-
-    
     
 }
 

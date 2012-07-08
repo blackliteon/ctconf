@@ -16,6 +16,7 @@
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
+
 @interface CTConfiguration () <CTPanelControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *properties;
@@ -25,7 +26,7 @@
 @property (strong, nonatomic) NSMutableDictionary *stringsDict;
 
 @property (strong, nonatomic) id<CTScene> currentScene;
-@property (assign, nonatomic) BOOL productionMode;
+@property (assign, nonatomic) CTMode mode;
 
 @end
 
@@ -43,7 +44,7 @@ static id sharedInstance = nil;
 @synthesize stringsDict = _stringsDict;
 
 @synthesize currentScene = _currentScene;
-@synthesize productionMode = _productionMode;
+@synthesize mode = _mode;
 
 #pragma mark - Private
 
@@ -81,7 +82,7 @@ static id sharedInstance = nil;
         property.value = property.defaultValue;
         [self.stringsDict setObject:property.toString forKey:property.name];
         
-        if (!self.productionMode) {
+        if (self.mode == CTConfigurationMode) {
             
             NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
             [self.panelController appendText:textLine];
@@ -116,7 +117,7 @@ static id sharedInstance = nil;
         [registeredProperty addObjectThatTracksUpdates:[property firstObjectThatTracksUpdates]]; // it just one when we register new property
     }
     
-    if (self.productionMode) {
+    if (self.mode == CTNormalMode) {
         [self updatePropertyValueOrMakeItDefault:property];
     } else {
         [self reReadConfigTextIfHasUntrackedModifications]; 
@@ -179,11 +180,11 @@ static id sharedInstance = nil;
     return self;
 }
 
-- (void) startDevelopmentVersion {
-    self.productionMode = NO;
+- (void) startConfigurationModeWithConfigPath: (NSString *) path {
+    self.mode = CTConfigurationMode;
+    self.confFilePath = path;
     
     [self.panelController showWindow:self];
-
     [self.panelController setScenesNames:self.sceneManager.scenesNames];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
@@ -209,32 +210,18 @@ static id sharedInstance = nil;
     
 }
 
-- (void) startProductionVersion: (BOOL) configOutside {
-    self.productionMode = YES;
+- (void) startNormalModeWithConfigPath: (NSString *) confpath {
+    self.mode = CTNormalMode;
+    self.confFilePath = confpath;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
-    NSString *path = self.confFilePath;
-    NSString *fileName;
-    NSString *fileExtension;
-    
-    if (!configOutside) {
-        NSArray *pathComponents = [[self.confFilePath lastPathComponent] componentsSeparatedByString:@"."];
-        fileName = [pathComponents objectAtIndex:0];
-        fileExtension = [pathComponents objectAtIndex:1];
-        path = [[NSBundle mainBundle] pathForResource:fileName ofType:fileExtension];
-    }
-    
-    if (![fileManager fileExistsAtPath:path]) {
-        if (configOutside) {
-            NSLog(@"Error: Can't find %@. Use default values.", self.confFilePath);
-        } else {
-            NSLog(@"Error: Can't find %@.%@ in main bundle. Use default values.", fileName, fileExtension);
-        }
+    if (![fileManager fileExistsAtPath:self.confFilePath]) {
+        NSLog(@"Error: Can't find %@. Use default values.", self.confFilePath);
         return;
     }
         
-    NSString *fileText = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+    NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
     [self fillStringsValuesFromText:fileText];
     
     // if already have properties, udpates them
