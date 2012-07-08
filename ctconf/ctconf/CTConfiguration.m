@@ -105,7 +105,16 @@ static id sharedInstance = nil;
 
 - (void) registerPropery: (CTProperty *) property {
     
-    [self.propertiesDict setObject:property forKey:property.name];
+    CTProperty *registeredProperty = [self.propertiesDict objectForKey:property.name];
+    if (!registeredProperty) {
+        [self.propertiesDict setObject:property forKey:property.name];
+    } else {
+        if (registeredProperty.class != property.class) {
+            [NSException raise:@"One name for different properties types" format:@"Property %@ has multiple types simultaneously", property.name];
+        }
+        
+        [registeredProperty addObjectThatTracksUpdates:[property firstObjectThatTracksUpdates]]; // it just one when we register new property
+    }
     
     if (self.productionMode) {
         [self updatePropertyValueOrMakeItDefault:property];
@@ -244,7 +253,9 @@ static id sharedInstance = nil;
     [property addObjectThatTracksUpdates:object];
     
     [self registerPropery:property];
-    double currentValue = [property.value doubleValue]; 
+
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    double currentValue = [assignedProperty.value doubleValue]; 
     return currentValue;
 }
 
@@ -255,7 +266,9 @@ static id sharedInstance = nil;
     [property addObjectThatTracksUpdates:object];
     
     [self registerPropery:property];
-    BOOL currentValue = [property.value boolValue]; 
+
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    BOOL currentValue = [assignedProperty.value boolValue]; 
     return currentValue;
 }
 
@@ -276,7 +289,9 @@ static id sharedInstance = nil;
     property.possibleValues = possibleValues;
     
     [self registerPropery:property];
-    return property.value;
+
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    return assignedProperty.value;
 }
 
 - (NSString *) declareStringInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal {
@@ -286,8 +301,9 @@ static id sharedInstance = nil;
     [property addObjectThatTracksUpdates:object];
     
     [self registerPropery:property];
-    NSString *currentValue = property.value; 
-    return currentValue;
+
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    return assignedProperty.value;
 }
 
 

@@ -8,6 +8,8 @@
 
 #import "TopPanelViewController.h"
 #import <ctconf/ctconf.h>
+#import "BGView.h"
+#import "NSColor+FromHex.h"
 
 @interface TopPanelViewController ()
 
@@ -15,10 +17,12 @@
 @property (weak) IBOutlet NSButton *button2;
 @property (weak) IBOutlet NSButton *button3;
 @property (weak) IBOutlet NSTextField *label;
+@property (weak) IBOutlet BGView *bgView;
 
 @property (assign, nonatomic) CGFloat topMargin;
 @property (assign, nonatomic) CGFloat leftMargin;
 @property (assign, nonatomic) BOOL labelVisible;
+@property (strong, nonatomic) NSString *bgColor;
 
 @end
 
@@ -28,10 +32,12 @@
 @synthesize button2;
 @synthesize button3;
 @synthesize label;
+@synthesize bgView;
 
 @synthesize topMargin = _topMargin;
 @synthesize leftMargin = _leftMargin;
 @synthesize labelVisible = _labelVisible;
+@synthesize bgColor = _bgColor;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,6 +54,7 @@
     self.topMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.topMargin" defaultValue:3];
     self.leftMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.leftMargin" defaultValue:20];
     self.labelVisible = [[CTConfiguration sharedInstance] declareBooleanInObject:self withName:@"topPanel.labelVisible" defaultValue:YES];
+    self.bgColor = [[CTConfiguration sharedInstance] declareStringInObject:self withName:@"app.bgColor" defaultValue:@"ff0000"];
 }
 
 - (void) setTopMargin:(CGFloat)topMargin {
@@ -87,6 +94,10 @@
 
 - (void) setLabelVisible:(BOOL)labelVisible {
     [label setHidden:!labelVisible];
+}
+
+- (void) setBgColor:(NSString *)bgColor {
+    self.bgView.bgColor = [NSColor colorFromHexRGB:bgColor];
 }
 
 

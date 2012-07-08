@@ -34,5 +34,6 @@ typedef NSInteger CTPropertyType;
 
 - (void) addObjectThatTracksUpdates: (id) object;
 - (void) removeObjectFromUpdatesTracking: (id) object;
+- (id) firstObjectThatTracksUpdates;
 
 @end

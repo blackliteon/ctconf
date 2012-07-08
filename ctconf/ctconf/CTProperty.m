@@ -84,5 +84,11 @@
     }
 }
 
+- (id) firstObjectThatTracksUpdates {
+    if (self.objectsThatTracksProperty.count > 0) {
+        return [self.objectsThatTracksProperty objectAtIndex:0];
+    }
+    return nil;
+}
 
 @end
