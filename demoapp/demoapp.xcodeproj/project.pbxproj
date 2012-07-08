@@ -21,6 +21,7 @@
 		32A44D7515A5998500A87F87 /* TopPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D7315A5998500A87F87 /* TopPanelViewController.m */; };
 		32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A44D7415A5998500A87F87 /* TopPanelViewController.xib */; };
 		32BE666A15A6E06300042E9E /* ct.conf in Resources */ = {isa = PBXBuildFile; fileRef = 32BE666915A6E06300042E9E /* ct.conf */; };
+		32CEE86515A9760800A3C644 /* SecondScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE86415A9760800A3C644 /* SecondScene.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		32A44D7315A5998500A87F87 /* TopPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopPanelViewController.m; sourceTree = "<group>"; };
 		32A44D7415A5998500A87F87 /* TopPanelViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopPanelViewController.xib; sourceTree = "<group>"; };
 		32BE666915A6E06300042E9E /* ct.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ct.conf; sourceTree = "<group>"; };
+		32CEE86315A9760800A3C644 /* SecondScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SecondScene.h; sourceTree = "<group>"; };
+		32CEE86415A9760800A3C644 /* SecondScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SecondScene.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,18 +131,17 @@
 		3280BDA415A46A02009148AD /* demoapp */ = {
 			isa = PBXGroup;
 			children = (
+				3282DB5315A8727F004FBBFD /* Scenes */,
 				3280BDB015A46A02009148AD /* AppDelegate.h */,
 				3280BDB115A46A02009148AD /* AppDelegate.m */,
 				3280BDB315A46A03009148AD /* MainMenu.xib */,
-				3280BDA515A46A02009148AD /* Supporting Files */,
 				32A44D7215A5998500A87F87 /* TopPanelViewController.h */,
 				32A44D7315A5998500A87F87 /* TopPanelViewController.m */,
 				32A44D7415A5998500A87F87 /* TopPanelViewController.xib */,
-				3282DB4715A829EA004FBBFD /* MainScene.h */,
-				3282DB4815A829EA004FBBFD /* MainScene.m */,
 				3282DB4A15A82B2C004FBBFD /* MainWindowController.h */,
 				3282DB4B15A82B2C004FBBFD /* MainWindowController.m */,
 				3282DB4D15A82B5C004FBBFD /* MainWindow.xib */,
+				3280BDA515A46A02009148AD /* Supporting Files */,
 			);
 			path = demoapp;
 			sourceTree = "<group>";
@@ -155,6 +157,17 @@
 				3280BDAD15A46A02009148AD /* Credits.rtf */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3282DB5315A8727F004FBBFD /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				3282DB4715A829EA004FBBFD /* MainScene.h */,
+				3282DB4815A829EA004FBBFD /* MainScene.m */,
+				32CEE86315A9760800A3C644 /* SecondScene.h */,
+				32CEE86415A9760800A3C644 /* SecondScene.m */,
+			);
+			name = Scenes;
 			sourceTree = "<group>";
 		};
 		3287FB8C15A47E0100EDA240 /* Products */ = {
@@ -263,6 +276,7 @@
 				32A44D7515A5998500A87F87 /* TopPanelViewController.m in Sources */,
 				3282DB4915A829EB004FBBFD /* MainScene.m in Sources */,
 				3282DB4C15A82B2C004FBBFD /* MainWindowController.m in Sources */,
+				32CEE86515A9760800A3C644 /* SecondScene.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

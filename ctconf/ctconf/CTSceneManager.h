@@ -14,5 +14,6 @@
 - (void) addScene: (id<CTScene>) scene;
 
 - (NSArray *) scenesNames;
+- (id<CTScene>) sceneByName: (NSString *) sceneName;
 
 @end

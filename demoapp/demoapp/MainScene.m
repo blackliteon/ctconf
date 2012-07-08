@@ -19,12 +19,25 @@
 
 @synthesize mainWindowController = _mainWindowController;
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        _mainWindowController = [[MainWindowController alloc] init];
+    }
+    return self;
+}
+
 - (NSString *) sceneName {
     return @"Main Scene";
 }
 
 - (void) startScene {
-    
+    [self.mainWindowController showWindow:self];
 }
+
+- (void) stopScene {
+    [self.mainWindowController close];
+}
+
 
 @end

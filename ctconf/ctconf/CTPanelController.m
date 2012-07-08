@@ -13,7 +13,6 @@
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
 @property (weak) IBOutlet NSPopUpButton *scenePopup;
 
-
 @end
 
 @implementation CTPanelController
@@ -23,6 +22,18 @@
 @synthesize scenesNames = _scenesNames;
 @synthesize delegate = _delegate;
 @synthesize textHasModifications = _textHasModifications;
+
+#pragma mark - Override
+
+- (void)loadWindow
+{
+    [super loadWindow];
+}
+
+- (void) windowDidLoad {
+    self.textView.delegate = self;
+    ((CTPanel *)self.window).ctDelegate = self;
+}
 
 #pragma mark - Delegate
 
@@ -49,14 +60,6 @@
     return self;
 }
 
-- (void)loadWindow
-{
-    [super loadWindow];
-
-    self.textView.delegate = self;
-    ((CTPanel *)self.window).ctDelegate = self;
-}
-
 - (void) setText: (NSString *) text {
     [self.textView setSelectedRange:NSMakeRange(0, self.textView.textStorage.length)];
     [self.textView insertText:text];
@@ -78,8 +81,13 @@
         [self.scenePopup addItemWithTitle:sceneName];
     }
 }
+
 - (IBAction)newSceneChoosed:(NSPopUpButton *)sender {
     [self.delegate newSceneChoosed:sender.titleOfSelectedItem];
+}
+
+- (void) selectSceneWithTitle: (NSString *) title {
+    [self.scenePopup selectItemWithTitle:title];
 }
 
 @end

@@ -13,6 +13,8 @@
 #import "CTBooleanProperty.h"
 #import "CTEnumerateProperty.h"
 
+#define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
+
 @interface CTConfiguration () <CTPanelControllerDelegate>
 
 @property (strong, nonatomic) NSMutableArray *properties;
@@ -20,6 +22,8 @@
 
 @property (strong, nonatomic) NSMutableDictionary *propertiesDict;
 @property (strong, nonatomic) NSMutableDictionary *stringsDict;
+
+@property (strong, nonatomic) id<CTScene> currentScene;
 
 @end
 
@@ -35,6 +39,8 @@ static id sharedInstance = nil;
 
 @synthesize propertiesDict = _propertiesDict;
 @synthesize stringsDict = _stringsDict;
+
+@synthesize currentScene = _currentScene;
 
 #pragma mark - Private
 
@@ -90,10 +96,23 @@ static id sharedInstance = nil;
     }
 }
 
+- (void) startSceneWithName: (NSString *) sceneName {
+    if (self.currentScene) {
+        [self.currentScene stopScene];
+    }
+    self.currentScene = [self.sceneManager sceneByName:sceneName];
+    [self.currentScene startScene];
+    
+    NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+    [ud setObject:sceneName forKey:CT_DEFAULT_SCENE_NAME_KEY];
+    [ud synchronize];
+
+}
+
 #pragma mark - Delegate
 
 - (void) newSceneChoosed: (NSString *) sceneName {
-    NSLog(@"Scene %@ choosed", sceneName);
+    [self startSceneWithName:sceneName];
 }
 
 - (void) save {
@@ -113,8 +132,6 @@ static id sharedInstance = nil;
 + (CTConfiguration *) sharedInstance {
     if (!sharedInstance) {
         sharedInstance = [[CTConfiguration alloc] init];
-        CTConfiguration *conf = sharedInstance;
-        conf.sceneManager = [[CTSceneManager alloc] init];
     } 
     return sharedInstance;
 }
@@ -129,14 +146,17 @@ static id sharedInstance = nil;
         _propertiesDict = [[NSMutableDictionary alloc] init];
         _stringsDict = [[NSMutableDictionary alloc] init];
         _sceneManager = [[CTSceneManager alloc] init];
+        _currentScene = nil;
 
     }
     return self;
 }
 
 - (void) startDevelopmentVersion {
-    [self.panelController setScenesNames:self.sceneManager.scenesNames];
+    
     [self.panelController showWindow:self];
+
+    [self.panelController setScenesNames:self.sceneManager.scenesNames];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
     if ([fileManager fileExistsAtPath:self.confFilePath]) {
@@ -144,6 +164,21 @@ static id sharedInstance = nil;
         [self.panelController setText:fileText];
         [self reReadConfigTextIfHasUntrackedModifications];
     }
+    
+    if (self.sceneManager.scenesNames.count > 0) {
+        NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
+        NSString *defaultSceneName = [ud objectForKey:CT_DEFAULT_SCENE_NAME_KEY];
+
+        id<CTScene> defaultScene = [self.sceneManager sceneByName:defaultSceneName];
+        
+        if (!defaultScene) {
+            defaultSceneName = [self.sceneManager.scenesNames objectAtIndex:0];
+        }
+        
+        [self.panelController selectSceneWithTitle:defaultSceneName];
+        [self startSceneWithName:defaultSceneName];
+    }
+    
 }
 
 - (void) startProductionVersion {

@@ -10,6 +10,8 @@
 #import <ctconf/ctconf.h>
 #import "TopPanelViewController.h"
 #import "MainWindowController.h"
+#import "MainScene.h"
+#import "SecondScene.h"
 
 @interface AppDelegate ()
 
@@ -26,15 +28,18 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    self.mainWindowController = [[MainWindowController alloc] init];
-//    [self.mainWindowController loadWindow];
-    
-    ;
     [[CTConfiguration sharedInstance] setConfFilePath:[NSString stringWithFormat:@"%@/demoapp.conf", NSHomeDirectory()]];
     
-    [[CTConfiguration sharedInstance] startDevelopmentVersion];
+    MainScene *mainScene = [[MainScene alloc] init];
+    SecondScene *secondScene = [[SecondScene alloc] init];
+    [[CTConfiguration sharedInstance].sceneManager addScene:mainScene];
+    [[CTConfiguration sharedInstance].sceneManager addScene:secondScene];
     
-    [self.mainWindowController showWindow:self];
+    [[CTConfiguration sharedInstance] startDevelopmentVersion];
+
+    
+//    self.mainWindowController = [[MainWindowController alloc] init];
+//    [self.mainWindowController showWindow:self];
     
 }
 

@@ -11,6 +11,8 @@
 @protocol CTScene <NSObject>
 
 - (NSString *) sceneName;
+
 - (void) startScene;
+- (void) stopScene;
 
 @end

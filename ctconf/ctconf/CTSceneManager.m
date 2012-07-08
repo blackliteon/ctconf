@@ -18,6 +18,14 @@
 
 @synthesize scenes = _scenes;
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        _scenes = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (void) addScene: (id<CTScene>) scene {
     [self.scenes addObject:scene];
 }
@@ -30,6 +38,15 @@
     }
     
     return result;
+}
+
+- (id<CTScene>) sceneByName: (NSString *) sceneName {
+    for (id<CTScene> scene in self.scenes) {
+        if ([scene.sceneName isEqualToString:sceneName]) {
+            return scene;
+        }
+    }
+    return nil;
 }
 
 

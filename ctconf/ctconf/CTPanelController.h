@@ -27,4 +27,6 @@
 - (void) appendText: (NSString *) text;
 - (NSString *) text;
 
+- (void) selectSceneWithTitle: (NSString *) title;
+
 @end
