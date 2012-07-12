@@ -13,9 +13,11 @@
 #import "CTBooleanProperty.h"
 #import "CTEnumerateProperty.h"
 #import "CTStringProperty.h"
+#import "CTIntegerProperty.h"
+#import "CTDoubleArrayProperty.h"
+#import "CTSizeProperty.h"
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
-
 
 @interface CTConfiguration () <CTPanelControllerDelegate>
 
@@ -254,6 +256,20 @@ static id sharedInstance = nil;
     return currentValue;
 }
 
+- (NSInteger) declareIntegerInObject: (id) object withName: (NSString *) name defaultValue:(NSInteger) defaultVal {
+    
+    CTIntegerProperty *property = [[CTIntegerProperty alloc] init];
+    property.name = name;
+    property.defaultValue = [NSNumber numberWithInteger:defaultVal];
+    [property addObjectThatTracksUpdates:object];
+    
+    [self registerPropery:property];
+    
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    double currentValue = [assignedProperty.value integerValue]; 
+    return currentValue;
+}
+
 - (BOOL) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal {
     CTBooleanProperty *property = [[CTBooleanProperty alloc] init];
     property.name = name;
@@ -301,7 +317,30 @@ static id sharedInstance = nil;
     return assignedProperty.value;
 }
 
+- (NSArray *) declareDoubleArrayInObject: (id) object withName: (NSString *) name defaultValue:(NSArray *) defaultVal {
+    CTDoubleArrayProperty *property = [[CTDoubleArrayProperty alloc] init];
+    property.name = name;
+    property.defaultValue = defaultVal;
+    [property addObjectThatTracksUpdates:object];
+    
+    [self registerPropery:property];
+    
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    return assignedProperty.value;
+}
 
+- (NSSize) declareSizeInObject: (id) object withName: (NSString *) name defaultValue:(NSSize) defaultVal {
+    CTSizeProperty *property = [[CTSizeProperty alloc] init];
+    property.name = name;
+    property.defaultValue = [NSValue valueWithSize:defaultVal];
+    [property addObjectThatTracksUpdates:object];
+    
+    [self registerPropery:property];
+    
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    NSSize currentValue = [assignedProperty.value sizeValue]; 
+    return currentValue;
+}
 
 
 

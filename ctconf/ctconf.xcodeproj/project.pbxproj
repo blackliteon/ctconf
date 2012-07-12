@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3240886715AEB75300735767 /* CTIntegerProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240886515AEB75300735767 /* CTIntegerProperty.h */; };
+		3240886815AEB75300735767 /* CTIntegerProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886615AEB75300735767 /* CTIntegerProperty.m */; };
+		3240886C15AEB98200735767 /* CTDoubleArrayProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240886A15AEB98100735767 /* CTDoubleArrayProperty.h */; };
+		3240886D15AEB98200735767 /* CTDoubleArrayProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886B15AEB98100735767 /* CTDoubleArrayProperty.m */; };
+		3240887015AEC1B400735767 /* CTSizeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240886E15AEC1B400735767 /* CTSizeProperty.h */; };
+		3240887115AEC1B400735767 /* CTSizeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886F15AEC1B400735767 /* CTSizeProperty.m */; };
+		3240887415AEC35B00735767 /* CTPropertyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240887215AEC35B00735767 /* CTPropertyHelper.h */; };
+		3240887515AEC35B00735767 /* CTPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240887315AEC35B00735767 /* CTPropertyHelper.m */; };
 		3280BD6315A469C8009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD6215A469C8009148AD /* Cocoa.framework */; };
 		3280BD6D15A469C8009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BD6B15A469C8009148AD /* InfoPlist.strings */; };
 		3280BD7915A469C8009148AD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD7815A469C8009148AD /* SenTestingKit.framework */; };
@@ -50,6 +58,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3240886515AEB75300735767 /* CTIntegerProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTIntegerProperty.h; sourceTree = "<group>"; };
+		3240886615AEB75300735767 /* CTIntegerProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTIntegerProperty.m; sourceTree = "<group>"; };
+		3240886A15AEB98100735767 /* CTDoubleArrayProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDoubleArrayProperty.h; sourceTree = "<group>"; };
+		3240886B15AEB98100735767 /* CTDoubleArrayProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDoubleArrayProperty.m; sourceTree = "<group>"; };
+		3240886E15AEC1B400735767 /* CTSizeProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSizeProperty.h; sourceTree = "<group>"; };
+		3240886F15AEC1B400735767 /* CTSizeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSizeProperty.m; sourceTree = "<group>"; };
+		3240887215AEC35B00735767 /* CTPropertyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPropertyHelper.h; sourceTree = "<group>"; };
+		3240887315AEC35B00735767 /* CTPropertyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPropertyHelper.m; sourceTree = "<group>"; };
 		3280BD5F15A469C8009148AD /* ctconf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ctconf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3280BD6215A469C8009148AD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3280BD6515A469C8009148AD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -200,8 +216,12 @@
 			children = (
 				32A44D8915A5B6D800A87F87 /* CTProperty.h */,
 				32A44D8A15A5B6D800A87F87 /* CTProperty.m */,
+				3240887215AEC35B00735767 /* CTPropertyHelper.h */,
+				3240887315AEC35B00735767 /* CTPropertyHelper.m */,
 				32BE667015A6E85000042E9E /* CTNumberProperty.h */,
 				32BE667115A6E85000042E9E /* CTNumberProperty.m */,
+				3240886515AEB75300735767 /* CTIntegerProperty.h */,
+				3240886615AEB75300735767 /* CTIntegerProperty.m */,
 				32BE666C15A6E7EF00042E9E /* CTDoubleProperty.h */,
 				32BE666D15A6E7EF00042E9E /* CTDoubleProperty.m */,
 				32BE667415A7006B00042E9E /* CTBooleanProperty.h */,
@@ -210,6 +230,10 @@
 				32BE667915A705CF00042E9E /* CTEnumerateProperty.m */,
 				32CEE86815A9910900A3C644 /* CTStringProperty.h */,
 				32CEE86915A9910900A3C644 /* CTStringProperty.m */,
+				3240886A15AEB98100735767 /* CTDoubleArrayProperty.h */,
+				3240886B15AEB98100735767 /* CTDoubleArrayProperty.m */,
+				3240886E15AEC1B400735767 /* CTSizeProperty.h */,
+				3240886F15AEC1B400735767 /* CTSizeProperty.m */,
 			);
 			name = properties;
 			sourceTree = "<group>";
@@ -245,6 +269,10 @@
 				3282DB4615A8296F004FBBFD /* CTScene.h in Headers */,
 				3282DB5115A8312B004FBBFD /* CTSceneManager.h in Headers */,
 				32CEE86A15A9910900A3C644 /* CTStringProperty.h in Headers */,
+				3240886715AEB75300735767 /* CTIntegerProperty.h in Headers */,
+				3240886C15AEB98200735767 /* CTDoubleArrayProperty.h in Headers */,
+				3240887015AEC1B400735767 /* CTSizeProperty.h in Headers */,
+				3240887415AEC35B00735767 /* CTPropertyHelper.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -366,6 +394,10 @@
 				32BE667B15A705CF00042E9E /* CTEnumerateProperty.m in Sources */,
 				3282DB5215A8312B004FBBFD /* CTSceneManager.m in Sources */,
 				32CEE86B15A9910900A3C644 /* CTStringProperty.m in Sources */,
+				3240886815AEB75300735767 /* CTIntegerProperty.m in Sources */,
+				3240886D15AEB98200735767 /* CTDoubleArrayProperty.m in Sources */,
+				3240887115AEC1B400735767 /* CTSizeProperty.m in Sources */,
+				3240887515AEC35B00735767 /* CTPropertyHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
