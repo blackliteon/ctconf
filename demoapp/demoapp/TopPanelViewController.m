@@ -20,7 +20,7 @@
 @property (weak) IBOutlet BGView *bgView;
 
 @property (assign, nonatomic) CGFloat topMargin;
-@property (assign, nonatomic) CGFloat leftMargin;
+@property (assign, nonatomic) CGFloat topPanelLeftMargin;
 @property (assign, nonatomic) BOOL labelVisible;
 @property (strong, nonatomic) NSString *bgColor;
 
@@ -35,7 +35,7 @@
 @synthesize bgView;
 
 @synthesize topMargin = _topMargin;
-@synthesize leftMargin = _leftMargin;
+@synthesize topPanelLeftMargin = _topPanelLeftMargin;
 @synthesize labelVisible = _labelVisible;
 @synthesize bgColor = _bgColor;
 
@@ -55,10 +55,15 @@
 
 - (void) loadView {
     [super loadView];
-    self.topMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.topMargin" defaultValue:3];
-    self.leftMargin = [[CTConfiguration sharedInstance] declareDoubleInObject:self withName:@"topPanel.leftMargin" defaultValue:20];
-    self.labelVisible = [[CTConfiguration sharedInstance] declareBooleanInObject:self withName:@"topPanel.labelVisible" defaultValue:YES];
-    self.bgColor = [[CTConfiguration sharedInstance] declareStringInObject:self withName:@"app.bgColor" defaultValue:@"ff0000"];
+    
+    self.topMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.topMargin" toObject:self key:@"topMargin" defaultValue:3];
+
+    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" toObject:self key:@"topPanelLeftMargin" defaultValue:20];
+    
+    self.labelVisible = [[CTConfiguration sharedInstance] addBooleanProperty:@"topPanel.labelVisible" toObject:self key:@"labelVisible" defaultValue:YES];
+    
+    self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"ff0000"];
+    
 }
 
 - (void) setTopMargin:(CGFloat)topMargin {
@@ -78,12 +83,12 @@
     [self.button3 setFrameOrigin:NSMakePoint(btn3x, btnY)];
 }
 
-- (void) setLeftMargin:(CGFloat)leftMargin {
-    _leftMargin = leftMargin;
+- (void) setTopPanelLeftMargin:(CGFloat)topPanelLeftMargin {
+    _topPanelLeftMargin = topPanelLeftMargin;
     
     NSPoint btn1pt = self.button1.frame.origin;
-    CGFloat additionalOffsetToLeft = btn1pt.x - leftMargin;
-    btn1pt.x = leftMargin;
+    CGFloat additionalOffsetToLeft = btn1pt.x - topPanelLeftMargin;
+    btn1pt.x = topPanelLeftMargin;
     [self.button1 setFrameOrigin:btn1pt];
     
     NSPoint btn2pt = self.button2.frame.origin;

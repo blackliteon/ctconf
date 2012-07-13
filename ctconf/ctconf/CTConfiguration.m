@@ -17,6 +17,7 @@
 #import "CTDoubleArrayProperty.h"
 #import "CTSizeProperty.h"
 
+
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
 @interface CTConfiguration () <CTPanelControllerDelegate>
@@ -96,7 +97,7 @@ static id sharedInstance = nil;
     }
 }
 
-- (void) reReadConfigTextIfHasUntrackedModifications {
+- (void) markConfigTextFiledAsReadAndUpdatePropertiesFromStringValues {
     if (self.panelController.textHasModifications) {
         [self fillStringsValuesFromText:self.panelController.text];
         self.panelController.textHasModifications = NO;
@@ -126,7 +127,7 @@ static id sharedInstance = nil;
 }
 
 - (void) save {
-    [self reReadConfigTextIfHasUntrackedModifications];
+    [self markConfigTextFiledAsReadAndUpdatePropertiesFromStringValues];
     
     NSURL *confFileUrl = [NSURL fileURLWithPath:self.confFilePath];
     NSError *error;
@@ -173,7 +174,7 @@ static id sharedInstance = nil;
     if ([fileManager fileExistsAtPath:self.confFilePath]) {
         NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
         [self.panelController setText:fileText];
-        [self reReadConfigTextIfHasUntrackedModifications];
+        [self markConfigTextFiledAsReadAndUpdatePropertiesFromStringValues];
     }
     
     if (self.sceneManager.scenesNames.count > 0) {
@@ -222,7 +223,7 @@ static id sharedInstance = nil;
 
 #pragma mark Properties
 
-- (void) registerPropery: (CTProperty *) property {
+- (void) _registerPropery: (CTProperty *) property {
     
     CTProperty *registeredProperty = [self.propertiesDict objectForKey:property.name];
     if (!registeredProperty) {
@@ -232,62 +233,62 @@ static id sharedInstance = nil;
             [NSException raise:@"One name for different properties types" format:@"Property %@ has multiple types simultaneously", property.name];
         }
         
-        [registeredProperty addObjectThatTracksUpdates:[property firstObjectThatTracksUpdates]]; // it just one when we register new property
+        [registeredProperty addAllObjectSetterInfoFromProperty:property];
     }
     
     if (self.mode == CTNormalMode) {
         [self updatePropertyValueOrMakeItDefault:property];
     } else {
-        [self reReadConfigTextIfHasUntrackedModifications]; 
+        [self markConfigTextFiledAsReadAndUpdatePropertiesFromStringValues]; 
     }
 }
 
-- (double) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal {
+- (double) addDoubleProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (CGFloat) defaultValue {
 
     CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
-    property.name = name;
-    property.defaultValue = [NSNumber numberWithFloat:defaultVal];
-    [property addObjectThatTracksUpdates:object];
+    property.name = propertyName;
+    property.defaultValue = [NSNumber numberWithFloat:defaultValue];
+    [property addObjectThatTracksUpdates:object key:key];
     
-    [self registerPropery:property];
+    [self _registerPropery:property];
 
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
     double currentValue = [assignedProperty.value doubleValue]; 
     return currentValue;
 }
 
-- (NSInteger) declareIntegerInObject: (id) object withName: (NSString *) name defaultValue:(NSInteger) defaultVal {
+- (NSInteger) addIntegerProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSInteger) defaultValue {
     
     CTIntegerProperty *property = [[CTIntegerProperty alloc] init];
-    property.name = name;
-    property.defaultValue = [NSNumber numberWithInteger:defaultVal];
-    [property addObjectThatTracksUpdates:object];
+    property.name = propertyName;
+    property.defaultValue = [NSNumber numberWithInteger:defaultValue];
+    [property addObjectThatTracksUpdates:object key:key];
     
-    [self registerPropery:property];
+    [self _registerPropery:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
     double currentValue = [assignedProperty.value integerValue]; 
     return currentValue;
 }
 
-- (BOOL) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal {
+- (BOOL) addBooleanProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (BOOL) defaultValue {
     CTBooleanProperty *property = [[CTBooleanProperty alloc] init];
-    property.name = name;
-    property.defaultValue = [NSNumber numberWithFloat:defaultVal];
-    [property addObjectThatTracksUpdates:object];
+    property.name = propertyName;
+    property.defaultValue = [NSNumber numberWithFloat:defaultValue];
+    [property addObjectThatTracksUpdates:object key:key];
     
-    [self registerPropery:property];
+    [self _registerPropery:property];
 
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
     BOOL currentValue = [assignedProperty.value boolValue]; 
     return currentValue;
 }
 
-- (NSString *) declareEnumerateInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal possibleValues: (NSString *) possibleValue1, ...{
+- (NSString *) addEnumerateProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSString *) defaultValue possibleValues: (NSString *) possibleValue1, ... {
     CTEnumerateProperty *property = [[CTEnumerateProperty alloc] init];
-    property.name = name;
-    property.defaultValue = defaultVal;
-    [property addObjectThatTracksUpdates:object];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    [property addObjectThatTracksUpdates:object key:key];
     
     NSMutableArray *possibleValues = [[NSMutableArray alloc] init];
     va_list args;
@@ -299,45 +300,45 @@ static id sharedInstance = nil;
     va_end(args);
     property.possibleValues = possibleValues;
     
-    [self registerPropery:property];
+    [self _registerPropery:property];
 
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
     return assignedProperty.value;
 }
 
-- (NSString *) declareStringInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal {
+- (NSString *) addStringProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSString *) defaultValue {
     CTStringProperty *property = [[CTStringProperty alloc] init];
-    property.name = name;
-    property.defaultValue = defaultVal;
-    [property addObjectThatTracksUpdates:object];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    [property addObjectThatTracksUpdates:object key:key];
     
-    [self registerPropery:property];
+    [self _registerPropery:property];
 
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
     return assignedProperty.value;
 }
 
-- (NSArray *) declareDoubleArrayInObject: (id) object withName: (NSString *) name defaultValue:(NSArray *) defaultVal {
+- (NSArray *) addDoubleArrayProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSArray *) defaultValue {
     CTDoubleArrayProperty *property = [[CTDoubleArrayProperty alloc] init];
-    property.name = name;
-    property.defaultValue = defaultVal;
-    [property addObjectThatTracksUpdates:object];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    [property addObjectThatTracksUpdates:object key:key];
     
-    [self registerPropery:property];
+    [self _registerPropery:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
     return assignedProperty.value;
 }
 
-- (NSSize) declareSizeInObject: (id) object withName: (NSString *) name defaultValue:(NSSize) defaultVal {
+- (NSSize) addSizeProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSSize) defaultValue {
     CTSizeProperty *property = [[CTSizeProperty alloc] init];
-    property.name = name;
-    property.defaultValue = [NSValue valueWithSize:defaultVal];
-    [property addObjectThatTracksUpdates:object];
+    property.name = propertyName;
+    property.defaultValue = [NSValue valueWithSize:defaultValue];
+    [property addObjectThatTracksUpdates:object key:key];
     
-    [self registerPropery:property];
+    [self _registerPropery:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:name];
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
     NSSize currentValue = [assignedProperty.value sizeValue]; 
     return currentValue;
 }

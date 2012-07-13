@@ -15,8 +15,8 @@
 		3240887115AEC1B400735767 /* CTSizeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886F15AEC1B400735767 /* CTSizeProperty.m */; };
 		3240887415AEC35B00735767 /* CTPropertyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240887215AEC35B00735767 /* CTPropertyHelper.h */; };
 		3240887515AEC35B00735767 /* CTPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240887315AEC35B00735767 /* CTPropertyHelper.m */; };
-		3240888E15AF084D00735767 /* CTObjectKey.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240888C15AF084D00735767 /* CTObjectKey.h */; };
-		3240888F15AF084D00735767 /* CTObjectKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240888D15AF084D00735767 /* CTObjectKey.m */; };
+		3240888E15AF084D00735767 /* CTObjectSetterInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240888C15AF084D00735767 /* CTObjectSetterInfo.h */; };
+		3240888F15AF084D00735767 /* CTObjectSetterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240888D15AF084D00735767 /* CTObjectSetterInfo.m */; };
 		3280BD6315A469C8009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD6215A469C8009148AD /* Cocoa.framework */; };
 		3280BD6D15A469C8009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BD6B15A469C8009148AD /* InfoPlist.strings */; };
 		3280BD7915A469C8009148AD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD7815A469C8009148AD /* SenTestingKit.framework */; };
@@ -68,8 +68,8 @@
 		3240886F15AEC1B400735767 /* CTSizeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSizeProperty.m; sourceTree = "<group>"; };
 		3240887215AEC35B00735767 /* CTPropertyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPropertyHelper.h; sourceTree = "<group>"; };
 		3240887315AEC35B00735767 /* CTPropertyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPropertyHelper.m; sourceTree = "<group>"; };
-		3240888C15AF084D00735767 /* CTObjectKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTObjectKey.h; sourceTree = "<group>"; };
-		3240888D15AF084D00735767 /* CTObjectKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTObjectKey.m; sourceTree = "<group>"; };
+		3240888C15AF084D00735767 /* CTObjectSetterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTObjectSetterInfo.h; sourceTree = "<group>"; };
+		3240888D15AF084D00735767 /* CTObjectSetterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTObjectSetterInfo.m; sourceTree = "<group>"; };
 		3280BD5F15A469C8009148AD /* ctconf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ctconf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3280BD6215A469C8009148AD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3280BD6515A469C8009148AD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -134,8 +134,8 @@
 		3240888A15AF083000735767 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
-				3240888C15AF084D00735767 /* CTObjectKey.h */,
-				3240888D15AF084D00735767 /* CTObjectKey.m */,
+				3240888C15AF084D00735767 /* CTObjectSetterInfo.h */,
+				3240888D15AF084D00735767 /* CTObjectSetterInfo.m */,
 			);
 			name = helpers;
 			sourceTree = "<group>";
@@ -287,7 +287,7 @@
 				3240886C15AEB98200735767 /* CTDoubleArrayProperty.h in Headers */,
 				3240887015AEC1B400735767 /* CTSizeProperty.h in Headers */,
 				3240887415AEC35B00735767 /* CTPropertyHelper.h in Headers */,
-				3240888E15AF084D00735767 /* CTObjectKey.h in Headers */,
+				3240888E15AF084D00735767 /* CTObjectSetterInfo.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -413,7 +413,7 @@
 				3240886D15AEB98200735767 /* CTDoubleArrayProperty.m in Sources */,
 				3240887115AEC1B400735767 /* CTSizeProperty.m in Sources */,
 				3240887515AEC35B00735767 /* CTPropertyHelper.m in Sources */,
-				3240888F15AF084D00735767 /* CTObjectKey.m in Sources */,
+				3240888F15AF084D00735767 /* CTObjectSetterInfo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

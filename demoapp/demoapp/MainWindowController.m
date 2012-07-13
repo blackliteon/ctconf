@@ -72,7 +72,10 @@
     self.topPanelViewController = [[TopPanelViewController alloc] initWithNibName:@"TopPanelViewController" bundle:[NSBundle mainBundle]];
     
     self.firstBgView = [[BGView alloc] initWithFrame:NSMakeRect(20, 20, 100, 100)];
-    self.bgColor = [[CTConfiguration sharedInstance] declareStringInObject:self withName:@"app.bgColor" defaultValue:@"ff0000"];
+    
+//    self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"ff0000"];
+    self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"#ff0000"];
+    
     [self.window.contentView addSubview:self.firstBgView];
 
 }

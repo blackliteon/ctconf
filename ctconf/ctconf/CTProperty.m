@@ -7,11 +7,11 @@
 //
 
 #import "CTProperty.h"
-#import "CTObjectKey.h"
+#import "CTObjectSetterInfo.h"
 
 @interface CTProperty ()
 
-@property (strong, nonatomic) NSMutableArray *objectsThatTracksProperty;
+@property (strong, nonatomic) NSMutableArray *objectSetterInfoArray;
 
 @end
 
@@ -24,12 +24,12 @@
 
 @synthesize objectKey = _objectKey;
 
-@synthesize objectsThatTracksProperty = _objectsThatTracksProperty;
+@synthesize objectSetterInfoArray = _objectSetterInfoArray;
 
 - (id)init {
     self = [super init];
     if (self) {
-        _objectsThatTracksProperty = [[NSMutableArray alloc] init];
+        _objectSetterInfoArray = [[NSMutableArray alloc] init];
     }
     return self;
 }
@@ -43,7 +43,7 @@
     if (![self isValueEqualTo:value]) {
         _value = value;
         
-        for (CTObjectKey *objectKey in self.objectsThatTracksProperty) {
+        for (CTObjectSetterInfo *objectKey in self.objectSetterInfoArray) {
             if (objectKey) {
                 [objectKey.object setValue:value forKey:objectKey.key];
             }
@@ -69,40 +69,32 @@
     [self doesNotRecognizeSelector:_cmd];
 }
 
-- (void) addObjectThatTracksUpdates: (id) object {
-    
-    CTObjectKey *objectKey = [[CTObjectKey alloc] init];
-    objectKey.object = object;
-    NSArray *propertyNameComponents = [self.name componentsSeparatedByString:@"."];
-    objectKey.key = [propertyNameComponents lastObject];
-    
-    [self.objectsThatTracksProperty addObject:objectKey];
-}
-
 - (void) addObjectThatTracksUpdates: (id) object key: (NSString *) key {
-    CTObjectKey *objectKey = [[CTObjectKey alloc] init];
+    CTObjectSetterInfo *objectKey = [[CTObjectSetterInfo alloc] init];
     objectKey.object = object;
     objectKey.key = key;
     
-    [self.objectsThatTracksProperty addObject:objectKey];
+    [self.objectSetterInfoArray addObject:objectKey];
 }
 
+- (void) addAllObjectSetterInfoFromProperty: (CTProperty *) property {
+    for (CTObjectSetterInfo *objectKey in property.allObjectSetterInfo) {
+        [self.objectSetterInfoArray addObject:objectKey];
+    }
+}
+
+- (NSArray *) allObjectSetterInfo {
+    return self.objectSetterInfoArray;
+}
 
 - (void) removeObjectFromUpdatesTracking: (id) object {
     
-    for (int i = (int)self.objectsThatTracksProperty.count - 1; i >= 0; i--) {
-        CTObjectKey *currentObjectKey = [self.objectsThatTracksProperty objectAtIndex:i];
+    for (int i = (int)self.objectSetterInfoArray.count - 1; i >= 0; i--) {
+        CTObjectSetterInfo *currentObjectKey = [self.objectSetterInfoArray objectAtIndex:i];
         if (currentObjectKey.object == object) {
-            [self.objectsThatTracksProperty removeObjectAtIndex:i];
+            [self.objectSetterInfoArray removeObjectAtIndex:i];
         }
     }
-}
-
-- (CTObjectKey *) firstObjectThatTracksUpdates { 
-    if (self.objectsThatTracksProperty.count > 0) {
-        return [self.objectsThatTracksProperty objectAtIndex:0];
-    }
-    return nil;
 }
 
 @end
