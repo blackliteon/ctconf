@@ -14,6 +14,8 @@ enum {
 
 typedef NSInteger CTPropertyType;
 
+@class CTObjectKey;
+
 @interface CTProperty : NSObject {
     @protected
     
@@ -33,7 +35,8 @@ typedef NSInteger CTPropertyType;
 - (BOOL) isValueEqualTo: (id) newValue;
 
 - (void) addObjectThatTracksUpdates: (id) object;
+- (void) addObjectThatTracksUpdates: (id) object key: (NSString *) key;
 - (void) removeObjectFromUpdatesTracking: (id) object;
-- (id) firstObjectThatTracksUpdates;
+- (CTObjectKey *) firstObjectThatTracksUpdates;
 
 @end

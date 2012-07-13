@@ -7,6 +7,7 @@
 //
 
 #import "CTProperty.h"
+#import "CTObjectKey.h"
 
 @interface CTProperty ()
 
@@ -35,8 +36,6 @@
 
 - (void) setName:(NSString *)name {
     _name = [name copy];
-    NSArray *propertyNameComponents = [self.name componentsSeparatedByString:@"."];
-    self.objectKey = [propertyNameComponents lastObject];
 }
 
 - (void) setValue:(id)value {
@@ -44,9 +43,9 @@
     if (![self isValueEqualTo:value]) {
         _value = value;
         
-        for (id object in self.objectsThatTracksProperty) {
-            if (object) {
-                [object setValue:value forKey:self.objectKey];
+        for (CTObjectKey *objectKey in self.objectsThatTracksProperty) {
+            if (objectKey) {
+                [objectKey.object setValue:value forKey:objectKey.key];
             }
         }
     }
@@ -71,20 +70,35 @@
 }
 
 - (void) addObjectThatTracksUpdates: (id) object {
-    [self.objectsThatTracksProperty addObject:object];
+    
+    CTObjectKey *objectKey = [[CTObjectKey alloc] init];
+    objectKey.object = object;
+    NSArray *propertyNameComponents = [self.name componentsSeparatedByString:@"."];
+    objectKey.key = [propertyNameComponents lastObject];
+    
+    [self.objectsThatTracksProperty addObject:objectKey];
 }
+
+- (void) addObjectThatTracksUpdates: (id) object key: (NSString *) key {
+    CTObjectKey *objectKey = [[CTObjectKey alloc] init];
+    objectKey.object = object;
+    objectKey.key = key;
+    
+    [self.objectsThatTracksProperty addObject:objectKey];
+}
+
 
 - (void) removeObjectFromUpdatesTracking: (id) object {
     
     for (int i = (int)self.objectsThatTracksProperty.count - 1; i >= 0; i--) {
-        id currentObj = [self.objectsThatTracksProperty objectAtIndex:i];
-        if (currentObj == object) {
+        CTObjectKey *currentObjectKey = [self.objectsThatTracksProperty objectAtIndex:i];
+        if (currentObjectKey.object == object) {
             [self.objectsThatTracksProperty removeObjectAtIndex:i];
         }
     }
 }
 
-- (id) firstObjectThatTracksUpdates {
+- (CTObjectKey *) firstObjectThatTracksUpdates { 
     if (self.objectsThatTracksProperty.count > 0) {
         return [self.objectsThatTracksProperty objectAtIndex:0];
     }

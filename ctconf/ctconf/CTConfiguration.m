@@ -106,26 +106,6 @@ static id sharedInstance = nil;
     }];
 }
 
-- (void) registerPropery: (CTProperty *) property {
-    
-    CTProperty *registeredProperty = [self.propertiesDict objectForKey:property.name];
-    if (!registeredProperty) {
-        [self.propertiesDict setObject:property forKey:property.name];
-    } else {
-        if (registeredProperty.class != property.class) {
-            [NSException raise:@"One name for different properties types" format:@"Property %@ has multiple types simultaneously", property.name];
-        }
-        
-        [registeredProperty addObjectThatTracksUpdates:[property firstObjectThatTracksUpdates]]; // it just one when we register new property
-    }
-    
-    if (self.mode == CTNormalMode) {
-        [self updatePropertyValueOrMakeItDefault:property];
-    } else {
-        [self reReadConfigTextIfHasUntrackedModifications]; 
-    }
-}
-
 - (void) startSceneWithName: (NSString *) sceneName {
     if (self.currentScene) {
         [self.currentScene stopScene];
@@ -241,6 +221,26 @@ static id sharedInstance = nil;
 }
 
 #pragma mark Properties
+
+- (void) registerPropery: (CTProperty *) property {
+    
+    CTProperty *registeredProperty = [self.propertiesDict objectForKey:property.name];
+    if (!registeredProperty) {
+        [self.propertiesDict setObject:property forKey:property.name];
+    } else {
+        if (registeredProperty.class != property.class) {
+            [NSException raise:@"One name for different properties types" format:@"Property %@ has multiple types simultaneously", property.name];
+        }
+        
+        [registeredProperty addObjectThatTracksUpdates:[property firstObjectThatTracksUpdates]]; // it just one when we register new property
+    }
+    
+    if (self.mode == CTNormalMode) {
+        [self updatePropertyValueOrMakeItDefault:property];
+    } else {
+        [self reReadConfigTextIfHasUntrackedModifications]; 
+    }
+}
 
 - (double) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal {
 
