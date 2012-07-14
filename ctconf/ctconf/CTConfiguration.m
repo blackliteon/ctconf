@@ -169,6 +169,8 @@ static id sharedInstance = nil;
     self.confFilePath = path;
     
     [self.panelController showWindow:self];
+    [NSApp activateIgnoringOtherApps:YES];
+    
     [self.panelController setScenesNames:self.sceneManager.scenesNames];
 
     NSFileManager *fileManager = [NSFileManager defaultManager];
