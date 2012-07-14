@@ -16,6 +16,7 @@
 #import "CTIntegerProperty.h"
 #import "CTDoubleArrayProperty.h"
 #import "CTSizeProperty.h"
+#import "CTColorProperty.h"
 
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
@@ -343,6 +344,18 @@ static id sharedInstance = nil;
     return currentValue;
 }
 
+- (NSColor *) addColorProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSColor *) defaultValue {
+    CTColorProperty *property = [[CTColorProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    [property addObjectThatTracksUpdates:object key:key];
+    
+    [self _registerPropery:property];
+    
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    return assignedProperty.value;
+
+}
 
 
 @end

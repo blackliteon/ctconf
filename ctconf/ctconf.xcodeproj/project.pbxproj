@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		322CAE6C15B03D6600BE85DB /* CTColorProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6A15B03D6600BE85DB /* CTColorProperty.h */; };
+		322CAE6D15B03D6600BE85DB /* CTColorProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 322CAE6B15B03D6600BE85DB /* CTColorProperty.m */; };
+		322CAE7115B03EC900BE85DB /* NSColor+FromHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */; };
+		322CAE7215B03EC900BE85DB /* NSColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 322CAE7015B03EC900BE85DB /* NSColor+FromHex.m */; };
 		3240886715AEB75300735767 /* CTIntegerProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240886515AEB75300735767 /* CTIntegerProperty.h */; };
 		3240886815AEB75300735767 /* CTIntegerProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886615AEB75300735767 /* CTIntegerProperty.m */; };
 		3240886C15AEB98200735767 /* CTDoubleArrayProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240886A15AEB98100735767 /* CTDoubleArrayProperty.h */; };
@@ -60,6 +64,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		322CAE6A15B03D6600BE85DB /* CTColorProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTColorProperty.h; sourceTree = "<group>"; };
+		322CAE6B15B03D6600BE85DB /* CTColorProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTColorProperty.m; sourceTree = "<group>"; };
+		322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+FromHex.h"; sourceTree = "<group>"; };
+		322CAE7015B03EC900BE85DB /* NSColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+FromHex.m"; sourceTree = "<group>"; };
 		3240886515AEB75300735767 /* CTIntegerProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTIntegerProperty.h; sourceTree = "<group>"; };
 		3240886615AEB75300735767 /* CTIntegerProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTIntegerProperty.m; sourceTree = "<group>"; };
 		3240886A15AEB98100735767 /* CTDoubleArrayProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTDoubleArrayProperty.h; sourceTree = "<group>"; };
@@ -134,6 +142,8 @@
 		3240888A15AF083000735767 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
+				322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */,
+				322CAE7015B03EC900BE85DB /* NSColor+FromHex.m */,
 				3240888C15AF084D00735767 /* CTObjectSetterInfo.h */,
 				3240888D15AF084D00735767 /* CTObjectSetterInfo.m */,
 			);
@@ -248,6 +258,8 @@
 				3240886B15AEB98100735767 /* CTDoubleArrayProperty.m */,
 				3240886E15AEC1B400735767 /* CTSizeProperty.h */,
 				3240886F15AEC1B400735767 /* CTSizeProperty.m */,
+				322CAE6A15B03D6600BE85DB /* CTColorProperty.h */,
+				322CAE6B15B03D6600BE85DB /* CTColorProperty.m */,
 			);
 			name = properties;
 			sourceTree = "<group>";
@@ -288,6 +300,8 @@
 				3240887015AEC1B400735767 /* CTSizeProperty.h in Headers */,
 				3240887415AEC35B00735767 /* CTPropertyHelper.h in Headers */,
 				3240888E15AF084D00735767 /* CTObjectSetterInfo.h in Headers */,
+				322CAE6C15B03D6600BE85DB /* CTColorProperty.h in Headers */,
+				322CAE7115B03EC900BE85DB /* NSColor+FromHex.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,6 +428,8 @@
 				3240887115AEC1B400735767 /* CTSizeProperty.m in Sources */,
 				3240887515AEC35B00735767 /* CTPropertyHelper.m in Sources */,
 				3240888F15AF084D00735767 /* CTObjectSetterInfo.m in Sources */,
+				322CAE6D15B03D6600BE85DB /* CTColorProperty.m in Sources */,
+				322CAE7215B03EC900BE85DB /* NSColor+FromHex.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

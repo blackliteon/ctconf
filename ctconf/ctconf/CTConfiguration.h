@@ -34,6 +34,8 @@ typedef NSInteger CTMode;
 
 - (NSSize) addSizeProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSSize) defaultValue;
 
+- (NSColor *) addColorProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSColor *) defaultValue;
+
 /*
 - (double) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
 - (NSInteger) declareIntegerInObject: (id) object withName: (NSString *) name defaultValue:(NSInteger) defaultVal;
