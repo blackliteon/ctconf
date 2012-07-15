@@ -36,22 +36,12 @@ typedef NSInteger CTMode;
 
 - (NSColor *) addColorProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSColor *) defaultValue;
 
-/*
-- (double) declareDoubleInObject: (id) object withName: (NSString *) name defaultValue:(CGFloat) defaultVal;
-- (NSInteger) declareIntegerInObject: (id) object withName: (NSString *) name defaultValue:(NSInteger) defaultVal;
-- (BOOL) declareBooleanInObject: (id) object withName: (NSString *) name defaultValue:(BOOL) defaultVal;
-- (NSString *) declareEnumerateInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal possibleValues: (NSString *) possibleValue1, ...;
-- (NSString *) declareStringInObject: (id) object withName: (NSString *) name defaultValue:(NSString *) defaultVal;
-- (NSArray *) declareDoubleArrayInObject: (id) object withName: (NSString *) name defaultValue:(NSArray *) defaultVal;
-- (NSSize) declareSizeInObject: (id) object withName: (NSString *) name defaultValue:(NSSize) defaultVal;
-*/
-// 
+- (NSString *) addResourcePathProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultPath: (NSString *) defaultValue;
+
 
 - (void) startConfigurationModeWithConfigPath: (NSString *) path;
-- (void) startNormalModeWithConfigPath: (NSString *) path;
-
+- (void) startNormalModeWithConfigPath: (NSString *) path useResourcesFromBundle: (BOOL) resourcesFromBundle;
 - (void) unregisterObjectFromUpdates: (id) object;
-
 + (CTConfiguration *) sharedInstance;
 
 @property (copy, nonatomic) NSString *confFilePath;

@@ -6,8 +6,8 @@
 //  Copyright (c) 2012 cocotype.com. All rights reserved.
 //
 
-#import "CTProperty.h"
+#import "CTArrayProperty.h"
 
-@interface CTDoubleArrayProperty : CTProperty
+@interface CTDoubleArrayProperty : CTArrayProperty
 
 @end

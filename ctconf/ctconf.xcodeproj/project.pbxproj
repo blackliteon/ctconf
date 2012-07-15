@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3213A8D215B2C9EE00D77FC6 /* CTResourcePathProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8D015B2C9EE00D77FC6 /* CTResourcePathProperty.h */; };
+		3213A8D315B2C9EE00D77FC6 /* CTResourcePathProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8D115B2C9EE00D77FC6 /* CTResourcePathProperty.m */; };
+		3213A8D715B2EDDA00D77FC6 /* CTStringArrayProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8D515B2EDD900D77FC6 /* CTStringArrayProperty.h */; };
+		3213A8D815B2EDDA00D77FC6 /* CTStringArrayProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8D615B2EDDA00D77FC6 /* CTStringArrayProperty.m */; };
+		3213A8DC15B2EEA000D77FC6 /* CTArrayProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8DA15B2EEA000D77FC6 /* CTArrayProperty.h */; };
+		3213A8DD15B2EEA000D77FC6 /* CTArrayProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8DB15B2EEA000D77FC6 /* CTArrayProperty.m */; };
+		3213A8E115B2F03D00D77FC6 /* NSString+CTAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8DF15B2F03D00D77FC6 /* NSString+CTAdditions.h */; };
+		3213A8E215B2F03D00D77FC6 /* NSString+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8E015B2F03D00D77FC6 /* NSString+CTAdditions.m */; };
+		3213A8E515B2F0CA00D77FC6 /* NSArray+CTAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8E315B2F0CA00D77FC6 /* NSArray+CTAdditions.h */; };
+		3213A8E615B2F0CA00D77FC6 /* NSArray+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8E415B2F0CA00D77FC6 /* NSArray+CTAdditions.m */; };
 		322CAE6C15B03D6600BE85DB /* CTColorProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6A15B03D6600BE85DB /* CTColorProperty.h */; };
 		322CAE6D15B03D6600BE85DB /* CTColorProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 322CAE6B15B03D6600BE85DB /* CTColorProperty.m */; };
 		322CAE7115B03EC900BE85DB /* NSColor+FromHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */; };
@@ -17,8 +27,6 @@
 		3240886D15AEB98200735767 /* CTDoubleArrayProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886B15AEB98100735767 /* CTDoubleArrayProperty.m */; };
 		3240887015AEC1B400735767 /* CTSizeProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240886E15AEC1B400735767 /* CTSizeProperty.h */; };
 		3240887115AEC1B400735767 /* CTSizeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886F15AEC1B400735767 /* CTSizeProperty.m */; };
-		3240887415AEC35B00735767 /* CTPropertyHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240887215AEC35B00735767 /* CTPropertyHelper.h */; };
-		3240887515AEC35B00735767 /* CTPropertyHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240887315AEC35B00735767 /* CTPropertyHelper.m */; };
 		3240888E15AF084D00735767 /* CTObjectSetterInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240888C15AF084D00735767 /* CTObjectSetterInfo.h */; };
 		3240888F15AF084D00735767 /* CTObjectSetterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240888D15AF084D00735767 /* CTObjectSetterInfo.m */; };
 		3280BD6315A469C8009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD6215A469C8009148AD /* Cocoa.framework */; };
@@ -64,6 +72,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3213A8D015B2C9EE00D77FC6 /* CTResourcePathProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTResourcePathProperty.h; sourceTree = "<group>"; };
+		3213A8D115B2C9EE00D77FC6 /* CTResourcePathProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTResourcePathProperty.m; sourceTree = "<group>"; };
+		3213A8D515B2EDD900D77FC6 /* CTStringArrayProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStringArrayProperty.h; sourceTree = "<group>"; };
+		3213A8D615B2EDDA00D77FC6 /* CTStringArrayProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStringArrayProperty.m; sourceTree = "<group>"; };
+		3213A8DA15B2EEA000D77FC6 /* CTArrayProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTArrayProperty.h; sourceTree = "<group>"; };
+		3213A8DB15B2EEA000D77FC6 /* CTArrayProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTArrayProperty.m; sourceTree = "<group>"; };
+		3213A8DF15B2F03D00D77FC6 /* NSString+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+CTAdditions.h"; sourceTree = "<group>"; };
+		3213A8E015B2F03D00D77FC6 /* NSString+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+CTAdditions.m"; sourceTree = "<group>"; };
+		3213A8E315B2F0CA00D77FC6 /* NSArray+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+CTAdditions.h"; sourceTree = "<group>"; };
+		3213A8E415B2F0CA00D77FC6 /* NSArray+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CTAdditions.m"; sourceTree = "<group>"; };
 		322CAE6A15B03D6600BE85DB /* CTColorProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTColorProperty.h; sourceTree = "<group>"; };
 		322CAE6B15B03D6600BE85DB /* CTColorProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTColorProperty.m; sourceTree = "<group>"; };
 		322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+FromHex.h"; sourceTree = "<group>"; };
@@ -74,8 +92,6 @@
 		3240886B15AEB98100735767 /* CTDoubleArrayProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTDoubleArrayProperty.m; sourceTree = "<group>"; };
 		3240886E15AEC1B400735767 /* CTSizeProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTSizeProperty.h; sourceTree = "<group>"; };
 		3240886F15AEC1B400735767 /* CTSizeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSizeProperty.m; sourceTree = "<group>"; };
-		3240887215AEC35B00735767 /* CTPropertyHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPropertyHelper.h; sourceTree = "<group>"; };
-		3240887315AEC35B00735767 /* CTPropertyHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPropertyHelper.m; sourceTree = "<group>"; };
 		3240888C15AF084D00735767 /* CTObjectSetterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTObjectSetterInfo.h; sourceTree = "<group>"; };
 		3240888D15AF084D00735767 /* CTObjectSetterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTObjectSetterInfo.m; sourceTree = "<group>"; };
 		3280BD5F15A469C8009148AD /* ctconf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ctconf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +155,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3213A8D915B2EE5400D77FC6 /* arrays */ = {
+			isa = PBXGroup;
+			children = (
+				3213A8DA15B2EEA000D77FC6 /* CTArrayProperty.h */,
+				3213A8DB15B2EEA000D77FC6 /* CTArrayProperty.m */,
+				3240886A15AEB98100735767 /* CTDoubleArrayProperty.h */,
+				3240886B15AEB98100735767 /* CTDoubleArrayProperty.m */,
+				3213A8D515B2EDD900D77FC6 /* CTStringArrayProperty.h */,
+				3213A8D615B2EDDA00D77FC6 /* CTStringArrayProperty.m */,
+			);
+			name = arrays;
+			sourceTree = "<group>";
+		};
+		3213A8DE15B2F00D00D77FC6 /* additions */ = {
+			isa = PBXGroup;
+			children = (
+				3213A8DF15B2F03D00D77FC6 /* NSString+CTAdditions.h */,
+				3213A8E015B2F03D00D77FC6 /* NSString+CTAdditions.m */,
+				3213A8E315B2F0CA00D77FC6 /* NSArray+CTAdditions.h */,
+				3213A8E415B2F0CA00D77FC6 /* NSArray+CTAdditions.m */,
+			);
+			name = additions;
+			sourceTree = "<group>";
+		};
 		3240888A15AF083000735767 /* helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -237,11 +277,11 @@
 		32BE666B15A6E7D000042E9E /* properties */ = {
 			isa = PBXGroup;
 			children = (
+				3213A8DE15B2F00D00D77FC6 /* additions */,
+				3213A8D915B2EE5400D77FC6 /* arrays */,
 				3240888A15AF083000735767 /* helpers */,
 				32A44D8915A5B6D800A87F87 /* CTProperty.h */,
 				32A44D8A15A5B6D800A87F87 /* CTProperty.m */,
-				3240887215AEC35B00735767 /* CTPropertyHelper.h */,
-				3240887315AEC35B00735767 /* CTPropertyHelper.m */,
 				32BE667015A6E85000042E9E /* CTNumberProperty.h */,
 				32BE667115A6E85000042E9E /* CTNumberProperty.m */,
 				3240886515AEB75300735767 /* CTIntegerProperty.h */,
@@ -254,12 +294,12 @@
 				32BE667915A705CF00042E9E /* CTEnumerateProperty.m */,
 				32CEE86815A9910900A3C644 /* CTStringProperty.h */,
 				32CEE86915A9910900A3C644 /* CTStringProperty.m */,
-				3240886A15AEB98100735767 /* CTDoubleArrayProperty.h */,
-				3240886B15AEB98100735767 /* CTDoubleArrayProperty.m */,
 				3240886E15AEC1B400735767 /* CTSizeProperty.h */,
 				3240886F15AEC1B400735767 /* CTSizeProperty.m */,
 				322CAE6A15B03D6600BE85DB /* CTColorProperty.h */,
 				322CAE6B15B03D6600BE85DB /* CTColorProperty.m */,
+				3213A8D015B2C9EE00D77FC6 /* CTResourcePathProperty.h */,
+				3213A8D115B2C9EE00D77FC6 /* CTResourcePathProperty.m */,
 			);
 			name = properties;
 			sourceTree = "<group>";
@@ -298,10 +338,14 @@
 				3240886715AEB75300735767 /* CTIntegerProperty.h in Headers */,
 				3240886C15AEB98200735767 /* CTDoubleArrayProperty.h in Headers */,
 				3240887015AEC1B400735767 /* CTSizeProperty.h in Headers */,
-				3240887415AEC35B00735767 /* CTPropertyHelper.h in Headers */,
 				3240888E15AF084D00735767 /* CTObjectSetterInfo.h in Headers */,
 				322CAE6C15B03D6600BE85DB /* CTColorProperty.h in Headers */,
 				322CAE7115B03EC900BE85DB /* NSColor+FromHex.h in Headers */,
+				3213A8D215B2C9EE00D77FC6 /* CTResourcePathProperty.h in Headers */,
+				3213A8D715B2EDDA00D77FC6 /* CTStringArrayProperty.h in Headers */,
+				3213A8DC15B2EEA000D77FC6 /* CTArrayProperty.h in Headers */,
+				3213A8E115B2F03D00D77FC6 /* NSString+CTAdditions.h in Headers */,
+				3213A8E515B2F0CA00D77FC6 /* NSArray+CTAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,10 +470,14 @@
 				3240886815AEB75300735767 /* CTIntegerProperty.m in Sources */,
 				3240886D15AEB98200735767 /* CTDoubleArrayProperty.m in Sources */,
 				3240887115AEC1B400735767 /* CTSizeProperty.m in Sources */,
-				3240887515AEC35B00735767 /* CTPropertyHelper.m in Sources */,
 				3240888F15AF084D00735767 /* CTObjectSetterInfo.m in Sources */,
 				322CAE6D15B03D6600BE85DB /* CTColorProperty.m in Sources */,
 				322CAE7215B03EC900BE85DB /* NSColor+FromHex.m in Sources */,
+				3213A8D315B2C9EE00D77FC6 /* CTResourcePathProperty.m in Sources */,
+				3213A8D815B2EDDA00D77FC6 /* CTStringArrayProperty.m in Sources */,
+				3213A8DD15B2EEA000D77FC6 /* CTArrayProperty.m in Sources */,
+				3213A8E215B2F03D00D77FC6 /* NSString+CTAdditions.m in Sources */,
+				3213A8E615B2F0CA00D77FC6 /* NSArray+CTAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

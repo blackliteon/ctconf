@@ -7,26 +7,10 @@
 //
 
 #import "CTSizeProperty.h"
-#import "CTPropertyHelper.h"
-
-@interface CTSizeProperty ()
-
-@property (strong, nonatomic) CTPropertyHelper *helper;
-
-@end
+#import "NSString+CTAdditions.h"
+#import "NSArray+CTAdditions.h"
 
 @implementation CTSizeProperty
-
-@synthesize helper = _helper;
-
-#pragma mark - Accesors
-
-- (CTPropertyHelper *) helper {
-    if (!_helper) {
-        _helper = [[CTPropertyHelper alloc] init];
-    }
-    return _helper;
-}
 
 #pragma mark - Property Override
 
@@ -39,14 +23,12 @@
 
 - (NSString *) toString {
     NSSize size = [self.value sizeValue];
-    
     NSArray *elements = [NSArray arrayWithObjects:[NSNumber numberWithDouble:size.width], [NSNumber numberWithDouble:size.height],nil];
-    
-    return [self.helper stringWithParenthesesFromNumberArray:elements];
+    return [elements stringWithParenthesesFromNumberArray];
 }
 
 - (void) fromString: (NSString *) stringValue {
-    NSArray *elements = [self.helper arrayWithDoublesFromStringWithParentheses:stringValue];
+    NSArray *elements = [stringValue arrayWithDoublesFromStringWithParentheses];
     NSNumber *width = [elements objectAtIndex:0];
     NSNumber *height = [elements objectAtIndex:1];
     NSSize size = NSMakeSize(width.doubleValue, height.doubleValue);

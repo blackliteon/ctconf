@@ -7,42 +7,17 @@
 //
 
 #import "CTDoubleArrayProperty.h"
-#import "CTPropertyHelper.h"
-
-@interface CTDoubleArrayProperty ()
-
-@property (strong, nonatomic) CTPropertyHelper *helper;
-
-@end
+#import "NSArray+CTAdditions.h"
+#import "NSString+CTAdditions.h"
 
 @implementation CTDoubleArrayProperty
 
-@synthesize helper = _helper;
-
-#pragma mark - Accesors
-
-- (CTPropertyHelper *) helper {
-    if (!_helper) {
-        _helper = [[CTPropertyHelper alloc] init];
-    }
-    return _helper;
-}
-
-#pragma mark - Property Override
-
-- (BOOL) isValueEqualTo: (id) otherValue {
-    NSArray *myArray = self.value;
-    NSArray *otherArray = otherValue;
-    
-    return [myArray isEqualToArray:otherArray];
-}
-
 - (NSString *) toString {
-    return [self.helper stringWithParenthesesFromNumberArray:self.value];
+    return [self.value stringWithParenthesesFromNumberArray];
 }
 
 - (void) fromString: (NSString *) stringValue {
-    self.value = [self.helper arrayWithDoublesFromStringWithParentheses:stringValue];
+    self.value = [stringValue arrayWithDoublesFromStringWithParentheses];
 }
 
 

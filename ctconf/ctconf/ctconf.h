@@ -11,3 +11,4 @@
 #import "CTConfiguration.h"
 #import "CTScene.h"
 
+#define CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR @";"

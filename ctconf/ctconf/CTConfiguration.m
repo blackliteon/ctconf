@@ -17,11 +17,12 @@
 #import "CTDoubleArrayProperty.h"
 #import "CTSizeProperty.h"
 #import "CTColorProperty.h"
+#import "CTResourcePathProperty.h"
 
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
-@interface CTConfiguration () <CTPanelControllerDelegate>
+@interface CTConfiguration () <CTPanelControllerDelegate, CTResourcePathDelegate>
 
 @property (strong, nonatomic) NSMutableArray *properties;
 @property (strong, nonatomic) CTPanelController *panelController;
@@ -31,6 +32,7 @@
 
 @property (strong, nonatomic) id<CTScene> currentScene;
 @property (assign, nonatomic) CTMode mode;
+@property (assign, nonatomic) BOOL useResourceFromBundle;
 
 @end
 
@@ -49,6 +51,7 @@ static id sharedInstance = nil;
 
 @synthesize currentScene = _currentScene;
 @synthesize mode = _mode;
+@synthesize useResourceFromBundle = _useResourceFromBundle;
 
 #pragma mark - Private
 
@@ -139,6 +142,19 @@ static id sharedInstance = nil;
     
 }
 
+- (NSString *) absolutePathForResourceWithConfigPath: (NSString *) path {
+    if (self.useResourceFromBundle) {
+        NSString *lastComponent = [path lastPathComponent];
+        NSString *mainBundlePath = [[NSBundle mainBundle] bundlePath];
+        NSString *resourcePath = [NSString stringWithFormat:@"%@/Contents/Resources/%@", mainBundlePath, lastComponent];
+        return resourcePath;
+
+    } else {
+        return path;
+    }
+}
+
+
 #pragma mark - Public
 
 + (CTConfiguration *) sharedInstance {
@@ -167,6 +183,7 @@ static id sharedInstance = nil;
 - (void) startConfigurationModeWithConfigPath: (NSString *) path {
     self.mode = CTConfigurationMode;
     self.confFilePath = path;
+    self.useResourceFromBundle = NO;
     
     [self.panelController showWindow:self];
     [NSApp activateIgnoringOtherApps:YES];
@@ -196,9 +213,10 @@ static id sharedInstance = nil;
     
 }
 
-- (void) startNormalModeWithConfigPath: (NSString *) confpath {
+- (void) startNormalModeWithConfigPath: (NSString *) confpath useResourcesFromBundle: (BOOL) resourcesFromBundle {
     self.mode = CTNormalMode;
     self.confFilePath = confpath;
+    self.useResourceFromBundle = resourcesFromBundle;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -358,6 +376,20 @@ static id sharedInstance = nil;
     return assignedProperty.value;
 
 }
+
+- (NSString *) addResourcePathProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultPath: (NSString *) defaultValue {
+    CTResourcePathProperty *property = [[CTResourcePathProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    property.delegate = self;
+    [property addObjectThatTracksUpdates:object key:key];
+    
+    [self _registerPropery:property];
+    
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    return assignedProperty.value;
+}
+
 
 
 @end
