@@ -11,6 +11,7 @@
 #import "BGView.h"
 #import "NSColor+FromHex.h"
 #import <ctconf/ctconf.h>
+#import "CTMomentaryButton.h"
 
 @interface MainWindowController ()
 
@@ -77,6 +78,8 @@
     self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"#ff0000"];
     
     [self.window.contentView addSubview:self.firstBgView];
+    
+    CTM
 
 }
 

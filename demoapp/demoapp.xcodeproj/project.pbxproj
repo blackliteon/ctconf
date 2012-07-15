@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3213A90215B31D7500D77FC6 /* button_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 3213A8FE15B31D7500D77FC6 /* button_clicked.png */; };
+		3213A90315B31D7500D77FC6 /* button_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 3213A8FF15B31D7500D77FC6 /* button_disabled.png */; };
+		3213A90415B31D7500D77FC6 /* button_over.png in Resources */ = {isa = PBXBuildFile; fileRef = 3213A90015B31D7500D77FC6 /* button_over.png */; };
+		3213A90515B31D7500D77FC6 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3213A90115B31D7500D77FC6 /* button.png */; };
 		3280BD9F15A46A02009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD9E15A46A02009148AD /* Cocoa.framework */; };
 		3280BDA915A46A02009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BDA715A46A02009148AD /* InfoPlist.strings */; };
 		3280BDAB15A46A02009148AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3280BDAA15A46A02009148AD /* main.m */; };
@@ -51,6 +55,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3213A8FE15B31D7500D77FC6 /* button_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_clicked.png; sourceTree = "<group>"; };
+		3213A8FF15B31D7500D77FC6 /* button_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_disabled.png; sourceTree = "<group>"; };
+		3213A90015B31D7500D77FC6 /* button_over.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_over.png; sourceTree = "<group>"; };
+		3213A90115B31D7500D77FC6 /* button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button.png; sourceTree = "<group>"; };
 		3280BD9A15A46A02009148AD /* demoapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = demoapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3280BD9E15A46A02009148AD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3280BDA115A46A02009148AD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -96,6 +104,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3213A8FB15B31D5700D77FC6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				3213A8FE15B31D7500D77FC6 /* button_clicked.png */,
+				3213A8FF15B31D7500D77FC6 /* button_disabled.png */,
+				3213A90015B31D7500D77FC6 /* button_over.png */,
+				3213A90115B31D7500D77FC6 /* button.png */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		3280BD8F15A46A02009148AD = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +156,7 @@
 		3280BDA415A46A02009148AD /* demoapp */ = {
 			isa = PBXGroup;
 			children = (
+				3213A8FB15B31D5700D77FC6 /* Resources */,
 				32CEE87115A992F600A3C644 /* Views */,
 				32CEE86D15A9922800A3C644 /* Additions */,
 				3282DB5315A8727F004FBBFD /* Scenes */,
@@ -287,6 +307,10 @@
 				32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */,
 				3282DB4E15A82B5C004FBBFD /* MainWindow.xib in Resources */,
 				32CEE86715A98CE000A3C644 /* demoapp.conf in Resources */,
+				3213A90215B31D7500D77FC6 /* button_clicked.png in Resources */,
+				3213A90315B31D7500D77FC6 /* button_disabled.png in Resources */,
+				3213A90415B31D7500D77FC6 /* button_over.png in Resources */,
+				3213A90515B31D7500D77FC6 /* button.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

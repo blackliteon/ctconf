@@ -49,7 +49,7 @@
     }
     
     if (mode == CTNormalMode) {
-        [[CTConfiguration sharedInstance] startNormalModeWithConfigPath:confPath];
+        [[CTConfiguration sharedInstance] startNormalModeWithConfigPath:confPath useResourcesFromBundle:NO];
         self.mainWindowController = [[MainWindowController alloc] init];
         [self.mainWindowController showWindow:self];
     } else {
