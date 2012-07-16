@@ -28,6 +28,12 @@
 		32CEE86715A98CE000A3C644 /* demoapp.conf in Resources */ = {isa = PBXBuildFile; fileRef = 32CEE86615A98CE000A3C644 /* demoapp.conf */; };
 		32CEE87015A9923D00A3C644 /* NSColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE86F15A9923D00A3C644 /* NSColor+FromHex.m */; };
 		32CEE87415A9930F00A3C644 /* BGView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE87315A9930F00A3C644 /* BGView.m */; };
+		32D5DC0215B42B7200EC5825 /* pushbutton_clicked.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D5DBFC15B42B7200EC5825 /* pushbutton_clicked.png */; };
+		32D5DC0315B42B7200EC5825 /* pushbutton_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D5DBFD15B42B7200EC5825 /* pushbutton_disabled.png */; };
+		32D5DC0415B42B7200EC5825 /* pushbutton_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D5DBFE15B42B7200EC5825 /* pushbutton_off.png */; };
+		32D5DC0515B42B7200EC5825 /* pushbutton_offover.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D5DBFF15B42B7200EC5825 /* pushbutton_offover.png */; };
+		32D5DC0615B42B7200EC5825 /* pushbutton_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D5DC0015B42B7200EC5825 /* pushbutton_on.png */; };
+		32D5DC0715B42B7200EC5825 /* pushbutton_onover.png in Resources */ = {isa = PBXBuildFile; fileRef = 32D5DC0115B42B7200EC5825 /* pushbutton_onover.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +95,12 @@
 		32CEE86F15A9923D00A3C644 /* NSColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+FromHex.m"; sourceTree = "<group>"; };
 		32CEE87215A9930F00A3C644 /* BGView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BGView.h; sourceTree = "<group>"; };
 		32CEE87315A9930F00A3C644 /* BGView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BGView.m; sourceTree = "<group>"; };
+		32D5DBFC15B42B7200EC5825 /* pushbutton_clicked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushbutton_clicked.png; sourceTree = "<group>"; };
+		32D5DBFD15B42B7200EC5825 /* pushbutton_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushbutton_disabled.png; sourceTree = "<group>"; };
+		32D5DBFE15B42B7200EC5825 /* pushbutton_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushbutton_off.png; sourceTree = "<group>"; };
+		32D5DBFF15B42B7200EC5825 /* pushbutton_offover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushbutton_offover.png; sourceTree = "<group>"; };
+		32D5DC0015B42B7200EC5825 /* pushbutton_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushbutton_on.png; sourceTree = "<group>"; };
+		32D5DC0115B42B7200EC5825 /* pushbutton_onover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pushbutton_onover.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +123,12 @@
 				3213A8FF15B31D7500D77FC6 /* button_disabled.png */,
 				3213A90015B31D7500D77FC6 /* button_over.png */,
 				3213A90115B31D7500D77FC6 /* button.png */,
+				32D5DBFC15B42B7200EC5825 /* pushbutton_clicked.png */,
+				32D5DBFD15B42B7200EC5825 /* pushbutton_disabled.png */,
+				32D5DBFE15B42B7200EC5825 /* pushbutton_off.png */,
+				32D5DBFF15B42B7200EC5825 /* pushbutton_offover.png */,
+				32D5DC0015B42B7200EC5825 /* pushbutton_on.png */,
+				32D5DC0115B42B7200EC5825 /* pushbutton_onover.png */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -311,6 +329,12 @@
 				3213A90315B31D7500D77FC6 /* button_disabled.png in Resources */,
 				3213A90415B31D7500D77FC6 /* button_over.png in Resources */,
 				3213A90515B31D7500D77FC6 /* button.png in Resources */,
+				32D5DC0215B42B7200EC5825 /* pushbutton_clicked.png in Resources */,
+				32D5DC0315B42B7200EC5825 /* pushbutton_disabled.png in Resources */,
+				32D5DC0415B42B7200EC5825 /* pushbutton_off.png in Resources */,
+				32D5DC0515B42B7200EC5825 /* pushbutton_offover.png in Resources */,
+				32D5DC0615B42B7200EC5825 /* pushbutton_on.png in Resources */,
+				32D5DC0715B42B7200EC5825 /* pushbutton_onover.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

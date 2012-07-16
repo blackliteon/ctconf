@@ -10,5 +10,7 @@
 
 #import "CTConfiguration.h"
 #import "CTScene.h"
+#import "CTMomentaryButton.h"
+#import "CTPushOnPushOffButton.h"
 
 #define CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR @";"

@@ -1,46 +1,53 @@
 //
-//  CTButton.m
+//  CTPushOnPushOffButton.m
 //  ctconf
 //
-//  Created by Dmitry Nikolaev on 15.07.12.
+//  Created by Dmitry Nikolaev on 16.07.12.
 //  Copyright (c) 2012 cocotype.com. All rights reserved.
 //
 
-#import "CTMomentaryButton.h"
+#import "CTPushOnPushOffButton.h"
 
 enum {
-    CTButtonImageStateDefault,
-    CTButtonImageStateOverDefault,
-    CTButtonImageStateClicked,
-    CTButtonImageStateDisabled
-    };
+    CTPushButtonImageStatePushedOff,
+    CTPushButtonImageStateOverPushedOff,
+    CTPushButtonImageStatePushedOn,
+    CTPushButtonImageStateOverPushedOn,
+    CTPushButtonImageStateClicked,
+    CTPushButtonImageStateDisabled
+};
 
-typedef NSUInteger CTMomentaryButtonImageState;
+typedef NSUInteger CTPushOnPushOffButtonImageState;
 
-@interface CTMomentaryButton ()
+@interface CTPushOnPushOffButton ()
 
-@property (strong, nonatomic) NSImage *defaultImage;
-@property (strong, nonatomic) NSImage *overDefaultImage;
+@property (strong, nonatomic) NSImage *pushedOffImage;
+@property (strong, nonatomic) NSImage *overPushedOffImage;
+@property (strong, nonatomic) NSImage *pushedOnImage;
+@property (strong, nonatomic) NSImage *overPushedOnImage;
 @property (strong, nonatomic) NSImage *clickedImage;
 @property (strong, nonatomic) NSImage *disabledImage;
 
 @property (assign, nonatomic) BOOL mouseEntered;
 @property (assign, nonatomic) BOOL mouseDown;
 
-@property (assign, nonatomic) CTMomentaryButtonImageState imageState;
+@property (assign, nonatomic) CTPushOnPushOffButtonImageState imageState;
 @property (strong, nonatomic) NSImage *drawnImage; // do not update this value for state update, use imageState
 @property (strong, nonatomic) NSTrackingArea *trackingArea;
 
 @end
 
-@implementation CTMomentaryButton
+@implementation CTPushOnPushOffButton
 
 @synthesize identifier = _identifier;
 @synthesize enabled = _enabled;
+@synthesize pushed = _pushed;
 @synthesize delegate = _delegate;
 
-@synthesize defaultImage = _defaultImage;
-@synthesize overDefaultImage = _overDefaultImage;
+@synthesize pushedOffImage = _pushedOffImage;
+@synthesize overPushedOffImage = _overPushedOffImage;
+@synthesize pushedOnImage = _pushedOnImage;
+@synthesize overPushedOnImage = _overPushedOnImage;
 @synthesize clickedImage = _clickedImage;
 @synthesize disabledImage = _disabledImage;
 
@@ -51,20 +58,23 @@ typedef NSUInteger CTMomentaryButtonImageState;
 @synthesize drawnImage = _drawnImage;
 @synthesize trackingArea = _trackingArea;
 
-- (id)initWithFrame:(NSRect)frame {
+- (id)initWithFrame:(NSRect)frame
+{
     self = [super initWithFrame:frame];
-    
     if (self) {
         self.enabled = YES;
         self.mouseEntered = NO;
+        self.pushed = NO;
     }
     
     return self;
 }
 
 - (void) setImagesFromPath: (NSString *) path {
-    self.defaultImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@.png", path]];
-    self.overDefaultImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_over.png", path]];
+    self.pushedOffImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_off.png", path]];
+    self.overPushedOffImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_offover.png", path]];
+    self.pushedOnImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_on.png", path]];
+    self.overPushedOnImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_onover.png", path]];
     self.clickedImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_clicked.png", path]];
     self.disabledImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_disabled.png", path]];
 }
@@ -74,23 +84,33 @@ typedef NSUInteger CTMomentaryButtonImageState;
 - (void) _updateImageState {
     
     if (!self.enabled) {
-        [self setImageState:CTButtonImageStateDisabled];
+        [self setImageState:CTPushButtonImageStateDisabled];
         return;
     }
     
-    if (self.mouseEntered) {
-        if (self.mouseDown) {
-            [self setImageState:CTButtonImageStateClicked];
+    if (self.mouseDown && self.mouseEntered) {
+        [self setImageState:CTPushButtonImageStateClicked];
+        return;
+    }
+    
+    if (self.pushed) {
+        if (self.mouseEntered) {
+            [self setImageState:CTPushButtonImageStateOverPushedOn];
         } else {
-            [self setImageState:CTButtonImageStateOverDefault];
+            [self setImageState:CTPushButtonImageStatePushedOn];
         }
     } else {
-        if (self.mouseDown) {
-            [self setImageState:CTButtonImageStateDefault];
+        if (self.mouseEntered) {
+            [self setImageState:CTPushButtonImageStateOverPushedOff];
         } else {
-            [self setImageState:CTButtonImageStateDefault];
+            [self setImageState:CTPushButtonImageStatePushedOff];
         }
     }
+}
+
+- (void) setPushed:(BOOL)pushed {
+    _pushed = pushed;
+    [self _updateImageState];
 }
 
 - (void) setEnabled:(BOOL)enabled {
@@ -110,23 +130,35 @@ typedef NSUInteger CTMomentaryButtonImageState;
 
 #pragma mark - Image setters
 
-- (void) setImageState:(CTMomentaryButtonImageState) imageState {
+/* Choose the nearest possible image based on it availibility to "mirror" internal state of the button
+ */
+- (void) setImageState:(CTPushOnPushOffButtonImageState) imageState {
     if (_imageState == imageState) return;
-
+    
     _imageState = imageState;
     
-    NSImage *newImageToDraw = self.defaultImage;
+    NSImage *newImageToDraw = nil;
     
-    if (imageState == CTButtonImageStateDisabled && self.disabledImage != nil) {
-        newImageToDraw = self.disabledImage;
+    if (self.pushed) {
+        newImageToDraw = self.pushedOnImage;
+    } else {
+        newImageToDraw = self.pushedOffImage;
     }
     
-    if (imageState == CTButtonImageStateOverDefault && self.overDefaultImage != nil) {
-        newImageToDraw = self.overDefaultImage;
+    if (imageState == CTPushButtonImageStateOverPushedOn && self.overPushedOnImage != nil) {
+        newImageToDraw = self.overPushedOnImage;
+    }
+
+    if (imageState == CTPushButtonImageStateOverPushedOff && self.overPushedOffImage != nil) {
+        newImageToDraw = self.overPushedOffImage;
     }
     
-    if (imageState == CTButtonImageStateClicked && self.clickedImage != nil) {
+    if (imageState == CTPushButtonImageStateClicked && self.clickedImage != nil) {
         newImageToDraw = self.clickedImage;
+    }
+    
+    if (imageState == CTPushButtonImageStateDisabled && self.disabledImage != nil) {
+        newImageToDraw = self.disabledImage;
     }
     
     [self setDrawnImage:newImageToDraw];
@@ -139,17 +171,33 @@ typedef NSUInteger CTMomentaryButtonImageState;
     }
 }
 
-- (void) setDefaultImage: (NSImage *)image {
-    NSImage *previousImage = _defaultImage;
-    _defaultImage = image;
+- (void) setPushedOffImage: (NSImage *)image {
+    NSImage *previousImage = _pushedOffImage;
+    _pushedOffImage = image;
     if (self.drawnImage == previousImage) {
         self.drawnImage = image;
     }
 }
 
-- (void) setOverDefaultImage: (NSImage *)image {
-    NSImage *previousImage = _overDefaultImage;
-    _overDefaultImage = image;
+- (void) setOverPushedOffImage: (NSImage *)image {
+    NSImage *previousImage = _overPushedOffImage;
+    _overPushedOffImage = image;
+    if (self.drawnImage == previousImage) {
+        self.drawnImage = image;
+    }
+}
+
+- (void) setPushedOnImage: (NSImage *)image {
+    NSImage *previousImage = _pushedOnImage;
+    _pushedOnImage = image;
+    if (self.drawnImage == previousImage) {
+        self.drawnImage = image;
+    }
+}
+
+- (void) setOverPushedOnImage: (NSImage *)image {
+    NSImage *previousImage = _overPushedOnImage;
+    _overPushedOnImage = image;
     if (self.drawnImage == previousImage) {
         self.drawnImage = image;
     }
@@ -192,17 +240,16 @@ typedef NSUInteger CTMomentaryButtonImageState;
     [self addTrackingArea:self.trackingArea];
 }
 
-#pragma mark - Mouse events
-
 - (void)mouseDown:(NSEvent *)event {
     self.mouseDown = YES;
 }
 
 - (void) mouseUp:(NSEvent *)theEvent {
     self.mouseDown = NO;
-
+    
     if (self.enabled && self.mouseEntered) {
-        [self.delegate buttonClicked:self];
+        self.pushed = !self.pushed;
+        [self.delegate buttonStateChanged:self];
     }
 }
 
@@ -212,12 +259,6 @@ typedef NSUInteger CTMomentaryButtonImageState;
 
 - (void) mouseExited:(NSEvent *)theEvent {
     self.mouseEntered = NO;
-}
-
-- (void) mouseDragged:(NSEvent *)theEvent {
-    if ([self.delegate respondsToSelector:@selector(buttonDragged:)]) {
-        [self.delegate buttonDragged:self];
-    }
 }
 
 @end

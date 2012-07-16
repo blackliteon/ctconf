@@ -11,14 +11,15 @@
 #import "BGView.h"
 #import "NSColor+FromHex.h"
 #import <ctconf/ctconf.h>
-#import "CTMomentaryButton.h"
 
-@interface MainWindowController ()
+@interface MainWindowController () <CTMomentaryButtonDelegate, CTPushOnPushOffButtonDelegate>
 
 @property (strong, nonatomic) TopPanelViewController *topPanelViewController;
 
 @property (strong, nonatomic) BGView *firstBgView;
 @property (strong, nonatomic) BGView *secondBgView;
+@property (strong, nonatomic) CTMomentaryButton *momentaryButton;
+@property (strong, nonatomic) CTPushOnPushOffButton *pushOnPushOffButton;
 
 @property (strong, nonatomic) NSString *bgColor;
 
@@ -29,6 +30,9 @@
 @synthesize topPanelViewController = _topPanelViewController;
 @synthesize firstBgView = _firstBgView;
 @synthesize secondBgView = _secondBgView;
+@synthesize momentaryButton = _momentaryButton;
+@synthesize pushOnPushOffButton = _pushOnPushOffButton;
+
 @synthesize bgColor = _bgColor;
 
 - (void) setTopPanelViewController:(TopPanelViewController *)topPanelViewController {
@@ -74,13 +78,35 @@
     
     self.firstBgView = [[BGView alloc] initWithFrame:NSMakeRect(20, 20, 100, 100)];
     
-//    self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"ff0000"];
     self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"#ff0000"];
     
     [self.window.contentView addSubview:self.firstBgView];
     
-    CTM
+    NSString *mainBundlePath = [[NSBundle mainBundle] bundlePath];
+
+    self.momentaryButton = [[CTMomentaryButton alloc] initWithFrame:NSMakeRect(160, 100, 60, 60)];
+    self.momentaryButton.delegate = self;
+    NSString *buttonPath = [NSString stringWithFormat:@"%@/Contents/Resources/button", mainBundlePath];
+    [self.momentaryButton setImagesFromPath:buttonPath];
+    [self.window.contentView addSubview:self.momentaryButton];
+
+    self.pushOnPushOffButton = [[CTPushOnPushOffButton alloc] initWithFrame:NSMakeRect(260, 100, 60, 60)];
+    self.pushOnPushOffButton.delegate = self;
+    NSString *pushButtonPath = [NSString stringWithFormat:@"%@/Contents/Resources/pushbutton", mainBundlePath];
+    [self.pushOnPushOffButton setImagesFromPath:pushButtonPath];
+    [self.window.contentView addSubview:self.pushOnPushOffButton];
 
 }
+
+#pragma mark - Button delegates
+
+- (void) buttonClicked: (CTMomentaryButton *) button {
+    NSLog(@"Momentary button clicked");
+}
+
+- (void) buttonStateChanged: (CTPushOnPushOffButton *) button {
+    NSLog(@"Push button state changed to: %@", button.pushed ? @"ON" : @"OFF");
+}
+
 
 @end
