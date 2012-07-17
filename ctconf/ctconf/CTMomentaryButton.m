@@ -62,11 +62,15 @@ typedef NSUInteger CTMomentaryButtonImageState;
     return self;
 }
 
-- (void) setImagesFromPath: (NSString *) path {
+- (void) setImagesFromPath: (NSString *) path sizeFromImageData: (BOOL) sizeFromImage {
     self.defaultImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@.png", path]];
     self.overDefaultImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_over.png", path]];
     self.clickedImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_clicked.png", path]];
     self.disabledImage = [[NSImage alloc] initWithContentsOfFile:[NSString stringWithFormat:@"%@_disabled.png", path]];
+    
+    if (sizeFromImage) {
+        [self setFrameSize:self.defaultImage.size];
+    }
 }
 
 #pragma mark - State setters

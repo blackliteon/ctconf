@@ -24,7 +24,7 @@
 @interface CTMomentaryButton : NSView
 
 - (id)initWithFrame:(NSRect)frame;
-- (void) setImagesFromPath: (NSString *) path;
+- (void) setImagesFromPath: (NSString *) path sizeFromImageData: (BOOL) sizeFromImage;
 @property (copy, nonatomic) NSString *identifier;
 @property (assign, nonatomic) BOOL enabled;
 @property (assign, nonatomic) id<CTMomentaryButtonDelegate> delegate;
