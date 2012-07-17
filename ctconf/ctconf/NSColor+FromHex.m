@@ -35,7 +35,13 @@
 
 - (NSString *) hexString {
     CGFloat r,g,b,alpha;
-    [self getRed:&r green:&g blue:&b alpha:&alpha];
+    
+    NSColor *useColor = self;
+    if (![[useColor colorSpaceName] isEqualToString:NSCalibratedRGBColorSpace]) {
+        useColor = [self colorUsingColorSpaceName:NSCalibratedRGBColorSpace];
+    }
+    
+    [useColor getRed:&r green:&g blue:&b alpha:&alpha];
     NSUInteger rDec = (NSUInteger)(r * 0xff);
     NSUInteger gDec = (NSUInteger)(g * 0xff);
     NSUInteger bDec = (NSUInteger)(b * 0xff);

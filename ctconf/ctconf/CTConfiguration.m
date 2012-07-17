@@ -175,6 +175,7 @@ static id sharedInstance = nil;
         _stringsDict = [[NSMutableDictionary alloc] init];
         _sceneManager = [[CTSceneManager alloc] init];
         _currentScene = nil;
+        self.mode = CTConfigurationMode;
 
     }
     return self;

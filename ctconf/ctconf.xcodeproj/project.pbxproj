@@ -21,7 +21,7 @@
 		3213A8F415B300D700D77FC6 /* CTMomentaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8F215B300D700D77FC6 /* CTMomentaryButton.m */; };
 		322CAE6C15B03D6600BE85DB /* CTColorProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6A15B03D6600BE85DB /* CTColorProperty.h */; };
 		322CAE6D15B03D6600BE85DB /* CTColorProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 322CAE6B15B03D6600BE85DB /* CTColorProperty.m */; };
-		322CAE7115B03EC900BE85DB /* NSColor+FromHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */; };
+		322CAE7115B03EC900BE85DB /* NSColor+FromHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		322CAE7215B03EC900BE85DB /* NSColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = 322CAE7015B03EC900BE85DB /* NSColor+FromHex.m */; };
 		3240886715AEB75300735767 /* CTIntegerProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240886515AEB75300735767 /* CTIntegerProperty.h */; };
 		3240886815AEB75300735767 /* CTIntegerProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886615AEB75300735767 /* CTIntegerProperty.m */; };
