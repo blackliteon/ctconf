@@ -16,7 +16,7 @@
 
 @optional
 
-- (void) buttonDragged: (CTMomentaryButton *) button;
+- (void) buttonDragged: (CTMomentaryButton *) button event: (NSEvent *) theEvent;
 
 @end
 

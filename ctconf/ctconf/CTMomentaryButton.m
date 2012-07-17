@@ -219,8 +219,8 @@ typedef NSUInteger CTMomentaryButtonImageState;
 }
 
 - (void) mouseDragged:(NSEvent *)theEvent {
-    if ([self.delegate respondsToSelector:@selector(buttonDragged:)]) {
-        [self.delegate buttonDragged:self];
+    if ([self.delegate respondsToSelector:@selector(buttonDragged:event:)]) {
+        [self.delegate buttonDragged:self event:theEvent];
     }
 }
 
