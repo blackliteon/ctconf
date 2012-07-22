@@ -13,5 +13,6 @@
 #import "CTMomentaryButton.h"
 #import "CTPushOnPushOffButton.h"
 #import "NSColor+FromHex.h"
+#import "CTFunctions.h"
 
 #define CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR @";"
