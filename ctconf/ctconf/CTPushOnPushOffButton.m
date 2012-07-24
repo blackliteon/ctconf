@@ -240,6 +240,10 @@ typedef NSUInteger CTPushOnPushOffButtonImageState;
     [self addTrackingArea:self.trackingArea];
 }
 
+- (BOOL)mouseDownCanMoveWindow {
+    return NO;
+}
+
 - (void)mouseDown:(NSEvent *)event {
     self.mouseDown = YES;
 }

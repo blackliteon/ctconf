@@ -196,6 +196,10 @@ typedef NSUInteger CTMomentaryButtonImageState;
     [self addTrackingArea:self.trackingArea];
 }
 
+- (BOOL)mouseDownCanMoveWindow {
+    return NO;
+}
+
 #pragma mark - Mouse events
 
 - (void)mouseDown:(NSEvent *)event {
