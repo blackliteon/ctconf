@@ -62,6 +62,8 @@
 		32BE667A15A705CF00042E9E /* CTEnumerateProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32BE667815A705CF00042E9E /* CTEnumerateProperty.h */; };
 		32BE667B15A705CF00042E9E /* CTEnumerateProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE667915A705CF00042E9E /* CTEnumerateProperty.m */; };
 		32C506C015BEDC8D001F2025 /* CTPropertyListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32C506E315BEF481001F2025 /* CTPropertyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C506E115BEF481001F2025 /* CTPropertyManager.h */; };
+		32C506E415BEF481001F2025 /* CTPropertyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C506E215BEF481001F2025 /* CTPropertyManager.m */; };
 		32CEE86A15A9910900A3C644 /* CTStringProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32CEE86815A9910900A3C644 /* CTStringProperty.h */; };
 		32CEE86B15A9910900A3C644 /* CTStringProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE86915A9910900A3C644 /* CTStringProperty.m */; };
 		32D5DBFA15B409C800EC5825 /* CTPushOnPushOffButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -141,6 +143,8 @@
 		32BE667815A705CF00042E9E /* CTEnumerateProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTEnumerateProperty.h; sourceTree = "<group>"; };
 		32BE667915A705CF00042E9E /* CTEnumerateProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTEnumerateProperty.m; sourceTree = "<group>"; };
 		32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPropertyListener.h; sourceTree = "<group>"; };
+		32C506E115BEF481001F2025 /* CTPropertyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPropertyManager.h; sourceTree = "<group>"; };
+		32C506E215BEF481001F2025 /* CTPropertyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPropertyManager.m; sourceTree = "<group>"; };
 		32CEE86815A9910900A3C644 /* CTStringProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStringProperty.h; sourceTree = "<group>"; };
 		32CEE86915A9910900A3C644 /* CTStringProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStringProperty.m; sourceTree = "<group>"; };
 		32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPushOnPushOffButton.h; sourceTree = "<group>"; };
@@ -264,9 +268,11 @@
 				3280BD6915A469C8009148AD /* Supporting Files */,
 				32A44D7715A5AD8900A87F87 /* CTConfiguration.h */,
 				32A44D7815A5AD8900A87F87 /* CTConfiguration.m */,
-				3282DB4515A8296F004FBBFD /* CTScene.h */,
+				32C506E115BEF481001F2025 /* CTPropertyManager.h */,
+				32C506E215BEF481001F2025 /* CTPropertyManager.m */,
 				3282DB4F15A8312B004FBBFD /* CTSceneManager.h */,
 				3282DB5015A8312B004FBBFD /* CTSceneManager.m */,
+				3282DB4515A8296F004FBBFD /* CTScene.h */,
 				3291ACD915B853F900654C5D /* CTFunctions.h */,
 				3291ACDA15B853F900654C5D /* CTFunctions.m */,
 			);
@@ -379,6 +385,7 @@
 				32D5DBFA15B409C800EC5825 /* CTPushOnPushOffButton.h in Headers */,
 				3291ACDB15B853F900654C5D /* CTFunctions.h in Headers */,
 				32C506C015BEDC8D001F2025 /* CTPropertyListener.h in Headers */,
+				32C506E315BEF481001F2025 /* CTPropertyManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +521,7 @@
 				3213A8F415B300D700D77FC6 /* CTMomentaryButton.m in Sources */,
 				32D5DBFB15B409C800EC5825 /* CTPushOnPushOffButton.m in Sources */,
 				3291ACDC15B853F900654C5D /* CTFunctions.m in Sources */,
+				32C506E415BEF481001F2025 /* CTPropertyManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

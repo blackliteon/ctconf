@@ -18,17 +18,15 @@
 #import "CTSizeProperty.h"
 #import "CTColorProperty.h"
 #import "CTResourcePathProperty.h"
-
+#import "CTPropertyManager.h"
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
-@interface CTConfiguration () <CTPanelControllerDelegate, CTResourcePathDelegate>
+@interface CTConfiguration () <CTPanelControllerDelegate, CTResourcePathDelegate, CTPropertyManagerDelegate>
 
-@property (strong, nonatomic) NSMutableArray *properties;
 @property (strong, nonatomic) CTPanelController *panelController;
 
-@property (strong, nonatomic) NSMutableDictionary *propertiesDict;
-@property (strong, nonatomic) NSMutableDictionary *stringsDict;
+@property (strong, nonatomic) CTPropertyManager *propertyManager;
 
 @property (strong, nonatomic) id<CTScene> currentScene;
 @property (assign, nonatomic) CTMode mode;
@@ -42,74 +40,34 @@ static id sharedInstance = nil;
 
 @synthesize confFilePath = _confFilePath;
 
-@synthesize properties = _properties;
-@synthesize panelController = _panelController;
 @synthesize sceneManager = _sceneManager;
+@synthesize panelController = _panelController;
 
-@synthesize propertiesDict = _propertiesDict;
-@synthesize stringsDict = _stringsDict;
+@synthesize propertyManager = _propertyManager;
 
 @synthesize currentScene = _currentScene;
 @synthesize mode = _mode;
 @synthesize useResourceFromBundle = _useResourceFromBundle;
 
-#pragma mark - Private
-
-- (void) fillStringsValuesFromText: (NSString *) text {
-    [self.stringsDict removeAllObjects];
-    
-    [text enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
-        NSString *trimmedString = [line stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        
-        if ([trimmedString hasPrefix:@"#"]) {
-            return;
-        }
-        
-        NSArray *components = [trimmedString componentsSeparatedByString:@"="];
-        
-        if ([components count] == 2) {
-            NSString *leftStr = [components objectAtIndex:0];
-            NSString *rightStr = [components lastObject];
-            
-            NSString *propertyName = [leftStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            NSString *propertyStrValue = [rightStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-            
-            [self.stringsDict setObject:propertyStrValue forKey:propertyName];
-        }
-    }];
-}
-
-- (void) updatePropertyValueOrMakeItDefault: (CTProperty *) property { // and appent to text for dev mode
-    
-    NSString *strValInConfig = [self.stringsDict objectForKey:property.name];
-    if (strValInConfig) {
-        [property fromString:strValInConfig];
-    } else { 
-
-        property.value = property.defaultValue;
-        [self.stringsDict setObject:property.toString forKey:property.name];
-        
-        if (self.mode == CTConfigurationMode) {
-            
-            NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
-            [self.panelController appendText:textLine];
-            
-        } else { // production mode
-            NSLog(@"Warning: Property %@ has no value in config, use default value", property.name);
-        }
-        
+- (void) propertyValueNotFound: (CTProperty *) property {
+    if (self.mode == CTNormalMode) {
+        NSLog(@"Warning (ctconf): Property '%@' value not set. Set to default (%@)", property.name, [property toString]);
+    } else {
+        NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
+        [self.panelController appendText:textLine];
     }
 }
 
-- (void) markConfigTextFiledAsReadAndUpdatePropertiesFromStringValues {
-    if (self.panelController.textHasModifications) {
-        [self fillStringsValuesFromText:self.panelController.text];
-        self.panelController.textHasModifications = NO;
+#pragma mark - Initializers
+
+- (CTPropertyManager *) propertyManager {
+    if (!_propertyManager) {
+        _propertyManager = [[CTPropertyManager alloc] init];
     }
-    [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
-        [self updatePropertyValueOrMakeItDefault:property];
-    }];
+    return _propertyManager;
 }
+
+#pragma mark -
 
 - (void) startSceneWithName: (NSString *) sceneName {
     if (self.currentScene) {
@@ -130,8 +88,15 @@ static id sharedInstance = nil;
     [self startSceneWithName:sceneName];
 }
 
+- (void) _reReadConfigFromConfigPanel {
+    if (self.panelController.textHasModifications) {
+        [self.propertyManager setConfigText:self.panelController.text];
+        self.panelController.textHasModifications = NO;
+    }
+}
+
 - (void) save {
-    [self markConfigTextFiledAsReadAndUpdatePropertiesFromStringValues];
+    [self _reReadConfigFromConfigPanel];
     
     NSURL *confFileUrl = [NSURL fileURLWithPath:self.confFilePath];
     NSError *error;
@@ -170,9 +135,6 @@ static id sharedInstance = nil;
         self.panelController = [[CTPanelController alloc] init];
         self.panelController.delegate = self;
         
-        _properties = [NSMutableArray array];
-        _propertiesDict = [[NSMutableDictionary alloc] init];
-        _stringsDict = [[NSMutableDictionary alloc] init];
         _sceneManager = [[CTSceneManager alloc] init];
         _currentScene = nil;
         self.mode = CTConfigurationMode;
@@ -195,7 +157,7 @@ static id sharedInstance = nil;
     if ([fileManager fileExistsAtPath:self.confFilePath]) {
         NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
         [self.panelController setText:fileText];
-        [self markConfigTextFiledAsReadAndUpdatePropertiesFromStringValues];
+        [self _reReadConfigFromConfigPanel];
     }
     
     if (self.sceneManager.scenesNames.count > 0) {
@@ -227,43 +189,14 @@ static id sharedInstance = nil;
     }
         
     NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
-    [self fillStringsValuesFromText:fileText];
-    
-    // if already have properties, udpates them
-    
-    [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
-        [self updatePropertyValueOrMakeItDefault:property];
-    }];
-
+    [self.propertyManager setConfigText:fileText];
 }
 
 - (void) unregisterObjectFromUpdates: (id) object {
-    [self.propertiesDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
-        [property removeObjectFromUpdatesTracking:object];
-    }];
+    [self.propertyManager unregisterObjectFromUpdates:object];
 }
 
 #pragma mark Properties
-
-- (void) _registerPropery: (CTProperty *) property {
-    
-    CTProperty *registeredProperty = [self.propertiesDict objectForKey:property.name];
-    if (!registeredProperty) {
-        [self.propertiesDict setObject:property forKey:property.name];
-    } else {
-        if (registeredProperty.class != property.class) {
-            [NSException raise:@"One name for different properties types" format:@"Property %@ has multiple types simultaneously", property.name];
-        }
-        
-        [registeredProperty addAllObjectSetterInfoFromProperty:property];
-    }
-    
-    if (self.mode == CTNormalMode) {
-        [self updatePropertyValueOrMakeItDefault:property];
-    } else {
-        [self markConfigTextFiledAsReadAndUpdatePropertiesFromStringValues]; 
-    }
-}
 
 - (double) addDoubleProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (CGFloat) defaultValue {
 
@@ -272,9 +205,10 @@ static id sharedInstance = nil;
     property.defaultValue = [NSNumber numberWithFloat:defaultValue];
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
 
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     double currentValue = [assignedProperty.value doubleValue]; 
     return currentValue;
 }
@@ -286,9 +220,10 @@ static id sharedInstance = nil;
     property.defaultValue = [NSNumber numberWithInteger:defaultValue];
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     double currentValue = [assignedProperty.value integerValue]; 
     return currentValue;
 }
@@ -299,9 +234,10 @@ static id sharedInstance = nil;
     property.defaultValue = [NSNumber numberWithFloat:defaultValue];
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
 
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     BOOL currentValue = [assignedProperty.value boolValue]; 
     return currentValue;
 }
@@ -322,9 +258,10 @@ static id sharedInstance = nil;
     va_end(args);
     property.possibleValues = possibleValues;
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
 
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     return assignedProperty.value;
 }
 
@@ -334,9 +271,10 @@ static id sharedInstance = nil;
     property.defaultValue = defaultValue;
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
 
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     return assignedProperty.value;
 }
 
@@ -346,9 +284,10 @@ static id sharedInstance = nil;
     property.defaultValue = defaultValue;
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     return assignedProperty.value;
 }
 
@@ -358,9 +297,10 @@ static id sharedInstance = nil;
     property.defaultValue = [NSValue valueWithSize:defaultValue];
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     NSSize currentValue = [assignedProperty.value sizeValue]; 
     return currentValue;
 }
@@ -371,11 +311,11 @@ static id sharedInstance = nil;
     property.defaultValue = defaultValue;
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     return assignedProperty.value;
-
 }
 
 - (NSString *) addResourcePathProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultPath: (NSString *) defaultValue {
@@ -385,27 +325,47 @@ static id sharedInstance = nil;
     property.delegate = self;
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     return assignedProperty.value;
 }
 
 // properties with listeners
 
-- (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue {
+- (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue alwaysInConfig: (BOOL) alwaysInConfig {
+
+    // todo: implement alwaysInConfig
+    
     CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
     property.name = propertyName;
     property.defaultValue = [NSNumber numberWithFloat:defaultValue];
     [property addPropertyListener:listener];
     
-    [self _registerPropery:property];
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
     
-    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
     double currentValue = [assignedProperty.value doubleValue]; 
     return currentValue;
 
 }
+
+- (NSColor *) addColorProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>)listener  defaultValue:(NSColor *)defaultValue optional: (BOOL) optional defaultPropertyName: (NSString *) defaultProperty {
+    CTColorProperty *property = [[CTColorProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+//    [property addObjectThatTracksUpdates:object key:key];
+    [property addPropertyListener:listener];
+    
+    [self _reReadConfigFromConfigPanel];
+    [self.propertyManager addProperty:property];
+    
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    return assignedProperty.value;
+}
+
 
 
 @end

@@ -41,8 +41,9 @@ typedef NSInteger CTMode;
 
 // properties with listeners
 
-- (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue;
+- (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue alwaysInConfig: (BOOL) alwaysInConfig;
 
+- (NSColor *) addColorProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>)listener  defaultValue:(NSColor *)defaultValue optional: (BOOL) optional defaultPropertyName: (NSString *) defaultProperty;
 
 - (void) startConfigurationModeWithConfigPath: (NSString *) path;
 - (void) startNormalModeWithConfigPath: (NSString *) path useResourcesFromBundle: (BOOL) resourcesFromBundle;

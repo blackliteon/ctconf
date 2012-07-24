@@ -59,11 +59,16 @@
 
 //    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" toObject:self key:@"topPanelLeftMargin" defaultValue:20];
     
-    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20];
+    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20 alwaysInConfig:YES];
     
     self.labelVisible = [[CTConfiguration sharedInstance] addBooleanProperty:@"topPanel.labelVisible" toObject:self key:@"labelVisible" defaultValue:YES];
     
     self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"ff0000"];
+
+    // 
+    
+    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20 alwaysInConfig:YES];
+
     
 }
 
