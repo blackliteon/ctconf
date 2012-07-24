@@ -20,6 +20,17 @@ typedef NSInteger CTMode;
 
 @interface CTConfiguration : NSObject 
 
+@property (copy, nonatomic) NSString *confFilePath;
+@property (assign, nonatomic) CTMode mode;
+@property (strong, readonly, nonatomic) CTSceneManager *sceneManager;
+
++ (CTConfiguration *) sharedInstance;
+
+- (void) readConfig;
+- (void) showConfigurationPanel;
+- (void) unregisterObjectFromUpdates: (id) object;
+
+/* properties */
 
 - (double) addDoubleProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (CGFloat) defaultValue;
 
@@ -39,18 +50,10 @@ typedef NSInteger CTMode;
 
 - (NSString *) addResourcePathProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultPath: (NSString *) defaultValue;
 
-// properties with listeners
+/* listener properties */
 
 - (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue alwaysInConfig: (BOOL) alwaysInConfig;
 
 - (NSColor *) addColorProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>)listener  defaultValue:(NSColor *)defaultValue optional: (BOOL) optional defaultPropertyName: (NSString *) defaultProperty;
-
-- (void) startConfigurationModeWithConfigPath: (NSString *) path;
-- (void) startNormalModeWithConfigPath: (NSString *) path useResourcesFromBundle: (BOOL) resourcesFromBundle;
-- (void) unregisterObjectFromUpdates: (id) object;
-+ (CTConfiguration *) sharedInstance;
-
-@property (copy, nonatomic) NSString *confFilePath;
-@property (strong, nonatomic) CTSceneManager *sceneManager;
 
 @end

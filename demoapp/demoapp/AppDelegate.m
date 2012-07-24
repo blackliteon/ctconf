@@ -42,22 +42,31 @@
             mode = CTConfigurationMode;
         }
     }
-    
+
     if (mode == CTConfigurationMode && confPath == defaultConfPath) {
         NSLog(@"Warning: to start configuration mode specify -ctconfpath outside of the main bundle.");
         mode  = CTNormalMode;
     }
     
+    [CTConfiguration sharedInstance].confFilePath = confPath;
+    [CTConfiguration sharedInstance].mode = mode;
+    
     if (mode == CTNormalMode) {
-        [[CTConfiguration sharedInstance] startNormalModeWithConfigPath:confPath useResourcesFromBundle:NO];
+        
+        [[CTConfiguration sharedInstance] readConfig];
         self.mainWindowController = [[MainWindowController alloc] init];
         [self.mainWindowController showWindow:self];
+        
     } else {
+        
+        [[CTConfiguration sharedInstance] readConfig];
+        
         MainScene *mainScene = [[MainScene alloc] init];
         SecondScene *secondScene = [[SecondScene alloc] init];
         [[CTConfiguration sharedInstance].sceneManager addScene:mainScene];
         [[CTConfiguration sharedInstance].sceneManager addScene:secondScene];
-        [[CTConfiguration sharedInstance] startConfigurationModeWithConfigPath:confPath];
+
+        [[CTConfiguration sharedInstance] showConfigurationPanel];
     }
     
 }

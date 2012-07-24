@@ -25,11 +25,10 @@
 @interface CTConfiguration () <CTPanelControllerDelegate, CTResourcePathDelegate, CTPropertyManagerDelegate>
 
 @property (strong, nonatomic) CTPanelController *panelController;
-
 @property (strong, nonatomic) CTPropertyManager *propertyManager;
+@property (strong, nonatomic) CTSceneManager *sceneManager;
 
 @property (strong, nonatomic) id<CTScene> currentScene;
-@property (assign, nonatomic) CTMode mode;
 @property (assign, nonatomic) BOOL useResourceFromBundle;
 
 @end
@@ -42,21 +41,11 @@ static id sharedInstance = nil;
 
 @synthesize sceneManager = _sceneManager;
 @synthesize panelController = _panelController;
-
 @synthesize propertyManager = _propertyManager;
 
 @synthesize currentScene = _currentScene;
 @synthesize mode = _mode;
 @synthesize useResourceFromBundle = _useResourceFromBundle;
-
-- (void) propertyValueNotFound: (CTProperty *) property {
-    if (self.mode == CTNormalMode) {
-        NSLog(@"Warning (ctconf): Property '%@' value not set. Set to default (%@)", property.name, [property toString]);
-    } else {
-        NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
-        [self.panelController appendText:textLine];
-    }
-}
 
 #pragma mark - Initializers
 
@@ -67,14 +56,34 @@ static id sharedInstance = nil;
     return _propertyManager;
 }
 
-#pragma mark -
+- (CTSceneManager *) sceneManager {
+    if (!_sceneManager) {
+        _sceneManager = [[CTSceneManager alloc] init];
+    }
+    return _sceneManager;
+}
 
-- (void) startSceneWithName: (NSString *) sceneName {
+- (CTPanelController *) panelController {
+    if (!_panelController) {
+        _panelController = [[CTPanelController alloc] init];
+        _panelController.delegate = self;
+    }
+    return _panelController;
+}
+
+#pragma mark - Configuration panel
+
+- (void) _startSceneWithName: (NSString *) sceneName {
+    
+    // switch scene
+    
     if (self.currentScene) {
         [self.currentScene stopScene];
     }
     self.currentScene = [self.sceneManager sceneByName:sceneName];
     [self.currentScene startScene];
+    
+    // store to user defaults
     
     NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
     [ud setObject:sceneName forKey:CT_DEFAULT_SCENE_NAME_KEY];
@@ -82,10 +91,8 @@ static id sharedInstance = nil;
 
 }
 
-#pragma mark - Delegate
-
 - (void) newSceneChoosed: (NSString *) sceneName {
-    [self startSceneWithName:sceneName];
+    [self _startSceneWithName:sceneName];
 }
 
 - (void) _reReadConfigFromConfigPanel {
@@ -104,8 +111,9 @@ static id sharedInstance = nil;
     if (![self.panelController.text writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {
         NSLog(@"Error while trying to create conf file %@: %@", self.confFilePath, [error localizedDescription]);
     }
-    
 }
+
+#pragma mark - Misc
 
 - (NSString *) absolutePathForResourceWithConfigPath: (NSString *) path {
     if (self.useResourceFromBundle) {
@@ -119,6 +127,14 @@ static id sharedInstance = nil;
     }
 }
 
+- (void) propertyValueNotFound: (CTProperty *) property {
+    if (self.mode == CTNormalMode) {
+        NSLog(@"Warning (ctconf): Property '%@' value not set. Set to default (%@)", property.name, [property toString]);
+    } else {
+        NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
+        [self.panelController appendText:textLine];
+    }
+}
 
 #pragma mark - Public
 
@@ -132,38 +148,25 @@ static id sharedInstance = nil;
 - (id)init {
     self = [super init];
     if (self) {
-        self.panelController = [[CTPanelController alloc] init];
-        self.panelController.delegate = self;
-        
-        _sceneManager = [[CTSceneManager alloc] init];
         _currentScene = nil;
         self.mode = CTConfigurationMode;
-
     }
     return self;
 }
 
-- (void) startConfigurationModeWithConfigPath: (NSString *) path {
-    self.mode = CTConfigurationMode;
-    self.confFilePath = path;
-    self.useResourceFromBundle = NO;
-    
+- (void) showConfigurationPanel {
     [self.panelController showWindow:self];
-    [NSApp activateIgnoringOtherApps:YES];
     
-    [self.panelController setScenesNames:self.sceneManager.scenesNames];
-
-    NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:self.confFilePath]) {
-        NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
-        [self.panelController setText:fileText];
-        [self _reReadConfigFromConfigPanel];
+    if (self.propertyManager.configText) {
+        [self.panelController setText:self.propertyManager.configText];
+        self.panelController.textHasModifications = NO;
     }
     
+    [self.panelController setScenesNames:self.sceneManager.scenesNames];
     if (self.sceneManager.scenesNames.count > 0) {
         NSUserDefaults *ud = [NSUserDefaults standardUserDefaults];
         NSString *defaultSceneName = [ud objectForKey:CT_DEFAULT_SCENE_NAME_KEY];
-
+        
         id<CTScene> defaultScene = [self.sceneManager sceneByName:defaultSceneName];
         
         if (!defaultScene) {
@@ -171,25 +174,26 @@ static id sharedInstance = nil;
         }
         
         [self.panelController selectSceneWithTitle:defaultSceneName];
-        [self startSceneWithName:defaultSceneName];
+        [self _startSceneWithName:defaultSceneName];
     }
     
+    [NSApp activateIgnoringOtherApps:YES];
+
 }
 
-- (void) startNormalModeWithConfigPath: (NSString *) confpath useResourcesFromBundle: (BOOL) resourcesFromBundle {
-    self.mode = CTNormalMode;
-    self.confFilePath = confpath;
-    self.useResourceFromBundle = resourcesFromBundle;
+- (void) readConfig {
+    
+    NSString *configText = nil;
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    
-    if (![fileManager fileExistsAtPath:self.confFilePath]) {
-        NSLog(@"Error: Can't find %@. Use default values.", self.confFilePath);
-        return;
-    }
+    if ([fileManager fileExistsAtPath:self.confFilePath]) {
+        configText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
         
-    NSString *fileText = [NSString stringWithContentsOfFile:self.confFilePath encoding:NSUTF8StringEncoding error:nil];
-    [self.propertyManager setConfigText:fileText];
+        [self.propertyManager setConfigText:configText];
+    } else {
+        NSLog(@"Warning (ctconf) : Can't find %@. Use default values.", self.confFilePath);
+    }
+
 }
 
 - (void) unregisterObjectFromUpdates: (id) object {

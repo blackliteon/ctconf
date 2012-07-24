@@ -19,6 +19,7 @@
 @implementation CTPropertyManager
 
 @synthesize delegate = _delegate;
+@synthesize configText = _configText;
 
 @synthesize propertyDict = _propertyDict;
 @synthesize stringDict = _stringDict;
@@ -59,11 +60,14 @@
 }
 
 - (void) setConfigText: (NSString *) configText {
-    [self _fillStringsValuesFromText:configText];
-    [self.propertyDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
-        [self _refreshPropertyValue:property];
-    }];
-
+    if (![_configText isEqualToString:configText]) {
+        _configText = [configText copy];
+        
+        [self _fillStringsValuesFromText:configText];
+        [self.propertyDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
+            [self _refreshPropertyValue:property];
+        }];
+    }
 }
 
 - (void) addProperty: (CTProperty *) property {
