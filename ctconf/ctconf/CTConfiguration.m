@@ -22,6 +22,7 @@
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
+
 @interface CTConfiguration () <CTPanelControllerDelegate, CTResourcePathDelegate, CTPropertyManagerDelegate>
 
 @property (strong, nonatomic) CTPanelController *panelController;
@@ -32,6 +33,7 @@
 @property (assign, nonatomic) BOOL useResourceFromBundle;
 
 @end
+
 
 @implementation CTConfiguration
 
@@ -52,6 +54,7 @@ static id sharedInstance = nil;
 - (CTPropertyManager *) propertyManager {
     if (!_propertyManager) {
         _propertyManager = [[CTPropertyManager alloc] init];
+        _propertyManager.delegate = self;
     }
     return _propertyManager;
 }

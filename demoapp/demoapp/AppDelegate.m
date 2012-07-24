@@ -54,6 +54,7 @@
     if (mode == CTNormalMode) {
         
         [[CTConfiguration sharedInstance] readConfig];
+        
         self.mainWindowController = [[MainWindowController alloc] init];
         [self.mainWindowController showWindow:self];
         
