@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTPropertyListener.h"
 
 enum {
     CTPropertyTypeCGFloat,  
@@ -34,6 +35,7 @@ typedef NSInteger CTPropertyType;
 - (BOOL) isValueEqualTo: (id) newValue;
 
 - (void) addObjectThatTracksUpdates: (id) object key: (NSString *) key;
+- (void) addPropertyListener: (id<CTPropertyListener>) propertyListener;
 - (void) removeObjectFromUpdatesTracking: (id) object;
 - (void) addAllObjectSetterInfoFromProperty: (CTProperty *) property;
 - (NSArray *) allObjectSetterInfo;

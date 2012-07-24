@@ -36,7 +36,15 @@
         for (CTObjectSetterInfo *objectKey in self.allObjectSetterInfo) {
             if (objectKey) {
                 NSString *path = [self.delegate absolutePathForResourceWithConfigPath:value];
-                [objectKey.object setValue:path forKey:objectKey.key];
+                
+                if (objectKey.object) {
+                    [objectKey.object setValue:path forKey:objectKey.key];
+                }
+                
+                if (objectKey.listener) {
+                    [objectKey.listener propertyWithName:self.name updatedToValue:path];
+                }
+                
             }
         }
     }

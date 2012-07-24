@@ -14,5 +14,6 @@
 #import "CTPushOnPushOffButton.h"
 #import "NSColor+FromHex.h"
 #import "CTFunctions.h"
+#import "CTPropertyListener.h"
 
 #define CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR @";"

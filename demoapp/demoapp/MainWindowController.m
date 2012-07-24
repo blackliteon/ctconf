@@ -9,7 +9,6 @@
 #import "MainWindowController.h"
 #import "TopPanelViewController.h"
 #import "BGView.h"
-#import "NSColor+FromHex.h"
 #import <ctconf/ctconf.h>
 
 @interface MainWindowController () <CTMomentaryButtonDelegate, CTPushOnPushOffButtonDelegate>
@@ -87,7 +86,7 @@
     self.momentaryButton = [[CTMomentaryButton alloc] initWithFrame:NSMakeRect(160, 100, 60, 60)];
     self.momentaryButton.delegate = self;
     NSString *buttonPath = [NSString stringWithFormat:@"%@/Contents/Resources/button", mainBundlePath];
-    [self.momentaryButton setImagesFromPath:buttonPath];
+    [self.momentaryButton setImagesFromPath:buttonPath sizeFromImageData:NO];
     [self.window.contentView addSubview:self.momentaryButton];
 
     self.pushOnPushOffButton = [[CTPushOnPushOffButton alloc] initWithFrame:NSMakeRect(260, 100, 60, 60)];

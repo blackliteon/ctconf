@@ -10,6 +10,7 @@
 
 @implementation CTObjectSetterInfo
 
+@synthesize listener = _listener;
 @synthesize object = _object;
 @synthesize key = _key;
 

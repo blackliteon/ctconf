@@ -9,9 +9,8 @@
 #import "TopPanelViewController.h"
 #import <ctconf/ctconf.h>
 #import "BGView.h"
-#import "NSColor+FromHex.h"
 
-@interface TopPanelViewController ()
+@interface TopPanelViewController () <CTPropertyListener>
 
 @property (weak) IBOutlet NSButton *button1;
 @property (weak) IBOutlet NSButton *button2;
@@ -58,7 +57,9 @@
     
     self.topMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.topMargin" toObject:self key:@"topMargin" defaultValue:3];
 
-    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" toObject:self key:@"topPanelLeftMargin" defaultValue:20];
+//    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" toObject:self key:@"topPanelLeftMargin" defaultValue:20];
+    
+    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20];
     
     self.labelVisible = [[CTConfiguration sharedInstance] addBooleanProperty:@"topPanel.labelVisible" toObject:self key:@"labelVisible" defaultValue:YES];
     
@@ -109,6 +110,12 @@
     self.bgView.bgColor = [NSColor colorFromHexRGB:bgColor];
 }
 
+- (void) propertyWithName: (NSString *) name updatedToValue: (id) value {
+    if ([name isEqualToString:@"topPanel.leftMargin"]) {
+        NSNumber *number = value;
+        [self setTopPanelLeftMargin:[number doubleValue]];
+    }
+}
 
 
 @end

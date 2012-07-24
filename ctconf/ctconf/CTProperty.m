@@ -45,7 +45,15 @@
         
         for (CTObjectSetterInfo *objectKey in self.objectSetterInfoArray) {
             if (objectKey) {
-                [objectKey.object setValue:value forKey:objectKey.key];
+                
+                if (objectKey.object) {
+                    [objectKey.object setValue:value forKey:objectKey.key];
+                }
+                
+                if (objectKey.listener) {
+                    [objectKey.listener propertyWithName:self.name updatedToValue:value];
+                }
+                
             }
         }
     }
@@ -76,6 +84,13 @@
     
     [self.objectSetterInfoArray addObject:objectKey];
 }
+
+- (void) addPropertyListener: (id<CTPropertyListener>) propertyListener {
+    CTObjectSetterInfo *objectListenerInfo = [[CTObjectSetterInfo alloc] init];
+    objectListenerInfo.listener = propertyListener;
+    [self.objectSetterInfoArray addObject:objectListenerInfo];
+}
+
 
 - (void) addAllObjectSetterInfoFromProperty: (CTProperty *) property {
     for (CTObjectSetterInfo *objectKey in property.allObjectSetterInfo) {

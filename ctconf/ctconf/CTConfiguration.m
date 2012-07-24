@@ -391,6 +391,21 @@ static id sharedInstance = nil;
     return assignedProperty.value;
 }
 
+// properties with listeners
+
+- (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue {
+    CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = [NSNumber numberWithFloat:defaultValue];
+    [property addPropertyListener:listener];
+    
+    [self _registerPropery:property];
+    
+    CTProperty *assignedProperty = [self.propertiesDict objectForKey:propertyName];
+    double currentValue = [assignedProperty.value doubleValue]; 
+    return currentValue;
+
+}
 
 
 @end

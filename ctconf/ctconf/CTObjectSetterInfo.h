@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTPropertyListener.h"
 
 @interface CTObjectSetterInfo : NSObject
 
+@property (strong) id<CTPropertyListener> listener;
 @property (strong) id object;
 @property (copy) NSString *key;
 

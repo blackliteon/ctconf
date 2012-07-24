@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "CTPanel.h"
 #import "CTSceneManager.h"
+#import "CTPropertyListener.h"
 
 enum {
     CTNormalMode,
@@ -37,6 +38,10 @@ typedef NSInteger CTMode;
 - (NSColor *) addColorProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSColor *) defaultValue;
 
 - (NSString *) addResourcePathProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultPath: (NSString *) defaultValue;
+
+// properties with listeners
+
+- (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue;
 
 
 - (void) startConfigurationModeWithConfigPath: (NSString *) path;

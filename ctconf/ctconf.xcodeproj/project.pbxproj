@@ -61,6 +61,7 @@
 		32BE667715A7006C00042E9E /* CTBooleanProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE667515A7006B00042E9E /* CTBooleanProperty.m */; };
 		32BE667A15A705CF00042E9E /* CTEnumerateProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32BE667815A705CF00042E9E /* CTEnumerateProperty.h */; };
 		32BE667B15A705CF00042E9E /* CTEnumerateProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE667915A705CF00042E9E /* CTEnumerateProperty.m */; };
+		32C506C015BEDC8D001F2025 /* CTPropertyListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32CEE86A15A9910900A3C644 /* CTStringProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32CEE86815A9910900A3C644 /* CTStringProperty.h */; };
 		32CEE86B15A9910900A3C644 /* CTStringProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE86915A9910900A3C644 /* CTStringProperty.m */; };
 		32D5DBFA15B409C800EC5825 /* CTPushOnPushOffButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -139,6 +140,7 @@
 		32BE667515A7006B00042E9E /* CTBooleanProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBooleanProperty.m; sourceTree = "<group>"; };
 		32BE667815A705CF00042E9E /* CTEnumerateProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTEnumerateProperty.h; sourceTree = "<group>"; };
 		32BE667915A705CF00042E9E /* CTEnumerateProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTEnumerateProperty.m; sourceTree = "<group>"; };
+		32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPropertyListener.h; sourceTree = "<group>"; };
 		32CEE86815A9910900A3C644 /* CTStringProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStringProperty.h; sourceTree = "<group>"; };
 		32CEE86915A9910900A3C644 /* CTStringProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStringProperty.m; sourceTree = "<group>"; };
 		32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPushOnPushOffButton.h; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 				322CAE6B15B03D6600BE85DB /* CTColorProperty.m */,
 				3213A8D015B2C9EE00D77FC6 /* CTResourcePathProperty.h */,
 				3213A8D115B2C9EE00D77FC6 /* CTResourcePathProperty.m */,
+				32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */,
 			);
 			name = properties;
 			sourceTree = "<group>";
@@ -375,6 +378,7 @@
 				3213A8F315B300D700D77FC6 /* CTMomentaryButton.h in Headers */,
 				32D5DBFA15B409C800EC5825 /* CTPushOnPushOffButton.h in Headers */,
 				3291ACDB15B853F900654C5D /* CTFunctions.h in Headers */,
+				32C506C015BEDC8D001F2025 /* CTPropertyListener.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
