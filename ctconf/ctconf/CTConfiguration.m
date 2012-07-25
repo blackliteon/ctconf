@@ -205,6 +205,15 @@ static id sharedInstance = nil;
 
 #pragma mark Properties
 
+- (CTProperty *) _registerProperty: (CTProperty *) property {
+    if (self.mode == CTConfigurationMode) {
+        [self _reReadConfigFromConfigPanel];
+    }
+    [self.propertyManager addProperty:property];
+    CTProperty *assignedProperty = [self.propertyManager propertyByName:property.name];
+    return assignedProperty;
+}
+
 - (double) addDoubleProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (CGFloat) defaultValue {
 
     CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
@@ -212,10 +221,7 @@ static id sharedInstance = nil;
     property.defaultValue = [NSNumber numberWithFloat:defaultValue];
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     double currentValue = [assignedProperty.value doubleValue]; 
     return currentValue;
 }
@@ -227,10 +233,7 @@ static id sharedInstance = nil;
     property.defaultValue = [NSNumber numberWithInteger:defaultValue];
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-    
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     double currentValue = [assignedProperty.value integerValue]; 
     return currentValue;
 }
@@ -241,10 +244,7 @@ static id sharedInstance = nil;
     property.defaultValue = [NSNumber numberWithFloat:defaultValue];
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     BOOL currentValue = [assignedProperty.value boolValue]; 
     return currentValue;
 }
@@ -265,10 +265,7 @@ static id sharedInstance = nil;
     va_end(args);
     property.possibleValues = possibleValues;
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.value;
 }
 
@@ -278,10 +275,7 @@ static id sharedInstance = nil;
     property.defaultValue = defaultValue;
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.value;
 }
 
@@ -291,10 +285,7 @@ static id sharedInstance = nil;
     property.defaultValue = defaultValue;
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-    
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.value;
 }
 
@@ -304,10 +295,7 @@ static id sharedInstance = nil;
     property.defaultValue = [NSValue valueWithSize:defaultValue];
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-    
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     NSSize currentValue = [assignedProperty.value sizeValue]; 
     return currentValue;
 }
@@ -318,10 +306,7 @@ static id sharedInstance = nil;
     property.defaultValue = defaultValue;
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-    
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.value;
 }
 
@@ -332,10 +317,7 @@ static id sharedInstance = nil;
     property.delegate = self;
     [property addObjectThatTracksUpdates:object key:key];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-    
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.value;
 }
 
@@ -350,10 +332,7 @@ static id sharedInstance = nil;
     property.defaultValue = [NSNumber numberWithFloat:defaultValue];
     [property addPropertyListener:listener];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-    
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     double currentValue = [assignedProperty.value doubleValue]; 
     return currentValue;
 
@@ -363,13 +342,12 @@ static id sharedInstance = nil;
     CTColorProperty *property = [[CTColorProperty alloc] init];
     property.name = propertyName;
     property.defaultValue = defaultValue;
-//    [property addObjectThatTracksUpdates:object key:key];
+    property.optional = optional;
+    property.defaultPropertyLink = defaultProperty;
+    
     [property addPropertyListener:listener];
     
-    [self _reReadConfigFromConfigPanel];
-    [self.propertyManager addProperty:property];
-    
-    CTProperty *assignedProperty = [self.propertyManager propertyByName:propertyName];
+    CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.value;
 }
 

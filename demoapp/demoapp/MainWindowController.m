@@ -75,7 +75,7 @@
 {
     self.topPanelViewController = [[TopPanelViewController alloc] initWithNibName:@"TopPanelViewController" bundle:[NSBundle mainBundle]];
     
-    self.firstBgView = [[BGView alloc] initWithFrame:NSMakeRect(20, 20, 100, 100)];
+    self.firstBgView = [[BGView alloc] initWithFrame:NSMakeRect(5, 5, self.window.frame.size.width - 10, 50)];
     
     self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"#ff0000"];
     
@@ -83,13 +83,13 @@
     
     NSString *mainBundlePath = [[NSBundle mainBundle] bundlePath];
 
-    self.momentaryButton = [[CTMomentaryButton alloc] initWithFrame:NSMakeRect(160, 100, 60, 60)];
+    self.momentaryButton = [[CTMomentaryButton alloc] initWithFrame:NSMakeRect(10, 100, 60, 60)];
     self.momentaryButton.delegate = self;
     NSString *buttonPath = [NSString stringWithFormat:@"%@/Contents/Resources/button", mainBundlePath];
     [self.momentaryButton setImagesFromPath:buttonPath sizeFromImageData:NO];
     [self.window.contentView addSubview:self.momentaryButton];
 
-    self.pushOnPushOffButton = [[CTPushOnPushOffButton alloc] initWithFrame:NSMakeRect(260, 100, 60, 60)];
+    self.pushOnPushOffButton = [[CTPushOnPushOffButton alloc] initWithFrame:NSMakeRect(100, 100, 60, 60)];
     self.pushOnPushOffButton.delegate = self;
     NSString *pushButtonPath = [NSString stringWithFormat:@"%@/Contents/Resources/pushbutton", mainBundlePath];
     [self.pushOnPushOffButton setImagesFromPath:pushButtonPath];

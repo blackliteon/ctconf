@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) NSMutableDictionary *propertyDict;
 @property (strong, nonatomic) NSMutableDictionary *stringDict;
+@property (strong, nonatomic) NSMutableDictionary *linkDict;
 
 @end
 
@@ -23,6 +24,7 @@
 
 @synthesize propertyDict = _propertyDict;
 @synthesize stringDict = _stringDict;
+@synthesize linkDict = _linkDict;
 
 - (void) _fillStringsValuesFromText: (NSString *) text {
     [self.stringDict removeAllObjects];
@@ -54,9 +56,38 @@
     if (strValInConfig) {
         [property fromString:strValInConfig];
     } else { 
-        property.value = property.defaultValue;
-        [self.delegate propertyValueNotFound:property];
+        
+        if (property.defaultPropertyLink) {
+            CTProperty *masterProperty = [self.propertyDict objectForKey:property.defaultPropertyLink];
+            
+            if (masterProperty) {
+                property.value = masterProperty.value;
+            } else {
+                property.value = nil;
+            }
+            
+        } else {
+            property.value = nil;
+        }
+        
+        if (!property.optional) {
+            [self.delegate propertyValueNotFound:property];
+        }
     }
+
+    // update another properties that linked to this one
+    
+    NSMutableArray *linkedProperties = [self.linkDict objectForKey:property.name];
+    if (linkedProperties) {
+        for (CTProperty *linkedProperty in linkedProperties) {
+            NSString *linkedPropertyStrValue = [self.stringDict objectForKey:linkedProperty.name];
+            if (!linkedPropertyStrValue) {
+                NSLog(@"Found linked property without value: %@", linkedProperty.name);
+                linkedProperty.value = property.value;
+            }
+        }
+    }
+    
 }
 
 - (void) setConfigText: (NSString *) configText {
@@ -75,8 +106,24 @@
     CTProperty *registeredProperty = [self.propertyDict objectForKey:property.name];
     
     if (!registeredProperty) {
+        
+        NSLog(@"unregistered property %@. Registration.", property.name);
+        
         [self.propertyDict setObject:property forKey:property.name];
+
+        // add link to link dict
+        
+        if (property.defaultPropertyLink) {
+            NSMutableArray *allLinkedProperties = [self.linkDict objectForKey:property.defaultPropertyLink];
+            if (!allLinkedProperties) {
+                allLinkedProperties = [[NSMutableArray alloc] init];
+                [self.linkDict setObject:allLinkedProperties forKey:property.defaultPropertyLink];
+            }
+            [allLinkedProperties addObject:property];
+        }
+        
         [self _refreshPropertyValue:property];
+        
     } else {
         if (registeredProperty.class != property.class) {
             [NSException raise:@"One name for different properties types" format:@"Property %@ has multiple types simultaneously", property.name];
@@ -110,6 +157,13 @@
         _stringDict = [[NSMutableDictionary alloc] init];
     }
     return _stringDict;
+}
+
+- (NSMutableDictionary *) linkDict {
+    if (!_linkDict) {
+        _linkDict = [[NSMutableDictionary alloc] init];
+    }
+    return _linkDict;
 }
 
 @end

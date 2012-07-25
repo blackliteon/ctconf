@@ -18,6 +18,10 @@
 @property (weak) IBOutlet NSTextField *label;
 @property (weak) IBOutlet BGView *bgView;
 
+@property (weak) IBOutlet BGView *square1;
+@property (weak) IBOutlet BGView *square2;
+@property (weak) IBOutlet BGView *square3;
+
 @property (assign, nonatomic) CGFloat topMargin;
 @property (assign, nonatomic) CGFloat topPanelLeftMargin;
 @property (assign, nonatomic) BOOL labelVisible;
@@ -32,6 +36,10 @@
 @synthesize button3;
 @synthesize label;
 @synthesize bgView;
+
+@synthesize square1;
+@synthesize square2;
+@synthesize square3;
 
 @synthesize topMargin = _topMargin;
 @synthesize topPanelLeftMargin = _topPanelLeftMargin;
@@ -52,6 +60,10 @@
     [[CTConfiguration sharedInstance] unregisterObjectFromUpdates:self];
 }
 
+#define SQUARE1_COLOR_KEY @"square1.color"
+#define SQUARE2_COLOR_KEY @"square2.color"
+#define SQUARE3_COLOR_KEY @"square3.color"
+
 - (void) loadView {
     [super loadView];
     
@@ -67,9 +79,15 @@
 
     // 
     
-    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20 alwaysInConfig:YES];
-
+    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20 alwaysInConfig:YES]; // todo: refactor method names
     
+    [[CTConfiguration sharedInstance] addColorProperty:@"defaultSquareColor" propertyListener:self defaultValue:[NSColor redColor] optional:NO defaultPropertyName:nil];
+    
+    self.square1.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE1_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES defaultPropertyName:@"defaultSquareColor"];
+
+    self.square2.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE2_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES defaultPropertyName:@"defaultSquareColor"];
+    
+    self.square3.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE3_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES defaultPropertyName:@"defaultSquareColor"];
 }
 
 - (void) setTopMargin:(CGFloat)topMargin {
@@ -116,9 +134,22 @@
 }
 
 - (void) propertyWithName: (NSString *) name updatedToValue: (id) value {
+    NSLog(@"update property %@", name);
     if ([name isEqualToString:@"topPanel.leftMargin"]) {
         NSNumber *number = value;
         [self setTopPanelLeftMargin:[number doubleValue]];
+    }
+    
+    if ([name isEqualToString:SQUARE1_COLOR_KEY]) {
+        self.square1.bgColor = value;
+    }
+
+    if ([name isEqualToString:SQUARE2_COLOR_KEY]) {
+        self.square2.bgColor = value;
+    }
+
+    if ([name isEqualToString:SQUARE3_COLOR_KEY]) {
+        self.square3.bgColor = value;
     }
 }
 

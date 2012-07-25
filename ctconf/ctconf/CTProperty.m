@@ -21,8 +21,8 @@
 @synthesize propertyType = _propertyType;
 @synthesize value = _value;
 @synthesize defaultValue = _defaultValue;
-
-@synthesize objectKey = _objectKey;
+@synthesize optional = _optional;
+@synthesize defaultPropertyLink = _defaultPropertyLink;
 
 @synthesize objectSetterInfoArray = _objectSetterInfoArray;
 
@@ -30,6 +30,7 @@
     self = [super init];
     if (self) {
         _objectSetterInfoArray = [[NSMutableArray alloc] init];
+        self.optional = NO;
     }
     return self;
 }
@@ -47,16 +48,23 @@
             if (objectKey) {
                 
                 if (objectKey.object) {
-                    [objectKey.object setValue:value forKey:objectKey.key];
+                    [objectKey.object setValue:self.value forKey:objectKey.key];
                 }
                 
                 if (objectKey.listener) {
-                    [objectKey.listener propertyWithName:self.name updatedToValue:value];
+                    [objectKey.listener propertyWithName:self.name updatedToValue:self.value];
                 }
                 
             }
         }
     }
+}
+
+- (id) value {
+    if (!_value) {
+        return self.defaultValue;
+    }
+    return _value;
 }
 
 - (BOOL) isValueEqualTo: (id) newValue {
@@ -111,5 +119,6 @@
         }
     }
 }
+
 
 @end

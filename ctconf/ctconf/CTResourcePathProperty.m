@@ -35,7 +35,7 @@
         
         for (CTObjectSetterInfo *objectKey in self.allObjectSetterInfo) {
             if (objectKey) {
-                NSString *path = [self.delegate absolutePathForResourceWithConfigPath:value];
+                NSString *path = [self.delegate absolutePathForResourceWithConfigPath:self.value];
                 
                 if (objectKey.object) {
                     [objectKey.object setValue:path forKey:objectKey.key];

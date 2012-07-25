@@ -27,8 +27,8 @@ typedef NSInteger CTPropertyType;
 @property (assign) CTPropertyType propertyType;
 @property (strong, nonatomic) id value;
 @property (strong, nonatomic) id defaultValue;
-
-@property (copy, nonatomic) NSString *objectKey;
+@property (assign, nonatomic) BOOL optional;
+@property (copy, nonatomic) NSString *defaultPropertyLink;
 
 - (NSString *) toString;
 - (void) fromString: (NSString *) stringValue;
@@ -39,5 +39,7 @@ typedef NSInteger CTPropertyType;
 - (void) removeObjectFromUpdatesTracking: (id) object;
 - (void) addAllObjectSetterInfoFromProperty: (CTProperty *) property;
 - (NSArray *) allObjectSetterInfo;
+
+
 
 @end
