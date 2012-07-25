@@ -22,7 +22,7 @@
 @synthesize value = _value;
 @synthesize defaultValue = _defaultValue;
 @synthesize optional = _optional;
-@synthesize defaultPropertyLink = _defaultPropertyLink;
+@synthesize masterPropertyName = _masterPropertyName;
 
 @synthesize objectSetterInfoArray = _objectSetterInfoArray;
 

@@ -323,13 +323,16 @@ static id sharedInstance = nil;
 
 // properties with listeners
 
-- (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue alwaysInConfig: (BOOL) alwaysInConfig {
+- (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName {
 
     // todo: implement alwaysInConfig
     
     CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
     property.name = propertyName;
     property.defaultValue = [NSNumber numberWithFloat:defaultValue];
+    property.optional = optional;
+    property.masterPropertyName = masterPropertyName;
+    
     [property addPropertyListener:listener];
     
     CTProperty *assignedProperty = [self _registerProperty:property];
@@ -338,12 +341,12 @@ static id sharedInstance = nil;
 
 }
 
-- (NSColor *) addColorProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>)listener  defaultValue:(NSColor *)defaultValue optional: (BOOL) optional defaultPropertyName: (NSString *) defaultProperty {
+- (NSColor *) addColorProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>)listener  defaultValue:(NSColor *)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName {
     CTColorProperty *property = [[CTColorProperty alloc] init];
     property.name = propertyName;
     property.defaultValue = defaultValue;
     property.optional = optional;
-    property.defaultPropertyLink = defaultProperty;
+    property.masterPropertyName = masterPropertyName;
     
     [property addPropertyListener:listener];
     

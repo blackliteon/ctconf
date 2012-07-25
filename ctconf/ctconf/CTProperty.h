@@ -28,7 +28,7 @@ typedef NSInteger CTPropertyType;
 @property (strong, nonatomic) id value;
 @property (strong, nonatomic) id defaultValue;
 @property (assign, nonatomic) BOOL optional;
-@property (copy, nonatomic) NSString *defaultPropertyLink;
+@property (copy, nonatomic) NSString *masterPropertyName;
 
 - (NSString *) toString;
 - (void) fromString: (NSString *) stringValue;

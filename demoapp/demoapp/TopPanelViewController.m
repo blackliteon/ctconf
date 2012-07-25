@@ -71,7 +71,7 @@
 
 //    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" toObject:self key:@"topPanelLeftMargin" defaultValue:20];
     
-    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20 alwaysInConfig:YES];
+    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20 optional:NO masterPropertyName:nil];
     
     self.labelVisible = [[CTConfiguration sharedInstance] addBooleanProperty:@"topPanel.labelVisible" toObject:self key:@"labelVisible" defaultValue:YES];
     
@@ -79,15 +79,13 @@
 
     // 
     
-    self.topPanelLeftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:@"topPanel.leftMargin" propertyListener:self defaultValue:20 alwaysInConfig:YES]; // todo: refactor method names
+    [[CTConfiguration sharedInstance] addColorProperty:@"defaultSquareColor" propertyListener:self defaultValue:[NSColor redColor] optional:NO masterPropertyName:nil];
     
-    [[CTConfiguration sharedInstance] addColorProperty:@"defaultSquareColor" propertyListener:self defaultValue:[NSColor redColor] optional:NO defaultPropertyName:nil];
-    
-    self.square1.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE1_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES defaultPropertyName:@"defaultSquareColor"];
+    self.square1.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE1_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES masterPropertyName:@"defaultSquareColor"];
 
-    self.square2.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE2_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES defaultPropertyName:@"defaultSquareColor"];
+    self.square2.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE2_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES masterPropertyName:@"defaultSquareColor"];
     
-    self.square3.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE3_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES defaultPropertyName:@"defaultSquareColor"];
+    self.square3.bgColor = [[CTConfiguration sharedInstance] addColorProperty:SQUARE3_COLOR_KEY propertyListener:self defaultValue:[NSColor blackColor] optional:YES masterPropertyName:@"defaultSquareColor"];
 }
 
 - (void) setTopMargin:(CGFloat)topMargin {

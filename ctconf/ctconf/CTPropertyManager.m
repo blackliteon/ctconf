@@ -53,20 +53,31 @@
 - (void) _refreshPropertyValue: (CTProperty *) property { // and appent to text for dev mode
     
     NSString *strValInConfig = [self.stringDict objectForKey:property.name];
+    
+    // if property set, just use it value
+    
     if (strValInConfig) {
         [property fromString:strValInConfig];
     } else { 
         
-        if (property.defaultPropertyLink) {
-            CTProperty *masterProperty = [self.propertyDict objectForKey:property.defaultPropertyLink];
+        // if it's not ...
+        
+        if (property.masterPropertyName) {
+            
+            // ... try to use value from master property
+            
+            CTProperty *masterProperty = [self.propertyDict objectForKey:property.masterPropertyName];
             
             if (masterProperty) {
                 property.value = masterProperty.value;
-            } else {
+            } else { // we have reference to master, but there is no master property yet registered (seems it will be registered later), so, just use default value.
                 property.value = nil;
             }
             
         } else {
+            
+            // ... or just use default
+            
             property.value = nil;
         }
         
@@ -75,7 +86,7 @@
         }
     }
 
-    // update another properties that linked to this one
+    // update another properties that linked to this one (this is master property)
     
     NSMutableArray *linkedProperties = [self.linkDict objectForKey:property.name];
     if (linkedProperties) {
@@ -113,11 +124,11 @@
 
         // add link to link dict
         
-        if (property.defaultPropertyLink) {
-            NSMutableArray *allLinkedProperties = [self.linkDict objectForKey:property.defaultPropertyLink];
+        if (property.masterPropertyName) {
+            NSMutableArray *allLinkedProperties = [self.linkDict objectForKey:property.masterPropertyName];
             if (!allLinkedProperties) {
                 allLinkedProperties = [[NSMutableArray alloc] init];
-                [self.linkDict setObject:allLinkedProperties forKey:property.defaultPropertyLink];
+                [self.linkDict setObject:allLinkedProperties forKey:property.masterPropertyName];
             }
             [allLinkedProperties addObject:property];
         }
