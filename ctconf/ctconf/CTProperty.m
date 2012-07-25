@@ -114,7 +114,7 @@
     
     for (int i = (int)self.objectSetterInfoArray.count - 1; i >= 0; i--) {
         CTObjectSetterInfo *currentObjectKey = [self.objectSetterInfoArray objectAtIndex:i];
-        if (currentObjectKey.object == object) {
+        if (currentObjectKey.object == object || currentObjectKey.listener == object) {
             [self.objectSetterInfoArray removeObjectAtIndex:i];
         }
     }

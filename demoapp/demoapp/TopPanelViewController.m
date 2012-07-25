@@ -132,7 +132,6 @@
 }
 
 - (void) propertyWithName: (NSString *) name updatedToValue: (id) value {
-    NSLog(@"update property %@", name);
     if ([name isEqualToString:@"topPanel.leftMargin"]) {
         NSNumber *number = value;
         [self setTopPanelLeftMargin:[number doubleValue]];

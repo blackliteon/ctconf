@@ -93,7 +93,6 @@
         for (CTProperty *linkedProperty in linkedProperties) {
             NSString *linkedPropertyStrValue = [self.stringDict objectForKey:linkedProperty.name];
             if (!linkedPropertyStrValue) {
-                NSLog(@"Found linked property without value: %@", linkedProperty.name);
                 linkedProperty.value = property.value;
             }
         }
@@ -117,8 +116,6 @@
     CTProperty *registeredProperty = [self.propertyDict objectForKey:property.name];
     
     if (!registeredProperty) {
-        
-        NSLog(@"unregistered property %@. Registration.", property.name);
         
         [self.propertyDict setObject:property forKey:property.name];
 
