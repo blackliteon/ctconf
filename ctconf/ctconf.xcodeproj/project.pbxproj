@@ -320,6 +320,7 @@
 				3240888A15AF083000735767 /* helpers */,
 				32A44D8915A5B6D800A87F87 /* CTProperty.h */,
 				32A44D8A15A5B6D800A87F87 /* CTProperty.m */,
+				32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */,
 				32BE667015A6E85000042E9E /* CTNumberProperty.h */,
 				32BE667115A6E85000042E9E /* CTNumberProperty.m */,
 				3240886515AEB75300735767 /* CTIntegerProperty.h */,
@@ -338,7 +339,6 @@
 				322CAE6B15B03D6600BE85DB /* CTColorProperty.m */,
 				3213A8D015B2C9EE00D77FC6 /* CTResourcePathProperty.h */,
 				3213A8D115B2C9EE00D77FC6 /* CTResourcePathProperty.m */,
-				32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */,
 				32C506FB15C04740001F2025 /* CTUnicharProperty.h */,
 				32C506FC15C04740001F2025 /* CTUnicharProperty.m */,
 			);

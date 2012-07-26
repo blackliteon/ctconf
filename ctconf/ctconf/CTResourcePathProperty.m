@@ -14,13 +14,14 @@
 @synthesize delegate = _delegate;
 
 - (BOOL) isValueEqualTo: (id) newValue {
-    if (_value == nil && newValue == nil) return YES;
-    if (_value != newValue && (_value == nil || newValue == nil)) return NO;
     
-    NSString *oldStr = _value;
-    NSString *newStr = newValue;
+    NSString *normalizedCurrent = _value ? _value : self.defaultValue;
+    NSString *normalizedNew = newValue ? newValue : self.defaultValue;
     
-    return [oldStr isEqualToString:newStr];
+    if (normalizedCurrent == normalizedNew) return YES;
+    if (normalizedCurrent == nil || normalizedNew == nil) return NO;
+    return [normalizedCurrent isEqualToString:normalizedNew];
+
 }
 
 - (NSString *) toString {
@@ -46,12 +47,20 @@
                     }
                     
                     if (objectKey.listener) {
-                        [objectKey.listener propertyWithName:self.name updatedToValue:path];
+                        if ([objectKey.listener respondsToSelector:@selector(propertyWithName:updatedToValue:)]) {
+                            [objectKey.listener propertyWithName:self.name updatedToValue:self.value];
+                        }
                     }
-                    
                 }
             }
+
+            if (self.updateBlock) {
+                self.updateBlock(self);
+            }
+
         }
+    } else {
+        _value = value;
     }
 }
 

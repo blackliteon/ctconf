@@ -24,6 +24,7 @@
 @synthesize optional = _optional;
 @synthesize masterPropertyName = _masterPropertyName;
 @synthesize disableUpdateNotification = _disableUpdateNotification;
+@synthesize updateBlock = _updateBlock;
 
 @synthesize objectSetterInfoArray = _objectSetterInfoArray;
 
@@ -33,6 +34,7 @@
         _objectSetterInfoArray = [[NSMutableArray alloc] init];
         self.optional = NO;
         self.disableUpdateNotification = NO;
+        self.updateBlock = NULL;
     }
     return self;
 }
@@ -47,6 +49,7 @@
         _value = value;
         
         if (!self.disableUpdateNotification) {
+            
             for (CTObjectSetterInfo *objectKey in self.objectSetterInfoArray) {
                 if (objectKey) {
                     
@@ -55,13 +58,21 @@
                     }
                     
                     if (objectKey.listener) {
-                        [objectKey.listener propertyWithName:self.name updatedToValue:self.value];
+                        if ([objectKey.listener respondsToSelector:@selector(propertyWithName:updatedToValue:)]) {
+                            [objectKey.listener propertyWithName:self.name updatedToValue:self.value];
+                        }
                     }
                     
                 }
             }
+
+            if (self.updateBlock) {
+                self.updateBlock(self);
+            }
         }
             
+    } else {
+        _value = value; // just update value, even if they seems equals because normalized.
     }
 }
 
@@ -114,6 +125,19 @@
 - (NSArray *) allObjectSetterInfo {
     return self.objectSetterInfoArray;
 }
+
+- (NSArray *) allListeners {
+    NSMutableArray *listeners = [[NSMutableArray alloc] init];
+    
+    for (CTObjectSetterInfo *setter in self.objectSetterInfoArray) {
+        if (setter.listener && ![listeners containsObject:setter.listener]) {
+            [listeners addObject:setter.listener];
+        }
+    }
+    
+    return listeners;
+}
+
 
 - (void) removeObjectFromUpdatesTracking: (id) object {
     

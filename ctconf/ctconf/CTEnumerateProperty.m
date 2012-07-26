@@ -14,13 +14,12 @@
 
 - (BOOL) isValueEqualTo: (id) newValue {
     
-    if (_value == nil && newValue == nil) return YES;
-    if (_value != newValue && (_value == nil || newValue == nil)) return NO;
+    id normalizedCurrent = _value ? _value : self.defaultValue;
+    id normalizedNew = newValue ? newValue : self.defaultValue;
     
-    NSString *oldStr = _value;
-    NSString *newStr = newValue;
-    
-    return [oldStr isEqualToString:newStr];
+    if (normalizedCurrent == normalizedNew) return YES;
+    if (normalizedCurrent == nil || normalizedNew == nil) return NO;
+    return [normalizedCurrent isEqualToString:normalizedNew];
 }
 
 - (NSString *) toString {

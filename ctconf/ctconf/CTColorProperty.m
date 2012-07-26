@@ -12,15 +12,14 @@
 @implementation CTColorProperty
 
 - (BOOL) isValueEqualTo: (id) newValue {
-    if (_value == nil && newValue == nil) return YES;
-    if (_value != newValue && (_value == nil || newValue == nil)) return NO;
+    NSColor *normalizedCurrent = _value ? _value : self.defaultValue;
+    NSColor *normalizedNew = newValue ? newValue : self.defaultValue;
     
-    NSColor *currentColor = _value;
-    NSColor *newColor = newValue;
+    if (normalizedCurrent == normalizedNew) return YES;
+    if (normalizedCurrent == nil || normalizedNew == nil) return NO;
     
-    NSString *currentColorHex = [currentColor hexString];
-    NSString *newColorHex = [newColor hexString];
-    
+    NSString *currentColorHex = [normalizedCurrent hexString];
+    NSString *newColorHex = [normalizedNew hexString];
     return [currentColorHex isEqualToString:newColorHex];
 }
 

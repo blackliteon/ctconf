@@ -22,7 +22,7 @@
         [pScanner scanHexInt: &iValue];
         self.value = [NSNumber numberWithUnsignedShort:iValue];
     } else {
-        //self.value = nil;
+        self.value = nil;
     }
 }
 

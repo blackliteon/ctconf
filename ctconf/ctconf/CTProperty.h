@@ -9,6 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "CTPropertyListener.h"
 
+@class CTProperty;
+
+typedef void(^CTPropertyUpdateBlock)(CTProperty *property);
+
 enum {
     CTPropertyTypeCGFloat,  
 };
@@ -30,6 +34,7 @@ typedef NSInteger CTPropertyType;
 @property (assign, nonatomic) BOOL optional;
 @property (copy, nonatomic) NSString *masterPropertyName;
 @property (assign, nonatomic) BOOL disableUpdateNotification;
+@property (assign, nonatomic) CTPropertyUpdateBlock updateBlock;
 
 - (NSString *) toString;
 - (void) fromString: (NSString *) stringValue;
@@ -40,7 +45,7 @@ typedef NSInteger CTPropertyType;
 - (void) removeObjectFromUpdatesTracking: (id) object;
 - (void) addAllObjectSetterInfoFromProperty: (CTProperty *) property;
 - (NSArray *) allObjectSetterInfo;
-
+- (NSArray *) allListeners;
 
 
 @end

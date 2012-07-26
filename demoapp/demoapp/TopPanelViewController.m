@@ -150,5 +150,9 @@
     }
 }
 
+- (void) propertiesUpdated:(NSArray *)propertyNames {
+    NSLog(@"Properties updated: %@", propertyNames);
+}
+
 
 @end

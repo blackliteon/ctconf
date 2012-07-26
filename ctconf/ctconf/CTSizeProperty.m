@@ -14,14 +14,13 @@
 
 #pragma mark - Property Override
 
-- (BOOL) isValueEqualTo: (id) other {
-    if (_value == nil && other == nil) return YES;
-    if (_value != other && (_value == nil || other == nil)) return NO;
+- (BOOL) isValueEqualTo: (id) newValue {
+    NSValue *normalizedCurrent = _value ? _value : self.defaultValue;
+    NSValue *normalizedNew = newValue ? newValue : self.defaultValue;
     
-    NSValue *myValue = _value;
-    NSValue *otherValue = other;
-    
-    return [myValue isEqualToValue:otherValue];
+    if (normalizedCurrent == normalizedNew) return YES;
+    if (normalizedCurrent == nil || normalizedNew == nil) return NO;
+    return [normalizedCurrent isEqualToValue:normalizedNew];
 }
 
 - (NSString *) toString {

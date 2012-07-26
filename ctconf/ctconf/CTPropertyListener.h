@@ -10,6 +10,10 @@
 
 @protocol CTPropertyListener <NSObject>
 
+
+@optional
+
 - (void) propertyWithName: (NSString *) name updatedToValue: (id) value;
+- (void) propertiesUpdated: (NSArray *) propertyNames;
 
 @end

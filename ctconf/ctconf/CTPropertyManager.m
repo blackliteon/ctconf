@@ -9,7 +9,7 @@
 #import "CTPropertyManager.h"
 #import "CTProperty.h"
 
-@interface CTPropertyManager ()
+@interface CTPropertyManager () 
 
 @property (strong, nonatomic) NSMutableDictionary *propertyDict;
 @property (strong, nonatomic) NSMutableDictionary *stringDict;
@@ -101,7 +101,13 @@
         for (CTProperty *linkedProperty in linkedProperties) {
             NSString *linkedPropertyStrValue = [self.stringDict objectForKey:linkedProperty.name];
             if (!linkedPropertyStrValue) {
+                
+                linkedProperty.updateBlock = property.updateBlock;
+                
                 linkedProperty.value = property.value;
+                
+                linkedProperty.updateBlock = NULL;
+                
             }
         }
     }
@@ -111,11 +117,43 @@
 - (void) setConfigText: (NSString *) configText {
     if (![_configText isEqualToString:configText]) {
         _configText = [configText copy];
-        
         [self _fillStringsValuesFromText:configText];
+        
+        NSMutableDictionary *listenerDict = [[NSMutableDictionary alloc] init];
+        
         [self.propertyDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
+            
+            // fill listenerDict for batch listening
+            
+            property.updateBlock = ^(CTProperty *property) {
+                NSArray *listeners = property.allListeners;
+                for (id<CTPropertyListener> listener in listeners) {
+                    if ([listener respondsToSelector:@selector(propertiesUpdated:)]) {
+                        NSValue *valueKey = [NSValue valueWithNonretainedObject:listener];
+                        NSMutableArray *propertiesForListener = [listenerDict objectForKey:valueKey];
+                        if (!propertiesForListener) {
+                            propertiesForListener = [[NSMutableArray alloc] init];
+                            [listenerDict setObject:propertiesForListener forKey:valueKey];
+                        }
+                        [propertiesForListener addObject:property.name];
+                    }
+                }
+            };
+            
+            // update property value
+            
             [self _refreshPropertyValue:property disableUpdateNotification:NO];
+            
+            property.updateBlock = NULL;
         }];
+        
+        // batch listener notification
+        
+        [listenerDict enumerateKeysAndObjectsUsingBlock:^(NSValue *keyValue, NSArray *propertyNames, BOOL *stop) {
+            id<CTPropertyListener> listener = [keyValue nonretainedObjectValue];
+            [listener propertiesUpdated:propertyNames];
+        }];
+        
     }
 }
 
