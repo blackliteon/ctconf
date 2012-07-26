@@ -15,7 +15,10 @@
 #pragma mark - Property Override
 
 - (BOOL) isValueEqualTo: (id) other {
-    NSValue *myValue = self.value;
+    if (_value == nil && other == nil) return YES;
+    if (_value != other && (_value == nil || other == nil)) return NO;
+    
+    NSValue *myValue = _value;
     NSValue *otherValue = other;
     
     return [myValue isEqualToValue:otherValue];

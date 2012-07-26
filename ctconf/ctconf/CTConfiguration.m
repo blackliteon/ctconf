@@ -19,6 +19,7 @@
 #import "CTColorProperty.h"
 #import "CTResourcePathProperty.h"
 #import "CTPropertyManager.h"
+#import "CTUnicharProperty.h"
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
@@ -30,7 +31,6 @@
 @property (strong, nonatomic) CTSceneManager *sceneManager;
 
 @property (strong, nonatomic) id<CTScene> currentScene;
-@property (assign, nonatomic) BOOL useResourceFromBundle;
 
 @end
 
@@ -325,8 +325,6 @@ static id sharedInstance = nil;
 
 - (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName {
 
-    // todo: implement alwaysInConfig
-    
     CTDoubleProperty *property = [[CTDoubleProperty alloc] init];
     property.name = propertyName;
     property.defaultValue = [NSNumber numberWithFloat:defaultValue];
@@ -352,6 +350,77 @@ static id sharedInstance = nil;
     
     CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.value;
+}
+
+- (BOOL) addBooleanProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(BOOL)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName {
+    CTBooleanProperty *property = [[CTBooleanProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = [NSNumber numberWithFloat:defaultValue];
+    property.optional = optional;
+    property.masterPropertyName = masterPropertyName;
+
+    [property addPropertyListener:listener];
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    BOOL currentValue = [assignedProperty.value boolValue]; 
+    return currentValue;
+
+}
+
+- (NSString *) addEnumerateProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>) listener defaultValue: (NSString *) defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName possibleValues: (NSString *) possibleValue1, ... {
+    
+    CTEnumerateProperty *property = [[CTEnumerateProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    property.optional = optional;
+    property.masterPropertyName = masterPropertyName;
+    
+    [property addPropertyListener:listener];
+    
+    NSMutableArray *possibleValues = [[NSMutableArray alloc] init];
+    va_list args;
+    va_start(args, possibleValue1);
+    for (NSString *arg = possibleValue1; arg != nil; arg = va_arg(args, NSString*))
+    {
+        [possibleValues addObject:arg];
+    }
+    va_end(args);
+    property.possibleValues = possibleValues;
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    return assignedProperty.value;
+}
+
+- (NSInteger) addIntegerProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(NSInteger)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName {
+
+    CTIntegerProperty *property = [[CTIntegerProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = [NSNumber numberWithInteger:defaultValue];
+    property.optional = optional;
+    property.masterPropertyName = masterPropertyName;
+    
+    [property addPropertyListener:listener];
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    double currentValue = [assignedProperty.value integerValue]; 
+    return currentValue;
+
+}
+
+- (unichar) addUnicharProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(unichar)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName {
+    
+    CTUnicharProperty *property = [[CTUnicharProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = [NSNumber numberWithFloat:defaultValue];
+    property.optional = optional;
+    property.masterPropertyName = masterPropertyName;
+    
+    [property addPropertyListener:listener];
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    unichar currentValue = [assignedProperty.value unsignedShortValue]; 
+    return currentValue;
+
 }
 
 

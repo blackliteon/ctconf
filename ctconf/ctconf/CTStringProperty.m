@@ -11,7 +11,10 @@
 @implementation CTStringProperty
 
 - (BOOL) isValueEqualTo: (id) newValue {
-    NSString *oldStr = self.value;
+    if (_value == nil && newValue == nil) return YES;
+    if (_value != newValue && (_value == nil || newValue == nil)) return NO;
+
+    NSString *oldStr = _value;
     NSString *newStr = newValue;
     
     return [oldStr isEqualToString:newStr];

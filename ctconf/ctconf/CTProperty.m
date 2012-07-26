@@ -23,6 +23,7 @@
 @synthesize defaultValue = _defaultValue;
 @synthesize optional = _optional;
 @synthesize masterPropertyName = _masterPropertyName;
+@synthesize disableUpdateNotification = _disableUpdateNotification;
 
 @synthesize objectSetterInfoArray = _objectSetterInfoArray;
 
@@ -31,6 +32,7 @@
     if (self) {
         _objectSetterInfoArray = [[NSMutableArray alloc] init];
         self.optional = NO;
+        self.disableUpdateNotification = NO;
     }
     return self;
 }
@@ -44,19 +46,22 @@
     if (![self isValueEqualTo:value]) {
         _value = value;
         
-        for (CTObjectSetterInfo *objectKey in self.objectSetterInfoArray) {
-            if (objectKey) {
-                
-                if (objectKey.object) {
-                    [objectKey.object setValue:self.value forKey:objectKey.key];
+        if (!self.disableUpdateNotification) {
+            for (CTObjectSetterInfo *objectKey in self.objectSetterInfoArray) {
+                if (objectKey) {
+                    
+                    if (objectKey.object) {
+                        [objectKey.object setValue:self.value forKey:objectKey.key];
+                    }
+                    
+                    if (objectKey.listener) {
+                        [objectKey.listener propertyWithName:self.name updatedToValue:self.value];
+                    }
+                    
                 }
-                
-                if (objectKey.listener) {
-                    [objectKey.listener propertyWithName:self.name updatedToValue:self.value];
-                }
-                
             }
         }
+            
     }
 }
 

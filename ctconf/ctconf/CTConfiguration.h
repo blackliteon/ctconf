@@ -22,6 +22,8 @@ typedef NSInteger CTMode;
 
 @property (copy, nonatomic) NSString *confFilePath;
 @property (assign, nonatomic) CTMode mode;
+@property (assign, nonatomic) BOOL useResourceFromBundle;
+
 @property (strong, readonly, nonatomic) CTSceneManager *sceneManager;
 
 + (CTConfiguration *) sharedInstance;
@@ -55,5 +57,14 @@ typedef NSInteger CTMode;
 - (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName;
 
 - (NSColor *) addColorProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>)listener  defaultValue:(NSColor *)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) defaultProperty;
+
+- (BOOL) addBooleanProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(BOOL)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName;
+
+- (NSString *) addEnumerateProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>) listener defaultValue: (NSString *) defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName possibleValues: (NSString *) possibleValue1, ...;
+
+- (NSInteger) addIntegerProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(NSInteger)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName;
+
+- (unichar) addUnicharProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(unichar)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName;
+
 
 @end

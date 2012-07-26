@@ -29,6 +29,7 @@ typedef NSInteger CTPropertyType;
 @property (strong, nonatomic) id defaultValue;
 @property (assign, nonatomic) BOOL optional;
 @property (copy, nonatomic) NSString *masterPropertyName;
+@property (assign, nonatomic) BOOL disableUpdateNotification;
 
 - (NSString *) toString;
 - (void) fromString: (NSString *) stringValue;

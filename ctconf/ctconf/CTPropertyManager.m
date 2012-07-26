@@ -50,7 +50,11 @@
     }];
 }
 
-- (void) _refreshPropertyValue: (CTProperty *) property { // and appent to text for dev mode
+- (void) _refreshPropertyValue: (CTProperty *) property disableUpdateNotification: (BOOL) disableNotification { // and appent to text for dev mode
+    
+    if (disableNotification) {
+        property.disableUpdateNotification = YES;
+    }
     
     NSString *strValInConfig = [self.stringDict objectForKey:property.name];
     
@@ -86,6 +90,10 @@
         }
     }
 
+    if (disableNotification) {
+        property.disableUpdateNotification = NO;
+    }
+
     // update another properties that linked to this one (this is master property)
     
     NSMutableArray *linkedProperties = [self.linkDict objectForKey:property.name];
@@ -106,7 +114,7 @@
         
         [self _fillStringsValuesFromText:configText];
         [self.propertyDict enumerateKeysAndObjectsUsingBlock:^(NSString* name, CTProperty *property, BOOL *stop) {
-            [self _refreshPropertyValue:property];
+            [self _refreshPropertyValue:property disableUpdateNotification:NO];
         }];
     }
 }
@@ -130,7 +138,7 @@
             [allLinkedProperties addObject:property];
         }
         
-        [self _refreshPropertyValue:property];
+        [self _refreshPropertyValue:property disableUpdateNotification:YES];
         
     } else {
         if (registeredProperty.class != property.class) {

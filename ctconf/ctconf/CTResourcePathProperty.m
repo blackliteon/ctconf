@@ -14,7 +14,10 @@
 @synthesize delegate = _delegate;
 
 - (BOOL) isValueEqualTo: (id) newValue {
-    NSString *oldStr = self.value;
+    if (_value == nil && newValue == nil) return YES;
+    if (_value != newValue && (_value == nil || newValue == nil)) return NO;
+    
+    NSString *oldStr = _value;
     NSString *newStr = newValue;
     
     return [oldStr isEqualToString:newStr];
@@ -33,18 +36,20 @@
     if (![self isValueEqualTo:value]) {
         _value = value;
         
-        for (CTObjectSetterInfo *objectKey in self.allObjectSetterInfo) {
-            if (objectKey) {
-                NSString *path = [self.delegate absolutePathForResourceWithConfigPath:self.value];
-                
-                if (objectKey.object) {
-                    [objectKey.object setValue:path forKey:objectKey.key];
+        if (!self.disableUpdateNotification) {
+            for (CTObjectSetterInfo *objectKey in self.allObjectSetterInfo) {
+                if (objectKey) {
+                    NSString *path = [self.delegate absolutePathForResourceWithConfigPath:self.value];
+                    
+                    if (objectKey.object) {
+                        [objectKey.object setValue:path forKey:objectKey.key];
+                    }
+                    
+                    if (objectKey.listener) {
+                        [objectKey.listener propertyWithName:self.name updatedToValue:path];
+                    }
+                    
                 }
-                
-                if (objectKey.listener) {
-                    [objectKey.listener propertyWithName:self.name updatedToValue:path];
-                }
-                
             }
         }
     }
