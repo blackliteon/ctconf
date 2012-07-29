@@ -203,6 +203,11 @@ static id sharedInstance = nil;
     [self.propertyManager unregisterObjectFromUpdates:object];
 }
 
+- (id) valueOfProperty: (NSString *) propertyName {
+    CTProperty *property = [self.propertyManager propertyByName:propertyName];
+    return property.value;
+}
+
 #pragma mark Properties
 
 - (CTProperty *) _registerProperty: (CTProperty *) property {

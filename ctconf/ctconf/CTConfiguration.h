@@ -31,6 +31,7 @@ typedef NSInteger CTMode;
 - (void) readConfig;
 - (void) showConfigurationPanel;
 - (void) unregisterObjectFromUpdates: (id) object;
+- (id) valueOfProperty: (NSString *) propertyName;
 
 /* properties */
 

@@ -45,7 +45,9 @@
             NSString *propertyName = [leftStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             NSString *propertyStrValue = [rightStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
             
-            [self.stringDict setObject:propertyStrValue forKey:propertyName];
+            if (propertyName.length > 0) {
+                [self.stringDict setObject:propertyStrValue forKey:propertyName];
+            }
         }
     }];
 }
