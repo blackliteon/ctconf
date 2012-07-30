@@ -18,7 +18,7 @@
 
 @interface CTPropertyManager : NSObject
 
-@property (weak, nonatomic) id<CTPropertyManagerDelegate> delegate;
+@property (unsafe_unretained, nonatomic) id<CTPropertyManagerDelegate> delegate;
 @property (copy, nonatomic) NSString *configText;
 
 - (void) addProperty: (CTProperty *) property;

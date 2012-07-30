@@ -16,6 +16,6 @@
 
 @interface CTResourcePathProperty : CTProperty
 
-@property (weak, nonatomic) id<CTResourcePathDelegate> delegate;
+@property (unsafe_unretained, nonatomic) id<CTResourcePathDelegate> delegate;
 
 @end

@@ -116,18 +116,23 @@ static id sharedInstance = nil;
     }
 }
 
-#pragma mark - Misc
-
-- (NSString *) absolutePathForResourceWithConfigPath: (NSString *) path {
+- (NSString *) normalizePath: (NSString *) path {
     if (self.useResourceFromBundle) {
         NSString *lastComponent = [path lastPathComponent];
         NSString *mainBundlePath = [[NSBundle mainBundle] bundlePath];
         NSString *resourcePath = [NSString stringWithFormat:@"%@/Contents/Resources/%@", mainBundlePath, lastComponent];
         return resourcePath;
-
+        
     } else {
         return path;
     }
+}
+
+
+#pragma mark - Misc
+
+- (NSString *) absolutePathForResourceWithConfigPath: (NSString *) path {
+    return [self normalizePath:path];
 }
 
 - (void) propertyValueNotFound: (CTProperty *) property {
@@ -323,7 +328,7 @@ static id sharedInstance = nil;
     [property addObjectThatTracksUpdates:object key:key];
     
     CTProperty *assignedProperty = [self _registerProperty:property];
-    return assignedProperty.value;
+    return [self normalizePath:assignedProperty.value];
 }
 
 // properties with listeners

@@ -11,7 +11,7 @@
 @interface CTPanelController () <NSTextViewDelegate, CTPanelDelegate>
 
 @property (unsafe_unretained) IBOutlet NSTextView *textView;
-@property (weak) IBOutlet NSPopUpButton *scenePopup;
+@property (unsafe_unretained) IBOutlet NSPopUpButton *scenePopup;
 
 @end
 

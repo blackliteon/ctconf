@@ -48,7 +48,7 @@
                     
                     if (objectKey.listener) {
                         if ([objectKey.listener respondsToSelector:@selector(propertyWithName:updatedToValue:)]) {
-                            [objectKey.listener propertyWithName:self.name updatedToValue:self.value];
+                            [objectKey.listener propertyWithName:self.name updatedToValue:path];
                         }
                     }
                 }
