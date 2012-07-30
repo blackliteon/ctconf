@@ -124,6 +124,12 @@ static id sharedInstance = nil;
         return resourcePath;
         
     } else {
+        
+        if (![path hasPrefix:@"/"]) {
+            NSString * absolutePath = [NSString stringWithFormat:@"%@/%@", [self.confFilePath stringByDeletingLastPathComponent], path];
+            return absolutePath;
+        }
+        
         return path;
     }
 }
