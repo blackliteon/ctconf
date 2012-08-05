@@ -12,15 +12,15 @@
 
 @interface TopPanelViewController () <CTPropertyListener>
 
-@property (weak) IBOutlet NSButton *button1;
-@property (weak) IBOutlet NSButton *button2;
-@property (weak) IBOutlet NSButton *button3;
-@property (weak) IBOutlet NSTextField *label;
-@property (weak) IBOutlet BGView *bgView;
+@property (unsafe_unretained) IBOutlet NSButton *button1;
+@property (unsafe_unretained) IBOutlet NSButton *button2;
+@property (unsafe_unretained) IBOutlet NSButton *button3;
+@property (unsafe_unretained) IBOutlet NSTextField *label;
+@property (unsafe_unretained) IBOutlet BGView *bgView;
 
-@property (weak) IBOutlet BGView *square1;
-@property (weak) IBOutlet BGView *square2;
-@property (weak) IBOutlet BGView *square3;
+@property (unsafe_unretained) IBOutlet BGView *square1;
+@property (unsafe_unretained) IBOutlet BGView *square2;
+@property (unsafe_unretained) IBOutlet BGView *square3;
 
 @property (assign, nonatomic) CGFloat topMargin;
 @property (assign, nonatomic) CGFloat topPanelLeftMargin;
