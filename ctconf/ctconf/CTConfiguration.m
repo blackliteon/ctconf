@@ -20,6 +20,7 @@
 #import "CTResourcePathProperty.h"
 #import "CTPropertyManager.h"
 #import "CTUnicharProperty.h"
+#import "CTFontProperty.h"
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
@@ -335,6 +336,16 @@ static id sharedInstance = nil;
     
     CTProperty *assignedProperty = [self _registerProperty:property];
     return [self normalizePath:assignedProperty.value];
+}
+
+- (NSFont *) addFontProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSFont *) defaultValue {
+    CTFontProperty *property = [[CTFontProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    [property addObjectThatTracksUpdates:object key:key];
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    return assignedProperty.value;
 }
 
 // properties with listeners

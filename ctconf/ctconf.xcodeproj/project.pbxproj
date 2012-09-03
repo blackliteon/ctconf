@@ -61,6 +61,8 @@
 		32BE667715A7006C00042E9E /* CTBooleanProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE667515A7006B00042E9E /* CTBooleanProperty.m */; };
 		32BE667A15A705CF00042E9E /* CTEnumerateProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32BE667815A705CF00042E9E /* CTEnumerateProperty.h */; };
 		32BE667B15A705CF00042E9E /* CTEnumerateProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32BE667915A705CF00042E9E /* CTEnumerateProperty.m */; };
+		32C13FF815D641A600CDB6B8 /* CTFontProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C13FF615D641A600CDB6B8 /* CTFontProperty.h */; };
+		32C13FF915D641A600CDB6B8 /* CTFontProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C13FF715D641A600CDB6B8 /* CTFontProperty.m */; };
 		32C506C015BEDC8D001F2025 /* CTPropertyListener.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32C506E315BEF481001F2025 /* CTPropertyManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 32C506E115BEF481001F2025 /* CTPropertyManager.h */; };
 		32C506E415BEF481001F2025 /* CTPropertyManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 32C506E215BEF481001F2025 /* CTPropertyManager.m */; };
@@ -144,6 +146,8 @@
 		32BE667515A7006B00042E9E /* CTBooleanProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTBooleanProperty.m; sourceTree = "<group>"; };
 		32BE667815A705CF00042E9E /* CTEnumerateProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTEnumerateProperty.h; sourceTree = "<group>"; };
 		32BE667915A705CF00042E9E /* CTEnumerateProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTEnumerateProperty.m; sourceTree = "<group>"; };
+		32C13FF615D641A600CDB6B8 /* CTFontProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTFontProperty.h; sourceTree = "<group>"; };
+		32C13FF715D641A600CDB6B8 /* CTFontProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTFontProperty.m; sourceTree = "<group>"; };
 		32C506BF15BEDC8D001F2025 /* CTPropertyListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPropertyListener.h; sourceTree = "<group>"; };
 		32C506E115BEF481001F2025 /* CTPropertyManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPropertyManager.h; sourceTree = "<group>"; };
 		32C506E215BEF481001F2025 /* CTPropertyManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPropertyManager.m; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 				3213A8D115B2C9EE00D77FC6 /* CTResourcePathProperty.m */,
 				32C506FB15C04740001F2025 /* CTUnicharProperty.h */,
 				32C506FC15C04740001F2025 /* CTUnicharProperty.m */,
+				32C13FF615D641A600CDB6B8 /* CTFontProperty.h */,
+				32C13FF715D641A600CDB6B8 /* CTFontProperty.m */,
 			);
 			name = properties;
 			sourceTree = "<group>";
@@ -393,6 +399,7 @@
 				32C506C015BEDC8D001F2025 /* CTPropertyListener.h in Headers */,
 				32C506E315BEF481001F2025 /* CTPropertyManager.h in Headers */,
 				32C506FD15C04740001F2025 /* CTUnicharProperty.h in Headers */,
+				32C13FF815D641A600CDB6B8 /* CTFontProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +537,7 @@
 				3291ACDC15B853F900654C5D /* CTFunctions.m in Sources */,
 				32C506E415BEF481001F2025 /* CTPropertyManager.m in Sources */,
 				32C506FE15C04741001F2025 /* CTUnicharProperty.m in Sources */,
+				32C13FF915D641A600CDB6B8 /* CTFontProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,7 +11,8 @@
 @implementation CTUnicharProperty
 
 - (NSString *) toString {
-    NSString * hexString = [NSString stringWithFormat:@"0x%x", self.value];
+    NSNumber *charNumber = self.value;
+    NSString * hexString = [NSString stringWithFormat:@"0x%x", [charNumber unsignedCharValue]];
     return hexString;
 }
 

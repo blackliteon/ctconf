@@ -46,7 +46,7 @@
     NSUInteger gDec = (NSUInteger)(g * 0xff);
     NSUInteger bDec = (NSUInteger)(b * 0xff);
     
-    NSString *result = [NSString stringWithFormat:@"%02x%02x%02x", rDec, gDec, bDec];
+    NSString *result = [NSString stringWithFormat:@"%02x%02x%02x", (unsigned int)rDec, (unsigned int)gDec, (unsigned int)bDec];
     return result;
 }
 
