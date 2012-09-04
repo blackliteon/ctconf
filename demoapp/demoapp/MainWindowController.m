@@ -19,6 +19,7 @@
 @property (strong, nonatomic) BGView *secondBgView;
 @property (strong, nonatomic) CTMomentaryButton *momentaryButton;
 @property (strong, nonatomic) CTPushOnPushOffButton *pushOnPushOffButton;
+@property (strong, nonatomic) CTPushOnPushOffButton *pushIconButton;
 
 @property (strong, nonatomic) NSString *bgColor;
 
@@ -94,6 +95,32 @@
     NSString *pushButtonPath = [NSString stringWithFormat:@"%@/Contents/Resources/pushbutton", mainBundlePath];
     [self.pushOnPushOffButton setImagesFromPath:pushButtonPath];
     [self.window.contentView addSubview:self.pushOnPushOffButton];
+    
+    // push button from template image
+    
+    NSString *circleButtonPath = [NSString stringWithFormat:@"%@/Contents/Resources/circle_template.png", mainBundlePath];
+    NSImage *circleImageTpl = [[NSImage alloc] initWithContentsOfFile:circleButtonPath];
+    NSImage *inactiveImg = [circleImageTpl tintedImageWithColor:[NSColor blackColor] backgroundColor:[NSColor whiteColor] opacity:0.75];
+    NSImage *activeImg = [circleImageTpl tintedImageWithColor:[NSColor blueColor]];
+    
+    self.pushIconButton = [[CTPushOnPushOffButton alloc] initWithFrame:NSMakeRect(240, 140, 30, 30)];
+    self.pushIconButton.pushedOffImage = inactiveImg;
+    self.pushIconButton.pushedOnImage = activeImg;
+    [self.window.contentView addSubview:self.pushIconButton];
+    
+    // rounded label
+    
+    CTRoundedLabelImageComposer *labelImageComposer = [[CTRoundedLabelImageComposer alloc] init];
+    [labelImageComposer setText:@"Button with very long string"];
+    NSImage *img = [labelImageComposer composeImage];
+    
+    if (!img) {
+        NSLog(@"No image");
+    }
+    
+    NSImageView *imgView = [[NSImageView alloc] initWithFrame:NSMakeRect(220, 50, img.size.width, img.size.height)];
+    [imgView setImage:img];
+    [self.window.contentView addSubview:imgView];
 
 }
 

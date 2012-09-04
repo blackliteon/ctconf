@@ -19,11 +19,6 @@ typedef NSUInteger CTMomentaryButtonImageState;
 
 @interface CTMomentaryButton ()
 
-@property (strong, nonatomic) NSImage *defaultImage;
-@property (strong, nonatomic) NSImage *overDefaultImage;
-@property (strong, nonatomic) NSImage *clickedImage;
-@property (strong, nonatomic) NSImage *disabledImage;
-
 @property (assign, nonatomic) BOOL mouseEntered;
 @property (assign, nonatomic) BOOL mouseDown;
 

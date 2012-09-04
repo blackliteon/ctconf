@@ -15,5 +15,7 @@
 #import "NSColor+FromHex.h"
 #import "CTFunctions.h"
 #import "CTPropertyListener.h"
+#import "NSImage+Tint.h"
+#import "CTRoundedLabelImageComposer.h"
 
 #define CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR @";"

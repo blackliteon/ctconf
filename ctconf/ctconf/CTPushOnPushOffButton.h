@@ -25,4 +25,13 @@
 @property (assign, nonatomic) id<CTPushOnPushOffButtonDelegate> delegate;
 @property (assign, nonatomic) BOOL pushed;
 
+// images
+
+@property (strong, nonatomic) NSImage *pushedOffImage;
+@property (strong, nonatomic) NSImage *overPushedOffImage;
+@property (strong, nonatomic) NSImage *pushedOnImage;
+@property (strong, nonatomic) NSImage *overPushedOnImage;
+@property (strong, nonatomic) NSImage *clickedImage;
+@property (strong, nonatomic) NSImage *disabledImage;
+
 @end

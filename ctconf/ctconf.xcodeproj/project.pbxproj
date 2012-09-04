@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3209F74315F5FBCD003C5989 /* NSImage+Tint.h in Headers */ = {isa = PBXBuildFile; fileRef = 3209F74115F5FBCD003C5989 /* NSImage+Tint.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3209F74415F5FBCD003C5989 /* NSImage+Tint.m in Sources */ = {isa = PBXBuildFile; fileRef = 3209F74215F5FBCD003C5989 /* NSImage+Tint.m */; };
 		3213A8D215B2C9EE00D77FC6 /* CTResourcePathProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8D015B2C9EE00D77FC6 /* CTResourcePathProperty.h */; };
 		3213A8D315B2C9EE00D77FC6 /* CTResourcePathProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8D115B2C9EE00D77FC6 /* CTResourcePathProperty.m */; };
 		3213A8D715B2EDDA00D77FC6 /* CTStringArrayProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8D515B2EDD900D77FC6 /* CTStringArrayProperty.h */; };
@@ -72,6 +74,10 @@
 		32CEE86B15A9910900A3C644 /* CTStringProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE86915A9910900A3C644 /* CTStringProperty.m */; };
 		32D5DBFA15B409C800EC5825 /* CTPushOnPushOffButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32D5DBFB15B409C800EC5825 /* CTPushOnPushOffButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */; };
+		32EDE6F315F6222C00B49C62 /* CTRoundedLabelImageComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32EDE6F415F6222C00B49C62 /* CTRoundedLabelImageComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */; };
+		32EDE70015F6338700B49C62 /* CTMomentaryLabelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6FE15F6338700B49C62 /* CTMomentaryLabelController.h */; };
+		32EDE70115F6338700B49C62 /* CTMomentaryLabelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6FF15F6338700B49C62 /* CTMomentaryLabelController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,6 +91,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3209F74115F5FBCD003C5989 /* NSImage+Tint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+Tint.h"; sourceTree = "<group>"; };
+		3209F74215F5FBCD003C5989 /* NSImage+Tint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+Tint.m"; sourceTree = "<group>"; };
 		3213A8D015B2C9EE00D77FC6 /* CTResourcePathProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTResourcePathProperty.h; sourceTree = "<group>"; };
 		3213A8D115B2C9EE00D77FC6 /* CTResourcePathProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTResourcePathProperty.m; sourceTree = "<group>"; };
 		3213A8D515B2EDD900D77FC6 /* CTStringArrayProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTStringArrayProperty.h; sourceTree = "<group>"; };
@@ -157,6 +165,10 @@
 		32CEE86915A9910900A3C644 /* CTStringProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTStringProperty.m; sourceTree = "<group>"; };
 		32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPushOnPushOffButton.h; sourceTree = "<group>"; };
 		32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPushOnPushOffButton.m; sourceTree = "<group>"; };
+		32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRoundedLabelImageComposer.h; sourceTree = "<group>"; };
+		32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRoundedLabelImageComposer.m; sourceTree = "<group>"; };
+		32EDE6FE15F6338700B49C62 /* CTMomentaryLabelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMomentaryLabelController.h; sourceTree = "<group>"; };
+		32EDE6FF15F6338700B49C62 /* CTMomentaryLabelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMomentaryLabelController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -212,6 +224,12 @@
 				3213A8F215B300D700D77FC6 /* CTMomentaryButton.m */,
 				32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */,
 				32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */,
+				3209F74115F5FBCD003C5989 /* NSImage+Tint.h */,
+				3209F74215F5FBCD003C5989 /* NSImage+Tint.m */,
+				32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */,
+				32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */,
+				32EDE6FE15F6338700B49C62 /* CTMomentaryLabelController.h */,
+				32EDE6FF15F6338700B49C62 /* CTMomentaryLabelController.m */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -400,6 +418,9 @@
 				32C506E315BEF481001F2025 /* CTPropertyManager.h in Headers */,
 				32C506FD15C04740001F2025 /* CTUnicharProperty.h in Headers */,
 				32C13FF815D641A600CDB6B8 /* CTFontProperty.h in Headers */,
+				3209F74315F5FBCD003C5989 /* NSImage+Tint.h in Headers */,
+				32EDE6F315F6222C00B49C62 /* CTRoundedLabelImageComposer.h in Headers */,
+				32EDE70015F6338700B49C62 /* CTMomentaryLabelController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,7 +470,7 @@
 		3280BD5515A469C7009148AD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0430;
+				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = cocotype.com;
 			};
 			buildConfigurationList = 3280BD5815A469C7009148AD /* Build configuration list for PBXProject "ctconf" */;
@@ -538,6 +559,9 @@
 				32C506E415BEF481001F2025 /* CTPropertyManager.m in Sources */,
 				32C506FE15C04741001F2025 /* CTUnicharProperty.m in Sources */,
 				32C13FF915D641A600CDB6B8 /* CTFontProperty.m in Sources */,
+				3209F74415F5FBCD003C5989 /* NSImage+Tint.m in Sources */,
+				32EDE6F415F6222C00B49C62 /* CTRoundedLabelImageComposer.m in Sources */,
+				32EDE70115F6338700B49C62 /* CTMomentaryLabelController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -631,6 +655,7 @@
 		3280BD8A15A469C8009148AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -647,6 +672,7 @@
 		3280BD8B15A469C8009148AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				FRAMEWORK_VERSION = A;
@@ -663,6 +689,7 @@
 		3280BD8D15A469C8009148AD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ctconf/ctconf-Prefix.pch";
@@ -675,6 +702,7 @@
 		3280BD8E15A469C8009148AD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(DEVELOPER_LIBRARY_DIR)/Frameworks";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "ctconf/ctconf-Prefix.pch";

@@ -21,13 +21,6 @@ typedef NSUInteger CTPushOnPushOffButtonImageState;
 
 @interface CTPushOnPushOffButton ()
 
-@property (strong, nonatomic) NSImage *pushedOffImage;
-@property (strong, nonatomic) NSImage *overPushedOffImage;
-@property (strong, nonatomic) NSImage *pushedOnImage;
-@property (strong, nonatomic) NSImage *overPushedOnImage;
-@property (strong, nonatomic) NSImage *clickedImage;
-@property (strong, nonatomic) NSImage *disabledImage;
-
 @property (assign, nonatomic) BOOL mouseEntered;
 @property (assign, nonatomic) BOOL mouseDown;
 
