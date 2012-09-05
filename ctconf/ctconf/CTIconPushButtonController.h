@@ -10,7 +10,7 @@
 
 @class CTPushOnPushOffButton;
 
-@interface CTPushOnPushOffButtonTemplateController : NSObject
+@interface CTIconPushButtonController : NSObject
 
 @property (strong, nonatomic, readonly) NSString *stylesPropertyName;
 @property (strong, nonatomic, readonly) NSString *backgroundPropertyName;

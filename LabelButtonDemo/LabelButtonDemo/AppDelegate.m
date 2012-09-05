@@ -11,7 +11,7 @@
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) CTMomentaryButtonWithLabelController *buttonController;
+@property (strong, nonatomic) CTLabelButtonController *buttonController;
 
 @end
 
@@ -28,7 +28,7 @@
     [[CTConfiguration sharedInstance] showConfigurationPanel];
     
     // Insert code here to initialize your application
-    self.buttonController = [[CTMomentaryButtonWithLabelController alloc] initWithPropertyName:@"buttonStyles" text:@"Label"];
+    self.buttonController = [[CTLabelButtonController alloc] initWithPropertyName:@"buttonStyles" text:@"Label"];
     [self.window.contentView addSubview:self.buttonController.button];
     [self _centerButton];
     

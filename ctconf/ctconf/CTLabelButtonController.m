@@ -6,12 +6,12 @@
 //  Copyright (c) 2012 cocotype.com. All rights reserved.
 //
 
-#import "CTMomentaryButtonWithLabelController.h"
+#import "CTLabelButtonController.h"
 #import "CTRoundedLabelImageComposer.h"
 #import "CTMomentaryButton.h"
 #import "CTConfiguration.h"
 
-@interface CTMomentaryButtonWithLabelController ()
+@interface CTLabelButtonController ()
 
 @property (strong, nonatomic) CTMomentaryButton *button;
 @property (strong, nonatomic) CTRoundedLabelImageComposer *imageComposer;
@@ -34,7 +34,7 @@
 
 @end
 
-@implementation CTMomentaryButtonWithLabelController
+@implementation CTLabelButtonController
 
 - (NSString *) _p: (NSString *) characteristic {
     return [NSString stringWithFormat:@"%@.%@", self.propertyName, characteristic];

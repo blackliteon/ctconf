@@ -53,7 +53,6 @@
 		3251CD3715F7721700A283A4 = {
 			isa = PBXGroup;
 			children = (
-				3251CD6715F774AE00A283A4 /* ctconf.framework */,
 				3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */,
 				3251CD4C15F7721700A283A4 /* LabelButtonDemo */,
 				3251CD4515F7721700A283A4 /* Frameworks */,
@@ -72,6 +71,7 @@
 		3251CD4515F7721700A283A4 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3251CD6715F774AE00A283A4 /* ctconf.framework */,
 				3251CD4615F7721700A283A4 /* Cocoa.framework */,
 				3251CD4815F7721700A283A4 /* Other Frameworks */,
 			);

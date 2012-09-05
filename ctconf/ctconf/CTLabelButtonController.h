@@ -10,7 +10,7 @@
 
 @class CTMomentaryButton;
 
-@interface CTMomentaryButtonWithLabelController : NSObject
+@interface CTLabelButtonController : NSObject
 
 @property (copy, nonatomic) NSString *text;
 @property (strong, readonly, nonatomic) CTMomentaryButton *button;

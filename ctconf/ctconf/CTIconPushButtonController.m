@@ -6,13 +6,13 @@
 //  Copyright (c) 2012 cocotype.com. All rights reserved.
 //
 
-#import "CTPushOnPushOffButtonTemplateController.h"
+#import "CTIconPushButtonController.h"
 #import "CTPushOnPushOffButton.h"
 #import "CTRoundedLabelImageComposer.h"
 #import "CTConfiguration.h"
 #import "NSImage+Tint.h"
 
-@interface CTPushOnPushOffButtonTemplateController ()
+@interface CTIconPushButtonController ()
 
 @property (strong, nonatomic) NSString *stylesPropertyName;
 @property (strong, nonatomic) NSString *backgroundPropertyName;
@@ -37,7 +37,7 @@
 
 @end
 
-@implementation CTPushOnPushOffButtonTemplateController
+@implementation CTIconPushButtonController
 
 - (NSString *) _p: (NSString *) characteristic {
     return [NSString stringWithFormat:@"%@.%@", self.stylesPropertyName, characteristic];

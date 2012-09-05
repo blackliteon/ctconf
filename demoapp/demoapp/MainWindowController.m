@@ -125,7 +125,7 @@
     
     // rounded button controller
     
-    CTMomentaryButtonWithLabelController *label = [[CTMomentaryButtonWithLabelController alloc] initWithPropertyName:@"label" text:@"Label"];
+    CTLabelButtonController *label = [[CTLabelButtonController alloc] initWithPropertyName:@"label" text:@"Label"];
     [label.button setFrameOrigin:NSMakePoint(150, 10)];
     [self.window.contentView addSubview:label.button];
 

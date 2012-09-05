@@ -33,8 +33,8 @@
 		3240887115AEC1B400735767 /* CTSizeProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240886F15AEC1B400735767 /* CTSizeProperty.m */; };
 		3240888E15AF084D00735767 /* CTObjectSetterInfo.h in Headers */ = {isa = PBXBuildFile; fileRef = 3240888C15AF084D00735767 /* CTObjectSetterInfo.h */; };
 		3240888F15AF084D00735767 /* CTObjectSetterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240888D15AF084D00735767 /* CTObjectSetterInfo.m */; };
-		3251CCEE15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3251CCEC15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3251CCEF15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CCED15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.m */; };
+		3251CCEE15F72CB500A283A4 /* CTIconPushButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3251CCEF15F72CB500A283A4 /* CTIconPushButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */; };
 		3280BD6315A469C8009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD6215A469C8009148AD /* Cocoa.framework */; };
 		3280BD6D15A469C8009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BD6B15A469C8009148AD /* InfoPlist.strings */; };
 		3280BD7915A469C8009148AD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD7815A469C8009148AD /* SenTestingKit.framework */; };
@@ -78,8 +78,8 @@
 		32D5DBFB15B409C800EC5825 /* CTPushOnPushOffButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */; };
 		32EDE6F315F6222C00B49C62 /* CTRoundedLabelImageComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32EDE6F415F6222C00B49C62 /* CTRoundedLabelImageComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */; };
-		32EDE70015F6338700B49C62 /* CTMomentaryButtonWithLabelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6FE15F6338700B49C62 /* CTMomentaryButtonWithLabelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		32EDE70115F6338700B49C62 /* CTMomentaryButtonWithLabelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6FF15F6338700B49C62 /* CTMomentaryButtonWithLabelController.m */; };
+		32EDE70015F6338700B49C62 /* CTLabelButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6FE15F6338700B49C62 /* CTLabelButtonController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32EDE70115F6338700B49C62 /* CTLabelButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6FF15F6338700B49C62 /* CTLabelButtonController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,8 +119,8 @@
 		3240886F15AEC1B400735767 /* CTSizeProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTSizeProperty.m; sourceTree = "<group>"; };
 		3240888C15AF084D00735767 /* CTObjectSetterInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTObjectSetterInfo.h; sourceTree = "<group>"; };
 		3240888D15AF084D00735767 /* CTObjectSetterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTObjectSetterInfo.m; sourceTree = "<group>"; };
-		3251CCEC15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTPushOnPushOffButtonTemplateController.h; sourceTree = "<group>"; };
-		3251CCED15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPushOnPushOffButtonTemplateController.m; sourceTree = "<group>"; };
+		3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTIconPushButtonController.h; sourceTree = "<group>"; };
+		3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTIconPushButtonController.m; sourceTree = "<group>"; };
 		3280BD5F15A469C8009148AD /* ctconf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ctconf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3280BD6215A469C8009148AD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3280BD6515A469C8009148AD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -171,8 +171,8 @@
 		32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPushOnPushOffButton.m; sourceTree = "<group>"; };
 		32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRoundedLabelImageComposer.h; sourceTree = "<group>"; };
 		32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRoundedLabelImageComposer.m; sourceTree = "<group>"; };
-		32EDE6FE15F6338700B49C62 /* CTMomentaryButtonWithLabelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMomentaryButtonWithLabelController.h; sourceTree = "<group>"; };
-		32EDE6FF15F6338700B49C62 /* CTMomentaryButtonWithLabelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMomentaryButtonWithLabelController.m; sourceTree = "<group>"; };
+		32EDE6FE15F6338700B49C62 /* CTLabelButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLabelButtonController.h; sourceTree = "<group>"; };
+		32EDE6FF15F6338700B49C62 /* CTLabelButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLabelButtonController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,10 +232,10 @@
 				3209F74215F5FBCD003C5989 /* NSImage+Tint.m */,
 				32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */,
 				32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */,
-				32EDE6FE15F6338700B49C62 /* CTMomentaryButtonWithLabelController.h */,
-				32EDE6FF15F6338700B49C62 /* CTMomentaryButtonWithLabelController.m */,
-				3251CCEC15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.h */,
-				3251CCED15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.m */,
+				32EDE6FE15F6338700B49C62 /* CTLabelButtonController.h */,
+				32EDE6FF15F6338700B49C62 /* CTLabelButtonController.m */,
+				3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */,
+				3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -426,8 +426,8 @@
 				32C13FF815D641A600CDB6B8 /* CTFontProperty.h in Headers */,
 				3209F74315F5FBCD003C5989 /* NSImage+Tint.h in Headers */,
 				32EDE6F315F6222C00B49C62 /* CTRoundedLabelImageComposer.h in Headers */,
-				32EDE70015F6338700B49C62 /* CTMomentaryButtonWithLabelController.h in Headers */,
-				3251CCEE15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.h in Headers */,
+				32EDE70015F6338700B49C62 /* CTLabelButtonController.h in Headers */,
+				3251CCEE15F72CB500A283A4 /* CTIconPushButtonController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,8 +568,8 @@
 				32C13FF915D641A600CDB6B8 /* CTFontProperty.m in Sources */,
 				3209F74415F5FBCD003C5989 /* NSImage+Tint.m in Sources */,
 				32EDE6F415F6222C00B49C62 /* CTRoundedLabelImageComposer.m in Sources */,
-				32EDE70115F6338700B49C62 /* CTMomentaryButtonWithLabelController.m in Sources */,
-				3251CCEF15F72CB500A283A4 /* CTPushOnPushOffButtonTemplateController.m in Sources */,
+				32EDE70115F6338700B49C62 /* CTLabelButtonController.m in Sources */,
+				3251CCEF15F72CB500A283A4 /* CTIconPushButtonController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

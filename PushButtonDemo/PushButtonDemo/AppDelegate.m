@@ -11,7 +11,7 @@
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) CTPushOnPushOffButtonTemplateController *buttonController;
+@property (strong, nonatomic) CTIconPushButtonController *buttonController;
 
 @end
 
@@ -28,7 +28,7 @@
     [[CTConfiguration sharedInstance] showConfigurationPanel];
     
     // Insert code here to initialize your application
-    self.buttonController = [[CTPushOnPushOffButtonTemplateController alloc] initWithImageTemplatePathPropertyName:@"imageTemplatePath" stylesPropertyName:@"pushButtonStyles" backgroudColorProperty:nil];
+    self.buttonController = [[CTIconPushButtonController alloc] initWithImageTemplatePathPropertyName:@"imageTemplatePath" stylesPropertyName:@"pushButtonStyles" backgroudColorProperty:nil];
     [self.window.contentView addSubview:self.buttonController.button];
     [self _centerButton];
     
