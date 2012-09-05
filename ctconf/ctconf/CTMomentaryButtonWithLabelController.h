@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CTMomentaryButton.h"
+
+@class CTMomentaryButton;
 
 @interface CTMomentaryButtonWithLabelController : NSObject
 

@@ -8,7 +8,8 @@
 
 #import "CTMomentaryButtonWithLabelController.h"
 #import "CTRoundedLabelImageComposer.h"
-#import "ctconf.h"
+#import "CTMomentaryButton.h"
+#import "CTConfiguration.h"
 
 @interface CTMomentaryButtonWithLabelController ()
 

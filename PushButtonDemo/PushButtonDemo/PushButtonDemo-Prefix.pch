@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'PushButtonDemo' target in the 'PushButtonDemo' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

@@ -1,0 +1,326 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3251CD0015F758E900A283A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3251CCFF15F758E900A283A4 /* Cocoa.framework */; };
+		3251CD0A15F758E900A283A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD0815F758E900A283A4 /* InfoPlist.strings */; };
+		3251CD0C15F758E900A283A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CD0B15F758E900A283A4 /* main.m */; };
+		3251CD1015F758E900A283A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD0E15F758E900A283A4 /* Credits.rtf */; };
+		3251CD1315F758E900A283A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CD1215F758E900A283A4 /* AppDelegate.m */; };
+		3251CD1615F758EA00A283A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD1415F758EA00A283A4 /* MainMenu.xib */; };
+		3251CD1D15F7597300A283A4 /* ctconf.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD1C15F7597300A283A4 /* ctconf.xcodeproj */; };
+		3251CD1F15F759AB00A283A4 /* ctconf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3251CD1E15F759AB00A283A4 /* ctconf.framework */; };
+		3251CD2015F759F600A283A4 /* ctconf.framework in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD1E15F759AB00A283A4 /* ctconf.framework */; };
+		3251CD2215F7676400A283A4 /* circle_template.png in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD2115F7676400A283A4 /* circle_template.png */; };
+		3251CD2415F7691600A283A4 /* pushbutton.conf in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD2315F7691600A283A4 /* pushbutton.conf */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3251CCFB15F758E900A283A4 /* PushButtonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushButtonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3251CCFF15F758E900A283A4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3251CD0215F758E900A283A4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3251CD0315F758E900A283A4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3251CD0415F758E900A283A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3251CD0715F758E900A283A4 /* PushButtonDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PushButtonDemo-Info.plist"; sourceTree = "<group>"; };
+		3251CD0915F758E900A283A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3251CD0B15F758E900A283A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3251CD0D15F758E900A283A4 /* PushButtonDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PushButtonDemo-Prefix.pch"; sourceTree = "<group>"; };
+		3251CD0F15F758E900A283A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		3251CD1115F758E900A283A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3251CD1215F758E900A283A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3251CD1515F758EA00A283A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3251CD1C15F7597300A283A4 /* ctconf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = file; name = ctconf.xcodeproj; path = ../ctconf/ctconf.xcodeproj; sourceTree = "<group>"; };
+		3251CD1E15F759AB00A283A4 /* ctconf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ctconf.framework; path = "../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug/ctconf.framework"; sourceTree = "<group>"; };
+		3251CD2115F7676400A283A4 /* circle_template.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_template.png; sourceTree = "<group>"; };
+		3251CD2315F7691600A283A4 /* pushbutton.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pushbutton.conf; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3251CCF815F758E900A283A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3251CD1F15F759AB00A283A4 /* ctconf.framework in Frameworks */,
+				3251CD0015F758E900A283A4 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3251CCF015F758E900A283A4 = {
+			isa = PBXGroup;
+			children = (
+				3251CD1C15F7597300A283A4 /* ctconf.xcodeproj */,
+				3251CD0515F758E900A283A4 /* PushButtonDemo */,
+				3251CCFE15F758E900A283A4 /* Frameworks */,
+				3251CCFC15F758E900A283A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3251CCFC15F758E900A283A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3251CCFB15F758E900A283A4 /* PushButtonDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3251CCFE15F758E900A283A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD1E15F759AB00A283A4 /* ctconf.framework */,
+				3251CCFF15F758E900A283A4 /* Cocoa.framework */,
+				3251CD0115F758E900A283A4 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3251CD0115F758E900A283A4 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD0215F758E900A283A4 /* AppKit.framework */,
+				3251CD0315F758E900A283A4 /* CoreData.framework */,
+				3251CD0415F758E900A283A4 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3251CD0515F758E900A283A4 /* PushButtonDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD2115F7676400A283A4 /* circle_template.png */,
+				3251CD1115F758E900A283A4 /* AppDelegate.h */,
+				3251CD1215F758E900A283A4 /* AppDelegate.m */,
+				3251CD1415F758EA00A283A4 /* MainMenu.xib */,
+				3251CD0615F758E900A283A4 /* Supporting Files */,
+			);
+			path = PushButtonDemo;
+			sourceTree = "<group>";
+		};
+		3251CD0615F758E900A283A4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD0715F758E900A283A4 /* PushButtonDemo-Info.plist */,
+				3251CD0815F758E900A283A4 /* InfoPlist.strings */,
+				3251CD0B15F758E900A283A4 /* main.m */,
+				3251CD0D15F758E900A283A4 /* PushButtonDemo-Prefix.pch */,
+				3251CD0E15F758E900A283A4 /* Credits.rtf */,
+				3251CD2315F7691600A283A4 /* pushbutton.conf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3251CCFA15F758E900A283A4 /* PushButtonDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3251CD1915F758EA00A283A4 /* Build configuration list for PBXNativeTarget "PushButtonDemo" */;
+			buildPhases = (
+				3251CCF715F758E900A283A4 /* Sources */,
+				3251CCF815F758E900A283A4 /* Frameworks */,
+				3251CCF915F758E900A283A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PushButtonDemo;
+			productName = PushButtonDemo;
+			productReference = 3251CCFB15F758E900A283A4 /* PushButtonDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3251CCF215F758E900A283A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Dmitry Nikolaev";
+			};
+			buildConfigurationList = 3251CCF515F758E900A283A4 /* Build configuration list for PBXProject "PushButtonDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3251CCF015F758E900A283A4;
+			productRefGroup = 3251CCFC15F758E900A283A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3251CCFA15F758E900A283A4 /* PushButtonDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3251CCF915F758E900A283A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3251CD0A15F758E900A283A4 /* InfoPlist.strings in Resources */,
+				3251CD1015F758E900A283A4 /* Credits.rtf in Resources */,
+				3251CD1615F758EA00A283A4 /* MainMenu.xib in Resources */,
+				3251CD2015F759F600A283A4 /* ctconf.framework in Resources */,
+				3251CD1D15F7597300A283A4 /* ctconf.xcodeproj in Resources */,
+				3251CD2215F7676400A283A4 /* circle_template.png in Resources */,
+				3251CD2415F7691600A283A4 /* pushbutton.conf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3251CCF715F758E900A283A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3251CD0C15F758E900A283A4 /* main.m in Sources */,
+				3251CD1315F758E900A283A4 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3251CD0815F758E900A283A4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3251CD0915F758E900A283A4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3251CD0E15F758E900A283A4 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3251CD0F15F758E900A283A4 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		3251CD1415F758EA00A283A4 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3251CD1515F758EA00A283A4 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3251CD1715F758EA00A283A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3251CD1815F758EA00A283A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3251CD1A15F758EA00A283A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PushButtonDemo/PushButtonDemo-Prefix.pch";
+				INFOPLIST_FILE = "PushButtonDemo/PushButtonDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3251CD1B15F758EA00A283A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PushButtonDemo/PushButtonDemo-Prefix.pch";
+				INFOPLIST_FILE = "PushButtonDemo/PushButtonDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3251CCF515F758E900A283A4 /* Build configuration list for PBXProject "PushButtonDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3251CD1715F758EA00A283A4 /* Debug */,
+				3251CD1815F758EA00A283A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3251CD1915F758EA00A283A4 /* Build configuration list for PBXNativeTarget "PushButtonDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3251CD1A15F758EA00A283A4 /* Debug */,
+				3251CD1B15F758EA00A283A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3251CCF215F758E900A283A4 /* Project object */;
+}
