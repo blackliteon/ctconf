@@ -18,6 +18,23 @@
 		3251CD6815F774AE00A283A4 /* ctconf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3251CD6715F774AE00A283A4 /* ctconf.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3251CD9615F77EEA00A283A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3280BD5F15A469C8009148AD;
+			remoteInfo = ctconf;
+		};
+		3251CD9815F77EEA00A283A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3280BD7715A469C8009148AD;
+			remoteInfo = ctconfTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3251CD4215F7721700A283A4 /* LabelButtonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabelButtonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3251CD4615F7721700A283A4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -33,7 +50,7 @@
 		3251CD5915F7721700A283A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3251CD5C15F7721700A283A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		3251CD6315F772D600A283A4 /* labelbutton.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labelbutton.conf; sourceTree = "<group>"; };
-		3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = file; name = ctconf.xcodeproj; path = ../ctconf/ctconf.xcodeproj; sourceTree = "<group>"; };
+		3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ctconf.xcodeproj; path = ../ctconf/ctconf.xcodeproj; sourceTree = "<group>"; };
 		3251CD6715F774AE00A283A4 /* ctconf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ctconf.framework; path = "../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug/ctconf.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,6 +129,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3251CD9015F77EEA00A283A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD9715F77EEA00A283A4 /* ctconf.framework */,
+				3251CD9915F77EEA00A283A4 /* ctconfTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,12 +177,35 @@
 			mainGroup = 3251CD3715F7721700A283A4;
 			productRefGroup = 3251CD4315F7721700A283A4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3251CD9015F77EEA00A283A4 /* Products */;
+					ProjectRef = 3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3251CD4115F7721700A283A4 /* LabelButtonDemo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3251CD9715F77EEA00A283A4 /* ctconf.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ctconf.framework;
+			remoteRef = 3251CD9615F77EEA00A283A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3251CD9915F77EEA00A283A4 /* ctconfTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ctconfTests.octest;
+			remoteRef = 3251CD9815F77EEA00A283A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3251CD4015F7721700A283A4 /* Resources */ = {
@@ -313,6 +362,7 @@
 				3251CD6215F7721700A283A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

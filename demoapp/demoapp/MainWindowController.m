@@ -11,15 +11,12 @@
 #import "BGView.h"
 #import <ctconf/ctconf.h>
 
-@interface MainWindowController () <CTMomentaryButtonDelegate, CTPushOnPushOffButtonDelegate>
+@interface MainWindowController ()
 
 @property (strong, nonatomic) TopPanelViewController *topPanelViewController;
 
 @property (strong, nonatomic) BGView *firstBgView;
 @property (strong, nonatomic) BGView *secondBgView;
-@property (strong, nonatomic) CTMomentaryButton *momentaryButton;
-@property (strong, nonatomic) CTPushOnPushOffButton *pushOnPushOffButton;
-@property (strong, nonatomic) CTPushOnPushOffButton *pushIconButton;
 
 
 @property (strong, nonatomic) NSString *bgColor;
@@ -31,8 +28,6 @@
 @synthesize topPanelViewController = _topPanelViewController;
 @synthesize firstBgView = _firstBgView;
 @synthesize secondBgView = _secondBgView;
-@synthesize momentaryButton = _momentaryButton;
-@synthesize pushOnPushOffButton = _pushOnPushOffButton;
 
 @synthesize bgColor = _bgColor;
 
@@ -82,64 +77,6 @@
     self.bgColor = [[CTConfiguration sharedInstance] addStringProperty:@"app.bgColor" toObject:self key:@"bgColor" defaultValue:@"#ff0000"];
     
     [self.window.contentView addSubview:self.firstBgView];
-    
-    NSString *mainBundlePath = [[NSBundle mainBundle] bundlePath];
-
-    self.momentaryButton = [[CTMomentaryButton alloc] initWithFrame:NSMakeRect(10, 100, 60, 60)];
-    self.momentaryButton.delegate = self;
-    NSString *buttonPath = [NSString stringWithFormat:@"%@/Contents/Resources/button", mainBundlePath];
-    [self.momentaryButton setImagesFromPath:buttonPath sizeFromImageData:NO];
-    [self.window.contentView addSubview:self.momentaryButton];
-
-    self.pushOnPushOffButton = [[CTPushOnPushOffButton alloc] initWithFrame:NSMakeRect(100, 100, 60, 60)];
-    self.pushOnPushOffButton.delegate = self;
-    NSString *pushButtonPath = [NSString stringWithFormat:@"%@/Contents/Resources/pushbutton", mainBundlePath];
-    [self.pushOnPushOffButton setImagesFromPath:pushButtonPath];
-    [self.window.contentView addSubview:self.pushOnPushOffButton];
-    
-    // push button from template image
-    
-    NSString *circleButtonPath = [NSString stringWithFormat:@"%@/Contents/Resources/circle_template.png", mainBundlePath];
-    NSImage *circleImageTpl = [[NSImage alloc] initWithContentsOfFile:circleButtonPath];
-    NSImage *inactiveImg = [circleImageTpl tintedImageWithColor:[NSColor blackColor] backgroundColor:[NSColor whiteColor] opacity:0.75];
-    NSImage *activeImg = [circleImageTpl tintedImageWithColor:[NSColor blueColor]];
-    
-    self.pushIconButton = [[CTPushOnPushOffButton alloc] initWithFrame:NSMakeRect(240, 140, 30, 30)];
-    self.pushIconButton.pushedOffImage = inactiveImg;
-    self.pushIconButton.pushedOnImage = activeImg;
-    [self.window.contentView addSubview:self.pushIconButton];
-    
-    // rounded label
-    
-    CTRoundedLabelImageComposer *labelImageComposer = [[CTRoundedLabelImageComposer alloc] init];
-    [labelImageComposer setText:@"Button with very long string"];
-    NSImage *img = [labelImageComposer composeImage];
-    
-    if (!img) {
-        NSLog(@"No image");
-    }
-    
-    NSImageView *imgView = [[NSImageView alloc] initWithFrame:NSMakeRect(220, 50, img.size.width, img.size.height)];
-    [imgView setImage:img];
-    [self.window.contentView addSubview:imgView];
-    
-    // rounded button controller
-    
-    CTLabelButtonController *label = [[CTLabelButtonController alloc] initWithPropertyName:@"label" text:@"Label"];
-    [label.button setFrameOrigin:NSMakePoint(150, 10)];
-    [self.window.contentView addSubview:label.button];
-
 }
-
-#pragma mark - Button delegates
-
-- (void) buttonClicked: (CTMomentaryButton *) button {
-    NSLog(@"Momentary button clicked");
-}
-
-- (void) buttonStateChanged: (CTPushOnPushOffButton *) button {
-    NSLog(@"Push button state changed to: %@", button.pushed ? @"ON" : @"OFF");
-}
-
 
 @end

@@ -20,6 +20,23 @@
 		3251CD2415F7691600A283A4 /* pushbutton.conf in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD2315F7691600A283A4 /* pushbutton.conf */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3251CD9D15F77EEA00A283A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3251CD1C15F7597300A283A4 /* ctconf.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3280BD5F15A469C8009148AD;
+			remoteInfo = ctconf;
+		};
+		3251CD9F15F77EEA00A283A4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3251CD1C15F7597300A283A4 /* ctconf.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3280BD7715A469C8009148AD;
+			remoteInfo = ctconfTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		3251CCFB15F758E900A283A4 /* PushButtonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PushButtonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3251CCFF15F758E900A283A4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -34,7 +51,7 @@
 		3251CD1115F758E900A283A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3251CD1215F758E900A283A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		3251CD1515F758EA00A283A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		3251CD1C15F7597300A283A4 /* ctconf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = file; name = ctconf.xcodeproj; path = ../ctconf/ctconf.xcodeproj; sourceTree = "<group>"; };
+		3251CD1C15F7597300A283A4 /* ctconf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ctconf.xcodeproj; path = ../ctconf/ctconf.xcodeproj; sourceTree = "<group>"; };
 		3251CD1E15F759AB00A283A4 /* ctconf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ctconf.framework; path = "../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug/ctconf.framework"; sourceTree = "<group>"; };
 		3251CD2115F7676400A283A4 /* circle_template.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_template.png; sourceTree = "<group>"; };
 		3251CD2315F7691600A283A4 /* pushbutton.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = pushbutton.conf; sourceTree = "<group>"; };
@@ -116,6 +133,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		3251CD9215F77EEA00A283A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD9E15F77EEA00A283A4 /* ctconf.framework */,
+				3251CDA015F77EEA00A283A4 /* ctconfTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -155,12 +181,35 @@
 			mainGroup = 3251CCF015F758E900A283A4;
 			productRefGroup = 3251CCFC15F758E900A283A4 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 3251CD9215F77EEA00A283A4 /* Products */;
+					ProjectRef = 3251CD1C15F7597300A283A4 /* ctconf.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				3251CCFA15F758E900A283A4 /* PushButtonDemo */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3251CD9E15F77EEA00A283A4 /* ctconf.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ctconf.framework;
+			remoteRef = 3251CD9D15F77EEA00A283A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		3251CDA015F77EEA00A283A4 /* ctconfTests.octest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ctconfTests.octest;
+			remoteRef = 3251CD9F15F77EEA00A283A4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		3251CCF915F758E900A283A4 /* Resources */ = {
@@ -319,6 +368,7 @@
 				3251CD1B15F758EA00A283A4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
