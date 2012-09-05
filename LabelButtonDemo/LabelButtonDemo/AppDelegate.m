@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  PushButtonDemo
+//  LabelButtonDemo
 //
 //  Created by Dmitry Nikolaev on 05.09.12.
 //  Copyright (c) 2012 Dmitry Nikolaev. All rights reserved.
@@ -11,7 +11,7 @@
 
 @interface AppDelegate ()
 
-@property (strong, nonatomic) CTPushOnPushOffButtonTemplateController *buttonController;
+@property (strong, nonatomic) CTMomentaryButtonWithLabelController *buttonController;
 
 @end
 
@@ -19,8 +19,8 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-
-    NSString *defaultConfPath = [[NSBundle mainBundle] pathForResource:@"pushbutton" ofType:@"conf"];
+    
+    NSString *defaultConfPath = [[NSBundle mainBundle] pathForResource:@"labelbutton" ofType:@"conf"];
     [CTConfiguration sharedInstance].confFilePath = defaultConfPath;
     [CTConfiguration sharedInstance].mode = CTConfigurationMode;
     
@@ -28,7 +28,7 @@
     [[CTConfiguration sharedInstance] showConfigurationPanel];
     
     // Insert code here to initialize your application
-    self.buttonController = [[CTPushOnPushOffButtonTemplateController alloc] initWithImageTemplatePathPropertyName:@"imageTemplatePath" stylesPropertyName:@"pushButtonStyles" backgroudColorProperty:nil];
+    self.buttonController = [[CTMomentaryButtonWithLabelController alloc] initWithPropertyName:@"buttonStyles" text:@"Label"];
     [self.window.contentView addSubview:self.buttonController.button];
     [self _centerButton];
     
@@ -37,13 +37,14 @@
 }
 
 - (void) _centerButton {
-    CGFloat xCenter = self.window.frame.size.width / 2 - self.buttonController.button.frame.size.width / 2;
-    CGFloat yCenter = self.window.frame.size.height / 2 - self.buttonController.button.frame.size.height / 2;
+    CGFloat xCenter = (int)(self.window.frame.size.width / 2 - self.buttonController.button.frame.size.width / 2);
+    CGFloat yCenter = (int)(self.window.frame.size.height / 2 - self.buttonController.button.frame.size.height / 2);
     [self.buttonController.button setFrameOrigin:NSMakePoint(xCenter, yCenter)];
 }
 
 - (void) buttonFrameUpdated: (NSNotification *) notification {
     [self _centerButton];
 }
+
 
 @end

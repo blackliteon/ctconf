@@ -31,10 +31,12 @@
     NSMutableDictionary *attributes = [[NSMutableDictionary alloc] init];
     [attributes setObject:self.textFont forKey:NSFontAttributeName];
     [attributes setObject:self.textColor forKey:NSForegroundColorAttributeName];
+    
     NSMutableParagraphStyle *parStyle = [[NSMutableParagraphStyle alloc] init];
+    [parStyle setParagraphStyle:[NSParagraphStyle defaultParagraphStyle]];
     [parStyle setLineBreakMode:NSLineBreakByCharWrapping];
     [attributes setObject:parStyle forKey:NSParagraphStyleAttributeName];
-
+    
     NSSize sizeWithFont = [self.text sizeWithAttributes:attributes];
     
     CGFloat imageWidth = sizeWithFont.width + self.horizontalPadding * 2 + self.labelPadding * 2;
@@ -51,6 +53,8 @@
     paddedRect.size.width -= self.labelPadding * 2;
     paddedRect.size.height -= self.labelPadding * 2;
     
+    paddedRect.size.height += self.topEdgeTextRectCorrection;
+    
     NSBezierPath* mainPathWithRoundedCorners = [NSBezierPath bezierPath];
     [mainPathWithRoundedCorners appendBezierPathWithRoundedRect:paddedRect xRadius:self.roundedCornerRadius yRadius:self.roundedCornerRadius];
     
@@ -65,6 +69,10 @@
     CGFloat textRectX = self.horizontalPadding + self.labelPadding;
     
     NSRect textRect = NSMakeRect(textRectX, textRectY, textRectWidth, textRectHeight);
+
+//  test text rect
+//    [[NSColor blueColor] setFill];
+//    NSRectFill(textRect);
     
     [self.text drawWithRect:textRect options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingTruncatesLastVisibleLine attributes:attributes];
     

@@ -21,6 +21,7 @@
 @property (assign, nonatomic) CGFloat horizontalPadding;
 @property (copy, nonatomic) NSFont *textFont;
 @property (assign, nonatomic) CGFloat roundedCornerRadius;
+@property (assign, nonatomic) CGFloat topEdgeTextRectCorrection;
 
 @property (copy, nonatomic) NSColor *defaultTextColor;
 @property (copy, nonatomic) NSColor *defaultLabelColor;
@@ -50,6 +51,7 @@
         _horizontalPadding = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"horizontalPadding"] toObject:self key:@"horizontalPadding" defaultValue:4];
         _textFont = [[CTConfiguration sharedInstance] addFontProperty:[self _p:@"textFont"] toObject:self key:@"textFont" defaultValue:[NSFont fontWithName:@"Helvetica" size:12]];
         _roundedCornerRadius = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"roundedCornerRadius"] toObject:self key:@"roundedCornerRadius" defaultValue:2];
+        _topEdgeTextRectCorrection = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"topEdgeTextRectCorrection"] toObject:self key:@"topEdgeTextRectCorrection" defaultValue:0];
 
         _defaultTextColor = [[CTConfiguration sharedInstance] addColorProperty:[self _p:@"defaultTextColor"] toObject:self key:@"defaultTextColor" defaultValue:[NSColor whiteColor]];
         _defaultLabelColor = [[CTConfiguration sharedInstance] addColorProperty:[self _p:@"defaultLabelColor"] toObject:self key:@"defaultLabelColor" defaultValue:[NSColor blackColor]];
@@ -65,6 +67,9 @@
     return self;
 }
 
+- (void) dealloc {
+    [[CTConfiguration sharedInstance] unregisterObjectFromUpdates:self];
+}
 
 - (void) _recreateImages {
     [self.imageComposer setText:self.text];
@@ -73,6 +78,8 @@
     [self.imageComposer setRoundedCornerRadius:self.roundedCornerRadius];
     [self.imageComposer setVerticalPadding:self.verticalPadding];
     [self.imageComposer setHorizontalPadding:self.horizontalPadding];
+    
+    [self.imageComposer setTopEdgeTextRectCorrection:self.topEdgeTextRectCorrection];
     
     [self.imageComposer setTextColor:self.defaultTextColor];
     [self.imageComposer setLabelColor:self.defaultLabelColor];
@@ -133,6 +140,11 @@
 
 - (void) setHorizontalPadding:(CGFloat)horizontalPadding {
     _horizontalPadding = horizontalPadding;
+    [self _recreateImages];
+}
+
+- (void) setTopEdgeTextRectCorrection:(CGFloat)topEdgeTextRectCorrection {
+    _topEdgeTextRectCorrection = topEdgeTextRectCorrection;
     [self _recreateImages];
 }
 

@@ -71,10 +71,19 @@
     return self;
 }
 
+- (void) dealloc {
+    [[CTConfiguration sharedInstance] unregisterObjectFromUpdates:self];
+}
+
 - (void) _recreateImages {
     NSImage *image = [[NSImage alloc] initWithContentsOfFile:self.templatePath];
     
-    // TODO: implement width processing
+    if (self.width > 0) {
+        NSSize size = image.size;
+        float k = size.width / self.width;
+        CGFloat height = size.height / k;
+        [image setSize:NSMakeSize(self.width, height)];
+    }
     
     [self.button setFrameSize:image.size];
     

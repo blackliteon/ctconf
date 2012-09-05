@@ -1,0 +1,320 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3251CD4715F7721700A283A4 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3251CD4615F7721700A283A4 /* Cocoa.framework */; };
+		3251CD5115F7721700A283A4 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD4F15F7721700A283A4 /* InfoPlist.strings */; };
+		3251CD5315F7721700A283A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CD5215F7721700A283A4 /* main.m */; };
+		3251CD5715F7721700A283A4 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD5515F7721700A283A4 /* Credits.rtf */; };
+		3251CD5A15F7721700A283A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CD5915F7721700A283A4 /* AppDelegate.m */; };
+		3251CD5D15F7721700A283A4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD5B15F7721700A283A4 /* MainMenu.xib */; };
+		3251CD6415F772D600A283A4 /* labelbutton.conf in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD6315F772D600A283A4 /* labelbutton.conf */; };
+		3251CD6615F7749F00A283A4 /* ctconf.xcodeproj in Resources */ = {isa = PBXBuildFile; fileRef = 3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */; };
+		3251CD6815F774AE00A283A4 /* ctconf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3251CD6715F774AE00A283A4 /* ctconf.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3251CD4215F7721700A283A4 /* LabelButtonDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LabelButtonDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3251CD4615F7721700A283A4 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3251CD4915F7721700A283A4 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3251CD4A15F7721700A283A4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3251CD4B15F7721700A283A4 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3251CD4E15F7721700A283A4 /* LabelButtonDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LabelButtonDemo-Info.plist"; sourceTree = "<group>"; };
+		3251CD5015F7721700A283A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3251CD5215F7721700A283A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3251CD5415F7721700A283A4 /* LabelButtonDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LabelButtonDemo-Prefix.pch"; sourceTree = "<group>"; };
+		3251CD5615F7721700A283A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		3251CD5815F7721700A283A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3251CD5915F7721700A283A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3251CD5C15F7721700A283A4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3251CD6315F772D600A283A4 /* labelbutton.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labelbutton.conf; sourceTree = "<group>"; };
+		3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = file; name = ctconf.xcodeproj; path = ../ctconf/ctconf.xcodeproj; sourceTree = "<group>"; };
+		3251CD6715F774AE00A283A4 /* ctconf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ctconf.framework; path = "../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug/ctconf.framework"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3251CD3F15F7721700A283A4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3251CD6815F774AE00A283A4 /* ctconf.framework in Frameworks */,
+				3251CD4715F7721700A283A4 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3251CD3715F7721700A283A4 = {
+			isa = PBXGroup;
+			children = (
+				3251CD6715F774AE00A283A4 /* ctconf.framework */,
+				3251CD6515F7749F00A283A4 /* ctconf.xcodeproj */,
+				3251CD4C15F7721700A283A4 /* LabelButtonDemo */,
+				3251CD4515F7721700A283A4 /* Frameworks */,
+				3251CD4315F7721700A283A4 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3251CD4315F7721700A283A4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD4215F7721700A283A4 /* LabelButtonDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3251CD4515F7721700A283A4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD4615F7721700A283A4 /* Cocoa.framework */,
+				3251CD4815F7721700A283A4 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3251CD4815F7721700A283A4 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD4915F7721700A283A4 /* AppKit.framework */,
+				3251CD4A15F7721700A283A4 /* CoreData.framework */,
+				3251CD4B15F7721700A283A4 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3251CD4C15F7721700A283A4 /* LabelButtonDemo */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD5815F7721700A283A4 /* AppDelegate.h */,
+				3251CD5915F7721700A283A4 /* AppDelegate.m */,
+				3251CD5B15F7721700A283A4 /* MainMenu.xib */,
+				3251CD4D15F7721700A283A4 /* Supporting Files */,
+			);
+			path = LabelButtonDemo;
+			sourceTree = "<group>";
+		};
+		3251CD4D15F7721700A283A4 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3251CD4E15F7721700A283A4 /* LabelButtonDemo-Info.plist */,
+				3251CD4F15F7721700A283A4 /* InfoPlist.strings */,
+				3251CD5215F7721700A283A4 /* main.m */,
+				3251CD5415F7721700A283A4 /* LabelButtonDemo-Prefix.pch */,
+				3251CD5515F7721700A283A4 /* Credits.rtf */,
+				3251CD6315F772D600A283A4 /* labelbutton.conf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3251CD4115F7721700A283A4 /* LabelButtonDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3251CD6015F7721700A283A4 /* Build configuration list for PBXNativeTarget "LabelButtonDemo" */;
+			buildPhases = (
+				3251CD3E15F7721700A283A4 /* Sources */,
+				3251CD3F15F7721700A283A4 /* Frameworks */,
+				3251CD4015F7721700A283A4 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LabelButtonDemo;
+			productName = LabelButtonDemo;
+			productReference = 3251CD4215F7721700A283A4 /* LabelButtonDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3251CD3915F7721700A283A4 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Dmitry Nikolaev";
+			};
+			buildConfigurationList = 3251CD3C15F7721700A283A4 /* Build configuration list for PBXProject "LabelButtonDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3251CD3715F7721700A283A4;
+			productRefGroup = 3251CD4315F7721700A283A4 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3251CD4115F7721700A283A4 /* LabelButtonDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3251CD4015F7721700A283A4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3251CD5115F7721700A283A4 /* InfoPlist.strings in Resources */,
+				3251CD5715F7721700A283A4 /* Credits.rtf in Resources */,
+				3251CD5D15F7721700A283A4 /* MainMenu.xib in Resources */,
+				3251CD6415F772D600A283A4 /* labelbutton.conf in Resources */,
+				3251CD6615F7749F00A283A4 /* ctconf.xcodeproj in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3251CD3E15F7721700A283A4 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3251CD5315F7721700A283A4 /* main.m in Sources */,
+				3251CD5A15F7721700A283A4 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3251CD4F15F7721700A283A4 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3251CD5015F7721700A283A4 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3251CD5515F7721700A283A4 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3251CD5615F7721700A283A4 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		3251CD5B15F7721700A283A4 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3251CD5C15F7721700A283A4 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3251CD5E15F7721700A283A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		3251CD5F15F7721700A283A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		3251CD6115F7721700A283A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LabelButtonDemo/LabelButtonDemo-Prefix.pch";
+				INFOPLIST_FILE = "LabelButtonDemo/LabelButtonDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3251CD6215F7721700A283A4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LabelButtonDemo/LabelButtonDemo-Prefix.pch";
+				INFOPLIST_FILE = "LabelButtonDemo/LabelButtonDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3251CD3C15F7721700A283A4 /* Build configuration list for PBXProject "LabelButtonDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3251CD5E15F7721700A283A4 /* Debug */,
+				3251CD5F15F7721700A283A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3251CD6015F7721700A283A4 /* Build configuration list for PBXNativeTarget "LabelButtonDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3251CD6115F7721700A283A4 /* Debug */,
+				3251CD6215F7721700A283A4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3251CD3915F7721700A283A4 /* Project object */;
+}

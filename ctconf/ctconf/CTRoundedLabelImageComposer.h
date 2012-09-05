@@ -20,6 +20,8 @@
 @property (copy, nonatomic) NSColor *labelColor;
 @property (copy, nonatomic) NSColor *textColor;
 
+@property (assign, nonatomic) CGFloat topEdgeTextRectCorrection;
+
 - (NSImage *) composeImage;
 
 @end
