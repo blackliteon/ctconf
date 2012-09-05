@@ -17,5 +17,6 @@
 #import "CTPropertyListener.h"
 #import "NSImage+Tint.h"
 #import "CTRoundedLabelImageComposer.h"
+#import "CTMomentaryButtonWithLabelController.h"
 
 #define CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR @";"

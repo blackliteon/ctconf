@@ -21,6 +21,7 @@
 @property (strong, nonatomic) CTPushOnPushOffButton *pushOnPushOffButton;
 @property (strong, nonatomic) CTPushOnPushOffButton *pushIconButton;
 
+
 @property (strong, nonatomic) NSString *bgColor;
 
 @end
@@ -121,6 +122,12 @@
     NSImageView *imgView = [[NSImageView alloc] initWithFrame:NSMakeRect(220, 50, img.size.width, img.size.height)];
     [imgView setImage:img];
     [self.window.contentView addSubview:imgView];
+    
+    // rounded button controller
+    
+    CTMomentaryButtonWithLabelController *label = [[CTMomentaryButtonWithLabelController alloc] initWithPropertyName:@"label" text:@"Label"];
+    [label.button setFrameOrigin:NSMakePoint(150, 10)];
+    [self.window.contentView addSubview:label.button];
 
 }
 

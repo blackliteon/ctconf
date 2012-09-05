@@ -76,8 +76,8 @@
 		32D5DBFB15B409C800EC5825 /* CTPushOnPushOffButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */; };
 		32EDE6F315F6222C00B49C62 /* CTRoundedLabelImageComposer.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32EDE6F415F6222C00B49C62 /* CTRoundedLabelImageComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */; };
-		32EDE70015F6338700B49C62 /* CTMomentaryLabelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6FE15F6338700B49C62 /* CTMomentaryLabelController.h */; };
-		32EDE70115F6338700B49C62 /* CTMomentaryLabelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6FF15F6338700B49C62 /* CTMomentaryLabelController.m */; };
+		32EDE70015F6338700B49C62 /* CTMomentaryButtonWithLabelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6FE15F6338700B49C62 /* CTMomentaryButtonWithLabelController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32EDE70115F6338700B49C62 /* CTMomentaryButtonWithLabelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6FF15F6338700B49C62 /* CTMomentaryButtonWithLabelController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -167,8 +167,8 @@
 		32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTPushOnPushOffButton.m; sourceTree = "<group>"; };
 		32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRoundedLabelImageComposer.h; sourceTree = "<group>"; };
 		32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRoundedLabelImageComposer.m; sourceTree = "<group>"; };
-		32EDE6FE15F6338700B49C62 /* CTMomentaryLabelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMomentaryLabelController.h; sourceTree = "<group>"; };
-		32EDE6FF15F6338700B49C62 /* CTMomentaryLabelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMomentaryLabelController.m; sourceTree = "<group>"; };
+		32EDE6FE15F6338700B49C62 /* CTMomentaryButtonWithLabelController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMomentaryButtonWithLabelController.h; sourceTree = "<group>"; };
+		32EDE6FF15F6338700B49C62 /* CTMomentaryButtonWithLabelController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMomentaryButtonWithLabelController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,8 +228,8 @@
 				3209F74215F5FBCD003C5989 /* NSImage+Tint.m */,
 				32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */,
 				32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */,
-				32EDE6FE15F6338700B49C62 /* CTMomentaryLabelController.h */,
-				32EDE6FF15F6338700B49C62 /* CTMomentaryLabelController.m */,
+				32EDE6FE15F6338700B49C62 /* CTMomentaryButtonWithLabelController.h */,
+				32EDE6FF15F6338700B49C62 /* CTMomentaryButtonWithLabelController.m */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -420,7 +420,7 @@
 				32C13FF815D641A600CDB6B8 /* CTFontProperty.h in Headers */,
 				3209F74315F5FBCD003C5989 /* NSImage+Tint.h in Headers */,
 				32EDE6F315F6222C00B49C62 /* CTRoundedLabelImageComposer.h in Headers */,
-				32EDE70015F6338700B49C62 /* CTMomentaryLabelController.h in Headers */,
+				32EDE70015F6338700B49C62 /* CTMomentaryButtonWithLabelController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,7 +561,7 @@
 				32C13FF915D641A600CDB6B8 /* CTFontProperty.m in Sources */,
 				3209F74415F5FBCD003C5989 /* NSImage+Tint.m in Sources */,
 				32EDE6F415F6222C00B49C62 /* CTRoundedLabelImageComposer.m in Sources */,
-				32EDE70115F6338700B49C62 /* CTMomentaryLabelController.m in Sources */,
+				32EDE70115F6338700B49C62 /* CTMomentaryButtonWithLabelController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
