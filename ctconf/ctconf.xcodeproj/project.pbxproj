@@ -80,6 +80,10 @@
 		32EDE6F415F6222C00B49C62 /* CTRoundedLabelImageComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */; };
 		32EDE70015F6338700B49C62 /* CTLabelButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EDE6FE15F6338700B49C62 /* CTLabelButtonController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32EDE70115F6338700B49C62 /* CTLabelButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EDE6FF15F6338700B49C62 /* CTLabelButtonController.m */; };
+		32EE8767160C60E50003D7CB /* CTHorizontalContainerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EE8763160C60E50003D7CB /* CTHorizontalContainerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32EE8768160C60E50003D7CB /* CTHorizontalContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EE8764160C60E50003D7CB /* CTHorizontalContainerView.m */; };
+		32EE8769160C60E50003D7CB /* CTHorizontalContainerViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32EE8765160C60E50003D7CB /* CTHorizontalContainerViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		32EE876A160C60E50003D7CB /* CTHorizontalContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EE8766160C60E50003D7CB /* CTHorizontalContainerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -173,6 +177,10 @@
 		32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRoundedLabelImageComposer.m; sourceTree = "<group>"; };
 		32EDE6FE15F6338700B49C62 /* CTLabelButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTLabelButtonController.h; sourceTree = "<group>"; };
 		32EDE6FF15F6338700B49C62 /* CTLabelButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTLabelButtonController.m; sourceTree = "<group>"; };
+		32EE8763160C60E50003D7CB /* CTHorizontalContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHorizontalContainerView.h; sourceTree = "<group>"; };
+		32EE8764160C60E50003D7CB /* CTHorizontalContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHorizontalContainerView.m; sourceTree = "<group>"; };
+		32EE8765160C60E50003D7CB /* CTHorizontalContainerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTHorizontalContainerViewController.h; sourceTree = "<group>"; };
+		32EE8766160C60E50003D7CB /* CTHorizontalContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHorizontalContainerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -224,18 +232,8 @@
 		3213A8EF15B300C100D77FC6 /* elements */ = {
 			isa = PBXGroup;
 			children = (
-				3213A8F115B300D700D77FC6 /* CTMomentaryButton.h */,
-				3213A8F215B300D700D77FC6 /* CTMomentaryButton.m */,
-				32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */,
-				32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */,
-				3209F74115F5FBCD003C5989 /* NSImage+Tint.h */,
-				3209F74215F5FBCD003C5989 /* NSImage+Tint.m */,
-				32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */,
-				32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */,
-				32EDE6FE15F6338700B49C62 /* CTLabelButtonController.h */,
-				32EDE6FF15F6338700B49C62 /* CTLabelButtonController.m */,
-				3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */,
-				3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */,
+				32EE8761160C60A50003D7CB /* panels */,
+				32EE8760160C60990003D7CB /* buttons */,
 			);
 			name = elements;
 			sourceTree = "<group>";
@@ -387,6 +385,36 @@
 			name = panel;
 			sourceTree = "<group>";
 		};
+		32EE8760160C60990003D7CB /* buttons */ = {
+			isa = PBXGroup;
+			children = (
+				3213A8F115B300D700D77FC6 /* CTMomentaryButton.h */,
+				3213A8F215B300D700D77FC6 /* CTMomentaryButton.m */,
+				32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */,
+				32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */,
+				3209F74115F5FBCD003C5989 /* NSImage+Tint.h */,
+				3209F74215F5FBCD003C5989 /* NSImage+Tint.m */,
+				32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */,
+				32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */,
+				32EDE6FE15F6338700B49C62 /* CTLabelButtonController.h */,
+				32EDE6FF15F6338700B49C62 /* CTLabelButtonController.m */,
+				3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */,
+				3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */,
+			);
+			name = buttons;
+			sourceTree = "<group>";
+		};
+		32EE8761160C60A50003D7CB /* panels */ = {
+			isa = PBXGroup;
+			children = (
+				32EE8763160C60E50003D7CB /* CTHorizontalContainerView.h */,
+				32EE8764160C60E50003D7CB /* CTHorizontalContainerView.m */,
+				32EE8765160C60E50003D7CB /* CTHorizontalContainerViewController.h */,
+				32EE8766160C60E50003D7CB /* CTHorizontalContainerViewController.m */,
+			);
+			name = panels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -428,6 +456,8 @@
 				32EDE6F315F6222C00B49C62 /* CTRoundedLabelImageComposer.h in Headers */,
 				32EDE70015F6338700B49C62 /* CTLabelButtonController.h in Headers */,
 				3251CCEE15F72CB500A283A4 /* CTIconPushButtonController.h in Headers */,
+				32EE8767160C60E50003D7CB /* CTHorizontalContainerView.h in Headers */,
+				32EE8769160C60E50003D7CB /* CTHorizontalContainerViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,6 +600,8 @@
 				32EDE6F415F6222C00B49C62 /* CTRoundedLabelImageComposer.m in Sources */,
 				32EDE70115F6338700B49C62 /* CTLabelButtonController.m in Sources */,
 				3251CCEF15F72CB500A283A4 /* CTIconPushButtonController.m in Sources */,
+				32EE8768160C60E50003D7CB /* CTHorizontalContainerView.m in Sources */,
+				32EE876A160C60E50003D7CB /* CTHorizontalContainerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

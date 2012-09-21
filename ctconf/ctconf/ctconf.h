@@ -19,5 +19,7 @@
 #import "CTRoundedLabelImageComposer.h"
 #import "CTLabelButtonController.h"
 #import "CTIconPushButtonController.h"
+#import "CTHorizontalContainerView.h"
+#import "CTHorizontalContainerViewController.h"
 
 #define CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR @";"
