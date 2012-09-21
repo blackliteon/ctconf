@@ -477,7 +477,7 @@
 		3280BD5515A469C7009148AD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0440;
+				LastUpgradeCheck = 0450;
 				ORGANIZATIONNAME = cocotype.com;
 			};
 			buildConfigurationList = 3280BD5815A469C7009148AD /* Build configuration list for PBXProject "ctconf" */;
