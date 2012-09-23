@@ -35,7 +35,7 @@
         NSString *clearHexValue = [stringValue substringFromIndex:1];
         self.value = [NSColor colorFromHexRGB:clearHexValue];
     } else {
-        NSLog(@"Property %@ has invalid value for color: '%@'. Should be in format '#xxxxxx'", self.name, stringValue);
+        NSLog(@"Property %@ has invalid value for color: '%@'. Should be in format '#xxxxxx[xx]'", self.name, stringValue);
     }
 }
 @end

@@ -87,18 +87,8 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
 #pragma mark - View
 
 - (void)drawRect:(NSRect)dirtyRect {
-    NSColor *color = _backgroundColor;
-    
-    if (NO && self.highlight) {
-        CGFloat r,g,b,a;
-        [color getRed:&r green:&g blue:&b alpha:&a];
-        CGFloat k = 0.96;
-        k = 1;
-        color = [NSColor colorWithCalibratedRed:r*k green:g*k blue:b*k alpha:a];
-    }
-    
-    [color setFill];
-    NSRectFill(dirtyRect);
+    [_backgroundColor setFill];
+    NSRectFillUsingOperation(dirtyRect, NSCompositeSourceOver);
 }
 
 - (void)frameDidChange:(NSNotification *)aNotification {
