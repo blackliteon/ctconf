@@ -95,7 +95,6 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     [self _rearrangeItems];
 }
 
-
 #pragma mark - Setters
 
 - (void) setBackgroundColor:(NSColor *)backgroundColor {
