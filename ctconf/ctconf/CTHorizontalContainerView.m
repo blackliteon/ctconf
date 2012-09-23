@@ -25,6 +25,8 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     if (self) {
         _alignment = CTHorizontalContainerCenterAlignment;
         _leftMargin = 0;
+        _horizontalCorrection = 0;
+        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(frameDidChange:) name:NSViewFrameDidChangeNotification object:self];
     }
     
@@ -51,6 +53,8 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
         
         CGFloat itemsWidthWithSpacing = itemsWidth + self.itemsSpace * (self.items.count - 1);
         x = (self.bounds.size.width / 2 - itemsWidthWithSpacing / 2);
+        
+        x += self.horizontalCorrection;
     }
     
     if (self.items.count > 0) {
@@ -119,6 +123,11 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
 
 - (void) setAlignment:(CTHorizontalContainerItemsAlignment)alignment {
     _alignment = [alignment copy];
+    [self _rearrangeItems];
+}
+
+- (void) setHorizontalCorrection:(CGFloat)horizontalCorrection {
+    _horizontalCorrection = horizontalCorrection;
     [self _rearrangeItems];
 }
 

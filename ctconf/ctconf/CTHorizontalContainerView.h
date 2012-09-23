@@ -20,6 +20,7 @@ extern NSString * const CTHorizontalContainerCenterAlignment;
 @property (assign, nonatomic) BOOL highlight; // for testing purpose, add little darknening to background
 @property (copy, nonatomic) CTHorizontalContainerItemsAlignment alignment;
 @property (assign, nonatomic) CGFloat leftMargin; // for left alignment
+@property (assign, nonatomic) CGFloat horizontalCorrection;
 
 - (void) addItem: (NSView *) view;
 

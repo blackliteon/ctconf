@@ -22,6 +22,7 @@
 @property (assign, nonatomic) BOOL highlighted;
 @property (copy, nonatomic) CTHorizontalContainerItemsAlignment alignment;
 @property (assign, nonatomic) CGFloat leftMargin;
+@property (assign, nonatomic) CGFloat horizontalCorrection;
 
 @end
 
@@ -46,6 +47,7 @@
         self.alignment = [[CTConfiguration sharedInstance] addEnumerateProperty:[self _p:@"alignment"] toObject:self key:@"alignment" defaultValue:CTHorizontalContainerCenterAlignment possibleValues:CTHorizontalContainerCenterAlignment, CTHorizontalContainerLeftAlignment, nil];
         
         self.leftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"leftMargin"] toObject:self key:@"leftMargin" defaultValue:0];
+        self.horizontalCorrection = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"horizontalCorrection"] toObject:self key:@"horizontalCorrection" defaultValue:0];
 
     }
     return self;
@@ -78,6 +80,11 @@
 - (void) setLeftMargin:(CGFloat)leftMargin {
     _leftMargin = leftMargin;
     [self.containerView setLeftMargin:leftMargin];
+}
+
+- (void) setHorizontalCorrection:(CGFloat)horizontalCorrection {
+    _horizontalCorrection = horizontalCorrection;
+    [self.containerView setHorizontalCorrection:horizontalCorrection];
 }
 
 #pragma mark - Initializers
