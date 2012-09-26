@@ -14,6 +14,7 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
 @interface CTHorizontalContainerView ()
 
 @property (strong, nonatomic) NSMutableArray *items;
+@property (strong, nonatomic) NSMutableArray *leftItems;
 
 @end
 
@@ -26,6 +27,8 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
         _alignment = CTHorizontalContainerCenterAlignment;
         _leftMargin = 0;
         _horizontalCorrection = 0;
+        _centerAlignmentConsiderSideItems = NO;
+        _leftItemsSpacing = 0;
         
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(frameDidChange:) name:NSViewFrameDidChangeNotification object:self];
     }
@@ -39,48 +42,106 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
 
 - (void) _rearrangeItems {
     
+    // items
+    
+    CGFloat itemsWidth = 0;
+    for (NSView *view in self.items) {
+        itemsWidth += view.frame.size.width;
+    }
+    CGFloat itemsWidthWithSpacing = itemsWidth + self.itemsSpace * (self.items.count - 1);
+    
+    // left items
+    CGFloat leftItemsWidth = 0;
+    CGFloat leftItemsWidthWithSpacing = 0;
+    
+    if (self.leftItems.count) {
+    
+        for (NSView *view in self.leftItems) {
+            leftItemsWidth += view.frame.size.width;
+        }
+        leftItemsWidthWithSpacing = leftItemsWidth + self.itemsSpace * (self.leftItems.count - 1);
+    }
+    
     CGFloat x = 0;
+    
+    // start x for left alignment
     
     if ([self.alignment isEqualToString:CTHorizontalContainerLeftAlignment]) {
         x = (self.leftMargin);
     }
     
+    // start x for center alignment
+    
     if ([self.alignment isEqualToString:CTHorizontalContainerCenterAlignment]) {
-        CGFloat itemsWidth = 0;
-        for (NSView *view in self.items) {
-            itemsWidth += view.frame.size.width;
+        
+        if (self.centerAlignmentConsiderSideItems) {
+            CGFloat width = itemsWidthWithSpacing;
+            
+            if (self.leftItems.count) {
+                width += leftItemsWidthWithSpacing + self.leftItemsSpacing;
+            }
+            
+            x = (self.bounds.size.width / 2 - width / 2);
+            
+        } else {
+            
+            x = (self.bounds.size.width / 2 - itemsWidthWithSpacing / 2);
+            x -= leftItemsWidthWithSpacing;
+            
+            if (self.leftItems.count) {
+                x -= self.leftItemsSpacing;
+            }
         }
         
-        CGFloat itemsWidthWithSpacing = itemsWidth + self.itemsSpace * (self.items.count - 1);
-        x = (self.bounds.size.width / 2 - itemsWidthWithSpacing / 2);
         
         x += self.horizontalCorrection;
     }
+
+    // left items coordinates
     
-    if (self.items.count > 0) {
+    for (int i = 0; i < self.leftItems.count; i++) {
+        NSView *view = [self.leftItems objectAtIndex:i];
+        CGFloat y = (self.bounds.size.height / 2 - view.frame.size.height / 2);
+        [view setFrame:NSMakeRect((int)x, (int)y, view.frame.size.width, view.frame.size.height)];
         
-        for (int i = 0; i < self.items.count; i++) {
-            
-            NSView *view = [self.items objectAtIndex:i];
-            CGFloat y = (self.bounds.size.height / 2 - view.frame.size.height / 2);
-            [view setFrame:NSMakeRect((int)x, (int)y, view.frame.size.width, view.frame.size.height)];
-            
-            x += view.frame.size.width + self.itemsSpace;
+        int lastIndex = (int)self.leftItems.count - 1;
+        if (i == lastIndex) {
+            x += self.leftItemsSpacing;
+        } else {
+            x += self.itemsSpace;
         }
+        
+    }
+
+    // items coordinates
+    
+    for (int i = 0; i < self.items.count; i++) {
+        
+        NSView *view = [self.items objectAtIndex:i];
+        CGFloat y = (self.bounds.size.height / 2 - view.frame.size.height / 2);
+        [view setFrame:NSMakeRect((int)x, (int)y, view.frame.size.width, view.frame.size.height)];
+        
+        x += view.frame.size.width + self.itemsSpace;
     }
 }
 
 - (void) addItem: (NSView *) view {
     
-    if (YES || self.items.count == 0) {
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemFrameUpdated:) name:NSViewFrameDidChangeNotification object:view];
-//        _itemWidth = view.frame.size.width;
-    }
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemFrameUpdated:) name:NSViewFrameDidChangeNotification object:view];
     
     [self.items addObject:view];
     [self addSubview:view];
     [self _rearrangeItems];
 }
+
+- (void) addLeftItem: (NSView *) view {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemFrameUpdated:) name:NSViewFrameDidChangeNotification object:view];
+    
+    [self.leftItems addObject:view];
+    [self addSubview:view];
+    [self _rearrangeItems];
+}
+
 
 - (void) itemFrameUpdated: (NSNotification *) notification {
     [self _rearrangeItems];
@@ -131,6 +192,16 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     [self _rearrangeItems];
 }
 
+- (void) setLeftItemsSpacing:(CGFloat)leftItemsSpacing {
+    _leftItemsSpacing = leftItemsSpacing;
+    [self _rearrangeItems];
+}
+
+- (void) setCenterAlignmentConsiderSideItems:(BOOL)centerAlignmentConsiderSideItems {
+    _centerAlignmentConsiderSideItems = centerAlignmentConsiderSideItems;
+    [self _rearrangeItems];
+}
+
 #pragma mark - Initializers
 
 - (NSMutableArray *) items {
@@ -138,5 +209,12 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     _items = [[NSMutableArray alloc] init];
     return _items;
 }
+
+- (NSMutableArray *) leftItems {
+    if (_leftItems) return _leftItems;
+    _leftItems = [[NSMutableArray alloc] init];
+    return _leftItems;
+}
+
 
 @end

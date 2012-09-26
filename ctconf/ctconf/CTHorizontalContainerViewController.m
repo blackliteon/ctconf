@@ -23,6 +23,8 @@
 @property (copy, nonatomic) CTHorizontalContainerItemsAlignment alignment;
 @property (assign, nonatomic) CGFloat leftMargin;
 @property (assign, nonatomic) CGFloat horizontalCorrection;
+@property (assign, nonatomic) CGFloat leftItemsSpacing;
+@property (assign, nonatomic) BOOL alignmentConsiderSideItems;
 
 @end
 
@@ -49,6 +51,9 @@
         self.leftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"leftMargin"] toObject:self key:@"leftMargin" defaultValue:0];
         self.horizontalCorrection = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"horizontalCorrection"] toObject:self key:@"horizontalCorrection" defaultValue:0];
 
+        self.leftItemsSpacing = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"leftItemsSpacing"] toObject:self key:@"leftItemsSpacing" defaultValue:20];
+        self.alignmentConsiderSideItems = [[CTConfiguration sharedInstance] addBooleanProperty:[self _p:@"alignmentConsiderSideItems"] toObject:self key:@"alignmentConsiderSideItems" defaultValue:NO];
+        
     }
     return self;
 }
@@ -85,6 +90,16 @@
 - (void) setHorizontalCorrection:(CGFloat)horizontalCorrection {
     _horizontalCorrection = horizontalCorrection;
     [self.containerView setHorizontalCorrection:horizontalCorrection];
+}
+
+- (void) setLeftItemsSpacing:(CGFloat)leftItemsSpacing {
+    _leftItemsSpacing = leftItemsSpacing;
+    [self.containerView setLeftItemsSpacing:leftItemsSpacing];
+}
+
+- (void) setAlignmentConsiderSideItems:(BOOL)alignmentConsiderSideItems {
+    _alignmentConsiderSideItems = alignmentConsiderSideItems;
+    [self.containerView setCenterAlignmentConsiderSideItems:alignmentConsiderSideItems];
 }
 
 #pragma mark - Initializers
