@@ -71,6 +71,8 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     }
     
     // start x for center alignment
+
+    CGFloat normalizedLeftItemsSpacing = self.leftItemsSpacing ? self.leftItemsSpacing : self.itemsSpace;
     
     if ([self.alignment isEqualToString:CTHorizontalContainerCenterAlignment]) {
         
@@ -78,7 +80,7 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
             CGFloat width = itemsWidthWithSpacing;
             
             if (self.leftItems.count) {
-                width += leftItemsWidthWithSpacing + self.leftItemsSpacing;
+                width += leftItemsWidthWithSpacing + normalizedLeftItemsSpacing;
             }
             
             x = (self.bounds.size.width / 2 - width / 2);
@@ -89,7 +91,7 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
             x -= leftItemsWidthWithSpacing;
             
             if (self.leftItems.count) {
-                x -= self.leftItemsSpacing;
+                x -= normalizedLeftItemsSpacing;
             }
         }
         
@@ -98,7 +100,7 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     }
 
     // left items coordinates
-    
+
     for (int i = 0; i < self.leftItems.count; i++) {
         NSView *view = [self.leftItems objectAtIndex:i];
         CGFloat y = (self.bounds.size.height / 2 - view.frame.size.height / 2);
@@ -106,9 +108,9 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
         
         int lastIndex = (int)self.leftItems.count - 1;
         if (i == lastIndex) {
-            x += self.leftItemsSpacing;
+            x += view.frame.size.width + normalizedLeftItemsSpacing;
         } else {
-            x += self.itemsSpace;
+            x += view.frame.size.width + self.itemsSpace;
         }
         
     }
