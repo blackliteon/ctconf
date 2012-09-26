@@ -70,5 +70,6 @@ typedef NSInteger CTMode;
 
 - (unichar) addUnicharProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(unichar)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName;
 
+- (NSFont *) addFontProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue: (NSFont *) defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName;
 
 @end

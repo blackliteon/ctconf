@@ -450,6 +450,21 @@ static id sharedInstance = nil;
 
 }
 
+- (NSFont *) addFontProperty: (NSString *) propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue: (NSFont *) defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName {
+    
+    CTFontProperty *property = [[CTFontProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    property.optional = optional;
+    property.masterPropertyName = masterPropertyName;
+    
+    [property addPropertyListener:listener];
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    return assignedProperty.value;
+}
+
+
 
 
 @end
