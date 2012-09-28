@@ -15,6 +15,7 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
 
 @property (strong, nonatomic) NSMutableArray *items;
 @property (strong, nonatomic) NSMutableArray *leftItems;
+@property (strong, nonatomic) NSMutableArray *rightItems;
 
 @end
 
@@ -63,6 +64,17 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     }
     
     CGFloat x = 0;
+    
+    //right items
+    
+    CGFloat rightItemsWidth = 0;
+    CGFloat rightItemsWidthWithSpacing = 0;
+    if (self.rightItems.count) {
+        for (NSView * view in self.rightItems) {
+            rightItemsWidth += view.frame.size.width;
+        }
+        rightItemsWidthWithSpacing = rightItemsWidth + self.itemsSpace * (self.rightItems.count - 1);
+    }
     
     // start x for left alignment
     
@@ -125,6 +137,18 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
         
         x += view.frame.size.width + self.itemsSpace;
     }
+    
+    // right items coordinates
+    
+    x = self.frame.size.width - self.rightItemsRightMargin - rightItemsWidthWithSpacing;
+    
+    for (int i = 0; i < self.rightItems.count; i++) {
+        NSView *view = [self.rightItems objectAtIndex:i];
+        CGFloat y = (self.bounds.size.height / 2 - view.frame.size.height / 2);
+        [view setFrameOrigin:NSMakePoint((int)x, (int)y)];
+
+        x += view.frame.size.width + self.itemsSpace;
+    }
 }
 
 - (void) addItem: (NSView *) view {
@@ -143,6 +167,15 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     [self addSubview:view];
     [self _rearrangeItems];
 }
+
+- (void) addRightItem: (NSView *) view {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(itemFrameUpdated:) name:NSViewFrameDidChangeNotification object:view];
+    
+    [self.rightItems addObject:view];
+    [self addSubview:view];
+    [self _rearrangeItems];
+}
+
 
 
 - (void) itemFrameUpdated: (NSNotification *) notification {
@@ -204,6 +237,11 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     [self _rearrangeItems];
 }
 
+- (void) setRightItemsRightMargin:(CGFloat)rightItemsRightMargin {
+    _rightItemsRightMargin = rightItemsRightMargin;
+    [self _rearrangeItems];
+}
+
 #pragma mark - Initializers
 
 - (NSMutableArray *) items {
@@ -218,5 +256,10 @@ NSString * const CTHorizontalContainerCenterAlignment = @"center";
     return _leftItems;
 }
 
+- (NSMutableArray *) rightItems {
+    if (_rightItems) return _rightItems;
+    _rightItems = [[NSMutableArray alloc] init];
+    return _rightItems;
+}
 
 @end

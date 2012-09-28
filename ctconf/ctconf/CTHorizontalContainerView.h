@@ -25,7 +25,10 @@ extern NSString * const CTHorizontalContainerCenterAlignment;
 @property (assign, nonatomic) CGFloat leftItemsSpacing; // for left alignment
 @property (assign, nonatomic) BOOL centerAlignmentConsiderSideItems;
 
+@property (assign, nonatomic) CGFloat rightItemsRightMargin; 
+
 - (void) addItem: (NSView *) view;
 - (void) addLeftItem: (NSView *) view;
+- (void) addRightItem: (NSView *) view;
 
 @end
