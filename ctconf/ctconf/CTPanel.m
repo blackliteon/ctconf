@@ -20,10 +20,18 @@
 - (void) sendEvent:(NSEvent *)event {
     if ([event type] == NSKeyDown) {
         if (([event modifierFlags] & NSDeviceIndependentModifierFlagsMask) == NSCommandKeyMask) {
+            
+            if (event.keyCode == 1) {
+                [self.ctDelegate save];
+                return;
+            }
+            
+            /* don't working on character layout other that english
             if ([[event charactersIgnoringModifiers] isEqualToString:@"s"]) {
                 [self.ctDelegate save];
                 return;
             }
+             */
         }
     }
     [super sendEvent:event];
