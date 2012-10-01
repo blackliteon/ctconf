@@ -13,4 +13,7 @@
    <FileRef
       location = "group:LabelButtonDemo/LabelButtonDemo.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Momentary Icon Button Demo/Momentary Icon Button Demo.xcodeproj">
+   </FileRef>
 </Workspace>

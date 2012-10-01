@@ -35,6 +35,8 @@
 		3240888F15AF084D00735767 /* CTObjectSetterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240888D15AF084D00735767 /* CTObjectSetterInfo.m */; };
 		3251CCEE15F72CB500A283A4 /* CTIconPushButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3251CCEF15F72CB500A283A4 /* CTIconPushButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */; };
+		326503AB16159B1C009B5513 /* CTIconMomentaryButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 326503A916159B1C009B5513 /* CTIconMomentaryButtonController.h */; };
+		326503AC16159B1C009B5513 /* CTIconMomentaryButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326503AA16159B1C009B5513 /* CTIconMomentaryButtonController.m */; };
 		3280BD6315A469C8009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD6215A469C8009148AD /* Cocoa.framework */; };
 		3280BD6D15A469C8009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BD6B15A469C8009148AD /* InfoPlist.strings */; };
 		3280BD7915A469C8009148AD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD7815A469C8009148AD /* SenTestingKit.framework */; };
@@ -125,6 +127,8 @@
 		3240888D15AF084D00735767 /* CTObjectSetterInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTObjectSetterInfo.m; sourceTree = "<group>"; };
 		3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTIconPushButtonController.h; sourceTree = "<group>"; };
 		3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTIconPushButtonController.m; sourceTree = "<group>"; };
+		326503A916159B1C009B5513 /* CTIconMomentaryButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTIconMomentaryButtonController.h; sourceTree = "<group>"; };
+		326503AA16159B1C009B5513 /* CTIconMomentaryButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTIconMomentaryButtonController.m; sourceTree = "<group>"; };
 		3280BD5F15A469C8009148AD /* ctconf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ctconf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3280BD6215A469C8009148AD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3280BD6515A469C8009148AD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -249,6 +253,15 @@
 			name = helpers;
 			sourceTree = "<group>";
 		};
+		32650332161594F4009B5513 /* additions */ = {
+			isa = PBXGroup;
+			children = (
+				3209F74115F5FBCD003C5989 /* NSImage+Tint.h */,
+				3209F74215F5FBCD003C5989 /* NSImage+Tint.m */,
+			);
+			name = additions;
+			sourceTree = "<group>";
+		};
 		3280BD5315A469C7009148AD = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +305,7 @@
 			isa = PBXGroup;
 			children = (
 				3280BD6F15A469C8009148AD /* ctconf.h */,
+				32650332161594F4009B5513 /* additions */,
 				3213A8EF15B300C100D77FC6 /* elements */,
 				32BE667C15A7077B00042E9E /* panel */,
 				32BE666B15A6E7D000042E9E /* properties */,
@@ -392,14 +406,14 @@
 				3213A8F215B300D700D77FC6 /* CTMomentaryButton.m */,
 				32D5DBF815B409C800EC5825 /* CTPushOnPushOffButton.h */,
 				32D5DBF915B409C800EC5825 /* CTPushOnPushOffButton.m */,
-				3209F74115F5FBCD003C5989 /* NSImage+Tint.h */,
-				3209F74215F5FBCD003C5989 /* NSImage+Tint.m */,
 				32EDE6F115F6222C00B49C62 /* CTRoundedLabelImageComposer.h */,
 				32EDE6F215F6222C00B49C62 /* CTRoundedLabelImageComposer.m */,
 				32EDE6FE15F6338700B49C62 /* CTLabelButtonController.h */,
 				32EDE6FF15F6338700B49C62 /* CTLabelButtonController.m */,
 				3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */,
 				3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */,
+				326503A916159B1C009B5513 /* CTIconMomentaryButtonController.h */,
+				326503AA16159B1C009B5513 /* CTIconMomentaryButtonController.m */,
 			);
 			name = buttons;
 			sourceTree = "<group>";
@@ -458,6 +472,7 @@
 				3251CCEE15F72CB500A283A4 /* CTIconPushButtonController.h in Headers */,
 				32EE8767160C60E50003D7CB /* CTHorizontalContainerView.h in Headers */,
 				32EE8769160C60E50003D7CB /* CTHorizontalContainerViewController.h in Headers */,
+				326503AB16159B1C009B5513 /* CTIconMomentaryButtonController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -602,6 +617,7 @@
 				3251CCEF15F72CB500A283A4 /* CTIconPushButtonController.m in Sources */,
 				32EE8768160C60E50003D7CB /* CTHorizontalContainerView.m in Sources */,
 				32EE876A160C60E50003D7CB /* CTHorizontalContainerViewController.m in Sources */,
+				326503AC16159B1C009B5513 /* CTIconMomentaryButtonController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

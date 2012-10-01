@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'Momentary Icon Button Demo' target in the 'Momentary Icon Button Demo' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif
