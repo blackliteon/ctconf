@@ -12,7 +12,6 @@
 		3213A90315B31D7500D77FC6 /* button_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 3213A8FF15B31D7500D77FC6 /* button_disabled.png */; };
 		3213A90415B31D7500D77FC6 /* button_over.png in Resources */ = {isa = PBXBuildFile; fileRef = 3213A90015B31D7500D77FC6 /* button_over.png */; };
 		3213A90515B31D7500D77FC6 /* button.png in Resources */ = {isa = PBXBuildFile; fileRef = 3213A90115B31D7500D77FC6 /* button.png */; };
-		3227D76115C6AAEA00C50DBC /* ctconf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 3287FB9115A47E0100EDA240 /* ctconf.framework */; };
 		3280BD9F15A46A02009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD9E15A46A02009148AD /* Cocoa.framework */; };
 		3280BDA915A46A02009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BDA715A46A02009148AD /* InfoPlist.strings */; };
 		3280BDAB15A46A02009148AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3280BDAA15A46A02009148AD /* main.m */; };
@@ -23,7 +22,6 @@
 		3282DB4C15A82B2C004FBBFD /* MainWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3282DB4B15A82B2C004FBBFD /* MainWindowController.m */; };
 		3282DB4E15A82B5C004FBBFD /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3282DB4D15A82B5C004FBBFD /* MainWindow.xib */; };
 		3287FB9715A47E1E00EDA240 /* ctconf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3287FB9115A47E0100EDA240 /* ctconf.framework */; };
-		3287FB9915A47E2A00EDA240 /* ctconf.framework in Resources */ = {isa = PBXBuildFile; fileRef = 3287FB9815A47E2A00EDA240 /* ctconf.framework */; };
 		32A44D7515A5998500A87F87 /* TopPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D7315A5998500A87F87 /* TopPanelViewController.m */; };
 		32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 32A44D7415A5998500A87F87 /* TopPanelViewController.xib */; };
 		32CEE86515A9760800A3C644 /* SecondScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 32CEE86415A9760800A3C644 /* SecondScene.m */; };
@@ -60,19 +58,6 @@
 			remoteInfo = ctconf;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3227D76015C6A99F00C50DBC /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				3227D76115C6AAEA00C50DBC /* ctconf.framework in CopyFiles */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		3209F75515F606A9003C5989 /* circle_template.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_template.png; sourceTree = "<group>"; };
@@ -265,7 +250,6 @@
 				3280BD9615A46A02009148AD /* Sources */,
 				3280BD9715A46A02009148AD /* Frameworks */,
 				3280BD9815A46A02009148AD /* Resources */,
-				3227D76015C6A99F00C50DBC /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -334,7 +318,6 @@
 				3280BDA915A46A02009148AD /* InfoPlist.strings in Resources */,
 				3280BDAF15A46A02009148AD /* Credits.rtf in Resources */,
 				3280BDB515A46A03009148AD /* MainMenu.xib in Resources */,
-				3287FB9915A47E2A00EDA240 /* ctconf.framework in Resources */,
 				32A44D7615A5998500A87F87 /* TopPanelViewController.xib in Resources */,
 				3282DB4E15A82B5C004FBBFD /* MainWindow.xib in Resources */,
 				32CEE86715A98CE000A3C644 /* demoapp.conf in Resources */,
