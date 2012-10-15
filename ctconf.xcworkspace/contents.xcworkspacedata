@@ -16,4 +16,7 @@
    <FileRef
       location = "group:Momentary Icon Button Demo/Momentary Icon Button Demo.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Horizontal Container Demo/Horizontal Container Demo.xcodeproj">
+   </FileRef>
 </Workspace>
