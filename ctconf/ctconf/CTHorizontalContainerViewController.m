@@ -18,12 +18,16 @@
 // configuration properties
 
 @property (copy, nonatomic) NSColor *backgroundColor;
-@property (assign, nonatomic) CGFloat iconSpace;
 @property (assign, nonatomic) BOOL highlighted;
-@property (copy, nonatomic) CTHorizontalContainerItemsAlignment alignment;
+@property (assign, nonatomic) CGFloat iconSpace;
+
 @property (assign, nonatomic) CGFloat leftMargin;
 @property (assign, nonatomic) CGFloat horizontalCorrection;
 @property (assign, nonatomic) CGFloat leftItemsSpacing;
+
+@property (assign, nonatomic) CGFloat rightItemsRightMargin;
+
+@property (copy, nonatomic) CTHorizontalContainerItemsAlignment alignment;
 @property (assign, nonatomic) BOOL alignmentConsiderSideItems;
 
 @end
@@ -41,17 +45,17 @@
         self.propertyName = propertyName;
         
         self.backgroundColor = [[CTConfiguration sharedInstance] addColorProperty:[self _p:@"backgroundColor"] toObject:self key:@"backgroundColor" defaultValue:[NSColor whiteColor]];
-        
+        self.highlighted = [[CTConfiguration sharedInstance] addBooleanProperty:[self _p:@"highlighted"] toObject:self key:@"highlighted" defaultValue:NO];
         self.iconSpace = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"iconSpace"] toObject:self key:@"iconSpace" defaultValue:4];
         
-        self.highlighted = [[CTConfiguration sharedInstance] addBooleanProperty:[self _p:@"highlighted"] toObject:self key:@"highlighted" defaultValue:NO];
-        
-        self.alignment = [[CTConfiguration sharedInstance] addEnumerateProperty:[self _p:@"alignment"] toObject:self key:@"alignment" defaultValue:CTHorizontalContainerCenterAlignment possibleValues:CTHorizontalContainerCenterAlignment, CTHorizontalContainerLeftAlignment, nil];
         
         self.leftMargin = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"leftMargin"] toObject:self key:@"leftMargin" defaultValue:0];
         self.horizontalCorrection = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"horizontalCorrection"] toObject:self key:@"horizontalCorrection" defaultValue:0];
-
         self.leftItemsSpacing = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"leftItemsSpacing"] toObject:self key:@"leftItemsSpacing" defaultValue:20];
+        
+        self.rightItemsRightMargin = [[CTConfiguration sharedInstance] addDoubleProperty:[self _p:@"rightItemsRightMargin"] toObject:self key:@"rightItemsRightMargin" defaultValue:5];
+
+        self.alignment = [[CTConfiguration sharedInstance] addEnumerateProperty:[self _p:@"alignment"] toObject:self key:@"alignment" defaultValue:CTHorizontalContainerCenterAlignment possibleValues:CTHorizontalContainerCenterAlignment, CTHorizontalContainerLeftAlignment, nil];
         self.alignmentConsiderSideItems = [[CTConfiguration sharedInstance] addBooleanProperty:[self _p:@"alignmentConsiderSideItems"] toObject:self key:@"alignmentConsiderSideItems" defaultValue:NO];
         
     }
@@ -67,20 +71,16 @@
     self.containerView.backgroundColor = self.backgroundColor;
 }
 
-- (void) setIconSpace: (CGFloat) iconSpace {
-    _iconSpace = iconSpace;
-    [self.containerView setItemsSpace:iconSpace];
-}
-
 - (void) setHighlighted:(BOOL)highlighted {
     _highlighted = highlighted;
     [self.containerView setHighlight:highlighted];
 }
 
-- (void) setAlignment:(CTHorizontalContainerItemsAlignment)alignment {
-    _alignment = [alignment copy];
-    [self.containerView setAlignment:alignment];
+- (void) setIconSpace: (CGFloat) iconSpace {
+    _iconSpace = iconSpace;
+    [self.containerView setItemsSpace:iconSpace];
 }
+
 
 - (void) setLeftMargin:(CGFloat)leftMargin {
     _leftMargin = leftMargin;
@@ -95,6 +95,17 @@
 - (void) setLeftItemsSpacing:(CGFloat)leftItemsSpacing {
     _leftItemsSpacing = leftItemsSpacing;
     [self.containerView setLeftItemsSpacing:leftItemsSpacing];
+}
+
+
+- (void) setRightItemsRightMargin:(CGFloat)rightItemsRightMargin {
+    _rightItemsRightMargin = rightItemsRightMargin;
+    [self.containerView setRightItemsRightMargin:rightItemsRightMargin];
+}
+
+- (void) setAlignment:(CTHorizontalContainerItemsAlignment)alignment {
+    _alignment = [alignment copy];
+    [self.containerView setAlignment:alignment];
 }
 
 - (void) setAlignmentConsiderSideItems:(BOOL)alignmentConsiderSideItems {

@@ -39,8 +39,11 @@
     
     // add elements of container
     
-    CTLabelButtonController *labelController = [[CTLabelButtonController alloc] initWithPropertyName:@"labelStyle" text:@"button"];
-    [self.containerController.containerView addItem:labelController.button];
+    CTLabelButtonController *labelController1 = [[CTLabelButtonController alloc] initWithPropertyName:@"labelStyle" text:@"button"];
+    [self.containerController.containerView addItem:labelController1.button];
+
+    CTLabelButtonController *labelController2 = [[CTLabelButtonController alloc] initWithPropertyName:@"labelStyle" text:@"button"];
+    [self.containerController.containerView addRightItem:labelController2.button];
 }
 
 @end
