@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		32209613162BEFD1009F7397 /* ctconf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32209612162BEFD1009F7397 /* ctconf.framework */; };
+		32209616162BF6CE009F7397 /* circle_template.png in Resources */ = {isa = PBXBuildFile; fileRef = 32209615162BF6CE009F7397 /* circle_template.png */; };
+		32209619162BF817009F7397 /* button.conf in Resources */ = {isa = PBXBuildFile; fileRef = 32209618162BF817009F7397 /* button.conf */; };
 		32650359161595C1009B5513 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 32650358161595C1009B5513 /* Cocoa.framework */; };
 		32650363161595C1009B5513 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 32650361161595C1009B5513 /* InfoPlist.strings */; };
 		32650365161595C1009B5513 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 32650364161595C1009B5513 /* main.m */; };
@@ -16,6 +19,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		32209612162BEFD1009F7397 /* ctconf.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ctconf.framework; path = "../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug/ctconf.framework"; sourceTree = "<group>"; };
+		32209615162BF6CE009F7397 /* circle_template.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = circle_template.png; sourceTree = "<group>"; };
+		32209618162BF817009F7397 /* button.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = button.conf; sourceTree = "<group>"; };
 		32650354161595C1009B5513 /* Momentary Icon Button Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Momentary Icon Button Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		32650358161595C1009B5513 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3265035B161595C1009B5513 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -36,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				32209613162BEFD1009F7397 /* ctconf.framework in Frameworks */,
 				32650359161595C1009B5513 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -46,6 +53,7 @@
 		32650349161595C1009B5513 = {
 			isa = PBXGroup;
 			children = (
+				32209612162BEFD1009F7397 /* ctconf.framework */,
 				3265035E161595C1009B5513 /* Momentary Icon Button Demo */,
 				32650357161595C1009B5513 /* Frameworks */,
 				32650355161595C1009B5513 /* Products */,
@@ -82,10 +90,12 @@
 		3265035E161595C1009B5513 /* Momentary Icon Button Demo */ = {
 			isa = PBXGroup;
 			children = (
+				32209615162BF6CE009F7397 /* circle_template.png */,
 				3265036A161595C1009B5513 /* AppDelegate.h */,
 				3265036B161595C1009B5513 /* AppDelegate.m */,
 				3265036D161595C1009B5513 /* MainMenu.xib */,
 				3265035F161595C1009B5513 /* Supporting Files */,
+				32209618162BF817009F7397 /* button.conf */,
 			);
 			path = "Momentary Icon Button Demo";
 			sourceTree = "<group>";
@@ -156,6 +166,8 @@
 				32650363161595C1009B5513 /* InfoPlist.strings in Resources */,
 				32650369161595C1009B5513 /* Credits.rtf in Resources */,
 				3265036F161595C1009B5513 /* MainMenu.xib in Resources */,
+				32209616162BF6CE009F7397 /* circle_template.png in Resources */,
+				32209619162BF817009F7397 /* button.conf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +270,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Momentary Icon Button Demo/Momentary Icon Button Demo-Prefix.pch";
 				INFOPLIST_FILE = "Momentary Icon Button Demo/Momentary Icon Button Demo-Info.plist";
@@ -270,6 +286,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ctconf-duuivooxhhlmvyfrouwxtbomfbpc/Build/Products/Debug\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Momentary Icon Button Demo/Momentary Icon Button Demo-Prefix.pch";
 				INFOPLIST_FILE = "Momentary Icon Button Demo/Momentary Icon Button Demo-Info.plist";
@@ -297,6 +317,7 @@
 				32650374161595C1009B5513 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -35,7 +35,7 @@
 		3240888F15AF084D00735767 /* CTObjectSetterInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 3240888D15AF084D00735767 /* CTObjectSetterInfo.m */; };
 		3251CCEE15F72CB500A283A4 /* CTIconPushButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 3251CCEC15F72CB500A283A4 /* CTIconPushButtonController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3251CCEF15F72CB500A283A4 /* CTIconPushButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */; };
-		326503AB16159B1C009B5513 /* CTIconMomentaryButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 326503A916159B1C009B5513 /* CTIconMomentaryButtonController.h */; };
+		326503AB16159B1C009B5513 /* CTIconMomentaryButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 326503A916159B1C009B5513 /* CTIconMomentaryButtonController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		326503AC16159B1C009B5513 /* CTIconMomentaryButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326503AA16159B1C009B5513 /* CTIconMomentaryButtonController.m */; };
 		3280BD6315A469C8009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD6215A469C8009148AD /* Cocoa.framework */; };
 		3280BD6D15A469C8009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BD6B15A469C8009148AD /* InfoPlist.strings */; };

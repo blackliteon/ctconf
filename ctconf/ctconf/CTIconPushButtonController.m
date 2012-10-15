@@ -8,7 +8,6 @@
 
 #import "CTIconPushButtonController.h"
 #import "CTPushOnPushOffButton.h"
-#import "CTRoundedLabelImageComposer.h"
 #import "CTConfiguration.h"
 #import "NSImage+Tint.h"
 
@@ -18,8 +17,6 @@
 @property (strong, nonatomic) NSString *backgroundPropertyName;
 @property (strong, nonatomic) NSString *templatePathProperty;
 @property (strong, nonatomic) CTPushOnPushOffButton *button;
-
-@property (strong, nonatomic) CTRoundedLabelImageComposer *imageComposer;
 
 @property (copy, nonatomic) NSColor *backgroundColor;
 @property (copy, nonatomic) NSString *templatePath;

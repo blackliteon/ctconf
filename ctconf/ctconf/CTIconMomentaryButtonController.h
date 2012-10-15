@@ -16,4 +16,6 @@
 @property (strong, nonatomic, readonly) CTMomentaryButton *button;
 @property (strong, nonatomic, readonly) NSString *templatePathProperty;
 
+- (id) initWithImageTemplatePathPropertyName: (NSString *) templatePathProperty stylesPropertyName: (NSString *) stylesProperty backgroudColorProperty: (NSString *) backgroundProperty;
+
 @end
