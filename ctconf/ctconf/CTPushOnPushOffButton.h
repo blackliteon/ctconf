@@ -14,6 +14,10 @@
 
 - (void) buttonStateChanged: (CTPushOnPushOffButton *) button;
 
+@optional
+
+- (BOOL) buttonWillChangeState: (CTPushOnPushOffButton *) button;
+
 @end
 
 @interface CTPushOnPushOffButton : NSView

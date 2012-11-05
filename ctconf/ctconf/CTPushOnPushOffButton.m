@@ -245,8 +245,16 @@ typedef NSUInteger CTPushOnPushOffButtonImageState;
     self.mouseDown = NO;
     
     if (self.enabled && self.mouseEntered) {
-        self.pushed = !self.pushed;
-        [self.delegate buttonStateChanged:self];
+        
+        BOOL shouldChangeState = YES;
+        if ([self.delegate respondsToSelector:@selector(buttonWillChangeState:)]) {
+            shouldChangeState = [self.delegate buttonWillChangeState:self];
+        }
+        
+        if (shouldChangeState) {
+            self.pushed = !self.pushed;
+            [self.delegate buttonStateChanged:self];
+        }
     }
 }
 
