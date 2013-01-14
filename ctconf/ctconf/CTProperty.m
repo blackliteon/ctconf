@@ -54,7 +54,17 @@
                 if (objectKey) {
                     
                     if (objectKey.object) {
-                        [objectKey.object setValue:self.value forKey:objectKey.key];
+                        
+                        NSString *uppercasedKey = [[[objectKey.key substringToIndex:1] uppercaseString] stringByAppendingString:[objectKey.key substringFromIndex:1]];
+                        NSString *setterStr = [NSString stringWithFormat:@"set%@:", uppercasedKey];
+                        SEL setter = NSSelectorFromString(setterStr);
+                        
+                        if ([objectKey.object respondsToSelector:setter]) {
+                            [objectKey.object setValue:self.value forKey:objectKey.key];
+                        } else {
+                            NSLog(@"Can't find setter for %@ (%@)", self.name, setterStr);
+                        }
+                        
                     }
                     
                     if (objectKey.listener) {

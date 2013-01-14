@@ -22,5 +22,5 @@
 #import "CTHorizontalContainerView.h"
 #import "CTHorizontalContainerViewController.h"
 #import "CTIconMomentaryButtonController.h"
-
+#import "CTConfFunctions.h"
 #define CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR @";"

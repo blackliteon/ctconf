@@ -109,11 +109,14 @@ static id sharedInstance = nil;
 - (void) save {
     [self _reReadConfigFromConfigPanel];
     
-    NSURL *confFileUrl = [NSURL fileURLWithPath:self.confFilePath];
-    NSError *error;
+    if (self.confFilePath) {
     
-    if (![self.panelController.text writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {
-        NSLog(@"Error while trying to create conf file %@: %@", self.confFilePath, [error localizedDescription]);
+        NSURL *confFileUrl = [NSURL fileURLWithPath:self.confFilePath];
+        NSError *error;
+        
+        if (![self.panelController.text writeToURL:confFileUrl atomically:NO encoding:NSUTF8StringEncoding error:&error]) {
+            NSLog(@"Error while trying to create conf file %@: %@", self.confFilePath, [error localizedDescription]);
+        }
     }
 }
 
@@ -144,7 +147,7 @@ static id sharedInstance = nil;
 
 - (void) propertyValueNotFound: (CTProperty *) property {
     if (self.mode == CTNormalMode) {
-        NSLog(@"Warning (ctconf): Property '%@' value not set. Set to default (%@)", property.name, [property toString]);
+//        NSLog(@"Warning (ctconf): Property '%@' value not set. Set to default (%@)", property.name, [property toString]);
     } else {
         NSString *textLine = [NSString stringWithFormat:@"\n%@ = %@", property.name, [property toString]];
         [self.panelController appendText:textLine];
@@ -197,6 +200,10 @@ static id sharedInstance = nil;
 }
 
 - (void) readConfig {
+    
+    if (!self.confFilePath) {
+        return;
+    }
     
     NSString *configText = nil;
     
