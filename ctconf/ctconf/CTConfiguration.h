@@ -56,6 +56,8 @@ typedef NSInteger CTMode;
 
 - (NSFont *) addFontProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSFont *) defaultValue;
 
+- (NSEdgeInsets) addEdgeInsetsProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSEdgeInsets) defaultValue;
+
 /* listener properties */
 
 - (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName;

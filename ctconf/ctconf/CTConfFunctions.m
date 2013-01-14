@@ -54,3 +54,23 @@ CGFloat confDouble (NSString * propertyName, id object, NSString *objectKey, CGF
     CGFloat result = [conf addDoubleProperty:propertyName toObject:object key:objectKey defaultValue:defaultValue];
     return result;
 }
+
+NSFont* confFont (NSString *propertyName, id object, NSString *objectKey, NSFont *defaultValue) {
+    CTConfiguration *conf = [CTConfiguration sharedInstance];
+    NSFont *result = [conf addFontProperty:propertyName toObject:object key:objectKey defaultValue:defaultValue];
+    return result;
+}
+
+NSColor* confColor (NSString *propertyName, id object, NSString *objectKey, NSColor *defaultValue)  {
+    CTConfiguration *conf = [CTConfiguration sharedInstance];
+    NSColor *result = [conf addColorProperty:propertyName toObject:object key:objectKey defaultValue:defaultValue];
+    return result;
+}
+
+NSEdgeInsets confEdgeInsets (NSString *propertyName, id object, NSString *objectKey, NSEdgeInsets defaultValue) {
+    CTConfiguration *conf = [CTConfiguration sharedInstance];
+    NSEdgeInsets result = [conf addEdgeInsetsProperty:propertyName toObject:object key:objectKey defaultValue:defaultValue];
+    return result;
+}
+
+

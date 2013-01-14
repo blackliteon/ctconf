@@ -10,5 +10,8 @@
 
 void confInit(void);
 
-CGFloat confDouble (NSString * propertyName, id object, NSString *objectKey, CGFloat defaultValue) ;
+CGFloat confDouble (NSString *propertyName, id object, NSString *objectKey, CGFloat defaultValue) ;
 
+NSFont* confFont (NSString *propertyName, id object, NSString *objectKey, NSFont *defaultValue) ;
+NSColor* confColor (NSString *propertyName, id object, NSString *objectKey, NSColor *defaultValue) ;
+NSEdgeInsets confEdgeInsets (NSString *propertyName, id object, NSString *objectKey, NSEdgeInsets defaultValue) ;

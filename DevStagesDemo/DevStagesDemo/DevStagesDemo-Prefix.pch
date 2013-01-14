@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'DevStagesDemo' target in the 'DevStagesDemo' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

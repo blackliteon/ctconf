@@ -19,4 +19,7 @@
    <FileRef
       location = "group:Horizontal Container Demo/Horizontal Container Demo.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:DevStagesDemo/DevStagesDemo.xcodeproj">
+   </FileRef>
 </Workspace>

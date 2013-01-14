@@ -21,6 +21,8 @@
 #import "CTPropertyManager.h"
 #import "CTUnicharProperty.h"
 #import "CTFontProperty.h"
+#import "CTEdgeInsetsProperty.h"
+#import "NSValue+EdgeInsets.h"
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
@@ -354,6 +356,18 @@ static id sharedInstance = nil;
     CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.value;
 }
+
+- (NSEdgeInsets) addEdgeInsetsProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSEdgeInsets) defaultValue {
+    CTEdgeInsetsProperty *property = [[CTEdgeInsetsProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = [NSValue valueWithEdgeInsets:defaultValue];
+    [property addObjectThatTracksUpdates:object key:key];
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    NSEdgeInsets edgeInsets = [assignedProperty.value edgeInsetsValue];
+    return edgeInsets;
+}
+
 
 // properties with listeners
 

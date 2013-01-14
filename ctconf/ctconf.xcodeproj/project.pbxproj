@@ -88,6 +88,10 @@
 		32EE876A160C60E50003D7CB /* CTHorizontalContainerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32EE8766160C60E50003D7CB /* CTHorizontalContainerViewController.m */; };
 		32F7924316A402C8002C47CD /* CTConfFunctions.h in Headers */ = {isa = PBXBuildFile; fileRef = 32F7924116A402C8002C47CD /* CTConfFunctions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32F7924416A402C8002C47CD /* CTConfFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F7924216A402C8002C47CD /* CTConfFunctions.m */; };
+		32F792A216A44383002C47CD /* CTEdgeInsetsProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32F792A016A44382002C47CD /* CTEdgeInsetsProperty.h */; };
+		32F792A316A44383002C47CD /* CTEdgeInsetsProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F792A116A44382002C47CD /* CTEdgeInsetsProperty.m */; };
+		32F792A716A44481002C47CD /* NSValue+EdgeInsets.h in Headers */ = {isa = PBXBuildFile; fileRef = 32F792A516A44481002C47CD /* NSValue+EdgeInsets.h */; };
+		32F792A816A44481002C47CD /* NSValue+EdgeInsets.m in Sources */ = {isa = PBXBuildFile; fileRef = 32F792A616A44481002C47CD /* NSValue+EdgeInsets.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -189,6 +193,10 @@
 		32EE8766160C60E50003D7CB /* CTHorizontalContainerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTHorizontalContainerViewController.m; sourceTree = "<group>"; };
 		32F7924116A402C8002C47CD /* CTConfFunctions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTConfFunctions.h; sourceTree = "<group>"; };
 		32F7924216A402C8002C47CD /* CTConfFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTConfFunctions.m; sourceTree = "<group>"; };
+		32F792A016A44382002C47CD /* CTEdgeInsetsProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTEdgeInsetsProperty.h; sourceTree = "<group>"; };
+		32F792A116A44382002C47CD /* CTEdgeInsetsProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTEdgeInsetsProperty.m; sourceTree = "<group>"; };
+		32F792A516A44481002C47CD /* NSValue+EdgeInsets.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSValue+EdgeInsets.h"; sourceTree = "<group>"; };
+		32F792A616A44481002C47CD /* NSValue+EdgeInsets.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSValue+EdgeInsets.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -262,6 +270,8 @@
 			children = (
 				3209F74115F5FBCD003C5989 /* NSImage+Tint.h */,
 				3209F74215F5FBCD003C5989 /* NSImage+Tint.m */,
+				32F792A516A44481002C47CD /* NSValue+EdgeInsets.h */,
+				32F792A616A44481002C47CD /* NSValue+EdgeInsets.m */,
 			);
 			name = additions;
 			sourceTree = "<group>";
@@ -389,6 +399,8 @@
 				32C506FC15C04740001F2025 /* CTUnicharProperty.m */,
 				32C13FF615D641A600CDB6B8 /* CTFontProperty.h */,
 				32C13FF715D641A600CDB6B8 /* CTFontProperty.m */,
+				32F792A016A44382002C47CD /* CTEdgeInsetsProperty.h */,
+				32F792A116A44382002C47CD /* CTEdgeInsetsProperty.m */,
 			);
 			name = properties;
 			sourceTree = "<group>";
@@ -480,6 +492,8 @@
 				32EE8769160C60E50003D7CB /* CTHorizontalContainerViewController.h in Headers */,
 				326503AB16159B1C009B5513 /* CTIconMomentaryButtonController.h in Headers */,
 				32F7924316A402C8002C47CD /* CTConfFunctions.h in Headers */,
+				32F792A216A44383002C47CD /* CTEdgeInsetsProperty.h in Headers */,
+				32F792A716A44481002C47CD /* NSValue+EdgeInsets.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +640,8 @@
 				32EE876A160C60E50003D7CB /* CTHorizontalContainerViewController.m in Sources */,
 				326503AC16159B1C009B5513 /* CTIconMomentaryButtonController.m in Sources */,
 				32F7924416A402C8002C47CD /* CTConfFunctions.m in Sources */,
+				32F792A316A44383002C47CD /* CTEdgeInsetsProperty.m in Sources */,
+				32F792A816A44481002C47CD /* NSValue+EdgeInsets.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
