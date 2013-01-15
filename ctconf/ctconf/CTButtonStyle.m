@@ -9,6 +9,7 @@
 #import "CTButtonStyle.h"
 #import "NSDictionary+CTAdditions.h"
 #import "NSString+CTAdditions.h"
+#import "NSColor+FromHex.h"
 
 @implementation CTButtonStyle
 
@@ -31,7 +32,7 @@
 - (NSString *) stringValue {
     NSArray *keys = @[@"path", @"tintBackground", @"color", @"colorOver", @"colorDisabled", @"colorClicked"];
     
-    NSDictionary *dict = @{@"path":self.path, @"tintBackground":self.tintBackground, @"color":self.color, @"colorOver":self.colorOver, @"colorDisabled":self.colorDisabled, @"colorClicked":self.colorClicked};
+    NSDictionary *dict = @{@"path":self.path, @"tintBackground":self.tintBackground.hexString, @"color":self.color.hexString, @"colorOver":self.colorOver.hexString, @"colorDisabled":self.colorDisabled.hexString, @"colorClicked":self.colorClicked.hexString};
     
     return [dict stringOrdered:keys];
 }
@@ -54,11 +55,11 @@
     
     CTButtonStyle *buttonStyle = [[CTButtonStyle alloc] init];
     buttonStyle.path = dict[@"path"];
-    buttonStyle.tintBackground = dict[@"tintBackground"];
-    buttonStyle.color = dict[@"color"];
-    buttonStyle.colorOver = dict[@"colorOver"];
-    buttonStyle.colorDisabled = dict[@"colorDisabled"];
-    buttonStyle.colorClicked = dict[@"colorClicked"];
+    buttonStyle.tintBackground = [NSColor colorFromHexRGB:dict[@"tintBackground"]];
+    buttonStyle.color = [NSColor colorFromHexRGB:dict[@"color"]];
+    buttonStyle.colorOver = [NSColor colorFromHexRGB:dict[@"colorOver"]];
+    buttonStyle.colorDisabled = [NSColor colorFromHexRGB:dict[@"colorDisabled"]];
+    buttonStyle.colorClicked = [NSColor colorFromHexRGB:dict[@"colorClicked"]];
     
     return buttonStyle;
 }

@@ -21,7 +21,7 @@
 		3213A8E615B2F0CA00D77FC6 /* NSArray+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8E415B2F0CA00D77FC6 /* NSArray+CTAdditions.m */; };
 		3213A8F315B300D700D77FC6 /* CTMomentaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8F115B300D700D77FC6 /* CTMomentaryButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3213A8F415B300D700D77FC6 /* CTMomentaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8F215B300D700D77FC6 /* CTMomentaryButton.m */; };
-		3214931916A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3214931716A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h */; };
+		3214931916A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3214931716A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3214931A16A54C1A00EE48D5 /* CTConfigurableMomentaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3214931816A54C1A00EE48D5 /* CTConfigurableMomentaryButton.m */; };
 		3214931F16A54FF900EE48D5 /* CTButtonStyleProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3214931D16A54FF900EE48D5 /* CTButtonStyleProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3214932016A54FF900EE48D5 /* CTButtonStyleProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3214931E16A54FF900EE48D5 /* CTButtonStyleProperty.m */; };

@@ -205,7 +205,15 @@ typedef NSUInteger CTMomentaryButtonImageState;
     self.mouseDown = NO;
 
     if (self.enabled && self.mouseEntered) {
+        
         [self.delegate buttonClicked:self];
+        
+        if (self.target && [self.target respondsToSelector:self.action]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            [self.target performSelector:self.action withObject:self];
+#pragma clang diagnostic pop
+        }
     }
 }
 

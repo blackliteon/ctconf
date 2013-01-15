@@ -29,6 +29,9 @@
 @property (assign, nonatomic) BOOL enabled;
 @property (assign, nonatomic) id<CTMomentaryButtonDelegate> delegate;
 
+@property (unsafe_unretained, nonatomic) id target;
+@property (assign, nonatomic) SEL action;
+
 // images
 
 @property (strong, nonatomic) NSImage *defaultImage;

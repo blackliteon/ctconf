@@ -376,7 +376,7 @@ static id sharedInstance = nil;
     [property addObjectThatTracksUpdates:object key:key];
     
     CTProperty *assignedProperty = [self _registerProperty:property];
-    return assignedProperty.value;
+    return assignedProperty.transformedValue;
 }
 
 // properties with listeners
