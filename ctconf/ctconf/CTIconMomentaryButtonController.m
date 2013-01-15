@@ -38,14 +38,14 @@
     return [NSString stringWithFormat:@"%@.%@", self.stylesPropertyName, characteristic];
 }
 
-- (id) initWithImageTemplatePathPropertyName: (NSString *) templatePathProperty stylesPropertyName: (NSString *) stylesProperty backgroudColorProperty: (NSString *) backgroundProperty {
+- (id) initWithImageTemplatePathPropertyName: (NSString *) templatePathProperty defaultPath: (NSString *) defaultPath stylesPropertyName: (NSString *) stylesProperty backgroudColorProperty: (NSString *) backgroundProperty {
     self = [super init];
     if (self) {
         self.stylesPropertyName = stylesProperty;
         self.backgroundPropertyName = backgroundProperty;
         self.templatePathProperty = templatePathProperty;
         
-        _templatePath = [[CTConfiguration sharedInstance] addResourcePathProperty:self.templatePathProperty toObject:self key:@"templatePath" defaultPath:@""];
+        _templatePath = [[CTConfiguration sharedInstance] addResourcePathProperty:self.templatePathProperty toObject:self key:@"templatePath" defaultPath:defaultPath];
         
         if (self.backgroundPropertyName) {
             _backgroundColor = [[CTConfiguration sharedInstance] addColorProperty:self.backgroundPropertyName toObject:self key:@"backgroundColor" defaultValue:[NSColor whiteColor]];
@@ -61,6 +61,17 @@
     }
     return self;
 }
+
+- (id) initWithImageTemplatePathPropertyName: (NSString *) templatePathProperty stylesPropertyName: (NSString *) stylesProperty backgroudColorProperty: (NSString *) backgroundProperty {
+    return [self initWithImageTemplatePathPropertyName:templatePathProperty defaultPath:@"" stylesPropertyName:stylesProperty backgroudColorProperty:backgroundProperty];
+}
+
+
+- (id) initWithTemplatePathName: (NSString *) templatePathProperty defaultPath: (NSString *) defaultPath stylesName: (NSString *) stylesProperty {
+    NSString *bgFullPropertyName = [NSString stringWithFormat:@"%@.%@", stylesProperty, @"backgroundColor"];
+    return [self initWithImageTemplatePathPropertyName:templatePathProperty defaultPath:defaultPath stylesPropertyName:stylesProperty backgroudColorProperty:bgFullPropertyName];
+}
+
 
 - (void) dealloc {
     [[CTConfiguration sharedInstance] unregisterObjectFromUpdates:self];

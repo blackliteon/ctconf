@@ -73,4 +73,16 @@ NSEdgeInsets confEdgeInsets (NSString *propertyName, id object, NSString *object
     return result;
 }
 
+CTButtonStyle* confButtonStyle (NSString *propertyName, id object, NSString *objectKey, CTButtonStyle *defaultValue) {
+    CTConfiguration *conf = [CTConfiguration sharedInstance];
+    CTButtonStyle *result = [conf addButtonStyleProperty:propertyName toObject:object key:objectKey defaultValue:defaultValue];
+    return result;
+}
 
+
+/* */
+
+void confUnregister (id object) {
+    CTConfiguration *conf = [CTConfiguration sharedInstance];
+    [conf unregisterObjectFromUpdates:object];
+}

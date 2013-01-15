@@ -48,4 +48,8 @@ typedef NSInteger CTPropertyType;
 - (NSArray *) allListeners;
 
 
+/* in normal situation should return the same value, but, for example, in pathes it should transform value based on mode and this is transformed value will be propagated to all listeners. 
+ */
+- (id) transformedValue; 
+
 @end

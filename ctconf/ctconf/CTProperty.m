@@ -60,7 +60,7 @@
                         SEL setter = NSSelectorFromString(setterStr);
                         
                         if ([objectKey.object respondsToSelector:setter]) {
-                            [objectKey.object setValue:self.value forKey:objectKey.key];
+                            [objectKey.object setValue:self.transformedValue forKey:objectKey.key];
                         } else {
                             NSLog(@"Can't find setter for %@ (%@)", self.name, setterStr);
                         }
@@ -69,7 +69,7 @@
                     
                     if (objectKey.listener) {
                         if ([objectKey.listener respondsToSelector:@selector(propertyWithName:updatedToValue:)]) {
-                            [objectKey.listener propertyWithName:self.name updatedToValue:self.value];
+                            [objectKey.listener propertyWithName:self.name updatedToValue:self.transformedValue];
                         }
                     }
                     
@@ -84,6 +84,10 @@
     } else {
         _value = value; // just update value, even if they seems equals because normalized.
     }
+}
+
+- (id) transformedValue {
+    return self.value;
 }
 
 - (id) value {

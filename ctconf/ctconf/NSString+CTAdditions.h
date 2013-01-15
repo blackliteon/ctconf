@@ -12,5 +12,5 @@
 
 - (NSArray *) arrayWithDoublesFromStringWithParentheses;
 - (NSArray *) arrayWithStringsFromStringWithParentheses;
-
+- (NSDictionary *) dictionaryFromString;
 @end

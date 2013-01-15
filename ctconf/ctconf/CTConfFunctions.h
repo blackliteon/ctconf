@@ -7,6 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CTButtonStyle.h"
+
 
 void confInit(void);
 
@@ -15,3 +17,9 @@ CGFloat confDouble (NSString *propertyName, id object, NSString *objectKey, CGFl
 NSFont* confFont (NSString *propertyName, id object, NSString *objectKey, NSFont *defaultValue) ;
 NSColor* confColor (NSString *propertyName, id object, NSString *objectKey, NSColor *defaultValue) ;
 NSEdgeInsets confEdgeInsets (NSString *propertyName, id object, NSString *objectKey, NSEdgeInsets defaultValue) ;
+
+CTButtonStyle* confButtonStyle (NSString *propertyName, id object, NSString *objectKey, CTButtonStyle *defaultValue);
+
+/* */
+
+void confUnregister (id object);

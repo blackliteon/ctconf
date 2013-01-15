@@ -368,6 +368,16 @@ static id sharedInstance = nil;
     return edgeInsets;
 }
 
+- (CTButtonStyle *) addButtonStyleProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (CTButtonStyle *) defaultValue {
+    
+    CTButtonStyleProperty *property = [[CTButtonStyleProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = defaultValue;
+    [property addObjectThatTracksUpdates:object key:key];
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    return assignedProperty.value;
+}
 
 // properties with listeners
 

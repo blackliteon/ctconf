@@ -21,6 +21,16 @@
 		3213A8E615B2F0CA00D77FC6 /* NSArray+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8E415B2F0CA00D77FC6 /* NSArray+CTAdditions.m */; };
 		3213A8F315B300D700D77FC6 /* CTMomentaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3213A8F115B300D700D77FC6 /* CTMomentaryButton.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3213A8F415B300D700D77FC6 /* CTMomentaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3213A8F215B300D700D77FC6 /* CTMomentaryButton.m */; };
+		3214931916A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h in Headers */ = {isa = PBXBuildFile; fileRef = 3214931716A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h */; };
+		3214931A16A54C1A00EE48D5 /* CTConfigurableMomentaryButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 3214931816A54C1A00EE48D5 /* CTConfigurableMomentaryButton.m */; };
+		3214931F16A54FF900EE48D5 /* CTButtonStyleProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 3214931D16A54FF900EE48D5 /* CTButtonStyleProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3214932016A54FF900EE48D5 /* CTButtonStyleProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 3214931E16A54FF900EE48D5 /* CTButtonStyleProperty.m */; };
+		3214932316A5504200EE48D5 /* CTButtonStyle.h in Headers */ = {isa = PBXBuildFile; fileRef = 3214932116A5504200EE48D5 /* CTButtonStyle.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		3214932416A5504200EE48D5 /* CTButtonStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 3214932216A5504200EE48D5 /* CTButtonStyle.m */; };
+		3214932716A5576200EE48D5 /* NSDictionary+CTAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3214932516A5576200EE48D5 /* NSDictionary+CTAdditions.h */; };
+		3214932816A5576200EE48D5 /* NSDictionary+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3214932616A5576200EE48D5 /* NSDictionary+CTAdditions.m */; };
+		3214932B16A55B7A00EE48D5 /* NSColor+CTAdditions.h in Headers */ = {isa = PBXBuildFile; fileRef = 3214932916A55B7A00EE48D5 /* NSColor+CTAdditions.h */; };
+		3214932C16A55B7A00EE48D5 /* NSColor+CTAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3214932A16A55B7A00EE48D5 /* NSColor+CTAdditions.m */; };
 		322CAE6C15B03D6600BE85DB /* CTColorProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6A15B03D6600BE85DB /* CTColorProperty.h */; };
 		322CAE6D15B03D6600BE85DB /* CTColorProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 322CAE6B15B03D6600BE85DB /* CTColorProperty.m */; };
 		322CAE7115B03EC900BE85DB /* NSColor+FromHex.h in Headers */ = {isa = PBXBuildFile; fileRef = 322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -52,7 +62,7 @@
 		3291ACDC15B853F900654C5D /* CTFunctions.m in Sources */ = {isa = PBXBuildFile; fileRef = 3291ACDA15B853F900654C5D /* CTFunctions.m */; };
 		32A44D7915A5AD8900A87F87 /* CTConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A44D7715A5AD8900A87F87 /* CTConfiguration.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32A44D7A15A5AD8900A87F87 /* CTConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D7815A5AD8900A87F87 /* CTConfiguration.m */; };
-		32A44D8B15A5B6D800A87F87 /* CTProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A44D8915A5B6D800A87F87 /* CTProperty.h */; };
+		32A44D8B15A5B6D800A87F87 /* CTProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A44D8915A5B6D800A87F87 /* CTProperty.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		32A44D8C15A5B6D800A87F87 /* CTProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D8A15A5B6D800A87F87 /* CTProperty.m */; };
 		32A44D8F15A6BF0B00A87F87 /* CTPanelController.h in Headers */ = {isa = PBXBuildFile; fileRef = 32A44D8D15A6BF0B00A87F87 /* CTPanelController.h */; };
 		32A44D9015A6BF0B00A87F87 /* CTPanelController.m in Sources */ = {isa = PBXBuildFile; fileRef = 32A44D8E15A6BF0B00A87F87 /* CTPanelController.m */; };
@@ -119,6 +129,16 @@
 		3213A8E415B2F0CA00D77FC6 /* NSArray+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CTAdditions.m"; sourceTree = "<group>"; };
 		3213A8F115B300D700D77FC6 /* CTMomentaryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTMomentaryButton.h; sourceTree = "<group>"; };
 		3213A8F215B300D700D77FC6 /* CTMomentaryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTMomentaryButton.m; sourceTree = "<group>"; };
+		3214931716A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTConfigurableMomentaryButton.h; sourceTree = "<group>"; };
+		3214931816A54C1A00EE48D5 /* CTConfigurableMomentaryButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTConfigurableMomentaryButton.m; sourceTree = "<group>"; };
+		3214931D16A54FF900EE48D5 /* CTButtonStyleProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTButtonStyleProperty.h; sourceTree = "<group>"; };
+		3214931E16A54FF900EE48D5 /* CTButtonStyleProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTButtonStyleProperty.m; sourceTree = "<group>"; };
+		3214932116A5504200EE48D5 /* CTButtonStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTButtonStyle.h; sourceTree = "<group>"; };
+		3214932216A5504200EE48D5 /* CTButtonStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTButtonStyle.m; sourceTree = "<group>"; };
+		3214932516A5576200EE48D5 /* NSDictionary+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+CTAdditions.h"; sourceTree = "<group>"; };
+		3214932616A5576200EE48D5 /* NSDictionary+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+CTAdditions.m"; sourceTree = "<group>"; };
+		3214932916A55B7A00EE48D5 /* NSColor+CTAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+CTAdditions.h"; sourceTree = "<group>"; };
+		3214932A16A55B7A00EE48D5 /* NSColor+CTAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSColor+CTAdditions.m"; sourceTree = "<group>"; };
 		322CAE6A15B03D6600BE85DB /* CTColorProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTColorProperty.h; sourceTree = "<group>"; };
 		322CAE6B15B03D6600BE85DB /* CTColorProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTColorProperty.m; sourceTree = "<group>"; };
 		322CAE6F15B03EC900BE85DB /* NSColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSColor+FromHex.h"; sourceTree = "<group>"; };
@@ -241,6 +261,10 @@
 				3213A8E015B2F03D00D77FC6 /* NSString+CTAdditions.m */,
 				3213A8E315B2F0CA00D77FC6 /* NSArray+CTAdditions.h */,
 				3213A8E415B2F0CA00D77FC6 /* NSArray+CTAdditions.m */,
+				3214932516A5576200EE48D5 /* NSDictionary+CTAdditions.h */,
+				3214932616A5576200EE48D5 /* NSDictionary+CTAdditions.m */,
+				3214932916A55B7A00EE48D5 /* NSColor+CTAdditions.h */,
+				3214932A16A55B7A00EE48D5 /* NSColor+CTAdditions.m */,
 			);
 			name = additions;
 			sourceTree = "<group>";
@@ -248,10 +272,22 @@
 		3213A8EF15B300C100D77FC6 /* elements */ = {
 			isa = PBXGroup;
 			children = (
+				3214931C16A54EFA00EE48D5 /* properties */,
 				32EE8761160C60A50003D7CB /* panels */,
 				32EE8760160C60990003D7CB /* buttons */,
 			);
 			name = elements;
+			sourceTree = "<group>";
+		};
+		3214931C16A54EFA00EE48D5 /* properties */ = {
+			isa = PBXGroup;
+			children = (
+				3214932116A5504200EE48D5 /* CTButtonStyle.h */,
+				3214932216A5504200EE48D5 /* CTButtonStyle.m */,
+				3214931D16A54FF900EE48D5 /* CTButtonStyleProperty.h */,
+				3214931E16A54FF900EE48D5 /* CTButtonStyleProperty.m */,
+			);
+			name = properties;
 			sourceTree = "<group>";
 		};
 		3240888A15AF083000735767 /* helpers */ = {
@@ -432,6 +468,8 @@
 				3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */,
 				326503A916159B1C009B5513 /* CTIconMomentaryButtonController.h */,
 				326503AA16159B1C009B5513 /* CTIconMomentaryButtonController.m */,
+				3214931716A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h */,
+				3214931816A54C1A00EE48D5 /* CTConfigurableMomentaryButton.m */,
 			);
 			name = buttons;
 			sourceTree = "<group>";
@@ -494,6 +532,11 @@
 				32F7924316A402C8002C47CD /* CTConfFunctions.h in Headers */,
 				32F792A216A44383002C47CD /* CTEdgeInsetsProperty.h in Headers */,
 				32F792A716A44481002C47CD /* NSValue+EdgeInsets.h in Headers */,
+				3214931916A54C1A00EE48D5 /* CTConfigurableMomentaryButton.h in Headers */,
+				3214931F16A54FF900EE48D5 /* CTButtonStyleProperty.h in Headers */,
+				3214932316A5504200EE48D5 /* CTButtonStyle.h in Headers */,
+				3214932716A5576200EE48D5 /* NSDictionary+CTAdditions.h in Headers */,
+				3214932B16A55B7A00EE48D5 /* NSColor+CTAdditions.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +685,11 @@
 				32F7924416A402C8002C47CD /* CTConfFunctions.m in Sources */,
 				32F792A316A44383002C47CD /* CTEdgeInsetsProperty.m in Sources */,
 				32F792A816A44481002C47CD /* NSValue+EdgeInsets.m in Sources */,
+				3214931A16A54C1A00EE48D5 /* CTConfigurableMomentaryButton.m in Sources */,
+				3214932016A54FF900EE48D5 /* CTButtonStyleProperty.m in Sources */,
+				3214932416A5504200EE48D5 /* CTButtonStyle.m in Sources */,
+				3214932816A5576200EE48D5 /* NSDictionary+CTAdditions.m in Sources */,
+				3214932C16A55B7A00EE48D5 /* NSColor+CTAdditions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

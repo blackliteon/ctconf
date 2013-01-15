@@ -10,6 +10,8 @@
 #import "CTPanel.h"
 #import "CTSceneManager.h"
 #import "CTPropertyListener.h"
+#import "CTButtonStyle.h"
+#import "CTButtonStyleProperty.h"
 
 enum {
     CTNormalMode,
@@ -57,6 +59,8 @@ typedef NSInteger CTMode;
 - (NSFont *) addFontProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSFont *) defaultValue;
 
 - (NSEdgeInsets) addEdgeInsetsProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSEdgeInsets) defaultValue;
+
+- (CTButtonStyle *) addButtonStyleProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (CTButtonStyle *) defaultValue;
 
 /* listener properties */
 

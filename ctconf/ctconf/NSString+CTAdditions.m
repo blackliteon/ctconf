@@ -53,5 +53,38 @@ typedef id (^stringElementToArrayElementConverterBlock)(NSString * strEl);
     }];
 }
 
+- (NSDictionary *) dictionaryFromString {
+    if (self.length < 3) {
+        return nil; // too short
+    }
+    
+    NSString *firstCharStr = [self substringWithRange:NSMakeRange(0, 1)];
+    if (![firstCharStr isEqualToString:@"{"]) {
+        return nil; // first char is not (
+    }
+    
+    NSString *lastCharStr = [self substringFromIndex:self.length-1];
+    if (![lastCharStr isEqualToString:@"}"]) {
+        return nil; // last char is not )
+    }
+
+    NSString *stringWithoutParenthesis = [self substringWithRange:NSMakeRange(1, self.length - 2)];
+    NSArray *stringComponents = [stringWithoutParenthesis componentsSeparatedByString:CT_PROPERTY_ARRAY_ELEMENTS_SEPARATOR];
+    
+    NSMutableDictionary *result = [[NSMutableDictionary alloc] init];
+    for (NSString *strElement in stringComponents) {
+        
+        NSArray *keyValueArray = [strElement componentsSeparatedByString:@":"];
+        
+        if (keyValueArray.count == 2) {
+            [result setObject:keyValueArray[1] forKey:keyValueArray[0]];
+        }
+        
+    }
+    
+    return result;
+}
+
+
 
 @end
