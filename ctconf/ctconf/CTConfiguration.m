@@ -23,6 +23,7 @@
 #import "CTFontProperty.h"
 #import "CTEdgeInsetsProperty.h"
 #import "NSValue+EdgeInsets.h"
+#import "CTRectProperty.h"
 
 #define CT_DEFAULT_SCENE_NAME_KEY @"CT_default_scene_name"
 
@@ -378,6 +379,18 @@ static id sharedInstance = nil;
     CTProperty *assignedProperty = [self _registerProperty:property];
     return assignedProperty.transformedValue;
 }
+
+- (NSRect) addRectProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSRect) defaultValue {
+    CTRectProperty *property = [[CTRectProperty alloc] init];
+    property.name = propertyName;
+    property.defaultValue = [NSValue valueWithRect:defaultValue];
+    [property addObjectThatTracksUpdates:object key:key];
+    
+    CTProperty *assignedProperty = [self _registerProperty:property];
+    NSRect currentValue = [assignedProperty.value rectValue];
+    return currentValue;
+}
+
 
 // properties with listeners
 

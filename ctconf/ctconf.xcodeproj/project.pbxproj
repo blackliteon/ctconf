@@ -47,6 +47,8 @@
 		3251CCEF15F72CB500A283A4 /* CTIconPushButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */; };
 		326503AB16159B1C009B5513 /* CTIconMomentaryButtonController.h in Headers */ = {isa = PBXBuildFile; fileRef = 326503A916159B1C009B5513 /* CTIconMomentaryButtonController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		326503AC16159B1C009B5513 /* CTIconMomentaryButtonController.m in Sources */ = {isa = PBXBuildFile; fileRef = 326503AA16159B1C009B5513 /* CTIconMomentaryButtonController.m */; };
+		32776B9316A67A6E00DB39A0 /* CTRectProperty.h in Headers */ = {isa = PBXBuildFile; fileRef = 32776B9116A67A6E00DB39A0 /* CTRectProperty.h */; };
+		32776B9416A67A6E00DB39A0 /* CTRectProperty.m in Sources */ = {isa = PBXBuildFile; fileRef = 32776B9216A67A6E00DB39A0 /* CTRectProperty.m */; };
 		3280BD6315A469C8009148AD /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD6215A469C8009148AD /* Cocoa.framework */; };
 		3280BD6D15A469C8009148AD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3280BD6B15A469C8009148AD /* InfoPlist.strings */; };
 		3280BD7915A469C8009148AD /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3280BD7815A469C8009148AD /* SenTestingKit.framework */; };
@@ -155,6 +157,8 @@
 		3251CCED15F72CB500A283A4 /* CTIconPushButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTIconPushButtonController.m; sourceTree = "<group>"; };
 		326503A916159B1C009B5513 /* CTIconMomentaryButtonController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTIconMomentaryButtonController.h; sourceTree = "<group>"; };
 		326503AA16159B1C009B5513 /* CTIconMomentaryButtonController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTIconMomentaryButtonController.m; sourceTree = "<group>"; };
+		32776B9116A67A6E00DB39A0 /* CTRectProperty.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CTRectProperty.h; sourceTree = "<group>"; };
+		32776B9216A67A6E00DB39A0 /* CTRectProperty.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CTRectProperty.m; sourceTree = "<group>"; };
 		3280BD5F15A469C8009148AD /* ctconf.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ctconf.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3280BD6215A469C8009148AD /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3280BD6515A469C8009148AD /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -437,6 +441,8 @@
 				32C13FF715D641A600CDB6B8 /* CTFontProperty.m */,
 				32F792A016A44382002C47CD /* CTEdgeInsetsProperty.h */,
 				32F792A116A44382002C47CD /* CTEdgeInsetsProperty.m */,
+				32776B9116A67A6E00DB39A0 /* CTRectProperty.h */,
+				32776B9216A67A6E00DB39A0 /* CTRectProperty.m */,
 			);
 			name = properties;
 			sourceTree = "<group>";
@@ -537,6 +543,7 @@
 				3214932316A5504200EE48D5 /* CTButtonStyle.h in Headers */,
 				3214932716A5576200EE48D5 /* NSDictionary+CTAdditions.h in Headers */,
 				3214932B16A55B7A00EE48D5 /* NSColor+CTAdditions.h in Headers */,
+				32776B9316A67A6E00DB39A0 /* CTRectProperty.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -690,6 +697,7 @@
 				3214932416A5504200EE48D5 /* CTButtonStyle.m in Sources */,
 				3214932816A5576200EE48D5 /* NSDictionary+CTAdditions.m in Sources */,
 				3214932C16A55B7A00EE48D5 /* NSColor+CTAdditions.m in Sources */,
+				32776B9416A67A6E00DB39A0 /* CTRectProperty.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

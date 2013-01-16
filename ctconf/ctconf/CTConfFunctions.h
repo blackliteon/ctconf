@@ -20,6 +20,8 @@ NSEdgeInsets confEdgeInsets (NSString *propertyName, id object, NSString *object
 
 CTButtonStyle* confButtonStyle (NSString *propertyName, id object, NSString *objectKey, CTButtonStyle *defaultValue);
 
+NSRect confRect (NSString *propertyName, id object, NSString *objectKey, NSRect defaultValue) ;
+
 /* */
 
 void confUnregister (id object);

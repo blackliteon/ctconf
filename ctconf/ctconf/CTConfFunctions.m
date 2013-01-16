@@ -79,6 +79,13 @@ CTButtonStyle* confButtonStyle (NSString *propertyName, id object, NSString *obj
     return result;
 }
 
+NSRect confRect (NSString *propertyName, id object, NSString *objectKey, NSRect defaultValue) {
+    CTConfiguration *conf = [CTConfiguration sharedInstance];
+    NSRect result = [conf addRectProperty:propertyName toObject:object key:objectKey defaultValue:defaultValue];
+    return result;
+}
+
+
 
 /* */
 

@@ -62,6 +62,9 @@ typedef NSInteger CTMode;
 
 - (CTButtonStyle *) addButtonStyleProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (CTButtonStyle *) defaultValue;
 
+- (NSRect) addRectProperty: (NSString *) propertyName toObject: (id) object key: (NSString *) key defaultValue: (NSRect) defaultValue;
+
+
 /* listener properties */
 
 - (double) addDoubleProperty:(NSString *)propertyName propertyListener:(id<CTPropertyListener>)listener defaultValue:(CGFloat)defaultValue optional: (BOOL) optional masterPropertyName: (NSString *) masterPropertyName;
