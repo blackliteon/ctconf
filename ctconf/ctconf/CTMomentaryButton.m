@@ -19,8 +19,8 @@ typedef NSUInteger CTMomentaryButtonImageState;
 
 @interface CTMomentaryButton ()
 
-@property (assign, nonatomic) BOOL mouseEntered;
 @property (assign, nonatomic) BOOL mouseDown;
+@property (assign, nonatomic) BOOL mouseEntered;
 
 @property (assign, nonatomic) CTMomentaryButtonImageState imageState;
 @property (strong, nonatomic) NSImage *drawnImage; // do not update this value for state update, use imageState
@@ -30,28 +30,12 @@ typedef NSUInteger CTMomentaryButtonImageState;
 
 @implementation CTMomentaryButton
 
-@synthesize identifier = _identifier;
-@synthesize enabled = _enabled;
-@synthesize delegate = _delegate;
-
-@synthesize defaultImage = _defaultImage;
-@synthesize overDefaultImage = _overDefaultImage;
-@synthesize clickedImage = _clickedImage;
-@synthesize disabledImage = _disabledImage;
-
-@synthesize mouseEntered = _mouseEntered;
-@synthesize mouseDown = _mouseDown;
-
-@synthesize imageState = _imageState;
-@synthesize drawnImage = _drawnImage;
-@synthesize trackingArea = _trackingArea;
-
 - (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     
     if (self) {
         self.enabled = YES;
-        self.mouseEntered = NO;
+        self.mouseEntered = YES;
     }
     
     return self;
@@ -179,6 +163,7 @@ typedef NSUInteger CTMomentaryButtonImageState;
 
 - (void) updateTrackingAreas {
     [super updateTrackingAreas];
+    
     if (self.trackingArea) {
         [self removeTrackingArea:self.trackingArea];
     }

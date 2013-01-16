@@ -37,7 +37,7 @@
     CTButtonStyle *style = [self.value copy];
     style.path = [conf normalizePath:style.path];
     
-    NSLog(@"transformed path: %@", style.path);
+//    NSLog(@"transformed path: %@", style.path);
     
     return style;
 }

@@ -53,7 +53,7 @@
 
 - (void) _recreateImages {
     NSImage *image = [[NSImage alloc] initWithContentsOfFile:self.buttonStyle.path];
-    NSLog(@"recreate images with contents of file: %@", self.buttonStyle.path);
+//    NSLog(@"recreate images with contents of file: %@", self.buttonStyle.path);
     
     self.defaultImage = [image tintedImageWithColor:self.buttonStyle.color];
     self.overDefaultImage = [image tintedImageWithColor:self.buttonStyle.colorOver];
